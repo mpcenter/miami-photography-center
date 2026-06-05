@@ -102,22 +102,16 @@
     });
   }
 
-  /* ===== HERO PARALLAX (GSAP) ===== */
+  /* ===== HERO PARALLAX (GSAP) =====
+     Note: parallax on .hero__visual was removed — it fought the CSS
+     heroFloat animation on the same transform property and caused
+     a visible jump on scroll. Only the iridescent ring keeps a soft
+     scroll-linked motion, on its own transform layer. */
   function initHeroParallax() {
     if (prefersReducedMotion) return;
-    const visual = document.querySelector('.hero__visual');
-    if (!visual) return;
-    gsap.to(visual, {
-      yPercent: 18,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 0.6
-      }
-    });
-    gsap.to('.hero__ring', {
+    const ring = document.querySelector('.hero__ring');
+    if (!ring) return;
+    gsap.to(ring, {
       yPercent: -12,
       scale: 1.1,
       ease: 'none',
