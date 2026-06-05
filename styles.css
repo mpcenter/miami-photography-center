@@ -242,17 +242,25 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 
 .hero__visual {
   margin: 0;
-  border-radius: var(--r-card);
-  overflow: hidden;
-  aspect-ratio: 16 / 9;
-  max-width: 1100px;
+  max-width: 720px;
   margin-inline: auto;
   will-change: transform;
+  /* Transparent silhouette — drop-shadow follows the alpha */
+  filter: drop-shadow(0 50px 70px rgba(0,0,0,0.32))
+          drop-shadow(0 10px 20px rgba(0,0,0,0.18));
+  animation: heroFloat 7s ease-in-out infinite;
+  background: transparent;
 }
 .hero__visual img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  background: transparent;
+}
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
 }
 
 .hero__scroll-hint {
