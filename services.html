@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#1d1d1f" />
+
+  <!-- Primary SEO -->
+  <title>Camera Services Miami | Repair, Sensor Cleaning, On-Site, Productions — MPC</title>
+  <meta name="description" content="Full photography technical services in Miami: camera and gear repair, sensor cleaning from $49, on-site mobile service across South Florida, and photo &amp; video productions. Six-month warranty." />
+  <link rel="canonical" href="https://miamiphotographycenter.com/services" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://miamiphotographycenter.com/services" />
+  <meta property="og:site_name" content="Miami Photography Center" />
+  <meta property="og:title" content="Camera Services Miami | Repair, Sensor Cleaning, On-Site, Productions — MPC" />
+  <meta property="og:description" content="Full photography technical services in Miami. Camera repair, sensor cleaning, mobile on-site, and productions." />
+  <meta property="og:image" content="https://miamiphotographycenter.com/og-services.jpg" />
+  <meta property="og:image:alt" content="Miami Photography Center service catalog — repair, sensor cleaning, on-site service, and productions" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Camera Services Miami | Repair, Sensor Cleaning, On-Site, Productions — MPC" />
+  <meta name="twitter:description" content="Full photography technical services in Miami. Six-month warranty." />
+  <meta name="twitter:image" content="https://miamiphotographycenter.com/og-services.jpg" />
+  <meta name="twitter:image:alt" content="Miami Photography Center service catalog" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="repair.css" />
+  <link rel="stylesheet" href="services.css" />
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <script src="script.js" defer></script>
+
+  <!-- Schema.org: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://miamiphotographycenter.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://miamiphotographycenter.com/services" }
+    ]
+  }
+  </script>
+
+  <!-- Schema.org: Service catalog -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Photography Technical Services",
+    "name": "Miami Photography Center — Full Service Catalog",
+    "provider": { "@id": "https://miamiphotographycenter.com/#localbusiness" },
+    "areaServed": "South Florida",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "All Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Camera & Gear Repair",
+            "url": "https://miamiphotographycenter.com/camera-and-gear-repair"
+          },
+          "priceCurrency": "USD",
+          "price": "149"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Sensor Cleaning",
+            "url": "https://miamiphotographycenter.com/services#sensor-cleaning"
+          },
+          "priceCurrency": "USD",
+          "price": "49"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "On-Site Mobile Service",
+            "url": "https://miamiphotographycenter.com/on-site-services"
+          },
+          "priceCurrency": "USD",
+          "price": "79"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Photo & Video Productions",
+            "url": "https://miamiphotographycenter.com/photo-and-video-productions"
+          }
+        }
+      ]
+    }
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- ==================== NAV ==================== -->
+  <nav class="nav" aria-label="Primary">
+    <div class="nav__inner">
+      <a href="/" class="nav__brand" aria-label="Miami Photography Center home">MPC</a>
+      <ul class="nav__links">
+        <li><a href="/services">Services</a></li>
+        <li><a href="/#coverage">Coverage</a></li>
+        <li><a href="/#process">Process</a></li>
+        <li><a href="/#reviews">Reviews</a></li>
+        <li><a href="/online-store">Store</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+      <a href="/camera-and-gear-repair#repair-form" class="nav__cta">Request Repair</a>
+      <button class="nav__burger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <header class="hero hero--services">
+    <div class="hero__ring" aria-hidden="true"></div>
+
+    <div class="hero__container hero__container--split">
+      <div class="hero__text">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li aria-current="page">Services</li>
+          </ol>
+        </nav>
+
+        <p class="hero__eyebrow" data-anim="fade-up">Full service catalog</p>
+        <h1 class="hero__title hero__title--repair" data-anim="hero-title">
+          Everything your gear<br/>needs. Under one roof.
+        </h1>
+        <p class="hero__lede" data-anim="fade-up">
+          Repair, sensor cleaning, mobile on-site service, and full photo &amp; video productions. One workshop, four verticals, six-month warranty on every repair.
+        </p>
+        <div class="hero__ctas" data-anim="fade-up">
+          <a href="#catalog" class="btn btn--primary">Explore services</a>
+          <a href="#chooser" class="btn btn--ghost">Help me choose <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+      <div class="hero__camera" data-camera>
+        <img
+          src="/sfx30.webp"
+          alt="Professional medium-format camera, transparent product shot — Miami Photography Center"
+          width="1024" height="1024" fetchpriority="high" decoding="async"
+        />
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== CATALOG — 4 alternating service blocks ==================== -->
+  <section id="catalog" class="catalog" aria-label="Service catalog">
+
+    <!-- Block 1: Camera & Gear Repair -->
+    <article class="svc-block" data-anim="fade-up">
+      <div class="svc-block__inner">
+        <div class="svc-block__media">
+          <img loading="lazy" decoding="async"
+            src="https://images.unsplash.com/photo-1500634245200-e5245c7574ef?w=1400&amp;q=85&amp;auto=format&amp;fit=crop"
+            alt="Camera body opened on a technician workbench"
+            width="1400" height="900" />
+        </div>
+        <div class="svc-block__text">
+          <p class="svc-block__num">01 · Workshop</p>
+          <h2 class="svc-block__title">Camera &amp; Gear Repair</h2>
+          <p class="svc-block__copy">
+            DSLR, mirrorless, film, drones, lenses. Internal maintenance, sensor replacement, lubrication, electronics, firmware. Every job carries a six-month warranty.
+          </p>
+          <ul class="svc-block__bullets">
+            <li>Canon, Nikon, Sony, Fujifilm, Leica, Panasonic</li>
+            <li>Diagnostic within 24 hours · written quote</li>
+            <li>Most repairs done in 3–5 business days</li>
+            <li>From <strong>$149</strong> for full body service</li>
+          </ul>
+          <a href="/camera-and-gear-repair" class="btn btn--primary">See repair details</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Block 2: Sensor Cleaning (reversed) -->
+    <article id="sensor-cleaning" class="svc-block svc-block--reverse" data-anim="fade-up">
+      <div class="svc-block__inner">
+        <div class="svc-block__media">
+          <img loading="lazy" decoding="async"
+            src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=1400&amp;q=85&amp;auto=format&amp;fit=crop"
+            alt="Camera sensor close-up during a precision cleaning session"
+            width="1400" height="900" />
+        </div>
+        <div class="svc-block__text">
+          <p class="svc-block__num">02 · While you wait</p>
+          <h2 class="svc-block__title">Sensor Cleaning</h2>
+          <p class="svc-block__copy">
+            Ultrasonic, anti-static, certified solutions. Most full setups done in 30 minutes. Includes a 30-day free re-clean guarantee.
+          </p>
+          <ul class="svc-block__bullets">
+            <li>APS-C, full-frame, and medium-format sensors</li>
+            <li>Mirror, focusing screen, and exterior also cleaned</li>
+            <li>Before and after sensor-loupe inspection, documented</li>
+            <li>From <strong>$49</strong> · <strong>$79</strong> on-site at your location</li>
+          </ul>
+          <a href="/camera-and-gear-repair#repair-form" class="btn btn--primary">Book a sensor clean</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Block 3: On-Site Service -->
+    <article class="svc-block" data-anim="fade-up">
+      <div class="svc-block__inner">
+        <div class="svc-block__media">
+          <img loading="lazy" decoding="async"
+            src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=1400&amp;q=85&amp;auto=format&amp;fit=crop"
+            alt="Mobile photography service unit working on a production set"
+            width="1400" height="900" />
+        </div>
+        <div class="svc-block__text">
+          <p class="svc-block__num">03 · Mobile</p>
+          <h2 class="svc-block__title">On-Site Service</h2>
+          <p class="svc-block__copy">
+            Our calibrated unit comes to your studio, set, or location across South Florida. Zero downtime for your shoot. Production day rates available.
+          </p>
+          <ul class="svc-block__bullets">
+            <li>Miami-Dade · Broward · Palm Beach · Florida Keys</li>
+            <li>Same-day emergency dispatch (subject to availability)</li>
+            <li>Production day rate from <strong>$299</strong> · up to 8 hours</li>
+            <li>On-site sensor clean from <strong>$79</strong></li>
+          </ul>
+          <a href="/on-site-services" class="btn btn--primary">See coverage &amp; schedule</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Block 4: Photo & Video Productions (reversed) -->
+    <article class="svc-block svc-block--reverse" data-anim="fade-up">
+      <div class="svc-block__inner">
+        <div class="svc-block__media">
+          <img loading="lazy" decoding="async"
+            src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1400&amp;q=85&amp;auto=format&amp;fit=crop"
+            alt="Behind-the-scenes of a commercial photography production set"
+            width="1400" height="900" />
+        </div>
+        <div class="svc-block__text">
+          <p class="svc-block__num">04 · Editorial &amp; commercial</p>
+          <h2 class="svc-block__title">Photo &amp; Video Productions</h2>
+          <p class="svc-block__copy">
+            Full crew, gear, and post-production. Editorial, commercial, audiovisual, and brand campaigns led by working professionals.
+          </p>
+          <ul class="svc-block__bullets">
+            <li>Concept · production · direction · post</li>
+            <li>Studio, location, and on-set capability</li>
+            <li>End-to-end gear ownership — no rentals to worry about</li>
+            <li>Custom quote per project</li>
+          </ul>
+          <a href="/photo-and-video-productions" class="btn btn--primary">See production work</a>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ==================== SERVICE CHOOSER ==================== -->
+  <section id="chooser" class="chooser" aria-labelledby="chooser-title">
+    <div class="chooser__head">
+      <p class="eyebrow">Help me choose</p>
+      <h2 id="chooser-title" class="chooser__title">Which service do you need?</h2>
+      <p class="chooser__sub">Pick the situation that matches yours. We&rsquo;ll point you to the right page.</p>
+    </div>
+
+    <div class="chooser__grid">
+      <a href="/camera-and-gear-repair#repair-form" class="picker">
+        <p class="picker__when">My camera</p>
+        <h3>Something is broken or not working.</h3>
+        <p class="picker__copy">Repairs, calibration, mechanical issues, error codes, dust on sensor.</p>
+        <span class="picker__cta">Go to repair <span aria-hidden="true">→</span></span>
+      </a>
+
+      <a href="/on-site-services#schedule" class="picker picker--accent">
+        <p class="picker__when">I have a shoot</p>
+        <h3>I need service without leaving my location.</h3>
+        <p class="picker__copy">Mobile sensor clean, on-set diagnostic, production day rate.</p>
+        <span class="picker__cta">Schedule on-site <span aria-hidden="true">→</span></span>
+      </a>
+
+      <a href="/services#sensor-cleaning" class="picker">
+        <p class="picker__when">My sensor</p>
+        <h3>I see dust spots in my images.</h3>
+        <p class="picker__copy">Sensor cleaning, mirror &amp; focusing screen included. While you wait.</p>
+        <span class="picker__cta">Book sensor clean <span aria-hidden="true">→</span></span>
+      </a>
+
+      <a href="/photo-and-video-productions" class="picker">
+        <p class="picker__when">I need content</p>
+        <h3>I want full photo or video production.</h3>
+        <p class="picker__copy">Editorial, commercial, brand campaigns. Full crew, full gear, full post.</p>
+        <span class="picker__cta">See productions <span aria-hidden="true">→</span></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ==================== PROCESS — Shared method ==================== -->
+  <section class="repair-process" aria-labelledby="method-title">
+    <div class="repair-process__head">
+      <p class="eyebrow">Shared method</p>
+      <h2 id="method-title" class="repair-process__title">Four steps.<br/>Every service.</h2>
+    </div>
+    <ol class="timeline timeline--4">
+      <li class="timeline__item" data-anim="fade-up">
+        <span class="timeline__dot"></span>
+        <div class="timeline__card">
+          <p class="timeline__num">01</p>
+          <h3>Request</h3>
+          <p>Tell us what you need. Form, phone, or in-person. We respond within one business day.</p>
+        </div>
+      </li>
+      <li class="timeline__item" data-anim="fade-up">
+        <span class="timeline__dot"></span>
+        <div class="timeline__card">
+          <p class="timeline__num">02</p>
+          <h3>Diagnose</h3>
+          <p>Free diagnostic, written quote. We never start work without your approval.</p>
+        </div>
+      </li>
+      <li class="timeline__item" data-anim="fade-up">
+        <span class="timeline__dot"></span>
+        <div class="timeline__card">
+          <p class="timeline__num">03</p>
+          <h3>Execute</h3>
+          <p>In-house technicians, certified parts and tools, full functional test before sign-off.</p>
+        </div>
+      </li>
+      <li class="timeline__item" data-anim="fade-up">
+        <span class="timeline__dot"></span>
+        <div class="timeline__card">
+          <p class="timeline__num">04</p>
+          <h3>Return</h3>
+          <p>Pickup, return shipping, or on-site delivery. Six-month warranty included on repairs.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ==================== COMBINED PRICING TABLE ==================== -->
+  <section class="price-table" aria-labelledby="prices-title">
+    <div class="price-table__head">
+      <p class="eyebrow">Transparent pricing</p>
+      <h2 id="prices-title" class="price-table__title">Starting rates,<br/>across every service.</h2>
+      <p class="price-table__sub">Final price depends on diagnostic. We always quote in writing before any work. Multi-camera and bulk discounts available.</p>
+    </div>
+
+    <div class="price-table__inner">
+      <table class="price-table__grid">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Starting at</th>
+            <th>Where</th>
+            <th>Turnaround</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sensor cleaning</td>
+            <td><strong>$49</strong></td>
+            <td>Workshop</td>
+            <td>While you wait</td>
+          </tr>
+          <tr>
+            <td>Sensor cleaning · on-site</td>
+            <td><strong>$79</strong></td>
+            <td>Your location</td>
+            <td>30 min on-site</td>
+          </tr>
+          <tr>
+            <td>Lens calibration</td>
+            <td><strong>$79</strong></td>
+            <td>Workshop or on-site</td>
+            <td>Same day</td>
+          </tr>
+          <tr>
+            <td>Film camera CLA</td>
+            <td><strong>$129</strong></td>
+            <td>Workshop</td>
+            <td>5–7 business days</td>
+          </tr>
+          <tr>
+            <td>Full body service</td>
+            <td><strong>$149</strong></td>
+            <td>Workshop</td>
+            <td>3–5 business days</td>
+          </tr>
+          <tr>
+            <td>Production day rate</td>
+            <td><strong>$299</strong></td>
+            <td>On-site, up to 8h</td>
+            <td>Booked in advance</td>
+          </tr>
+          <tr>
+            <td>Photo &amp; video production</td>
+            <td>Custom</td>
+            <td>Studio or location</td>
+            <td>Per project</td>
+          </tr>
+          <tr>
+            <td>Travel fee (on-site)</td>
+            <td><strong>$25</strong></td>
+            <td>Miami-Dade &amp; Broward · PB +$50 · Keys by quote</td>
+            <td>Day-of dispatch</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="cta" aria-labelledby="cta-title">
+    <div class="cta__inner">
+      <h2 id="cta-title" class="cta__title">Pick a service.<br/>We&rsquo;ll do the rest.</h2>
+      <p class="cta__copy">Tell us what your gear needs. We respond within one business day.</p>
+      <div class="cta__actions">
+        <a href="/camera-and-gear-repair#repair-form" class="btn btn--primary btn--lg">Start a repair</a>
+        <a href="tel:+17867632091" class="btn btn--ghost btn--lg">Call (786) 763-2091</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer id="contact" class="footer" aria-label="Site footer">
+    <div class="footer__inner">
+      <div class="footer__col footer__col--brand">
+        <p class="footer__brand">Miami Photography Center</p>
+        <p class="footer__address">3911 SW 27th St<br/>West Park, FL 33023<br/>United States</p>
+        <p class="footer__contact">
+          <a href="tel:+17867632091">+1 (786) 763-2091</a><br/>
+          <a href="mailto:service@miamiphotographycenter.com">service@miamiphotographycenter.com</a>
+        </p>
+      </div>
+      <div class="footer__col">
+        <p class="footer__heading">Services</p>
+        <ul>
+          <li><a href="/camera-and-gear-repair">Camera &amp; Gear Repair</a></li>
+          <li><a href="/services#sensor-cleaning">Sensor Cleaning</a></li>
+          <li><a href="/on-site-services">On-Site Service</a></li>
+          <li><a href="/photo-and-video-productions">Photo &amp; Video Productions</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <p class="footer__heading">Company</p>
+        <ul>
+          <li><a href="/services">All Services</a></li>
+          <li><a href="/send-your-equipment">Send Your Equipment</a></li>
+          <li><a href="/online-store">Online Store</a></li>
+          <li><a href="/faqs">FAQs</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <p class="footer__heading">Follow</p>
+        <ul>
+          <li><a href="https://www.instagram.com/miamiphotographycenter" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.facebook.com/miamiphotographycenter" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.tiktok.com/@miamiphotographycenter" rel="noopener">TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Miami Photography Center. All rights reserved.</p>
+      <ul>
+        <li><a href="/privacy-policy">Privacy</a></li>
+        <li><a href="/terms-and-conditions">Terms</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>
