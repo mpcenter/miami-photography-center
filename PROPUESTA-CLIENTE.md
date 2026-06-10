@@ -68,8 +68,28 @@ Cada campaña futura tendrá su propia landing (se crean en horas, no días).
 | **Fotos reales** | Fotos del taller, la van, el equipo de trabajo y de Orlando (hoy hay imágenes profesionales provisionales) |
 | **Conexión de formularios** | Se conectan a tu email service@miamiphotographycenter.com (1 día de trabajo) |
 | **Pagos de la tienda** | Stripe: cobra solo 2.9% + 30¢ por venta, **sin mensualidad** (a diferencia de Shopify) |
-| **Panel para editar contenido** | Sanity CMS: podrás cambiar textos, precios, testimonios y productos tú mismo, sin tocar código y sin costo mensual |
 | **Activar el dominio** | Cambio de DNS en Hostinger → la web nueva queda en miamiphotographycenter.com (5 minutos, sin caída) |
+
+---
+
+## 🛠️ Tu panel de administración (YA FUNCIONA)
+
+**https://miamiphotographycenter.vercel.app/admin**
+
+Podrás gestionar la tienda tú mismo, sin tocar código y sin pagar mensualidad:
+
+- ➕ **Agregar productos**: nombre en español e inglés, precio, categoría, foto, descripción y especificaciones
+- ✏️ **Editar o eliminar** cualquier producto existente
+- 📷 **Subir fotos** desde tu computadora
+- ⏱️ Cada cambio que guardas **se publica solo en ~1 minuto**
+
+La dinámica: editas en el panel → el sistema guarda el cambio → la web se
+reconstruye y publica automáticamente. Sin base de datos, sin hosting extra,
+sin costos. Te entregamos un video corto + sesión de 30 minutos para que lo
+domines (es tan simple como editar un perfil de Instagram).
+
+Más adelante el mismo panel puede crecer para editar testimonios, precios de
+servicios, el equipo y las preguntas frecuentes.
 
 **Costo fijo mensual de toda la plataforma: $0.** Solo pagas comisión de Stripe cuando vendes algo en la tienda.
 
