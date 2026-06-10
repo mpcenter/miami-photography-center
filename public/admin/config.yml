@@ -1,0 +1,89 @@
+# =====================================================
+# Panel de administración MPC — Sveltia CMS
+# El cliente edita aquí; cada guardado hace commit a
+# GitHub y Vercel republica el sitio (~1 minuto).
+# =====================================================
+# Login: botón "Sign in with GitHub" requiere el proxy OAuth (ver GUIA-ADMIN.md).
+# Mientras tanto funciona "Sign in with a personal access token" de Sveltia.
+backend:
+  name: github
+  repo: oreste2b/miami-photography-center
+  branch: main
+
+site_url: https://miamiphotographycenter.vercel.app
+display_url: https://miamiphotographycenter.vercel.app
+logo_url: https://miamiphotographycenter.vercel.app/favicon.svg
+
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: products
+    label: Tienda — Productos
+    label_singular: Producto
+    description: Cámaras y accesorios de la tienda online. Crear, editar o eliminar productos. Los cambios se publican solos en ~1 minuto.
+    folder: src/content/products
+    extension: json
+    format: json
+    create: true
+    delete: true
+    identifier_field: slug
+    slug: '{{fields.slug}}'
+    summary: '{{name.es}} — ${{price}}'
+    fields:
+      - name: slug
+        label: URL del producto (slug)
+        widget: string
+        hint: Solo minúsculas y guiones, sin espacios. Ej. canon-eos-r6-body
+        pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Solo minúsculas, números y guiones']
+      - name: name
+        label: Nombre
+        widget: object
+        fields:
+          - { name: es, label: 'Nombre (Español)', widget: string }
+          - { name: en, label: 'Nombre (Inglés)', widget: string }
+      - name: price
+        label: Precio (USD)
+        widget: number
+        value_type: float
+        min: 0
+      - name: category
+        label: Categoría
+        widget: object
+        fields:
+          - name: es
+            label: 'Categoría (Español)'
+            widget: select
+            options: ['Cámaras', 'Lentes', 'Accesorios']
+          - name: en
+            label: 'Categoría (Inglés)'
+            widget: select
+            options: ['Cameras', 'Lenses', 'Accessories']
+      - name: img
+        label: Foto del producto
+        widget: image
+        hint: Sube una foto del producto (idealmente cuadrada o 3:2, fondo limpio).
+      - name: desc
+        label: Descripción
+        widget: object
+        fields:
+          - { name: es, label: 'Descripción (Español)', widget: text }
+          - { name: en, label: 'Descripción (Inglés)', widget: text }
+      - name: condition
+        label: Estado / condición
+        widget: object
+        fields:
+          - { name: es, label: 'Condición (Español)', widget: string, default: 'Revisado y calibrado in-house — garantía de 6 meses' }
+          - { name: en, label: 'Condición (Inglés)', widget: string, default: 'Inspected & serviced in-house — 6-month warranty' }
+      - name: specs
+        label: Especificaciones (viñetas)
+        widget: object
+        fields:
+          - name: es
+            label: 'Especificaciones (Español)'
+            widget: list
+            field: { name: item, label: Punto, widget: string }
+          - name: en
+            label: 'Especificaciones (Inglés)'
+            widget: list
+            field: { name: item, label: Item, widget: string }

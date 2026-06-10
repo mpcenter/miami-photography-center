@@ -1,6 +1,14 @@
 {
-  "cleanUrls": true,
-  "trailingSlash": false,
+  "redirects": [
+    { "source": "/camera-and-gear-repair", "destination": "/repair", "permanent": true },
+    { "source": "/on-site-services", "destination": "/on-site", "permanent": true },
+    { "source": "/photo-and-video-productions", "destination": "/productions", "permanent": true },
+    { "source": "/online-store", "destination": "/store", "permanent": true },
+    { "source": "/send-your-equipment", "destination": "/repair", "permanent": true },
+    { "source": "/faqs", "destination": "/faq", "permanent": true },
+    { "source": "/privacy-policy", "destination": "/privacy", "permanent": true },
+    { "source": "/terms-and-conditions", "destination": "/terms", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",

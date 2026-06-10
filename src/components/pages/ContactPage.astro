@@ -1,0 +1,293 @@
+---
+import Base from '../../layouts/Base.astro';
+import { localePath, type Locale } from '../../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const p = (path: string) => localePath(locale, path);
+
+const t = locale === 'es' ? {
+  title: 'Contacto | Miami Photography Center',
+  description: 'Contáctanos: +1 (786) 763-2091, service@miamiphotographycenter.com, o visítanos en 3911 SW 27th St, West Park, FL 33023. Lunes a viernes, 9:00–18:00.',
+  heroEyebrow: 'Contacto',
+  heroTitle: 'Hablemos.',
+  heroLede: 'Llámanos, escríbenos o visítanos. Respondemos en un día hábil.',
+  infoTitle: 'Información de contacto',
+  phoneLabel: 'Teléfono',
+  emailLabel: 'Email',
+  addressLabel: 'Dirección',
+  hoursLabel: 'Horario',
+  hours: 'Lunes a viernes · 9:00 – 18:00',
+  socialLabel: 'Síguenos',
+  formTitle: 'Envíanos un mensaje',
+  formCopy: 'Cuéntanos en qué podemos ayudarte y te responderemos pronto.',
+  fName: 'Nombre completo',
+  fNamePh: '¿Cómo te llamas?',
+  fEmail: 'Email de contacto',
+  fEmailPh: 'tu@email.com',
+  fPhone: 'Teléfono',
+  fPhonePh: '(Opcional)',
+  fMessage: 'Mensaje',
+  fMessagePh: 'Escribe tu mensaje aquí…',
+  fSubmit: 'Enviar mensaje',
+  fNote: 'Los campos marcados con * son obligatorios.',
+  fSuccess: '¡Gracias! Recibimos tu mensaje y te responderemos en un día hábil.',
+  repairCtaLead: '¿Necesitas una reparación?',
+  repairCtaLink: 'Usa el formulario de reparación →',
+  mapTitle: 'Mapa: Miami Photography Center — 3911 SW 27th St, West Park, FL 33023',
+} : {
+  title: 'Contact Us | Miami Photography Center',
+  description: 'Get in touch: +1 (786) 763-2091, service@miamiphotographycenter.com, or visit us at 3911 SW 27th St, West Park, FL 33023. Monday–Friday, 9:00–18:00.',
+  heroEyebrow: 'Contact',
+  heroTitle: 'Get in Touch.',
+  heroLede: 'Call, write, or stop by. We respond within one business day.',
+  infoTitle: 'Contact information',
+  phoneLabel: 'Phone',
+  emailLabel: 'Email',
+  addressLabel: 'Address',
+  hoursLabel: 'Hours',
+  hours: 'Monday – Friday · 9:00 – 18:00',
+  socialLabel: 'Follow us',
+  formTitle: 'Send us a message',
+  formCopy: 'Tell us how we can help and we’ll get back to you shortly.',
+  fName: 'Full Name',
+  fNamePh: 'What’s your name?',
+  fEmail: 'Contact Email',
+  fEmailPh: 'you@email.com',
+  fPhone: 'Phone',
+  fPhonePh: '(Optional)',
+  fMessage: 'Message',
+  fMessagePh: 'Write your message here…',
+  fSubmit: 'Send your message',
+  fNote: 'Fields marked with * are required.',
+  fSuccess: 'Thank you! We received your message and will respond within one business day.',
+  repairCtaLead: 'Need a repair?',
+  repairCtaLink: 'Use the repair form instead →',
+  mapTitle: 'Map: Miami Photography Center — 3911 SW 27th St, West Park, FL 33023',
+};
+
+const social = [
+  { label: 'Instagram', href: 'https://www.instagram.com/miamiphotographycenter' },
+  { label: 'Facebook', href: 'https://www.facebook.com/miamiphotographycenter' },
+  { label: 'TikTok', href: 'https://www.tiktok.com/@miamiphotographycenter' },
+];
+---
+<Base locale={locale} title={t.title} description={t.description}>
+
+  <!-- ==================== HERO ==================== -->
+  <header class="page-hero">
+    <div class="page-hero__inner">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href={p('/')}>{locale === 'es' ? 'Inicio' : 'Home'}</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">{locale === 'es' ? 'Contacto' : 'Contact'}</span>
+      </nav>
+      <p class="eyebrow" data-anim="fade-up">{t.heroEyebrow}</p>
+      <h1 class="page-hero__title" data-anim="fade-up">{t.heroTitle}</h1>
+      <p class="page-hero__lede" data-anim="fade-up">{t.heroLede}</p>
+    </div>
+  </header>
+
+  <!-- ==================== INFO + FORM ==================== -->
+  <section class="contactp" aria-labelledby="contactp-info-title">
+    <div class="contactp__inner">
+
+      <div class="contactp__info" data-anim="fade-up">
+        <h2 id="contactp-info-title" class="contactp__heading">{t.infoTitle}</h2>
+        <dl class="contactp__list">
+          <div class="contactp__item">
+            <dt>{t.phoneLabel}</dt>
+            <dd><a href="tel:+17867632091">+1 (786) 763-2091</a></dd>
+          </div>
+          <div class="contactp__item">
+            <dt>{t.emailLabel}</dt>
+            <dd><a href="mailto:service@miamiphotographycenter.com">service@miamiphotographycenter.com</a></dd>
+          </div>
+          <div class="contactp__item">
+            <dt>{t.addressLabel}</dt>
+            <dd>3911 SW 27th St,<br />West Park, FL 33023</dd>
+          </div>
+          <div class="contactp__item">
+            <dt>{t.hoursLabel}</dt>
+            <dd>{t.hours}</dd>
+          </div>
+          <div class="contactp__item">
+            <dt>{t.socialLabel}</dt>
+            <dd>
+              <ul class="contactp__social">
+                {social.map((s) => (
+                  <li><a href={s.href} target="_blank" rel="noopener noreferrer">{s.label}</a></li>
+                ))}
+              </ul>
+            </dd>
+          </div>
+        </dl>
+        <p class="contactp__repair-cta">
+          {t.repairCtaLead}
+          <a href={p('/repair') + '#repair-form'}>{t.repairCtaLink}</a>
+        </p>
+      </div>
+
+      <div class="contactp__form-wrap" data-anim="fade-up">
+        <h2 class="contactp__heading">{t.formTitle}</h2>
+        <p class="contactp__form-copy">{t.formCopy}</p>
+        <form class="form js-demo-form" id="contact-form" action="#" method="POST" data-success={t.fSuccess}>
+          <div class="form__row">
+            <div class="form__field">
+              <label for="contact-name">{t.fName} *</label>
+              <input type="text" id="contact-name" name="name" placeholder={t.fNamePh} required autocomplete="name" />
+            </div>
+            <div class="form__field">
+              <label for="contact-email">{t.fEmail} *</label>
+              <input type="email" id="contact-email" name="email" placeholder={t.fEmailPh} required autocomplete="email" />
+            </div>
+          </div>
+          <div class="form__field">
+            <label for="contact-phone">{t.fPhone}</label>
+            <input type="tel" id="contact-phone" name="phone" placeholder={t.fPhonePh} autocomplete="tel" />
+          </div>
+          <div class="form__field">
+            <label for="contact-message">{t.fMessage} *</label>
+            <textarea id="contact-message" name="message" placeholder={t.fMessagePh} required></textarea>
+          </div>
+          <p class="form__note">{t.fNote}</p>
+          <button type="submit" class="btn btn--primary btn--lg">{t.fSubmit}</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== MAP ==================== -->
+  <section class="contactp-map" aria-label={t.mapTitle}>
+    <div class="contactp-map__inner" data-anim="fade-up">
+      <iframe
+        src="https://www.google.com/maps?q=3911+SW+27th+St+West+Park+FL+33023&output=embed"
+        title={t.mapTitle}
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </section>
+</Base>
+
+<style is:global>
+/* ============================================================
+   CONTACT PAGE
+   ============================================================ */
+.contactp {
+  padding: var(--section-gap) var(--gutter);
+}
+.contactp__inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: clamp(40px, 6vw, 90px);
+  align-items: start;
+}
+.contactp__heading {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(24px, 2.6vw, 32px);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+.contactp__list {
+  margin: 28px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+.contactp__item dt {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-slate);
+  margin-bottom: 6px;
+}
+.contactp__item dd {
+  margin: 0;
+  font-size: clamp(17px, 1.5vw, 20px);
+  color: var(--color-apple-ink);
+  line-height: 1.45;
+}
+.contactp__item dd a {
+  color: var(--color-link-blue);
+  transition: color .2s ease;
+}
+.contactp__item dd a:hover { color: var(--color-electric-blue); text-decoration: underline; }
+.contactp__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.contactp__social a {
+  display: inline-block;
+  padding: 8px 18px;
+  border: 1px solid var(--color-ash);
+  border-radius: var(--r-pill);
+  background: var(--color-pure-white);
+  font-size: 15px;
+  color: var(--color-apple-ink);
+  transition: border-color .2s ease, color .2s ease;
+}
+.contactp__social a:hover {
+  border-color: var(--color-electric-blue);
+  color: var(--color-electric-blue);
+  text-decoration: none;
+}
+.contactp__repair-cta {
+  margin-top: 40px;
+  padding: 20px 24px;
+  border-radius: 18px;
+  background: var(--color-pure-white);
+  border: 1px solid var(--color-ash);
+  font-size: 16px;
+  color: var(--color-charcoal);
+}
+.contactp__repair-cta a {
+  display: block;
+  margin-top: 4px;
+  font-weight: 600;
+  color: var(--color-link-blue);
+}
+.contactp__repair-cta a:hover { color: var(--color-electric-blue); text-decoration: underline; }
+
+.contactp__form-wrap {
+  background: var(--color-pure-white);
+  border-radius: var(--r-card);
+  padding: clamp(28px, 4vw, 48px);
+}
+.contactp__form-copy {
+  font-size: 16px;
+  color: var(--color-graphite);
+  margin-bottom: 28px;
+}
+
+.contactp-map {
+  padding: 0 var(--gutter) var(--section-gap);
+}
+.contactp-map__inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  border-radius: var(--r-card);
+  overflow: hidden;
+  background: var(--color-ash);
+}
+.contactp-map__inner iframe {
+  display: block;
+  width: 100%;
+  height: clamp(320px, 40vw, 480px);
+  border: 0;
+}
+
+@media (max-width: 900px) {
+  .contactp__inner { grid-template-columns: 1fr; }
+}
+</style>

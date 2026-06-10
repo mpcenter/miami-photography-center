@@ -1,0 +1,584 @@
+---
+import Base from '../../layouts/Base.astro';
+import { localePath, type Locale } from '../../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const p = (path: string) => localePath(locale, path);
+
+const t = locale === 'es' ? {
+  title: 'Limpieza de Sensor de Cámara en Miami — Desde $49 | MPC',
+  description: 'Limpieza profesional de sensor en Miami y el sur de Florida. Equipo completo limpio en 30 minutos — en nuestro estudio o en tu locación. Desde $49. Garantía de re-limpieza gratis por 30 días.',
+  breadcrumbHome: 'Inicio',
+  breadcrumbServices: 'Servicios',
+  breadcrumbCurrent: 'Limpieza de Sensor',
+  heroEyebrow: 'Limpieza de Sensor · Desde $49',
+  heroTitle: 'Limpieza profesional de sensor.',
+  heroLede: 'Nuestro servicio más solicitado. Equipo completo limpio en 30 minutos — en nuestro estudio o en tu locación. Desde $49.',
+  heroCta1: 'Agendar limpieza',
+  heroCta2: 'Qué incluye',
+  includedEyebrow: 'Qué incluye',
+  includedTitle: 'Cada visita incluye más que el sensor.',
+  includedLede: 'Una limpieza de sensor con MPC es un mantenimiento preventivo completo para tu setup: cámara + lente + accesorio.',
+  included: [
+    { title: 'Limpieza húmeda del sensor', copy: 'Con técnicas profesionales y soluciones certificadas, sin residuos.' },
+    { title: 'Limpieza externa del cuerpo', copy: 'El cuerpo de la cámara, limpio por fuera, listo para trabajar.' },
+    { title: 'Un lente + un accesorio', copy: 'Incluye la limpieza de un lente y un accesorio adicional (flash, grip, etc.).' },
+    { title: 'Mantenimiento preventivo', copy: 'Para el setup completo: cámara + lente + accesorio.' },
+    { title: 'Inspección de puntos clave', copy: 'Botones, contactos, monturas y puntos de conexión, revisados uno a uno.' },
+    { title: 'Lubricación de partes móviles', copy: 'Las partes externas móviles, lubricadas para un funcionamiento suave.' },
+    { title: 'Actualización de firmware gratis', copy: 'Si aplica para tu modelo, actualizamos el firmware sin costo.' },
+  ],
+  whereEyebrow: 'Estudio u on-site',
+  whereTitle: 'Tú eliges dónde.',
+  whereCards: [
+    {
+      index: '01',
+      title: 'Visítanos en el estudio',
+      copy: 'Trae tu equipo a nuestro taller en West Park y espera mientras lo limpiamos. Tiempo estimado: 30 minutos por setup. Café incluido en la espera.',
+      img: 'https://images.unsplash.com/photo-1697660210313-9e1e035173a6?w=1200&q=80&auto=format&fit=crop',
+      link: '/contact',
+      linkLabel: 'Cómo llegar',
+      accent: false,
+    },
+    {
+      index: '02',
+      title: 'Vamos a ti',
+      copy: 'Nuestra unidad móvil va a tu estudio, oficina o set en todo el sur de Florida. Herramientas calibradas, flujo antiestático, cero downtime. Puede aplicar un cargo de traslado según tu zona.',
+      img: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=1200&q=80&auto=format&fit=crop',
+      link: '/on-site',
+      linkLabel: 'Cobertura y agenda on-site',
+      accent: true,
+    },
+  ],
+  baEyebrow: 'El resultado',
+  baTitle: 'Limpio, inspeccionado, documentado.',
+  baCopy: 'El polvo y las manchas se acumulan en el sensor con cada cambio de lente y aparecen como puntos en tus fotos. Cada limpieza se realiza con soluciones certificadas, se inspecciona y se documenta antes de devolverte el equipo.',
+  baBefore: 'Antes',
+  baBeforeCopy: 'Polvo y residuos se acumulan con cada cambio de lente.',
+  baAfter: 'Después',
+  baAfterCopy: 'Limpieza húmeda certificada, inspección y documentación.',
+  baGuarantee: 'Garantía de re-limpieza gratis por 30 días',
+  baGuaranteeCopy: 'Si vuelve a aparecer una mancha en los 30 días posteriores a tu limpieza, la repetimos sin costo.',
+  stats: [
+    { count: '30', suffix: ' min', prefix: '', label: 'Setup completo limpio', isCount: true },
+    { count: '49', suffix: '', prefix: '$', label: 'Precio inicial', isCount: false },
+    { count: '30', suffix: ' días', prefix: '', label: 'Garantía de re-limpieza gratis', isCount: true },
+    { count: '12', suffix: '+', prefix: '', label: 'Marcas que atendemos', isCount: true },
+  ],
+  formEyebrow: 'Agenda',
+  formTitle: 'Solicita tu limpieza.',
+  formLede: 'Cuéntanos sobre tu equipo y cómo prefieres el servicio. Respondemos en un día hábil para confirmar fecha y hora.',
+  formName: 'Nombre completo',
+  formPhone: 'Teléfono',
+  formEmail: 'Email',
+  formCamera: 'Modelo de cámara',
+  formCameraPh: 'Ej. Sony A7IV, Canon R6...',
+  formWhere: 'Estudio u on-site',
+  formWhereOptions: ['Visita al estudio (West Park)', 'On-site — vamos a ti'],
+  formDate: 'Fecha preferida',
+  formSubmit: 'Enviar solicitud',
+  formNote: 'Respondemos en un día hábil. Puede aplicar un cargo de traslado para visitas on-site según tu zona.',
+  formSuccess: 'Solicitud recibida. Te contactamos en un día hábil para confirmar tu limpieza.',
+  upsellTitle: '¿Limpias tu equipo dos veces al año? La membresía se paga sola.',
+  upsellCopy: 'La Membresía Anual MPC incluye limpiezas de sensor programadas, visitas on-site y prioridad en reparaciones — en un solo plan.',
+  upsellBtn1: 'Ver planes de membresía',
+  upsellBtn2: 'Agendar una limpieza',
+} : {
+  title: 'Camera Sensor Cleaning Miami — From $49 | Miami Photography Center',
+  description: 'Professional camera sensor cleaning in Miami and South Florida. Full setup cleaned in 30 minutes — at our studio or your location. From $49. 30-day free re-clean guarantee.',
+  breadcrumbHome: 'Home',
+  breadcrumbServices: 'Services',
+  breadcrumbCurrent: 'Sensor Cleaning',
+  heroEyebrow: 'Sensor Cleaning · From $49',
+  heroTitle: 'Professional Sensor Cleaning.',
+  heroLede: 'Our most requested service. Full setup cleaned in 30 minutes — at our studio or at your location. From $49.',
+  heroCta1: 'Book a Cleaning',
+  heroCta2: 'See what’s included',
+  includedEyebrow: 'What’s included',
+  includedTitle: 'Every visit covers more than the sensor.',
+  includedLede: 'A sensor cleaning at MPC is full preventive maintenance for your setup: camera + lens + accessory.',
+  included: [
+    { title: 'Wet sensor cleaning', copy: 'Professional techniques and certified solutions — no residue left behind.' },
+    { title: 'External body cleaning', copy: 'The camera body cleaned outside, ready to work.' },
+    { title: 'One lens + one accessory', copy: 'Includes cleaning of one lens and one additional accessory (flash, grip, etc.).' },
+    { title: 'Preventive maintenance', copy: 'For the full setup: camera + lens + accessory.' },
+    { title: 'Key-point inspection', copy: 'Buttons, contacts, mounts, and connection points checked one by one.' },
+    { title: 'Lubrication of moving parts', copy: 'Moving external parts lubricated for smooth operation.' },
+    { title: 'Free firmware update', copy: 'If applicable to your model, we update the firmware at no charge.' },
+  ],
+  whereEyebrow: 'Studio or on-site',
+  whereTitle: 'You choose where.',
+  whereCards: [
+    {
+      index: '01',
+      title: 'Visit our studio',
+      copy: 'Bring your gear to our shop in West Park and wait while we clean it. Estimated time: 30 minutes per setup. Coffee included while you wait.',
+      img: 'https://images.unsplash.com/photo-1697660210313-9e1e035173a6?w=1200&q=80&auto=format&fit=crop',
+      link: '/contact',
+      linkLabel: 'Get directions',
+      accent: false,
+    },
+    {
+      index: '02',
+      title: 'We come to you',
+      copy: 'Our mobile unit comes to your studio, office, or set anywhere in South Florida. Calibrated tools, anti-static workflow, zero downtime. A small travel fee may apply depending on your area.',
+      img: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=1200&q=80&auto=format&fit=crop',
+      link: '/on-site',
+      linkLabel: 'On-site coverage & scheduling',
+      accent: true,
+    },
+  ],
+  baEyebrow: 'The result',
+  baTitle: 'Cleaned, inspected, documented.',
+  baCopy: 'Dust and smudges build up on the sensor with every lens change and show up as spots in your photos. Every cleaning is done with certified solutions, inspected, and documented before your gear goes back in your hands.',
+  baBefore: 'Before',
+  baBeforeCopy: 'Dust and residue build up with every lens change.',
+  baAfter: 'After',
+  baAfterCopy: 'Certified wet cleaning, inspection, and documentation.',
+  baGuarantee: '30-day free re-clean guarantee',
+  baGuaranteeCopy: 'If a spot shows up again within 30 days of your cleaning, we re-clean it at no charge.',
+  stats: [
+    { count: '30', suffix: ' min', prefix: '', label: 'Full setup cleaned', isCount: true },
+    { count: '49', suffix: '', prefix: '$', label: 'Starting price', isCount: false },
+    { count: '30', suffix: ' days', prefix: '', label: 'Free re-clean guarantee', isCount: true },
+    { count: '12', suffix: '+', prefix: '', label: 'Brands serviced', isCount: true },
+  ],
+  formEyebrow: 'Schedule',
+  formTitle: 'Request your cleaning.',
+  formLede: 'Tell us about your gear and how you’d like the service. We respond within one business day to confirm date and time.',
+  formName: 'Full name',
+  formPhone: 'Phone',
+  formEmail: 'Email',
+  formCamera: 'Camera model',
+  formCameraPh: 'e.g. Sony A7IV, Canon R6...',
+  formWhere: 'Studio or on-site',
+  formWhereOptions: ['Studio visit (West Park)', 'On-site — we come to you'],
+  formDate: 'Preferred date',
+  formSubmit: 'Send Request',
+  formNote: 'We respond within one business day. A small travel fee may apply for on-site visits depending on your area.',
+  formSuccess: 'Request received. We’ll contact you within one business day to confirm your cleaning.',
+  upsellTitle: 'Clean twice a year? Membership pays for itself.',
+  upsellCopy: 'The MPC Annual Membership bundles scheduled sensor cleanings, on-site visits, and priority repairs into one plan.',
+  upsellBtn1: 'See membership plans',
+  upsellBtn2: 'Book a cleaning',
+};
+
+const serviceSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Camera Sensor Cleaning',
+  serviceType: 'Camera sensor cleaning and preventive maintenance',
+  description: 'Professional wet sensor cleaning, external body cleaning, one lens and one accessory cleaned, inspection, lubrication, and free firmware update. At the studio or on-site across South Florida.',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Miami Photography Center',
+    telephone: '+1-786-763-2091',
+    address: { '@type': 'PostalAddress', streetAddress: '3911 SW 27th St', addressLocality: 'West Park', addressRegion: 'FL', postalCode: '33023', addressCountry: 'US' },
+  },
+  areaServed: ['Miami-Dade County', 'Broward County', 'Palm Beach County', 'Monroe County'],
+  offers: { '@type': 'Offer', price: '49', priceCurrency: 'USD', description: 'Starting price per full setup (camera + lens + accessory).' },
+});
+---
+<Base locale={locale} title={t.title} description={t.description}>
+  <script type="application/ld+json" set:html={serviceSchema} slot="head" is:inline />
+
+  <!-- ==================== PAGE HERO ==================== -->
+  <header class="page-hero">
+    <div class="page-hero__inner">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href={p('/')}>{t.breadcrumbHome}</a>
+        <span aria-hidden="true">›</span>
+        <a href={p('/services')}>{t.breadcrumbServices}</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">{t.breadcrumbCurrent}</span>
+      </nav>
+      <p class="eyebrow" data-anim="fade-up">{t.heroEyebrow}</p>
+      <h1 class="page-hero__title" data-anim="fade-up">{t.heroTitle}</h1>
+      <p class="page-hero__lede" data-anim="fade-up">{t.heroLede}</p>
+      <div class="clean-hero__ctas" data-anim="fade-up">
+        <a href="#cleaning-form" class="btn btn--primary">{t.heroCta1}</a>
+        <a href="#included" class="btn btn--ghost">{t.heroCta2} <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== WHAT'S INCLUDED ==================== -->
+  <section id="included" class="clean-included" aria-labelledby="included-title">
+    <div class="clean-included__head">
+      <p class="eyebrow">{t.includedEyebrow}</p>
+      <h2 id="included-title" class="clean-included__title">{t.includedTitle}</h2>
+      <p class="clean-included__lede">{t.includedLede}</p>
+    </div>
+    <ul class="clean-checklist">
+      {t.included.map((item) => (
+        <li class="clean-checklist__item" data-anim="fade-up">
+          <span class="clean-checklist__check" aria-hidden="true">✓</span>
+          <div>
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- ==================== STUDIO OR ON-SITE ==================== -->
+  <section class="services" aria-labelledby="where-title">
+    <div class="services__head">
+      <p class="eyebrow">{t.whereEyebrow}</p>
+      <h2 id="where-title" class="services__title">{t.whereTitle}</h2>
+    </div>
+    <div class="services__grid">
+      {t.whereCards.map((card) => (
+        <article class={`card card--tilt${card.accent ? ' card--accent' : ''}`} data-tilt>
+          <div class="card__inner">
+            <span class="card__index">{card.index}</span>
+            <h3 class="card__title">{card.title}</h3>
+            <p class="card__copy">{card.copy}</p>
+            <div class="card__media" aria-hidden="true">
+              <img loading="lazy" decoding="async" src={card.img} alt="" width="1200" height="800" />
+            </div>
+            <a href={p(card.link)} class="card__link">{card.linkLabel} <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- ==================== BEFORE / AFTER + GUARANTEE ==================== -->
+  <section class="clean-ba" aria-labelledby="ba-title">
+    <div class="clean-ba__inner">
+      <div class="clean-ba__head">
+        <p class="eyebrow eyebrow--inverse">{t.baEyebrow}</p>
+        <h2 id="ba-title" class="clean-ba__title">{t.baTitle}</h2>
+        <p class="clean-ba__copy">{t.baCopy}</p>
+      </div>
+      <div class="clean-ba__grid">
+        <figure class="clean-ba__pane" data-anim="fade-up">
+          <img loading="lazy" decoding="async"
+            src="https://images.unsplash.com/photo-1558238734-7af313fbafe1?w=1200&q=80&auto=format&fit=crop"
+            alt="Camera body open on a technician's workbench before cleaning"
+            width="1200" height="800" />
+          <figcaption>
+            <span class="clean-ba__tag">{t.baBefore}</span>
+            <p>{t.baBeforeCopy}</p>
+          </figcaption>
+        </figure>
+        <figure class="clean-ba__pane" data-anim="fade-up">
+          <img loading="lazy" decoding="async"
+            src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1200&q=80&auto=format&fit=crop"
+            alt="Clean professional camera and lens after service"
+            width="1200" height="800" />
+          <figcaption>
+            <span class="clean-ba__tag clean-ba__tag--after">{t.baAfter}</span>
+            <p>{t.baAfterCopy}</p>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="clean-ba__guarantee" data-anim="fade-up">
+        <span class="clean-ba__guarantee-badge" aria-hidden="true">✓</span>
+        <div>
+          <h3>{t.baGuarantee}</h3>
+          <p>{t.baGuaranteeCopy}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== STATS ==================== -->
+  <section class="stats" aria-label={locale === 'es' ? 'Limpieza de sensor en números' : 'Sensor cleaning by the numbers'}>
+    <div class="stats__grid">
+      {t.stats.map((stat) => (
+        <div class="stats__item">
+          {stat.isCount ? (
+            <span class="stats__num" data-count={stat.count} data-suffix={stat.suffix}>{stat.count}{stat.suffix}</span>
+          ) : (
+            <span class="stats__num">{stat.prefix}{stat.count}{stat.suffix}</span>
+          )}
+          <span class="stats__label">{stat.label}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ==================== REQUEST FORM ==================== -->
+  <section class="clean-form" aria-labelledby="form-title">
+    <div class="clean-form__inner">
+      <div class="clean-form__intro">
+        <p class="eyebrow">{t.formEyebrow}</p>
+        <h2 id="form-title" class="clean-form__title">{t.formTitle}</h2>
+        <p class="clean-form__lede">{t.formLede}</p>
+      </div>
+      <form id="cleaning-form" class="form js-demo-form" action="#" method="POST" data-success={t.formSuccess}>
+        <div class="form__row">
+          <div class="form__field">
+            <label for="cf-name">{t.formName} *</label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="form__field">
+            <label for="cf-phone">{t.formPhone} *</label>
+            <input id="cf-phone" name="phone" type="tel" autocomplete="tel" required />
+          </div>
+        </div>
+        <div class="form__row">
+          <div class="form__field">
+            <label for="cf-email">{t.formEmail} *</label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="form__field">
+            <label for="cf-camera">{t.formCamera}</label>
+            <input id="cf-camera" name="camera" type="text" placeholder={t.formCameraPh} />
+          </div>
+        </div>
+        <div class="form__row">
+          <div class="form__field">
+            <label for="cf-where">{t.formWhere}</label>
+            <select id="cf-where" name="location">
+              {t.formWhereOptions.map((opt) => <option value={opt}>{opt}</option>)}
+            </select>
+          </div>
+          <div class="form__field">
+            <label for="cf-date">{t.formDate}</label>
+            <input id="cf-date" name="date" type="date" />
+          </div>
+        </div>
+        <div>
+          <button type="submit" class="btn btn--primary btn--lg">{t.formSubmit}</button>
+        </div>
+        <p class="form__note">{t.formNote}</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ==================== MEMBERSHIP CROSS-SELL ==================== -->
+  <section class="cta" aria-labelledby="upsell-title">
+    <div class="cta__inner">
+      <h2 id="upsell-title" class="cta__title">{t.upsellTitle}</h2>
+      <p class="cta__copy">{t.upsellCopy}</p>
+      <div class="cta__actions">
+        <a href={p('/membership')} class="btn btn--primary btn--lg">{t.upsellBtn1}</a>
+        <a href="#cleaning-form" class="btn btn--ghost btn--lg">{t.upsellBtn2}</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style is:global>
+/* ============================================================
+   SENSOR CLEANING PAGE (.clean-)
+   ============================================================ */
+.clean-hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* What's included checklist */
+.clean-included {
+  padding: var(--section-gap) var(--gutter);
+  background: var(--color-pure-white);
+}
+.clean-included__head {
+  max-width: var(--page-max);
+  margin: 0 auto 60px;
+}
+.clean-included__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(36px, 5vw, 72px);
+  line-height: 1.07;
+  letter-spacing: -0.015em;
+  max-width: 22ch;
+  margin-bottom: 18px;
+}
+.clean-included__lede {
+  font-size: clamp(17px, 1.4vw, 21px);
+  color: var(--color-graphite);
+  max-width: 56ch;
+  line-height: 1.5;
+}
+.clean-checklist {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: var(--page-max);
+  margin: 0 auto;
+}
+.clean-checklist__item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: var(--color-fog-canvas);
+  border-radius: var(--r-card);
+  padding: 28px 26px;
+  transition: transform .4s var(--ease-out);
+}
+.clean-checklist__item:hover { transform: translateY(-4px); }
+.clean-checklist__check {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-electric-blue);
+  color: var(--color-pure-white);
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+.clean-checklist__item h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 19px;
+  letter-spacing: -0.015em;
+  color: var(--color-apple-ink);
+  margin-bottom: 6px;
+}
+.clean-checklist__item p {
+  font-size: 15px;
+  color: var(--color-graphite);
+  line-height: 1.5;
+}
+@media (max-width: 1024px) { .clean-checklist { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 700px) { .clean-checklist { grid-template-columns: 1fr; } }
+
+/* Before / after + guarantee (dark band) */
+.clean-ba {
+  padding: var(--section-gap) var(--gutter);
+  background: var(--color-apple-ink);
+  color: var(--color-fog-canvas);
+}
+.clean-ba__inner { max-width: var(--page-max); margin: 0 auto; }
+.clean-ba__head { margin-bottom: 48px; }
+.clean-ba__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(36px, 5vw, 72px);
+  line-height: 1.07;
+  letter-spacing: -0.015em;
+  color: var(--color-pure-white);
+  margin-bottom: 18px;
+}
+.clean-ba__copy {
+  font-size: clamp(17px, 1.4vw, 21px);
+  color: var(--color-slate);
+  max-width: 60ch;
+  line-height: 1.5;
+}
+.clean-ba__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+.clean-ba__pane {
+  margin: 0;
+  border-radius: var(--r-card);
+  overflow: hidden;
+  background: rgba(245,245,247,0.06);
+  border: 1px solid rgba(245,245,247,0.12);
+}
+.clean-ba__pane img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+.clean-ba__pane figcaption { padding: 22px 26px 26px; }
+.clean-ba__tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-fog-canvas);
+  background: rgba(245,245,247,0.14);
+  border-radius: var(--r-chip);
+  padding: 5px 14px;
+  margin-bottom: 12px;
+}
+.clean-ba__tag--after { background: var(--color-electric-blue); }
+.clean-ba__pane figcaption p {
+  font-size: 15px;
+  color: var(--color-slate);
+  line-height: 1.5;
+}
+.clean-ba__guarantee {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  background: rgba(245,245,247,0.06);
+  border: 1px solid rgba(245,245,247,0.12);
+  border-radius: var(--r-card);
+  padding: 30px 32px;
+}
+.clean-ba__guarantee-badge {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-electric-blue);
+  color: var(--color-pure-white);
+  font-size: 18px;
+  font-weight: 700;
+}
+.clean-ba__guarantee h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.015em;
+  color: var(--color-pure-white);
+  margin-bottom: 6px;
+}
+.clean-ba__guarantee p {
+  font-size: 16px;
+  color: var(--color-slate);
+  line-height: 1.5;
+}
+@media (max-width: 820px) {
+  .clean-ba__grid { grid-template-columns: 1fr; }
+}
+
+/* Request form */
+.clean-form {
+  padding: var(--section-gap) var(--gutter);
+  background: var(--color-fog-canvas);
+}
+.clean-form__inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(36px, 5vw, 80px);
+  align-items: start;
+}
+.clean-form__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(34px, 4.5vw, 60px);
+  line-height: 1.07;
+  letter-spacing: -0.015em;
+  margin-bottom: 18px;
+}
+.clean-form__lede {
+  font-size: 17px;
+  color: var(--color-graphite);
+  line-height: 1.5;
+  max-width: 44ch;
+}
+.clean-form .form {
+  background: var(--color-pure-white);
+  border-radius: var(--r-card);
+  padding: clamp(28px, 3.5vw, 44px);
+}
+@media (max-width: 900px) {
+  .clean-form__inner { grid-template-columns: 1fr; }
+}
+</style>

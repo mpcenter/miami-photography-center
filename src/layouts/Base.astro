@@ -1,0 +1,90 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { altLocalePath, type Locale } from '../lib/i18n';
+import '../styles/global.css';
+
+interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+  /** Landing-page mode: no nav links / footer columns, single CTA focus. */
+  minimal?: boolean;
+  ogImage?: string;
+}
+const { locale, title, description, minimal = false, ogImage = '/sfx30.webp' } = Astro.props;
+const site = 'https://miamiphotographycenter.com';
+const pathname = Astro.url.pathname;
+const canonical = `${site}${pathname === '/' ? '' : pathname}`;
+const altPath = altLocalePath(locale, pathname);
+const altUrl = `${site}${altPath === '/' ? '' : altPath}`;
+const enUrl = locale === 'en' ? canonical : altUrl;
+const esUrl = locale === 'es' ? canonical : altUrl;
+---
+<!DOCTYPE html>
+<html lang={locale}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#1d1d1f" />
+
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <link rel="alternate" hreflang="en" href={enUrl} />
+  <link rel="alternate" hreflang="es" href={esUrl} />
+  <link rel="alternate" hreflang="x-default" href={enUrl} />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:site_name" content="Miami Photography Center" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={`${site}${ogImage}`} />
+  <meta property="og:locale" content={locale === 'es' ? 'es_US' : 'en_US'} />
+  <meta property="og:locale:alternate" content={locale === 'es' ? 'en_US' : 'es_US'} />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={`${site}${ogImage}`} />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+
+  <script src="/scripts/vendor/gsap.min.js" defer is:inline></script>
+  <script src="/scripts/vendor/ScrollTrigger.min.js" defer is:inline></script>
+  <script src="/scripts/vendor/lenis.min.js" defer is:inline></script>
+  <script src="/scripts/main.js" defer is:inline></script>
+
+  <slot name="head" />
+</head>
+
+<body class={minimal ? 'is-landing' : undefined}>
+  <a href="#main" class="skip-link">{locale === 'es' ? 'Saltar al contenido' : 'Skip to content'}</a>
+  {minimal ? (
+    <nav class="nav nav--minimal" aria-label="Primary">
+      <div class="nav__inner">
+        <span class="nav__brand">MPC — Miami Photography Center</span>
+        <a href="tel:+17867632091" class="nav__cta">{locale === 'es' ? 'Llamar (786) 763-2091' : 'Call (786) 763-2091'}</a>
+      </div>
+    </nav>
+  ) : (
+    <Nav locale={locale} />
+  )}
+
+  <main id="main">
+    <slot />
+  </main>
+
+  {!minimal && <Footer locale={locale} />}
+  {minimal && (
+    <footer class="footer footer--minimal" aria-label="Site footer">
+      <div class="footer__bottom" style="margin-top:0;border-top:0;">
+        <p>&copy; {new Date().getFullYear()} Miami Photography Center · 3911 SW 27th St, West Park, FL 33023 · <a href="tel:+17867632091">+1 (786) 763-2091</a></p>
+      </div>
+    </footer>
+  )}
+</body>
+</html>

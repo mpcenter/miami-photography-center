@@ -1,0 +1,414 @@
+---
+import Base from '../../layouts/Base.astro';
+import { localePath, type Locale } from '../../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const p = (path: string) => localePath(locale, path);
+
+interface FaqItem {
+  q: string;
+  intro: string;
+  bulletsLead?: string;
+  bullets?: string[];
+  outro?: string;
+  note?: string;
+}
+
+const t = locale === 'es' ? {
+  title: 'Preguntas Frecuentes | Miami Photography Center',
+  description: 'Respuestas a las preguntas más comunes sobre reparación de cámaras, servicio on-site, tiempos de reparación, repuestos originales, envíos y nuestra garantía de 6 meses.',
+  heroEyebrow: 'Ayuda',
+  heroTitle: 'Preguntas Frecuentes.',
+  heroLede: 'Todo lo que necesitas saber sobre nuestras reparaciones, el servicio on-site, los envíos y la garantía.',
+  faqs: [
+    {
+      q: '¿Qué incluye el servicio On-Site?',
+      intro: 'Nuestro servicio On-Site está diseñado para llevar mantenimiento técnico profesional directamente a tu ubicación — ya sea tu casa, estudio o set de producción.',
+      bulletsLead: 'Incluye:',
+      bullets: [
+        'Limpieza profesional de sensor: limpieza a fondo del sensor, el cuerpo, un lente y un accesorio adicional. También incluye lubricación, mantenimiento exterior completo y actualización de firmware (si aplica). Se completa en aproximadamente 30 minutos.',
+        'Reparaciones menores y recogida de equipos: podemos realizar servicios básicos en el lugar o recoger tu equipo para repararlo en el taller y devolvértelo listo para usar.',
+        'Diagnósticos y presupuestos gratis en eventos: durante conferencias, encuentros o reuniones de fotografía, ofrecemos evaluaciones sin costo y presupuestos en el momento.',
+        'Visitas programadas para grupos: disponibles en todo el sur de Florida y áreas cercanas (se requiere un mínimo de 20 equipos).',
+        'Planes de mantenimiento personalizados: diseñados para creadores independientes, empresas, instituciones educativas y casas productoras.',
+      ],
+      note: 'Nota: puede aplicar un cargo por traslado según tu ubicación.',
+    },
+    {
+      q: '¿Qué tipos de equipos reparan?',
+      intro: 'En Miami Photography Center ofrecemos servicio técnico completo para una amplia gama de equipos fotográficos y audiovisuales, tanto digitales como analógicos.',
+      bulletsLead: 'Incluye:',
+      bullets: [
+        'Cámaras DSLR, mirrorless, de cine y de formato medio (digitales y de película)',
+        'Lentes (zoom y fijos, manuales o con autofoco)',
+        'Flashes, luces, disparadores, monitores y unidades de grabación',
+        'Accesorios como trípodes, grips, visores, correas, adaptadores y más',
+      ],
+      outro: 'Trabajamos con marcas líderes como Canon, Nikon, Sony, Fujifilm, Panasonic, Blackmagic y muchas otras. Todos nuestros servicios incluyen garantía de 6 meses.',
+    },
+    {
+      q: '¿Cuánto tarda la reparación de mi cámara?',
+      intro: 'La mayoría de las reparaciones se completan en aproximadamente una semana, dependiendo de la evaluación inicial y la disponibilidad de repuestos.',
+      bulletsLead: 'Incluye:',
+      bullets: [
+        'Diagnóstico técnico e inspección completa',
+        'Pedido y reemplazo de piezas, si es necesario',
+        'Limpieza, calibración y pruebas completas',
+      ],
+      outro: 'Mantenemos a nuestros clientes informados durante todo el proceso de reparación.',
+    },
+    {
+      q: '¿Es seguro usar cámaras reparadas profesionalmente para trabajo comercial?',
+      intro: 'Sí. Una cámara reparada profesionalmente, atendida por técnicos con experiencia, es totalmente capaz de ofrecer un rendimiento de primer nivel — incluso en entornos exigentes.',
+      bulletsLead: 'Nuestros procesos de mantenimiento y reparación garantizan:',
+      bullets: [
+        'Enfoque, exposición y funcionamiento mecánico precisos',
+        'Rendimiento estable durante grabaciones largas',
+        'Operación confiable en condiciones de uso profesional',
+      ],
+    },
+    {
+      q: '¿Usan repuestos originales?',
+      intro: 'Sí. Todas nuestras reparaciones se realizan con componentes originales del fabricante, o equivalentes certificados cuando las piezas OEM no están disponibles.',
+      bulletsLead: 'Esto garantiza:',
+      bullets: [
+        'Compatibilidad total con tu equipo',
+        'Durabilidad y estabilidad a largo plazo',
+        'Preservación de tu rendimiento profesional y del valor del equipo',
+      ],
+      outro: 'Todas nuestras reparaciones incluyen una garantía de 6 meses que cubre tanto la mano de obra como las piezas.',
+    },
+    {
+      q: '¿Cómo envío mi equipo?',
+      intro: 'Empieza por nuestro formulario de reparación — describe el problema y tu equipo, y te responderemos en un día hábil con las instrucciones de recepción y una etiqueta de envío prepagada.',
+      bulletsLead: 'El proceso:',
+      bullets: [
+        'Empaca tu equipo de forma segura (recomendamos el empaque original o una caja acolchada)',
+        'Imprime la etiqueta prepagada y entrega el paquete en el transportista',
+        'Sigue cada paso — te confirmamos la recepción, el diagnóstico, el presupuesto y el envío de retorno',
+      ],
+      outro: 'La mayoría de los trabajos se reparan, se prueban y van de regreso en 3–5 días hábiles.',
+    },
+    {
+      q: '¿Qué cubre la garantía de 6 meses?',
+      intro: 'Cada reparación incluye una garantía de 6 meses que cubre la mano de obra y las piezas del trabajo realizado.',
+      bulletsLead: 'Cubre:',
+      bullets: [
+        'La reparación específica realizada, incluyendo los componentes que reemplazamos',
+        'La mano de obra — si la misma falla reaparece, la atendemos de nuevo sin costo',
+        'Re-limpieza gratis dentro de los 30 días para los servicios de limpieza de sensor',
+      ],
+      outro: 'La garantía no cubre fallas nuevas no relacionadas, ni daños causados por accidentes, caídas o líquidos después de la reparación.',
+    },
+    {
+      q: '¿Dan presupuestos gratis?',
+      intro: 'Sí — una vez que tu equipo está en nuestras manos, realizamos un diagnóstico completo y te damos un presupuesto antes de comenzar cualquier trabajo. Nunca procedemos sin tu aprobación.',
+      bullets: [
+        'Las visitas on-site incluyen diagnóstico y presupuesto de reparación',
+        'En eventos, conferencias y encuentros ofrecemos evaluaciones gratuitas en el momento',
+        'Si el diagnóstico requiere desarme o una evaluación avanzada, puede aplicar un cargo técnico — siempre te informamos antes, sin sorpresas',
+      ],
+    },
+  ] as FaqItem[],
+  ctaTitle: '¿Aún tienes preguntas?',
+  ctaCopy: 'Escríbenos o llámanos — respondemos en un día hábil.',
+  ctaBtn1: 'Contáctanos',
+  ctaBtn2: 'Llamar (786) 763-2091',
+} : {
+  title: 'Frequently Asked Questions | Miami Photography Center',
+  description: 'Answers to the most common questions about camera repair, on-site service, repair timelines, original parts, shipping your gear, and our 6-month warranty.',
+  heroEyebrow: 'Help',
+  heroTitle: 'Frequently Asked Questions.',
+  heroLede: 'Everything you need to know about our repairs, on-site service, shipping, and warranty.',
+  faqs: [
+    {
+      q: 'What does the On-Site service include?',
+      intro: 'Our On-Site service is designed to bring professional technical maintenance directly to your location — whether it’s your home, studio, or production set.',
+      bulletsLead: 'Includes:',
+      bullets: [
+        'Professional Sensor Cleaning: thorough cleaning of the sensor, body, one lens, and one additional accessory. Lubrication, full exterior maintenance, and a firmware update (if applicable) are also included. Completed in approximately 30 minutes.',
+        'Minor repairs and equipment pickup: we can perform basic services on-site or pick up your gear for workshop repair and return it ready to use.',
+        'Free diagnostics and estimates at events: during conferences, meetups, or photography gatherings, we offer complimentary evaluations and provide estimates on the spot.',
+        'Scheduled visits for groups: available across South Florida and surrounding areas (minimum of 20 equipment items required).',
+        'Custom maintenance plans: designed for individual creators, businesses, educational institutions, and production companies.',
+      ],
+      note: 'Note: A travel fee may apply depending on your location.',
+    },
+    {
+      q: 'What types of equipment do you repair?',
+      intro: 'At Miami Photography Center, we offer full technical service for a wide range of photographic and audiovisual equipment, both digital and analog.',
+      bulletsLead: 'Includes:',
+      bullets: [
+        'DSLR, mirrorless, cinema, and medium format cameras (digital and film)',
+        'Lenses (zoom and prime, manual or autofocus)',
+        'Flashes, lights, triggers, monitors, and recording units',
+        'Accessories such as tripods, grips, eyecups, straps, adapters, and more',
+      ],
+      outro: 'We work with leading brands such as Canon, Nikon, Sony, Fujifilm, Panasonic, Blackmagic, and many others. All our services come with a 6-month warranty.',
+    },
+    {
+      q: 'How long does it take to repair my camera?',
+      intro: 'Most repairs are completed in about one week, depending on the initial evaluation and parts availability.',
+      bulletsLead: 'Includes:',
+      bullets: [
+        'Full technical diagnosis and inspection',
+        'Ordering and replacement of parts, if needed',
+        'Cleaning, calibration, and complete testing',
+      ],
+      outro: 'We keep our clients informed throughout the entire repair process.',
+    },
+    {
+      q: 'Is it safe to use professionally repaired cameras for commercial work?',
+      intro: 'Yes. A professionally repaired camera, serviced by experienced technicians, is fully capable of delivering top-level performance — even in demanding environments.',
+      bulletsLead: 'Our maintenance and repair processes ensure:',
+      bullets: [
+        'Accurate focus, exposure, and mechanical function',
+        'Stable performance during long recordings',
+        'Reliable operation under professional use conditions',
+      ],
+    },
+    {
+      q: 'Do you use original replacement parts?',
+      intro: 'Yes. All of our repairs are carried out using original manufacturer components, or certified equivalents when OEM parts are not available.',
+      bulletsLead: 'This ensures:',
+      bullets: [
+        'Full compatibility with your equipment',
+        'Long-term durability and stability',
+        'Preservation of your professional performance and value',
+      ],
+      outro: 'All our repairs include a 6-month warranty covering both labor and parts.',
+    },
+    {
+      q: 'How do I ship my equipment?',
+      intro: 'Start with our repair form — describe the issue and your gear, and we’ll respond within one business day with intake instructions and a prepaid shipping label.',
+      bulletsLead: 'The process:',
+      bullets: [
+        'Pack your equipment securely (original packaging or a padded box is recommended)',
+        'Print the prepaid label and drop the package off with the carrier',
+        'Track every step — we confirm reception, diagnosis, quote, and return shipping',
+      ],
+      outro: 'Most jobs are repaired, tested, and on their way back within 3–5 business days.',
+    },
+    {
+      q: 'What does the 6-month warranty cover?',
+      intro: 'Every repair includes a 6-month warranty covering both labor and parts on the work performed.',
+      bulletsLead: 'Covered:',
+      bullets: [
+        'The specific repair carried out, including any components we replaced',
+        'Workmanship — if the same fault reappears, we service it again at no cost',
+        'A free re-clean within 30 days for sensor cleaning services',
+      ],
+      outro: 'The warranty does not cover new, unrelated faults, or damage caused by accidents, drops, or liquids after the repair.',
+    },
+    {
+      q: 'Do you give free estimates?',
+      intro: 'Yes — once your equipment is in our hands, we run a full diagnostic and provide a quote before any work begins. We never proceed without your approval.',
+      bullets: [
+        'On-site visits include diagnostics and repair estimates',
+        'At events, conferences, and meetups we offer complimentary evaluations on the spot',
+        'If a diagnosis requires disassembly or advanced evaluation, a technical fee may apply — we always inform you beforehand, no surprises',
+      ],
+    },
+  ] as FaqItem[],
+  ctaTitle: 'Still have questions?',
+  ctaCopy: 'Write to us or give us a call — we respond within one business day.',
+  ctaBtn1: 'Contact us',
+  ctaBtn2: 'Call (786) 763-2091',
+};
+
+const faqAnswerText = (faq: FaqItem) =>
+  [faq.intro, faq.bulletsLead, ...(faq.bullets ?? []), faq.outro, faq.note]
+    .filter(Boolean)
+    .join(' ');
+
+const faqSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: t.faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: { '@type': 'Answer', text: faqAnswerText(faq) },
+  })),
+});
+---
+<Base locale={locale} title={t.title} description={t.description}>
+  <script type="application/ld+json" set:html={faqSchema} slot="head" is:inline />
+
+  <!-- ==================== HERO ==================== -->
+  <header class="page-hero">
+    <div class="page-hero__inner">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href={p('/')}>{locale === 'es' ? 'Inicio' : 'Home'}</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">{locale === 'es' ? 'Preguntas frecuentes' : 'FAQs'}</span>
+      </nav>
+      <p class="eyebrow" data-anim="fade-up">{t.heroEyebrow}</p>
+      <h1 class="page-hero__title" data-anim="fade-up">{t.heroTitle}</h1>
+      <p class="page-hero__lede" data-anim="fade-up">{t.heroLede}</p>
+    </div>
+  </header>
+
+  <!-- ==================== ACCORDION ==================== -->
+  <section class="faqp" aria-label={t.heroTitle}>
+    <div class="faqp__inner">
+      {t.faqs.map((faq, i) => (
+        <details class="faqp-item" data-anim="fade-up">
+          <summary class="faqp-item__summary">
+            <span class="faqp-item__index">{String(i + 1).padStart(2, '0')}</span>
+            <span class="faqp-item__q">{faq.q}</span>
+            <span class="faqp-item__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faqp-item__body">
+            <p>{faq.intro}</p>
+            {faq.bulletsLead && <p class="faqp-item__lead">{faq.bulletsLead}</p>}
+            {faq.bullets && (
+              <ul class="faqp-item__list">
+                {faq.bullets.map((bullet) => <li>{bullet}</li>)}
+              </ul>
+            )}
+            {faq.outro && <p>{faq.outro}</p>}
+            {faq.note && <p class="faqp-item__note">{faq.note}</p>}
+          </div>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="cta" aria-labelledby="faqp-cta-title">
+    <div class="cta__inner">
+      <h2 id="faqp-cta-title" class="cta__title">{t.ctaTitle}</h2>
+      <p class="cta__copy">{t.ctaCopy}</p>
+      <div class="cta__actions">
+        <a href={p('/contact')} class="btn btn--primary btn--lg">{t.ctaBtn1}</a>
+        <a href="tel:+17867632091" class="btn btn--ghost btn--lg">{t.ctaBtn2}</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style is:global>
+/* ============================================================
+   FAQ PAGE
+   ============================================================ */
+.faqp {
+  padding: 40px var(--gutter) var(--section-gap);
+}
+.faqp__inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.faqp-item {
+  background: var(--color-pure-white);
+  border: 1px solid var(--color-ash);
+  border-radius: 22px;
+  overflow: hidden;
+  transition: box-shadow .25s ease;
+}
+.faqp-item[open] { box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06); }
+.faqp-item__summary {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 22px 26px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+.faqp-item__summary::-webkit-details-marker { display: none; }
+.faqp-item__summary:focus-visible {
+  outline: 2px solid var(--color-electric-blue);
+  outline-offset: -2px;
+  border-radius: 22px;
+}
+.faqp-item__index {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-electric-blue);
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+.faqp-item__q {
+  flex: 1;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(17px, 1.8vw, 21px);
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  color: var(--color-apple-ink);
+}
+.faqp-item__icon {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.faqp-item__icon::before,
+.faqp-item__icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-graphite);
+  transform: translate(-50%, -50%);
+  transition: transform .25s var(--ease-out);
+}
+.faqp-item__icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+.faqp-item[open] .faqp-item__icon::after { transform: translate(-50%, -50%) rotate(0deg); }
+.faqp-item__body {
+  padding: 0 26px 28px;
+}
+.faqp-item__body > p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-charcoal);
+}
+.faqp-item__body > p + p,
+.faqp-item__body > .faqp-item__list + p { margin-top: 14px; }
+.faqp-item__lead {
+  font-weight: 600;
+  margin-top: 14px;
+  color: var(--color-apple-ink);
+}
+.faqp-item__list {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.faqp-item__list li {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--color-charcoal);
+  padding-left: 24px;
+  position: relative;
+}
+.faqp-item__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 10px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-electric-blue);
+}
+.faqp-item__note {
+  font-size: 14px;
+  color: var(--color-slate);
+  margin-top: 14px;
+}
+@media (max-width: 600px) {
+  .faqp-item__summary { padding: 18px 20px; gap: 12px; }
+  .faqp-item__body { padding: 0 20px 22px; }
+}
+</style>

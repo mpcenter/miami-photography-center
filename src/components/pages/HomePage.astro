@@ -1,0 +1,330 @@
+---
+import Base from '../../layouts/Base.astro';
+import { localePath, type Locale } from '../../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const p = (path: string) => localePath(locale, path);
+
+const t = locale === 'es' ? {
+  title: 'Reparación de Cámaras en Miami | Limpieza de Sensor y Servicio On-Site — MPC',
+  description: 'Reparación profesional de cámaras, limpieza de sensor y servicio móvil on-site en todo el sur de Florida — de West Palm Beach a los Cayos. Técnicos certificados. Garantía de 6 meses.',
+  heroEyebrow: 'Sur de Florida · Desde 2015',
+  heroTitle: 'Reparación de cámaras, con precisión de ingeniería.',
+  heroLede: 'Limpieza de sensor, servicio móvil on-site y reparaciones completas en el sur de Florida — de West Palm Beach a los Cayos.',
+  heroCta1: 'Solicitar reparación',
+  heroCta2: 'Mira cómo funciona',
+  heroAlt: 'Cámara profesional de formato medio, foto de producto — Miami Photography Center',
+  scroll: 'Desliza',
+  scenes: [
+    { step: '1', title: 'Llevamos la precisión<br/>a tu puerta.', copy: 'Un equipo completo limpio en 30 minutos. Vamos a ti con herramientas calibradas, flujo antiestático y cero tiempo muerto para tu equipo.' },
+    { step: '2', title: 'Sensor y espejo,<br/>limpieza profesional.', copy: 'Herramientas ultrasónicas, soluciones certificadas y garantía de re-limpieza gratis por 30 días. Cada trabajo documentado.' },
+    { step: '3', title: 'Reparaciones expertas.<br/>Garantía de seis meses.', copy: 'Canon, Nikon, Sony, Fujifilm, Leica, Panasonic. Mantenimiento interno, lubricación y firmware — todo in-house por técnicos entrenados.' },
+    { step: '4', title: 'Envíalo.<br/>Nos encargamos del resto.', copy: 'Imprime la etiqueta, entrégalo y sigue cada paso. Diagnóstico, presupuesto, reparación y retorno — tres a cinco días hábiles en la mayoría de los casos.' },
+  ],
+  featuredEyebrow: 'Destacados',
+  featuredTitle: 'Tres formas de cuidar tu equipo.',
+  featured: [
+    { index: '01', title: 'Membresía Anual', copy: 'Tu equipo, mantenido todo el año. Limpiezas programadas, prioridad en reparaciones y descuentos exclusivos en un solo plan.', link: '/membership', linkLabel: 'Ver planes', img: 'https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?w=1200&q=80&auto=format&fit=crop', accent: true },
+    { index: '02', title: 'Limpieza de Sensor', copy: 'Desde $49. Ultrasónica, antiestática, soluciones certificadas. En nuestro estudio mientras esperas, o en tu locación.', link: '/sensor-cleaning', linkLabel: 'Conoce más', img: 'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=1200&q=80&auto=format&fit=crop', accent: false },
+    { index: '03', title: 'Servicio On-Site', copy: 'Nuestra unidad móvil va a tu estudio, locación o set. Cobertura en el sur de Florida. Herramientas calibradas. Cero downtime.', link: '/on-site', linkLabel: 'Cobertura y agenda', img: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=1200&q=80&auto=format&fit=crop', accent: false },
+  ],
+  coverageEyebrow: 'Cobertura',
+  coverageTitle: 'De West Palm Beach<br/>a los Cayos de Florida.',
+  coverageCopy: 'Ya estamos en camino. Servicio móvil on-site en los condados Miami-Dade, Broward, Palm Beach y Monroe — o envía tu equipo y nos encargamos del resto.',
+  brandsLabel: 'Trabajamos con',
+  processEyebrow: 'Proceso',
+  processTitle: 'Envíalo.<br/>Nos encargamos del resto.',
+  process: [
+    { num: '01', title: 'Solicita y describe', copy: 'Cuéntanos qué le pasa a tu equipo en nuestro formulario. Fotos bienvenidas. Respondemos en un día hábil con un plan de diagnóstico.' },
+    { num: '02', title: 'Envía tu equipo', copy: 'Imprime la etiqueta prepagada, entrega el paquete y sigue cada paso. O agenda una visita on-site en el sur de Florida.' },
+    { num: '03', title: 'Reparación y retorno', copy: 'Presupuesto aprobado, reparación in-house, prueba completa y envío de retorno. La mayoría en 3–5 días hábiles. Garantía de 6 meses.' },
+  ],
+  prodbandEyebrow: 'También hacemos',
+  prodbandTitle: 'Producciones de foto y video.',
+  prodbandCopy: 'Crew completo, equipo y postproducción. Producción editorial, comercial y audiovisual liderada por profesionales en activo.',
+  prodbandTags: ['Gastronomía', 'Producto', 'Retratos', 'Eventos', 'Naturaleza'],
+  prodbandCta: 'Explorar producciones',
+  stats: [
+    { count: '10', suffix: '+', label: 'Años de experiencia' },
+    { count: '6', suffix: ' mo', label: 'Garantía en cada reparación' },
+    { count: '30', suffix: ' min', label: 'Limpieza de sensor on-site' },
+    { count: '12', suffix: '+', label: 'Marcas que atendemos' },
+  ],
+  reviewsEyebrow: 'Reseñas',
+  reviewsTitle: 'Lo que dicen los fotógrafos.',
+  reviews: [
+    { quote: '“Limpieza de sensor on-site antes de una boda. Llegaron temprano, terminaron en veinte minutos y salvaron el día.”', author: '— Andrea M., Fotógrafa de bodas' },
+    { quote: '“Repararon una Pentax vintage que dos talleres rechazaron. Quedó mejor que el día que la compré. Esta gente se preocupa.”', author: '— Luis R., Coleccionista' },
+    { quote: '“Envié mi Sony A7IV desde Key West. Reparada, probada y devuelta en cinco días. Precio honesto, garantía real.”', author: '— Camila P., Editorial' },
+  ],
+  ctaTitle: 'Listos cuando tú lo estés.',
+  ctaCopy: 'Cuéntanos qué necesita tu equipo. Respondemos en un día hábil.',
+  ctaBtn1: 'Solicitar reparación',
+  ctaBtn2: 'Llamar (786) 763-2091',
+} : {
+  title: 'Camera Repair Miami | Sensor Cleaning & On-Site Service — MPC',
+  description: 'Professional camera repair, sensor cleaning, and mobile on-site service across South Florida — from West Palm Beach to the Florida Keys. Certified technicians. 6-month warranty.',
+  heroEyebrow: 'South Florida · Est. 2015',
+  heroTitle: 'Camera Repair, Engineered with Precision.',
+  heroLede: 'Sensor cleaning, mobile on-site service, and full repairs across South Florida — from West Palm Beach to the Florida Keys.',
+  heroCta1: 'Request Repair',
+  heroCta2: 'See how it works',
+  heroAlt: 'Professional medium-format camera, transparent product shot — Miami Photography Center',
+  scroll: 'Scroll',
+  scenes: [
+    { step: '1', title: 'We bring precision<br/>to your doorstep.', copy: 'A full setup cleaned in 30 minutes. We come to you with calibrated tools, anti-static workflow, and zero downtime for your gear.' },
+    { step: '2', title: 'Sensor &amp; mirror,<br/>professionally cleaned.', copy: 'Ultrasonic tools, certified solutions, and a 30-day free re-clean guarantee. Every job documented, every dust speck accounted for.' },
+    { step: '3', title: 'Expert repairs.<br/>Six-month warranty.', copy: 'Canon, Nikon, Sony, Fujifilm, Leica, Panasonic. Internal maintenance, lubrication, firmware updates — done in-house by trained technicians.' },
+    { step: '4', title: 'Ship it.<br/>We handle the rest.', copy: 'Print a label, drop it off, track every step. Diagnostic, quote, repair, return — three to five business days for most jobs.' },
+  ],
+  featuredEyebrow: 'Featured',
+  featuredTitle: 'Three ways to keep your gear ready.',
+  featured: [
+    { index: '01', title: 'Annual Membership', copy: 'Your gear, maintained year-round. Scheduled cleanings, priority repairs, and exclusive discounts in one plan.', link: '/membership', linkLabel: 'See plans', img: 'https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?w=1200&q=80&auto=format&fit=crop', accent: true },
+    { index: '02', title: 'Sensor Cleaning', copy: 'From $49. Ultrasonic, anti-static, certified solutions. While-you-wait at our studio or on-site at your location.', link: '/sensor-cleaning', linkLabel: 'Learn more', img: 'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=1200&q=80&auto=format&fit=crop', accent: false },
+    { index: '03', title: 'On-Site Service', copy: 'Our mobile unit comes to your studio, location, or set. South Florida coverage. Calibrated tools. Zero downtime.', link: '/on-site', linkLabel: 'See coverage & schedule', img: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=1200&q=80&auto=format&fit=crop', accent: false },
+  ],
+  coverageEyebrow: 'Coverage',
+  coverageTitle: 'From West Palm Beach<br/>to the Florida Keys.',
+  coverageCopy: 'We’re already on the way. Mobile on-site service across Miami-Dade, Broward, Palm Beach, and Monroe counties — or ship your gear and we’ll handle the rest.',
+  brandsLabel: 'Brands we service',
+  processEyebrow: 'Process',
+  processTitle: 'Ship it.<br/>We’ll handle the rest.',
+  process: [
+    { num: '01', title: 'Request & describe', copy: 'Tell us what’s wrong in our short form. Photos welcome. We respond within one business day with a diagnostic plan.' },
+    { num: '02', title: 'Send your gear', copy: 'Print the prepaid label, drop the package, track every step. Or schedule an on-site visit across South Florida.' },
+    { num: '03', title: 'Repair & return', copy: 'Approved quote, in-house repair, full test, and return shipping. Most jobs done in 3–5 business days. Six-month warranty.' },
+  ],
+  prodbandEyebrow: 'We also do',
+  prodbandTitle: 'Photo & Video Productions.',
+  prodbandCopy: 'Full crew, gear, and post. Editorial, commercial, and audiovisual production led by working professionals.',
+  prodbandTags: ['Food & Restaurant', 'Product', 'Portraits', 'Events', 'Nature'],
+  prodbandCta: 'Explore productions',
+  stats: [
+    { count: '10', suffix: '+', label: 'Years of experience' },
+    { count: '6', suffix: ' mo', label: 'Warranty on every repair' },
+    { count: '30', suffix: ' min', label: 'Average on-site sensor clean' },
+    { count: '12', suffix: '+', label: 'Brands serviced' },
+  ],
+  reviewsEyebrow: 'Reviews',
+  reviewsTitle: 'What photographers say.',
+  reviews: [
+    { quote: '“On-site sensor clean before a wedding shoot. They arrived early, finished in twenty minutes, and saved the day.”', author: '— Andrea M., Wedding Photographer' },
+    { quote: '“Fixed a vintage Pentax that two other shops refused. Better than the day I bought it. These people care.”', author: '— Luis R., Film Collector' },
+    { quote: '“Sent my Sony A7IV from Key West. Repaired, tested, returned in five days. Honest pricing, real warranty.”', author: '— Camila P., Editorial' },
+  ],
+  ctaTitle: 'Ready when you are.',
+  ctaCopy: 'Tell us what your gear needs. We’ll respond within one business day.',
+  ctaBtn1: 'Request Repair',
+  ctaBtn2: 'Call (786) 763-2091',
+};
+
+const localBusinessSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': 'https://miamiphotographycenter.com/#localbusiness',
+  name: 'Miami Photography Center',
+  alternateName: 'MPC',
+  description: 'Professional camera repair, sensor cleaning, and mobile on-site photography service across South Florida.',
+  url: 'https://miamiphotographycenter.com/',
+  telephone: '+1-786-763-2091',
+  email: 'service@miamiphotographycenter.com',
+  priceRange: '$$',
+  address: { '@type': 'PostalAddress', streetAddress: '3911 SW 27th St', addressLocality: 'West Park', addressRegion: 'FL', postalCode: '33023', addressCountry: 'US' },
+  geo: { '@type': 'GeoCoordinates', latitude: 25.9817, longitude: -80.205 },
+  areaServed: [
+    { '@type': 'City', name: 'Miami' },
+    { '@type': 'City', name: 'Fort Lauderdale' },
+    { '@type': 'City', name: 'West Palm Beach' },
+    { '@type': 'City', name: 'Boca Raton' },
+    { '@type': 'AdministrativeArea', name: 'Florida Keys' },
+  ],
+  openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday'], opens: '09:00', closes: '18:00' }],
+  sameAs: [
+    'https://www.facebook.com/miamiphotographycenter',
+    'https://www.instagram.com/miamiphotographycenter',
+    'https://www.tiktok.com/@miamiphotographycenter',
+  ],
+});
+---
+<Base locale={locale} title={t.title} description={t.description}>
+  <script type="application/ld+json" set:html={localBusinessSchema} slot="head" is:inline />
+
+  <!-- ==================== HERO ==================== -->
+  <header class="hero">
+    <div class="hero__ring" aria-hidden="true"></div>
+    <div class="hero__container">
+      <p class="hero__eyebrow" data-anim="fade-up">{t.heroEyebrow}</p>
+      <h1 class="hero__title" data-anim="hero-title" set:html={locale === 'es' ? 'Reparación de cámaras,<br/>con precisión de ingeniería.' : 'Camera Repair,<br/>Engineered with Precision.'} />
+      <p class="hero__lede" data-anim="fade-up">{t.heroLede}</p>
+      <div class="hero__ctas" data-anim="fade-up">
+        <a href={p('/repair') + '#repair-form'} class="btn btn--primary">{t.heroCta1}</a>
+        <a href="#story" class="btn btn--ghost">{t.heroCta2} <span aria-hidden="true">→</span></a>
+      </div>
+
+      <figure class="hero__visual">
+        <img src="/sfx30.webp" alt={t.heroAlt} width="1024" height="1024" fetchpriority="high" decoding="async" />
+      </figure>
+
+      <div class="hero__scroll-hint" aria-hidden="true">
+        <span>{t.scroll}</span>
+        <span class="hero__scroll-line"></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== SCROLLYTELLING — STORY ==================== -->
+  <section id="story" class="story" aria-labelledby="story-title">
+    <div class="story__sticky">
+      <div class="story__media">
+        <img class="story__image" id="storyImage"
+          src="https://images.unsplash.com/photo-1519183071298-a2962feb14f4?w=1600&q=85&auto=format&fit=crop"
+          alt="Professional camera body partially disassembled on a workbench"
+          width="1600" height="1067" loading="lazy" decoding="async" />
+      </div>
+      <div class="story__panel">
+        <p class="story__step" id="storyStep">01</p>
+        <h2 id="story-title" class="story__title" data-step="1" set:html={t.scenes[0].title} />
+        <p class="story__copy" id="storyCopy">{t.scenes[0].copy}</p>
+      </div>
+    </div>
+    <div class="story__scenes" aria-hidden="true">
+      {t.scenes.map((scene) => (
+        <div class="story__scene" data-step={scene.step} data-title={scene.title} data-copy={scene.copy}></div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ==================== FEATURED STRIP (3 destacados) ==================== -->
+  <section id="services" class="services" aria-labelledby="services-title">
+    <div class="services__head">
+      <p class="eyebrow">{t.featuredEyebrow}</p>
+      <h2 id="services-title" class="services__title">{t.featuredTitle}</h2>
+    </div>
+
+    <div class="services__grid services__grid--three">
+      {t.featured.map((card) => (
+        <article class={`card card--tilt${card.accent ? ' card--accent' : ''}`} data-tilt>
+          <div class="card__inner">
+            <span class="card__index">{card.index}</span>
+            <h3 class="card__title">{card.title}</h3>
+            <p class="card__copy">{card.copy}</p>
+            <div class="card__media" aria-hidden="true">
+              <img loading="lazy" decoding="async" src={card.img} alt="" width="1200" height="800" />
+            </div>
+            <a href={p(card.link)} class="card__link">{card.linkLabel} <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- ==================== COVERAGE (PARALLAX) ==================== -->
+  <section id="coverage" class="coverage" aria-labelledby="coverage-title">
+    <div class="coverage__parallax" data-parallax-bg></div>
+    <div class="coverage__inner">
+      <p class="eyebrow eyebrow--inverse">{t.coverageEyebrow}</p>
+      <h2 id="coverage-title" class="coverage__title" set:html={t.coverageTitle} />
+      <p class="coverage__copy">{t.coverageCopy}</p>
+      <ul class="coverage__chips">
+        <li>Miami</li><li>Miami Beach</li><li>Fort Lauderdale</li><li>Boca Raton</li>
+        <li>West Palm Beach</li><li>Key Largo</li><li>Marathon</li><li>Key West</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==================== BRANDS MARQUEE ==================== -->
+  <section class="brands" aria-label="Brands we service">
+    <p class="brands__label">{t.brandsLabel}</p>
+    <div class="brands__track-wrap">
+      <div class="brands__track">
+        <span>Canon</span><span>Nikon</span><span>Sony</span><span>Fujifilm</span>
+        <span>Leica</span><span>Panasonic</span><span>Olympus</span><span>Sigma</span>
+        <span>Tamron</span><span>DJI</span><span>GoPro</span><span>Profoto</span>
+        <span aria-hidden="true">Canon</span><span aria-hidden="true">Nikon</span><span aria-hidden="true">Sony</span><span aria-hidden="true">Fujifilm</span>
+        <span aria-hidden="true">Leica</span><span aria-hidden="true">Panasonic</span><span aria-hidden="true">Olympus</span><span aria-hidden="true">Sigma</span>
+        <span aria-hidden="true">Tamron</span><span aria-hidden="true">DJI</span><span aria-hidden="true">GoPro</span><span aria-hidden="true">Profoto</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PROCESS ==================== -->
+  <section id="process" class="process" aria-labelledby="process-title">
+    <div class="process__head">
+      <p class="eyebrow">{t.processEyebrow}</p>
+      <h2 id="process-title" class="process__title" set:html={t.processTitle} />
+    </div>
+    <ol class="process__steps">
+      {t.process.map((step) => (
+        <li class="process__step" data-anim="fade-up">
+          <span class="process__num">{step.num}</span>
+          <h3>{step.title}</h3>
+          <p>{step.copy}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- ==================== PRODUCTIONS BAND (secondary) ==================== -->
+  <section class="prodband" aria-labelledby="prodband-title">
+    <div class="prodband__inner" data-anim="fade-up">
+      <div class="prodband__panel">
+        <p class="eyebrow eyebrow--inverse">{t.prodbandEyebrow}</p>
+        <h2 id="prodband-title" class="prodband__title">{t.prodbandTitle}</h2>
+        <p class="prodband__copy">{t.prodbandCopy}</p>
+        <ul class="prodband__tags">
+          {t.prodbandTags.map((tag) => <li>{tag}</li>)}
+        </ul>
+        <a href={p('/productions')} class="btn btn--primary">{t.prodbandCta} <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="prodband__media" aria-hidden="true">
+        <img loading="lazy" decoding="async"
+          src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1400&q=80&auto=format&fit=crop"
+          alt="" width="1400" height="933" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== STATS ==================== -->
+  <section class="stats" aria-label="Why MPC">
+    <div class="stats__grid">
+      {t.stats.map((stat) => (
+        <div class="stats__item">
+          <span class="stats__num" data-count={stat.count} data-suffix={stat.suffix}>{stat.count}{stat.suffix}</span>
+          <span class="stats__label">{stat.label}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ==================== REVIEWS ==================== -->
+  <section id="reviews" class="reviews" aria-labelledby="reviews-title">
+    <div class="reviews__head">
+      <p class="eyebrow">{t.reviewsEyebrow}</p>
+      <h2 id="reviews-title" class="reviews__title">{t.reviewsTitle}</h2>
+    </div>
+    <div class="reviews__grid">
+      {t.reviews.map((review) => (
+        <figure class="quote" data-anim="fade-up">
+          <blockquote>{review.quote}</blockquote>
+          <figcaption>{review.author}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section id="cta" class="cta" aria-labelledby="cta-title">
+    <div class="cta__inner">
+      <h2 id="cta-title" class="cta__title">{t.ctaTitle}</h2>
+      <p class="cta__copy">{t.ctaCopy}</p>
+      <div class="cta__actions">
+        <a href={p('/repair') + '#repair-form'} class="btn btn--primary btn--lg">{t.ctaBtn1}</a>
+        <a href="tel:+17867632091" class="btn btn--ghost btn--lg">{t.ctaBtn2}</a>
+      </div>
+    </div>
+  </section>
+</Base>

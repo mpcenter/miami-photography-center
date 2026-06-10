@@ -1,0 +1,37 @@
+{
+  "slug": "canon-eos-r6-body",
+  "name": {
+    "en": "Canon EOS R6 — Body (Used)",
+    "es": "Canon EOS R6 — Cuerpo (Usada)"
+  },
+  "price": 1499,
+  "category": {
+    "en": "Cameras",
+    "es": "Cámaras"
+  },
+  "img": "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=1200&q=80&auto=format&fit=crop",
+  "desc": {
+    "en": "Full-frame mirrorless workhorse with outstanding autofocus and in-body stabilization. Inspected, cleaned, and serviced in-house by our own technicians, with shutter count verified. Backed by our 6-month warranty.",
+    "es": "Mirrorless full-frame confiable, con enfoque automático sobresaliente y estabilización en el cuerpo. Revisada, limpiada y calibrada in-house por nuestros propios técnicos, con conteo de disparos verificado. Respaldada por nuestra garantía de 6 meses."
+  },
+  "condition": {
+    "en": "Inspected & serviced in-house — 6-month warranty",
+    "es": "Revisada y calibrada in-house — garantía de 6 meses"
+  },
+  "specs": {
+    "en": [
+      "20MP full-frame CMOS sensor, RF mount",
+      "In-body image stabilization up to 8 stops",
+      "4K 60p video, Dual Pixel CMOS AF II",
+      "Shutter count verified, sensor cleaned in-house",
+      "Includes battery, charger, and strap"
+    ],
+    "es": [
+      "Sensor CMOS full-frame de 20MP, montura RF",
+      "Estabilización en el cuerpo de hasta 8 pasos",
+      "Video 4K 60p, Dual Pixel CMOS AF II",
+      "Conteo de disparos verificado, sensor limpiado in-house",
+      "Incluye batería, cargador y correa"
+    ]
+  }
+}

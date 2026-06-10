@@ -1,0 +1,68 @@
+---
+import { localePath, altLocalePath, otherLocale, type Locale } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = locale === 'es'
+  ? {
+      repair: 'Reparación',
+      onSite: 'On-Site',
+      membership: 'Membresía',
+      productions: 'Producciones',
+      store: 'Tienda',
+      contact: 'Contacto',
+      cta: 'Solicitar reparación',
+      switchLabel: 'EN',
+      brandAria: 'Miami Photography Center — inicio',
+    }
+  : {
+      repair: 'Repair',
+      onSite: 'On-Site',
+      membership: 'Membership',
+      productions: 'Productions',
+      store: 'Store',
+      contact: 'Contact',
+      cta: 'Request Repair',
+      switchLabel: 'ES',
+      brandAria: 'Miami Photography Center home',
+    };
+const p = (path: string) => localePath(locale, path);
+const altPath = altLocalePath(locale, Astro.url.pathname);
+const current = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (path: string) => {
+  const target = p(path).replace(/\/$/, '') || '/';
+  if (target === '/' || target === '/es') return current === target;
+  return current === target || current.startsWith(target + '/');
+};
+const links = [
+  { path: '/repair', label: t.repair },
+  { path: '/on-site', label: t.onSite },
+  { path: '/membership', label: t.membership },
+  { path: '/productions', label: t.productions },
+  { path: '/store', label: t.store },
+  { path: '/contact', label: t.contact },
+];
+---
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href={p('/')} class="nav__brand" aria-label={t.brandAria}>MPC</a>
+    <div class="nav__menu" id="nav-menu">
+      <ul class="nav__links">
+        {links.map((l) => (
+          <li>
+            <a href={p(l.path)} aria-current={isActive(l.path) ? 'page' : undefined}>{l.label}</a>
+          </li>
+        ))}
+      </ul>
+      <div class="nav__actions">
+        <a href={altPath} class="nav__lang" aria-label={otherLocale(locale) === 'es' ? 'Cambiar a español' : 'Switch to English'}>{t.switchLabel}</a>
+        <a href={p('/repair') + '#repair-form'} class="nav__cta">{t.cta}</a>
+      </div>
+    </div>
+    <button class="nav__burger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>

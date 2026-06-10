@@ -1,0 +1,676 @@
+---
+import Base from '../../layouts/Base.astro';
+import { localePath, type Locale } from '../../lib/i18n';
+import '../../styles/on-site.css';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const p = (path: string) => localePath(locale, path);
+
+const t = locale === 'es' ? {
+  title: 'Servicio On-Site de Cámaras en Miami | Limpieza de Sensor Móvil y Reparación — MPC',
+  description: 'Servicio móvil de cámaras en el sur de Florida. Limpieza de sensor en 30 minutos, diagnóstico on-site, recogida y entrega de equipos, soporte en eventos y planes de mantenimiento a medida — donde estés.',
+  breadcrumbHome: 'Inicio',
+  breadcrumbServices: 'Servicios',
+  breadcrumbCurrent: 'Servicios On-Site',
+  heroEyebrow: 'Servicio móvil · Sur de Florida',
+  heroTitle: 'Servicios On-Site',
+  heroSub: 'Mantenimiento profesional — donde estés',
+  heroLede: 'Más que una van — un laboratorio de servicio completo sobre ruedas. Vamos a tu locación para limpieza, diagnóstico y reparaciones expertas. O recogemos tu equipo, lo atendemos en nuestro centro técnico y te lo devolvemos listo para disparar.',
+  heroCta1: 'Agendar visita on-site',
+  heroCta2: 'Ver cobertura',
+  offersEyebrow: 'Qué hacemos on-site',
+  offersTitle: 'Cinco maneras de llevarte el taller.',
+  offers: [
+    {
+      featured: true,
+      tag: 'El más solicitado · 30 minutos',
+      title: 'Limpieza Profesional de Sensor On-Site',
+      tagline: 'Nuestro servicio más solicitado. Equipo completo limpio en solo 30 minutos. Cada visita incluye:',
+      bullets: [
+        'Limpieza húmeda del sensor con técnicas profesionales',
+        'Limpieza externa del cuerpo de la cámara',
+        'Limpieza de un lente y un accesorio adicional (flash, grip, etc.)',
+        'Mantenimiento preventivo del equipo completo: cámara + lente + accesorio',
+        'Inspección de botones, contactos, monturas y puntos de conexión',
+        'Lubricación de partes externas móviles',
+        'Actualización de firmware gratis (si aplica)',
+      ],
+      note: 'Tiempo estimado: 30 minutos. Puede aplicar una pequeña tarifa de traslado según tu zona.',
+      link: '', linkLabel: '',
+    },
+    {
+      featured: false,
+      tag: 'Diagnóstico',
+      title: 'Diagnóstico On-Site y Recogida de Equipos',
+      tagline: 'Detectamos el problema y lo resolvemos — sin que tengas que trasladarte.',
+      bullets: [
+        'Diagnóstico on-site y presupuestos de reparación',
+        'Recogida de equipos que requieren reparación de taller',
+        'Entrega de retorno una vez completada la reparación',
+      ],
+      note: 'Nota: si el diagnóstico implica desarme o evaluación avanzada, puede aplicar una tarifa técnica. Siempre te informamos antes — sin sorpresas.',
+      link: '', linkLabel: '',
+    },
+    {
+      featured: false,
+      tag: 'Eventos',
+      title: 'Eventos, Conferencias y Encuentros de Fotógrafos',
+      tagline: 'Soporte técnico en vivo, donde esté la acción.',
+      bullets: [
+        'Asistimos a eventos de foto y video con nuestras unidades móviles',
+        'Recibimos equipos en el lugar para limpieza de sensor y mantenimiento',
+        'Diagnóstico gratuito y soporte técnico inmediato',
+        'Disponible en toda Florida (mínimo de 20 equipos por evento)',
+      ],
+      note: '',
+      link: '', linkLabel: '',
+    },
+    {
+      featured: false,
+      tag: 'Logística',
+      title: 'Recogida y Entrega para Reparaciones Avanzadas',
+      tagline: 'Si tu equipo necesita trabajo de laboratorio, igual te lo hacemos fácil.',
+      bullets: [
+        'Recogemos tu equipo en tu locación',
+        'Realizamos la reparación en nuestras instalaciones especializadas',
+        'Lo devolvemos por correo o en la próxima visita programada',
+      ],
+      note: '',
+      link: '', linkLabel: '',
+    },
+    {
+      featured: false,
+      tag: 'Planes recurrentes',
+      title: 'Planes de Mantenimiento a Medida',
+      tagline: 'Diseñados para fotógrafos, estudios, escuelas y productoras. Planes recurrentes o personalizados que incluyen:',
+      bullets: [
+        'Servicios de mantenimiento por lotes',
+        'Visitas on-site programadas',
+        'Soporte técnico directo',
+        'Descuentos por volumen',
+        'Reportes detallados del estado de los equipos',
+      ],
+      note: '',
+      link: '/membership', linkLabel: 'Ver planes de membresía',
+    },
+  ],
+  howEyebrow: 'Cómo funciona',
+  howTitle: 'Cuatro pasos.<br/>Cero tiempo muerto.',
+  steps: [
+    { num: '01', title: 'Agenda', copy: 'Reserva fecha, hora y locación. Cuéntanos qué equipo y qué servicio. Confirmamos en un día hábil.' },
+    { num: '02', title: 'Llegamos', copy: 'A tiempo, totalmente equipados. Estación de limpieza calibrada, flujo antiestático, cada herramienta de nuestro taller.' },
+    { num: '03', title: 'Servicio en el lugar', copy: 'La mayoría de los trabajos mientras observas. Limpieza de sensor, calibración de lentes, firmware, diagnóstico — normalmente de 20 a 60 minutos por cámara.' },
+    { num: '04', title: 'De vuelta al trabajo', copy: 'Equipo listo, sin tiempo muerto, todo documentado. Las reparaciones mayores que requieren repuestos van a nuestro taller con fecha de retorno.' },
+  ],
+  zonesEyebrow: 'Zonas de cobertura',
+  zonesTitle: 'Cuatro condados.<br/>Un taller sobre ruedas.',
+  zones: [
+    { county: 'Miami-Dade', cities: 'Miami · Miami Beach · Coral Gables · Doral · Aventura · Homestead · Kendall', fee: 'Traslado desde <strong>$25</strong>' },
+    { county: 'Broward', cities: 'Fort Lauderdale · Hollywood · Pembroke Pines · Pompano · West Park · Plantation', fee: 'Traslado desde <strong>$25</strong>' },
+    { county: 'Palm Beach', cities: 'West Palm Beach · Boca Raton · Delray Beach · Boynton · Jupiter · Wellington', fee: 'Traslado desde <strong>$50</strong>' },
+    { county: 'Monroe / Cayos de Florida', cities: 'Key Largo · Islamorada · Marathon · Big Pine · Key West', fee: 'Traslado <strong>por cotización</strong>' },
+  ],
+  pricingEyebrow: 'Precios on-site',
+  pricingTitle: 'Tarifas transparentes.<br/>Cotizamos antes de movernos.',
+  pricingSub: 'Tarifa de servicio + traslado por zona. Descuentos por varias cámaras y por volumen disponibles. Sets y emergencias tienen despacho prioritario.',
+  prices: [
+    { label: 'Limpieza de sensor on-site', from: 'Desde', price: '$79', note: 'Por cámara. Garantía de re-limpieza de 30 días.', accent: false },
+    { label: 'Calibración on-site', from: 'Desde', price: '$99', note: 'Microajuste de AF, precisión de enfoque, ColorChecker.', accent: false },
+    { label: 'Día de producción', from: 'Desde', price: '$299', note: 'Hasta 8 horas en set. Multicámara. Prioridad.', accent: true },
+    { label: 'Tarifas de traslado', from: 'Desde', price: '$25', note: 'Miami-Dade y Broward. PB +$50. Cayos por cotización.', accent: false },
+  ],
+  bookingEyebrow: 'Agenda una visita',
+  bookingTitle: 'Dinos dónde, cuándo y qué.',
+  bookingSub: 'Confirmamos en un día hábil con un presupuesto por escrito.',
+  formSuccess: 'Solicitud recibida. Confirmaremos tu visita en un día hábil.',
+  fName: 'Nombre completo *',
+  fNamePh: '¿Cómo te llamas?',
+  fService: 'Tipo de servicio',
+  fServiceOptions: ['Selecciona un servicio', 'Limpieza de sensor on-site', 'Diagnóstico y recogida', 'Soporte en evento o encuentro', 'Recogida y entrega para reparación', 'Plan de mantenimiento a medida', 'Otro'],
+  fAddress: 'Dirección / zona *',
+  fAddressPh: 'p. ej. Miami Beach, FL',
+  fPhone: 'Teléfono *',
+  fPhonePh: '(786) 555-0100',
+  fEmail: 'Email *',
+  fEmailPh: 'tu@email.com',
+  fDate: 'Fecha preferida',
+  fCount: 'Cantidad de equipos *',
+  fCountPh: 'p. ej. 2',
+  submit: 'Solicitar visita on-site',
+  legalPre: 'Al enviar aceptas nuestra ',
+  legalLink: 'política de privacidad',
+  legalPost: '. Nunca compartimos tus datos.',
+  faqEyebrow: 'Preguntas frecuentes',
+  faqTitle: 'Dudas sobre el servicio on-site.',
+  faq: [
+    { q: '¿Qué incluye el servicio on-site?', a: 'Limpieza de sensor, calibración de lentes, pruebas de enfoque, ajustes mecánicos menores, actualizaciones de firmware y diagnóstico completo. Las reparaciones complejas que requieren repuestos van a nuestro taller.' },
+    { q: '¿Qué tan rápido pueden llegar?', a: 'El mismo día para emergencias en Miami-Dade y Broward cuando hay disponibilidad. Citas estándar entre 24 y 72 horas en el sur de Florida. Los sets de producción y las bodas tienen despacho prioritario.' },
+    { q: '¿Qué zonas cubren?', a: 'Los condados Miami-Dade, Broward, Palm Beach y Monroe — de West Palm Beach a Key West. Las tarifas de traslado varían por zona.' },
+    { q: '¿Pueden dar servicio en un set de filmación?', a: 'Sí. Trabajamos alrededor de tu call sheet. Montaje discreto, flujo antiestático y nos movemos con tu producción. La limpieza de sensor suele hacerse entre tomas.' },
+    { q: '¿Cuánto cuesta?', a: 'La tarifa de servicio empieza en $79 más traslado por zona. Miami-Dade y Broward desde $25, Palm Beach $50, Cayos de Florida por cotización. Descuentos por varias cámaras y por volumen disponibles.' },
+    { q: '¿Traen sus propias herramientas?', a: 'Sí. Estación de limpieza calibrada, equipo antiestático, hisopos de sensor en todos los tamaños, peras de aire, lupas de sensor, cartas de calibración de lentes, ColorChecker y kit de diagnóstico. Todo lo que encontrarías en nuestro taller, portátil.' },
+  ],
+  ctaTitle: 'Ya estamos en camino.',
+  ctaCopy: 'Dinos dónde encontrarte. Confirmamos en un día hábil.',
+  ctaBtn1: 'Agendar visita on-site',
+  ctaBtn2: 'Llamar (786) 763-2091',
+} : {
+  title: 'On-Site Camera Service Miami | Mobile Sensor Cleaning & Repair — MPC',
+  description: 'Mobile camera service across South Florida. Sensor cleaning in 30 minutes, on-site diagnostics, equipment pickup & delivery, event support, and custom maintenance plans — wherever you are.',
+  breadcrumbHome: 'Home',
+  breadcrumbServices: 'Services',
+  breadcrumbCurrent: 'On-Site Services',
+  heroEyebrow: 'Mobile Service · South Florida',
+  heroTitle: 'On-Site Services',
+  heroSub: 'Professional Maintenance — Wherever You Are',
+  heroLede: 'More than just a van — a full-service lab on wheels. We come to your location for cleaning, diagnostics, and expert repairs. Or we pick up your gear, service it at our technical center, and deliver it back ready to shoot.',
+  heroCta1: 'Book an on-site visit',
+  heroCta2: 'See coverage',
+  offersEyebrow: 'What we do on-site',
+  offersTitle: 'Five ways we bring the workshop to you.',
+  offers: [
+    {
+      featured: true,
+      tag: 'Most requested · 30 minutes',
+      title: 'Professional Sensor Cleaning On-Site',
+      tagline: 'Our most requested service. Full setup cleaned in just 30 minutes. Each visit includes:',
+      bullets: [
+        'Wet sensor cleaning using professional techniques',
+        'External cleaning of the camera body',
+        'Cleaning of one lens and one additional accessory (flash, grip, etc.)',
+        'Preventive maintenance for the full setup: camera + lens + accessory',
+        'Inspection of buttons, contacts, mounts, and connection points',
+        'Lubrication of moving external parts',
+        'Free firmware update (if applicable)',
+      ],
+      note: 'Estimated time: 30 minutes. A small travel fee may apply depending on your area.',
+      link: '', linkLabel: '',
+    },
+    {
+      featured: false,
+      tag: 'Diagnostics',
+      title: 'On-Site Diagnostics & Equipment Pickup',
+      tagline: 'We detect the problem and fix it — no need to travel.',
+      bullets: [
+        'On-site diagnostics and repair estimates',
+        'Pickup of equipment that requires workshop-level repair',
+        'Return delivery once repairs are completed',
+      ],
+      note: 'Note: If the diagnosis involves disassembly or advanced evaluation, a technical fee may apply. We always inform you beforehand — no surprises.',
+      link: '', linkLabel: '',
+    },
+    {
+      featured: false,
+      tag: 'Events',
+      title: 'Events, Conferences & Photographer Meetups',
+      tagline: 'Live tech support, wherever the action is.',
+      bullets: [
+        'We attend photography and video events with our mobile units',
+        'Receive gear on-site for sensor cleaning and maintenance',
+        'Provide free diagnostics and immediate technical support',
+        'Available throughout Florida (minimum of 20 items required per event)',
+      ],
+      note: '',
+      link: '', linkLabel: '',
+    },
+    {
+      featured: false,
+      tag: 'Logistics',
+      title: 'Pickup & Delivery for Advanced Repairs',
+      tagline: 'If your gear needs lab work, we still make it easy.',
+      bullets: [
+        'We pick up your gear from your location',
+        'Perform the repair in our specialized facility',
+        'Return it via mail or at the next scheduled visit',
+      ],
+      note: '',
+      link: '', linkLabel: '',
+    },
+    {
+      featured: false,
+      tag: 'Recurring plans',
+      title: 'Custom Maintenance Plans',
+      tagline: 'Designed for photographers, studios, schools, and production companies. Recurring or personalized plans that include:',
+      bullets: [
+        'Batch maintenance services',
+        'Scheduled on-site visits',
+        'Direct technical support',
+        'Volume discounts',
+        'Detailed reports on equipment condition',
+      ],
+      note: '',
+      link: '/membership', linkLabel: 'See membership plans',
+    },
+  ],
+  howEyebrow: 'How it works',
+  howTitle: 'Four steps.<br/>Zero downtime.',
+  steps: [
+    { num: '01', title: 'Schedule', copy: 'Book a date, time, and location. Tell us what gear and what service. We confirm within one business day.' },
+    { num: '02', title: 'We arrive', copy: 'On time, fully equipped. Calibrated cleaning station, anti-static workflow, every tool you’d find in our workshop.' },
+    { num: '03', title: 'Service on-site', copy: 'Most jobs done while you watch. Sensor clean, lens calibration, firmware, diagnostic — typically 20 to 60 minutes per camera.' },
+    { num: '04', title: 'Back to work', copy: 'Gear ready, no downtime, fully documented. Major repairs that require parts come back to our workshop with a return-by date.' },
+  ],
+  zonesEyebrow: 'Coverage zones',
+  zonesTitle: 'Four counties.<br/>One workshop on wheels.',
+  zones: [
+    { county: 'Miami-Dade', cities: 'Miami · Miami Beach · Coral Gables · Doral · Aventura · Homestead · Kendall', fee: 'Travel from <strong>$25</strong>' },
+    { county: 'Broward', cities: 'Fort Lauderdale · Hollywood · Pembroke Pines · Pompano · West Park · Plantation', fee: 'Travel from <strong>$25</strong>' },
+    { county: 'Palm Beach', cities: 'West Palm Beach · Boca Raton · Delray Beach · Boynton · Jupiter · Wellington', fee: 'Travel from <strong>$50</strong>' },
+    { county: 'Monroe / Florida Keys', cities: 'Key Largo · Islamorada · Marathon · Big Pine · Key West', fee: 'Travel <strong>by quote</strong>' },
+  ],
+  pricingEyebrow: 'On-site pricing',
+  pricingTitle: 'Transparent rates.<br/>Quote before we move.',
+  pricingSub: 'Service fee + travel by zone. Multiple cameras and bulk discounts available. Sets and emergencies get priority dispatch.',
+  prices: [
+    { label: 'On-site sensor clean', from: 'From', price: '$79', note: 'Per camera. 30-day re-clean guarantee.', accent: false },
+    { label: 'On-site calibration', from: 'From', price: '$99', note: 'AF micro-adjust, focus accuracy, ColorChecker.', accent: false },
+    { label: 'Production day rate', from: 'From', price: '$299', note: 'Up to 8 hours on set. Multi-camera. Priority.', accent: true },
+    { label: 'Travel fees', from: 'From', price: '$25', note: 'Miami-Dade & Broward. PB +$50. Keys by quote.', accent: false },
+  ],
+  bookingEyebrow: 'Schedule a visit',
+  bookingTitle: 'Tell us where, when, and what.',
+  bookingSub: 'We confirm within one business day with a written quote.',
+  formSuccess: 'Request received. We will confirm your visit within one business day.',
+  fName: 'Full name *',
+  fNamePh: 'Your name',
+  fService: 'Service type',
+  fServiceOptions: ['Select a service', 'Sensor cleaning on-site', 'Diagnostics & equipment pickup', 'Event or meetup support', 'Pickup & delivery for repairs', 'Custom maintenance plan', 'Other'],
+  fAddress: 'Address / area *',
+  fAddressPh: 'e.g. Miami Beach, FL',
+  fPhone: 'Phone *',
+  fPhonePh: '(786) 555-0100',
+  fEmail: 'Email *',
+  fEmailPh: 'you@example.com',
+  fDate: 'Preferred date',
+  fCount: 'Equipment count *',
+  fCountPh: 'e.g. 2',
+  submit: 'Request on-site visit',
+  legalPre: 'By submitting you agree to our ',
+  legalLink: 'privacy policy',
+  legalPost: '. We never share your data.',
+  faqEyebrow: 'FAQ',
+  faqTitle: 'On-site questions.',
+  faq: [
+    { q: 'What does on-site service include?', a: 'Sensor cleaning, lens calibration, focus testing, minor mechanical adjustments, firmware updates, and full diagnostic. Complex repairs requiring parts come back to our workshop.' },
+    { q: 'How fast can you arrive?', a: 'Same-day for emergencies in Miami-Dade and Broward when slots are available. Standard appointments within 24 to 72 hours across South Florida. Production sets and weddings get priority dispatch.' },
+    { q: 'Where do you cover?', a: 'Miami-Dade, Broward, Palm Beach, and Monroe counties — from West Palm Beach to Key West. Travel fees vary by zone.' },
+    { q: 'Can you service on a film set?', a: 'Yes. We work around your call sheet. Discreet setup, anti-static workflow, and we move with your production. Sensor cleaning typically done between takes.' },
+    { q: 'What does it cost?', a: 'Service fee starts at $79 plus travel by zone. Miami-Dade and Broward zones from $25, Palm Beach $50, Florida Keys custom. Multiple cameras and bulk discounts available.' },
+    { q: 'Do you bring your own tools?', a: 'Yes. Calibrated cleaning station, anti-static gear, sensor swabs in every size, air blowers, sensor loupes, lens calibration charts, ColorChecker, and diagnostic toolkit. Everything you’d find at our workshop, portable.' },
+  ],
+  ctaTitle: 'Already on the way.',
+  ctaCopy: 'Tell us where to meet you. We confirm within one business day.',
+  ctaBtn1: 'Book an on-site visit',
+  ctaBtn2: 'Call (786) 763-2091',
+};
+
+const origin = 'https://miamiphotographycenter.com';
+
+const breadcrumbSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: t.breadcrumbHome, item: origin + p('/') },
+    { '@type': 'ListItem', position: 2, name: t.breadcrumbServices, item: origin + p('/services') },
+    { '@type': 'ListItem', position: 3, name: t.breadcrumbCurrent, item: origin + p('/on-site') },
+  ],
+});
+
+const serviceSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': origin + p('/on-site') + '#service',
+  serviceType: 'Mobile Camera Service',
+  name: 'On-Site Camera & Sensor Service',
+  description: 'Mobile camera service: sensor cleaning, calibration, and minor repairs delivered at your studio, set, or location across South Florida.',
+  provider: { '@type': 'LocalBusiness', '@id': 'https://miamiphotographycenter.com/#localbusiness' },
+  areaServed: [
+    { '@type': 'AdministrativeArea', name: 'Miami-Dade County' },
+    { '@type': 'AdministrativeArea', name: 'Broward County' },
+    { '@type': 'AdministrativeArea', name: 'Palm Beach County' },
+    { '@type': 'AdministrativeArea', name: 'Monroe County' },
+  ],
+  offers: { '@type': 'AggregateOffer', lowPrice: '79', highPrice: '299', priceCurrency: 'USD' },
+});
+
+const faqSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: t.faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+});
+---
+<Base locale={locale} title={t.title} description={t.description}>
+  <script type="application/ld+json" set:html={breadcrumbSchema} slot="head" is:inline />
+  <script type="application/ld+json" set:html={serviceSchema} slot="head" is:inline />
+  <script type="application/ld+json" set:html={faqSchema} slot="head" is:inline />
+  <script src="/scripts/on-site.js" defer is:inline slot="head"></script>
+
+  <!-- ==================== HERO (SVG map of South Florida) ==================== -->
+  <header class="hero hero--onsite">
+    <div class="hero__ring" aria-hidden="true"></div>
+
+    <div class="hero__container hero__container--split">
+      <div class="hero__text">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href={p('/')}>{t.breadcrumbHome}</a></li>
+            <li><a href={p('/services')}>{t.breadcrumbServices}</a></li>
+            <li aria-current="page">{t.breadcrumbCurrent}</li>
+          </ol>
+        </nav>
+
+        <p class="hero__eyebrow" data-anim="fade-up">{t.heroEyebrow}</p>
+        <h1 class="hero__title" data-anim="hero-title">{t.heroTitle}</h1>
+        <p class="hero__sub" data-anim="fade-up">{t.heroSub}</p>
+        <p class="hero__lede" data-anim="fade-up">{t.heroLede}</p>
+        <div class="hero__ctas" data-anim="fade-up">
+          <a href="#booking-form" class="btn btn--primary">{t.heroCta1}</a>
+          <a href="#coverage" class="btn btn--ghost">{t.heroCta2} <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+      <!-- Inline SVG: stylized South Florida map with animated pins + route -->
+      <div class="hero__map" data-map aria-hidden="true">
+        <svg viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of South Florida service coverage area">
+          <defs>
+            <linearGradient id="landGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#2a2a2c"/>
+              <stop offset="100%" stop-color="#0e0e10"/>
+            </linearGradient>
+            <radialGradient id="pinGlow" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0%" stop-color="#0071e3" stop-opacity="0.55"/>
+              <stop offset="100%" stop-color="#0071e3" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="routeGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#5ac8fa"/>
+              <stop offset="100%" stop-color="#0071e3"/>
+            </linearGradient>
+          </defs>
+
+          <g opacity="0.18">
+            <circle cx="400" cy="100" r="1.5" fill="#86868b"/>
+            <circle cx="450" cy="180" r="1.5" fill="#86868b"/>
+            <circle cx="480" cy="260" r="1.5" fill="#86868b"/>
+            <circle cx="500" cy="350" r="1.5" fill="#86868b"/>
+            <circle cx="490" cy="440" r="1.5" fill="#86868b"/>
+            <circle cx="460" cy="520" r="1.5" fill="#86868b"/>
+            <circle cx="420" cy="600" r="1.5" fill="#86868b"/>
+            <circle cx="370" cy="650" r="1.5" fill="#86868b"/>
+            <circle cx="350" cy="120" r="1.5" fill="#86868b"/>
+            <circle cx="380" cy="220" r="1.5" fill="#86868b"/>
+            <circle cx="420" cy="300" r="1.5" fill="#86868b"/>
+            <circle cx="440" cy="400" r="1.5" fill="#86868b"/>
+            <circle cx="430" cy="480" r="1.5" fill="#86868b"/>
+            <circle cx="400" cy="560" r="1.5" fill="#86868b"/>
+            <circle cx="320" cy="640" r="1.5" fill="#86868b"/>
+          </g>
+
+          <path d="
+            M 50 60
+            L 340 70
+            Q 360 80 360 110
+            L 370 200
+            Q 365 240 350 280
+            L 340 360
+            Q 330 410 310 450
+            Q 280 490 250 510
+            Q 220 530 200 560
+            Q 180 600 160 640
+            L 100 680
+            Q 90 670 100 660
+            L 110 640
+            Q 105 600 95 560
+            L 80 480
+            Q 70 400 65 320
+            L 55 200
+            Q 50 130 50 60 Z
+          " fill="url(#landGrad)" stroke="#3a3a3d" stroke-width="1"/>
+
+          <g class="map-keys">
+            <ellipse cx="180" cy="635" rx="20" ry="6" fill="url(#landGrad)" stroke="#3a3a3d" stroke-width="1"/>
+            <ellipse cx="230" cy="650" rx="16" ry="5" fill="url(#landGrad)" stroke="#3a3a3d" stroke-width="1"/>
+            <ellipse cx="275" cy="660" rx="14" ry="4.5" fill="url(#landGrad)" stroke="#3a3a3d" stroke-width="1"/>
+            <ellipse cx="315" cy="665" rx="12" ry="4" fill="url(#landGrad)" stroke="#3a3a3d" stroke-width="1"/>
+          </g>
+
+          <path
+            id="serviceRoute"
+            d="M 280 120 Q 270 200 260 280 Q 250 360 230 440 Q 220 500 210 570 Q 200 615 235 645"
+            fill="none"
+            stroke="url(#routeGrad)"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-dasharray="6 6"
+            opacity="0.85"
+            class="map-route"
+          />
+
+          <g class="map-pin" data-pin="1" data-label="West Palm Beach">
+            <circle cx="280" cy="120" r="32" fill="url(#pinGlow)"/>
+            <circle cx="280" cy="120" r="10" fill="#0071e3"/>
+            <circle cx="280" cy="120" r="4" fill="#ffffff"/>
+            <text x="305" y="125" fill="#f5f5f7" font-family="SF Pro Display, system-ui" font-size="14" font-weight="600">West Palm Beach</text>
+          </g>
+
+          <g class="map-pin" data-pin="2" data-label="Boca Raton">
+            <circle cx="263" cy="230" r="28" fill="url(#pinGlow)"/>
+            <circle cx="263" cy="230" r="8" fill="#0071e3"/>
+            <circle cx="263" cy="230" r="3" fill="#ffffff"/>
+            <text x="285" y="234" fill="#f5f5f7" font-family="SF Pro Display, system-ui" font-size="13" font-weight="600">Boca Raton</text>
+          </g>
+
+          <g class="map-pin" data-pin="3" data-label="Fort Lauderdale">
+            <circle cx="250" cy="340" r="30" fill="url(#pinGlow)"/>
+            <circle cx="250" cy="340" r="9" fill="#0071e3"/>
+            <circle cx="250" cy="340" r="3" fill="#ffffff"/>
+            <text x="272" y="344" fill="#f5f5f7" font-family="SF Pro Display, system-ui" font-size="13" font-weight="600">Fort Lauderdale</text>
+          </g>
+
+          <g class="map-pin map-pin--main" data-pin="4" data-label="Miami">
+            <circle cx="225" cy="450" r="42" fill="url(#pinGlow)"/>
+            <circle cx="225" cy="450" r="14" fill="#0071e3"/>
+            <circle cx="225" cy="450" r="6" fill="#ffffff"/>
+            <text x="252" y="455" fill="#f5f5f7" font-family="SF Pro Display, system-ui" font-size="18" font-weight="600">Miami</text>
+            <text x="252" y="473" fill="#86868b" font-family="SF Pro Text, system-ui" font-size="11" font-weight="400">MPC Workshop</text>
+          </g>
+
+          <g class="map-pin" data-pin="5" data-label="Key West">
+            <circle cx="235" cy="645" r="26" fill="url(#pinGlow)"/>
+            <circle cx="235" cy="645" r="8" fill="#0071e3"/>
+            <circle cx="235" cy="645" r="3" fill="#ffffff"/>
+            <text x="258" y="650" fill="#f5f5f7" font-family="SF Pro Display, system-ui" font-size="13" font-weight="600">The Keys</text>
+          </g>
+
+          <g class="map-van" transform="translate(170, 440)">
+            <rect x="-22" y="-10" width="44" height="20" rx="3" fill="#1d1d1f" stroke="#5ac8fa" stroke-width="1.5"/>
+            <rect x="-18" y="-7" width="14" height="10" rx="1" fill="#5ac8fa" opacity="0.6"/>
+            <rect x="-2" y="-7" width="18" height="10" rx="1" fill="#3a3a3d"/>
+            <circle cx="-14" cy="11" r="4" fill="#0e0e10" stroke="#5ac8fa" stroke-width="1"/>
+            <circle cx="14" cy="11" r="4" fill="#0e0e10" stroke="#5ac8fa" stroke-width="1"/>
+            <rect x="-22" y="-13" width="6" height="3" rx="1" fill="#5ac8fa"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== OFFERINGS — 5 on-site services ==================== -->
+  <section id="offerings" class="offers" aria-labelledby="offers-title">
+    <div class="offers__head">
+      <p class="eyebrow">{t.offersEyebrow}</p>
+      <h2 id="offers-title" class="offers__title">{t.offersTitle}</h2>
+    </div>
+
+    <div class="offers__grid">
+      {t.offers.map((offer) => (
+        <article class={`offer${offer.featured ? ' offer--featured' : ''}`} data-anim="fade-up">
+          <p class="offer__tag">{offer.tag}</p>
+          <h3 class="offer__title">{offer.title}</h3>
+          <p class="offer__tagline">{offer.tagline}</p>
+          <ul class="offer__bullets">
+            {offer.bullets.map((bullet) => <li>{bullet}</li>)}
+          </ul>
+          {offer.note && <p class="offer__note">{offer.note}</p>}
+          {offer.link && (
+            <a href={p(offer.link)} class="offer__link">{offer.linkLabel} <span aria-hidden="true">→</span></a>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- ==================== HOW IT WORKS — 4 steps ==================== -->
+  <section id="how" class="repair-process" aria-labelledby="how-title">
+    <div class="repair-process__head">
+      <p class="eyebrow">{t.howEyebrow}</p>
+      <h2 id="how-title" class="repair-process__title" set:html={t.howTitle} />
+    </div>
+
+    <ol class="timeline timeline--4">
+      {t.steps.map((step) => (
+        <li class="timeline__item" data-anim="fade-up">
+          <span class="timeline__dot"></span>
+          <div class="timeline__card">
+            <p class="timeline__num">{step.num}</p>
+            <h3>{step.title}</h3>
+            <p>{step.copy}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- ==================== COVERAGE — Counties ==================== -->
+  <section id="coverage" class="coverage-zones" aria-labelledby="zones-title">
+    <div class="coverage-zones__parallax"></div>
+    <div class="coverage-zones__inner">
+      <p class="eyebrow eyebrow--light">{t.zonesEyebrow}</p>
+      <h2 id="zones-title" class="coverage-zones__title" set:html={t.zonesTitle} />
+
+      <div class="zones__grid">
+        {t.zones.map((zone) => (
+          <article class="zone">
+            <p class="zone__county">{zone.county}</p>
+            <p class="zone__cities">{zone.cities}</p>
+            <p class="zone__fee" set:html={zone.fee} />
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PRICING ==================== -->
+  <section class="pricing" aria-labelledby="onsite-pricing-title">
+    <div class="pricing__head">
+      <p class="eyebrow">{t.pricingEyebrow}</p>
+      <h2 id="onsite-pricing-title" class="pricing__title" set:html={t.pricingTitle} />
+      <p class="pricing__sub">{t.pricingSub}</p>
+    </div>
+
+    <div class="pricing__grid">
+      {t.prices.map((card) => (
+        <div class={`price-card${card.accent ? ' price-card--accent' : ''}`} data-anim="fade-up">
+          <p class="price-card__label">{card.label}</p>
+          <p class="price-card__price">{card.from} <span>{card.price}</span></p>
+          <p class="price-card__note">{card.note}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ==================== BOOKING FORM ==================== -->
+  <section id="schedule" class="booking" aria-labelledby="booking-title">
+    <div class="booking__head">
+      <p class="eyebrow">{t.bookingEyebrow}</p>
+      <h2 id="booking-title" class="booking__title">{t.bookingTitle}</h2>
+      <p class="booking__sub">{t.bookingSub}</p>
+    </div>
+
+    <form id="booking-form" class="form js-demo-form" action="#" method="POST" data-success={t.formSuccess}>
+      <div class="form__row">
+        <div class="form__field">
+          <label for="bk-name">{t.fName}</label>
+          <input id="bk-name" type="text" name="name" required autocomplete="name" placeholder={t.fNamePh} />
+        </div>
+        <div class="form__field">
+          <label for="bk-service">{t.fService}</label>
+          <select id="bk-service" name="service">
+            {t.fServiceOptions.map((option, i) => (
+              i === 0 ? <option value="">{option}</option> : <option>{option}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      <div class="form__row">
+        <div class="form__field">
+          <label for="bk-address">{t.fAddress}</label>
+          <input id="bk-address" type="text" name="address" required autocomplete="street-address" placeholder={t.fAddressPh} />
+        </div>
+        <div class="form__field">
+          <label for="bk-phone">{t.fPhone}</label>
+          <input id="bk-phone" type="tel" name="phone" required autocomplete="tel" placeholder={t.fPhonePh} />
+        </div>
+      </div>
+
+      <div class="form__row">
+        <div class="form__field">
+          <label for="bk-email">{t.fEmail}</label>
+          <input id="bk-email" type="email" name="email" required autocomplete="email" placeholder={t.fEmailPh} />
+        </div>
+        <div class="form__field">
+          <label for="bk-date">{t.fDate}</label>
+          <input id="bk-date" type="date" name="date" />
+        </div>
+      </div>
+
+      <div class="form__field">
+        <label for="bk-count">{t.fCount}</label>
+        <input id="bk-count" type="number" name="equipment_count" required min="1" inputmode="numeric" placeholder={t.fCountPh} />
+      </div>
+
+      <div class="booking__actions">
+        <button type="submit" class="btn btn--primary btn--lg">{t.submit}</button>
+        <p class="form__note">{t.legalPre}<a href={p('/privacy')}>{t.legalLink}</a>{t.legalPost}</p>
+      </div>
+    </form>
+  </section>
+
+  <!-- ==================== FAQ ==================== -->
+  <section id="faq" class="faq" aria-labelledby="faq-title">
+    <div class="faq__head">
+      <p class="eyebrow">{t.faqEyebrow}</p>
+      <h2 id="faq-title" class="faq__title">{t.faqTitle}</h2>
+    </div>
+
+    <ul class="faq__list">
+      {t.faq.map((item) => (
+        <li class="faq__item">
+          <details>
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="cta" aria-labelledby="cta-title">
+    <div class="cta__inner">
+      <h2 id="cta-title" class="cta__title">{t.ctaTitle}</h2>
+      <p class="cta__copy">{t.ctaCopy}</p>
+      <div class="cta__actions">
+        <a href="#booking-form" class="btn btn--primary btn--lg">{t.ctaBtn1}</a>
+        <a href="tel:+17867632091" class="btn btn--ghost btn--lg">{t.ctaBtn2}</a>
+      </div>
+    </div>
+  </section>
+</Base>

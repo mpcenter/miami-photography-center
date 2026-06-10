@@ -1,0 +1,498 @@
+---
+import Base from '../../layouts/Base.astro';
+import { localePath, type Locale } from '../../lib/i18n';
+import '../../styles/repair.css';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const p = (path: string) => localePath(locale, path);
+
+const t = locale === 'es' ? {
+  title: 'Reparación de Cámaras y Equipos en Miami | DSLR, Mirrorless y Análogas — MPC',
+  description: 'Reparación profesional de cámaras y equipo fotográfico en Miami: DSLR, mirrorless, cámaras análogas, lentes e iluminación. Técnicos in-house, diagnóstico en 24 horas y garantía de 6 meses.',
+  crumbHome: 'Inicio',
+  crumbServices: 'Servicios',
+  crumbPage: 'Reparación de Cámaras y Equipos',
+  heroEyebrow: 'Reparación · Mantenimiento · Calibración',
+  heroTitle: 'Reparación de<br/>Cámaras y Equipos',
+  heroSub: 'Reparaciones de precisión, hechas in-house por expertos.',
+  heroLede: 'DSLR, mirrorless, cámaras análogas, lentes e iluminación. Diagnóstico en 24 horas. La mayoría de las reparaciones en 3 a 5 días hábiles. Cada trabajo con garantía de seis meses.',
+  heroCta1: 'Iniciar una reparación',
+  heroCta2: 'Qué reparamos',
+  heroAlt: 'Cámara profesional de formato medio, foto de producto transparente — Miami Photography Center',
+  blocksEyebrow: 'Servicios',
+  blocksTitle: 'Qué reparamos.',
+  listLabel: 'Los servicios incluyen:',
+  blocks: [
+    {
+      index: '01',
+      title: 'Reparación de Cámaras',
+      copy: 'Reparamos sistemas de cámara digitales y análogos de marcas como Nikon, Canon, Sony, Fujifilm y más.',
+      items: [
+        'Reparación de cámaras DSLR, mirrorless y de cine',
+        'Reparación de cámaras análogas de 35mm y formato medio',
+        'Diagnóstico y servicio de mecanismos internos',
+        'Reemplazo de componentes desgastados o dañados',
+      ],
+    },
+    {
+      index: '02',
+      title: 'Reparación de Lentes',
+      copy: 'Restauramos lentes fijos y zoom a su máximo rendimiento con trabajo de precisión y partes originales.',
+      items: [
+        'Anillos de enfoque, zoom y mecanismos de apertura',
+        'Reparación de monturas y puntos de contacto',
+        'Mantenimiento de elementos ópticos internos',
+      ],
+    },
+    {
+      index: '03',
+      title: 'Servicios Especializados Adicionales',
+      copy: 'Cubrimos una amplia gama de equipo audiovisual para apoyar cada aspecto de tu flujo de trabajo.',
+      items: [
+        'Flashes, luces, disparadores y monitores',
+        'Reparación básica de trípodes y cabezales de video',
+        'Recuperación de archivos de tarjetas SD, CF y otras',
+        'Calibración de lentes y actualización de firmware',
+        'Mantenimiento interno y externo de equipos',
+        'Limpieza profesional de sensor',
+      ],
+    },
+  ],
+  stats: [
+    { count: '10', suffix: '+', label: 'Años de experiencia' },
+    { count: '6', suffix: ' mo', label: 'Garantía en cada reparación' },
+    { count: '24', suffix: ' h', label: 'Diagnóstico gratuito' },
+    { count: '12', suffix: '+', label: 'Marcas que atendemos' },
+  ],
+  brandsLabel: 'Trabajamos con',
+  brandsAria: 'Marcas que atendemos',
+  warrantyEyebrow: 'Garantía de seis meses',
+  warrantyTitle: 'Si algo no queda bien,<br/>lo hacemos bien.',
+  warrantyCopy: 'Cada reparación incluye una garantía de seis meses que cubre el trabajo realizado. La limpieza de sensor incluye una re-limpieza gratis por 30 días. Documentamos cada trabajo y respaldamos cada reparación.',
+  warrantyPerks: [
+    'Diagnóstico gratuito en 24 horas',
+    'Presupuesto por escrito antes de cualquier trabajo',
+    'Partes y herramientas certificadas',
+    'Prueba funcional completa antes de la entrega',
+    'Línea directa con tu técnico',
+  ],
+  sealLine1: 'SEIS MESES',
+  sealLine2: 'GARANTÍA',
+  sealLine3: 'MPC · DESDE 2015',
+  formEyebrow: 'Inicia tu reparación',
+  formTitle: 'Describe el problema para comenzar el diagnóstico.',
+  formSub: 'Cuantos más detalles nos des, más rápido y preciso será el diagnóstico de nuestros técnicos.',
+  infoTitle: 'Qué sigue después',
+  infoCopy: 'Al recibir tu formulario, nuestro equipo revisará tu caso y te contactará para confirmar el proceso de recepción, los tiempos estimados y los próximos pasos.',
+  infoList: [
+    'Respuesta dentro de un día hábil',
+    'Recibirás un correo con las instrucciones de envío',
+    'Presupuesto por escrito antes de cualquier trabajo',
+    'La mayoría de las reparaciones en 3 a 5 días hábiles',
+  ],
+  fName: 'Nombre completo *',
+  fNamePh: '¿Cómo te llamas?',
+  fLocation: 'Tu ubicación',
+  fLocationPh: 'Ciudad o zona',
+  fPhone: 'Teléfono *',
+  fPhonePh: '(786) 555-0100',
+  fEmail: 'Correo electrónico *',
+  fEmailPh: 'tu@correo.com',
+  fEquipment: 'Marca y modelo del equipo',
+  fEquipmentPh: 'p. ej. Sony A7 IV, Canon RF 24-70mm',
+  fIssue: 'Descripción del problema *',
+  fIssuePh: '¿Qué le pasa a tu equipo? ¿Cuándo empezó? ¿Algún código de error?',
+  fItems: 'Número de equipos *',
+  fItemsPh: '1',
+  fSubmit: 'Enviar solicitud',
+  formSuccess: 'Solicitud recibida. Revisaremos tu caso y te contactaremos dentro de un día hábil con los próximos pasos.',
+  legalPre: 'Al enviar aceptas nuestra',
+  legalLink: 'política de privacidad',
+  legalPost: 'Nunca compartimos tus datos.',
+  xsellAria: 'Servicios relacionados',
+  xsell: [
+    { kicker: '¿Lo necesitas en tu locación?', title: 'Servicio On-Site', copy: 'Nuestra unidad móvil va a tu estudio, set u hogar en todo el sur de Florida. Limpieza de sensor, diagnóstico y recogida de equipos.', link: '/on-site', linkLabel: 'Ver cobertura y agenda' },
+    { kicker: '¿Mantenimiento regular?', title: 'Membresía Anual', copy: 'Limpiezas programadas, prioridad en reparaciones y descuentos exclusivos en un solo plan, todo el año.', link: '/membership', linkLabel: 'Ver planes' },
+  ],
+  ctaTitle: 'Listos cuando tú lo estés.',
+  ctaCopy: 'Diagnóstico gratuito en 24 horas. Presupuesto honesto antes de cualquier trabajo.',
+  ctaBtn1: 'Iniciar una reparación',
+  ctaBtn2: 'Llamar (786) 763-2091',
+} : {
+  title: 'Camera & Gear Repair Miami | DSLR, Mirrorless & Film — MPC',
+  description: 'Professional camera and gear repair in Miami: DSLR, mirrorless, film cameras, lenses, and lighting. In-house technicians, diagnostic within 24 hours, and a 6-month warranty.',
+  crumbHome: 'Home',
+  crumbServices: 'Services',
+  crumbPage: 'Camera & Gear Repair',
+  heroEyebrow: 'Repair · Maintenance · Calibration',
+  heroTitle: 'Camera &amp;<br/>Gear Repair',
+  heroSub: 'Precision Repairs, Done In-House by Experts.',
+  heroLede: 'DSLR, mirrorless, film, lenses, and lighting. Diagnostic in 24 hours. Most repairs done in 3 to 5 business days. Every job carries a six-month warranty.',
+  heroCta1: 'Start a Repair Request',
+  heroCta2: 'What we repair',
+  heroAlt: 'Professional medium-format camera, transparent product shot — Miami Photography Center',
+  blocksEyebrow: 'Services',
+  blocksTitle: 'What we repair.',
+  listLabel: 'Services include:',
+  blocks: [
+    {
+      index: '01',
+      title: 'Camera Repairs',
+      copy: 'We repair digital and analog camera systems from brands like Nikon, Canon, Sony, Fujifilm, and more.',
+      items: [
+        'DSLR, Mirrorless, and Cinema Camera Repair',
+        '35mm and Medium Format Film Camera Repair',
+        'Internal Mechanisms Diagnostics and Servicing',
+        'Replacement of Worn or Damaged Components',
+      ],
+    },
+    {
+      index: '02',
+      title: 'Lens Repairs',
+      copy: 'We restore prime and zoom lenses to peak performance with precision work and original parts.',
+      items: [
+        'Focus Rings, Zoom, and Aperture Mechanisms',
+        'Mount and Contact Point Repairs',
+        'Internal Optical Element Maintenance',
+      ],
+    },
+    {
+      index: '03',
+      title: 'Additional Specialized Services',
+      copy: 'We cover a wide range of audiovisual gear to support every aspect of your workflow.',
+      items: [
+        'Flashes, Lighting Units, Triggers, and Monitors',
+        'Basic Repair of Tripods and Fluid/Video Heads',
+        'File Recovery from SD, CF, and Other Cards',
+        'Lens Calibration & Firmware Updates',
+        'Internal and External Gear Maintenance',
+        'Professional Sensor Cleaning',
+      ],
+    },
+  ],
+  stats: [
+    { count: '10', suffix: '+', label: 'Years of experience' },
+    { count: '6', suffix: ' mo', label: 'Warranty on every repair' },
+    { count: '24', suffix: ' hr', label: 'Free diagnostic' },
+    { count: '12', suffix: '+', label: 'Brands serviced' },
+  ],
+  brandsLabel: 'Brands we service',
+  brandsAria: 'Brands we service',
+  warrantyEyebrow: 'Six-month warranty',
+  warrantyTitle: 'If it&rsquo;s not right,<br/>we make it right.',
+  warrantyCopy: 'Every repair carries a six-month warranty covering the specific work performed. Sensor cleaning includes a 30-day free re-clean. We document every job and stand behind every fix.',
+  warrantyPerks: [
+    'Free diagnostic within 24 hours',
+    'Written quote before any work',
+    'Certified parts and tools',
+    'Full functional test before return',
+    'Direct line to your technician',
+  ],
+  sealLine1: 'SIX MONTH',
+  sealLine2: 'WARRANTY',
+  sealLine3: 'MPC · SINCE 2015',
+  formEyebrow: 'Start your repair',
+  formTitle: 'Describe the issue to begin the diagnostic request.',
+  formSub: 'The more details you provide, the faster and more accurately our technicians can assess your gear.',
+  infoTitle: 'What happens next',
+  infoCopy: 'Once we receive your form, our team will review your case and contact you to confirm the intake process, expected timeline, and next steps.',
+  infoList: [
+    'Response within one business day',
+    'You will receive an email with shipping instructions',
+    'Written quote before any work',
+    'Most repairs done in 3 to 5 business days',
+  ],
+  fName: 'Full Name *',
+  fNamePh: 'What’s your name?',
+  fLocation: 'Your Location',
+  fLocationPh: 'City or area',
+  fPhone: 'Phone *',
+  fPhonePh: '(786) 555-0100',
+  fEmail: 'Email *',
+  fEmailPh: 'you@example.com',
+  fEquipment: 'Equipment Brand & Model',
+  fEquipmentPh: 'e.g. Sony A7 IV, Canon RF 24-70mm',
+  fIssue: 'Description of the Issue *',
+  fIssuePh: 'What’s happening with your gear? When did it start? Any error codes?',
+  fItems: 'Number of Items *',
+  fItemsPh: '1',
+  fSubmit: 'Send Request',
+  formSuccess: 'Request received. We will review your case and contact you within one business day with the next steps.',
+  legalPre: 'By submitting you agree to our',
+  legalLink: 'privacy policy',
+  legalPost: 'We never share your data.',
+  xsellAria: 'Related services',
+  xsell: [
+    { kicker: 'Need it done at your location?', title: 'On-Site Service', copy: 'Our mobile unit comes to your studio, set, or home across South Florida. Sensor cleaning, diagnostics, and equipment pickup.', link: '/on-site', linkLabel: 'See coverage & schedule' },
+    { kicker: 'Service it regularly?', title: 'Annual Membership', copy: 'Scheduled cleanings, priority repairs, and exclusive discounts in one plan, year-round.', link: '/membership', linkLabel: 'See plans' },
+  ],
+  ctaTitle: 'Ready when you are.',
+  ctaCopy: 'Free diagnostic within 24 hours. Honest quote before any work.',
+  ctaBtn1: 'Start a Repair Request',
+  ctaBtn2: 'Call (786) 763-2091',
+};
+
+const pageUrl = locale === 'es'
+  ? 'https://miamiphotographycenter.com/es/repair'
+  : 'https://miamiphotographycenter.com/repair';
+
+const serviceSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${pageUrl}#service`,
+  serviceType: 'Camera Repair',
+  name: locale === 'es' ? 'Reparación de Cámaras y Equipos' : 'Camera & Gear Repair',
+  description: locale === 'es'
+    ? 'Reparación profesional de cámaras DSLR, mirrorless y análogas, lentes y equipo audiovisual. Mantenimiento interno, limpieza de sensor, lubricación y actualización de firmware. Garantía de seis meses.'
+    : 'Professional camera repair for DSLR, mirrorless, film cameras, lenses, and audiovisual gear. Internal maintenance, sensor cleaning, lubrication, firmware updates. Six-month warranty.',
+  url: pageUrl,
+  inLanguage: locale === 'es' ? 'es' : 'en',
+  provider: {
+    '@type': 'LocalBusiness',
+    '@id': 'https://miamiphotographycenter.com/#localbusiness',
+    name: 'Miami Photography Center',
+    telephone: '+1-786-763-2091',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '3911 SW 27th St',
+      addressLocality: 'West Park',
+      addressRegion: 'FL',
+      postalCode: '33023',
+      addressCountry: 'US',
+    },
+  },
+  areaServed: 'South Florida',
+  offers: {
+    '@type': 'AggregateOffer',
+    lowPrice: '49',
+    highPrice: '499',
+    priceCurrency: 'USD',
+  },
+  brand: [
+    { '@type': 'Brand', name: 'Canon' },
+    { '@type': 'Brand', name: 'Nikon' },
+    { '@type': 'Brand', name: 'Sony' },
+    { '@type': 'Brand', name: 'Fujifilm' },
+    { '@type': 'Brand', name: 'Leica' },
+    { '@type': 'Brand', name: 'Panasonic' },
+    { '@type': 'Brand', name: 'Olympus' },
+  ],
+});
+---
+<Base locale={locale} title={t.title} description={t.description}>
+  <script type="application/ld+json" set:html={serviceSchema} slot="head" is:inline />
+  <script src="/scripts/repair.js" defer is:inline slot="head"></script>
+
+  <!-- ==================== HERO (split, transparent camera) ==================== -->
+  <header class="hero hero--repair">
+    <div class="hero__ring" aria-hidden="true"></div>
+
+    <div class="hero__container hero__container--split">
+      <div class="hero__text">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href={p('/')}>{t.crumbHome}</a></li>
+            <li><a href={p('/services')}>{t.crumbServices}</a></li>
+            <li aria-current="page">{t.crumbPage}</li>
+          </ol>
+        </nav>
+
+        <p class="hero__eyebrow" data-anim="fade-up">{t.heroEyebrow}</p>
+        <h1 class="hero__title hero__title--repair" data-anim="hero-title" set:html={t.heroTitle} />
+        <p class="repair-hero__sub" data-anim="fade-up">{t.heroSub}</p>
+        <p class="hero__lede" data-anim="fade-up">{t.heroLede}</p>
+        <div class="hero__ctas" data-anim="fade-up">
+          <a href="#repair-form" class="btn btn--primary">{t.heroCta1}</a>
+          <a href="#repair-services" class="btn btn--ghost">{t.heroCta2} <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+      <!-- Hero camera image — transparent WebP, no square frame -->
+      <div class="hero__camera" data-camera>
+        <img
+          src="/sfx30.webp"
+          alt={t.heroAlt}
+          width="1024"
+          height="1024"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== SERVICE BLOCKS (3) ==================== -->
+  <section id="repair-services" class="services" aria-labelledby="repair-services-title">
+    <div class="services__head">
+      <p class="eyebrow">{t.blocksEyebrow}</p>
+      <h2 id="repair-services-title" class="services__title">{t.blocksTitle}</h2>
+    </div>
+
+    <div class="services__grid services__grid--three">
+      {t.blocks.map((block) => (
+        <article class="card card--tilt" data-tilt>
+          <div class="card__inner">
+            <span class="card__index">{block.index}</span>
+            <h3 class="card__title">{block.title}</h3>
+            <p class="card__copy">{block.copy}</p>
+            <p class="repair-card__label">{t.listLabel}</p>
+            <ul class="repair-card__list">
+              {block.items.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- ==================== TRUST STRIP — stats + brands ==================== -->
+  <section class="stats" aria-label="Why MPC">
+    <div class="stats__grid">
+      {t.stats.map((stat) => (
+        <div class="stats__item">
+          <span class="stats__num" data-count={stat.count} data-suffix={stat.suffix}>{stat.count}{stat.suffix}</span>
+          <span class="stats__label">{stat.label}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="brands" aria-label={t.brandsAria}>
+    <p class="brands__label">{t.brandsLabel}</p>
+    <div class="brands__track-wrap">
+      <div class="brands__track">
+        <span>Canon</span><span>Nikon</span><span>Sony</span><span>Fujifilm</span>
+        <span>Leica</span><span>Panasonic</span><span>Olympus</span><span>Sigma</span>
+        <span>Tamron</span><span>DJI</span><span>GoPro</span><span>Profoto</span>
+        <span aria-hidden="true">Canon</span><span aria-hidden="true">Nikon</span><span aria-hidden="true">Sony</span><span aria-hidden="true">Fujifilm</span>
+        <span aria-hidden="true">Leica</span><span aria-hidden="true">Panasonic</span><span aria-hidden="true">Olympus</span><span aria-hidden="true">Sigma</span>
+        <span aria-hidden="true">Tamron</span><span aria-hidden="true">DJI</span><span aria-hidden="true">GoPro</span><span aria-hidden="true">Profoto</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== WARRANTY ==================== -->
+  <section class="warranty" aria-labelledby="warranty-title">
+    <div class="warranty__inner">
+      <div class="warranty__text">
+        <p class="eyebrow">{t.warrantyEyebrow}</p>
+        <h2 id="warranty-title" class="warranty__title" set:html={t.warrantyTitle} />
+        <p class="warranty__copy">{t.warrantyCopy}</p>
+        <ul class="warranty__perks">
+          {t.warrantyPerks.map((perk) => <li data-anim="fade-up">{perk}</li>)}
+        </ul>
+      </div>
+      <div class="warranty__seal" aria-hidden="true">
+        <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="sealGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#0071e3"/>
+              <stop offset="100%" stop-color="#003e7e"/>
+            </linearGradient>
+          </defs>
+          <circle cx="120" cy="120" r="110" fill="url(#sealGrad)"/>
+          <circle cx="120" cy="120" r="100" fill="none" stroke="#ffffff" stroke-width="1" stroke-dasharray="3 4" opacity="0.35"/>
+          <text x="120" y="100" text-anchor="middle" fill="#ffffff" font-family="SF Pro Display, system-ui" font-size="22" font-weight="600" letter-spacing="2">{t.sealLine1}</text>
+          <text x="120" y="148" text-anchor="middle" fill="#ffffff" font-family="SF Pro Display, system-ui" font-size="36" font-weight="600">{t.sealLine2}</text>
+          <text x="120" y="180" text-anchor="middle" fill="#ffffff" opacity="0.7" font-family="SF Pro Display, system-ui" font-size="14" letter-spacing="3">{t.sealLine3}</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== DIAGNOSTIC REQUEST FORM ==================== -->
+  <section id="repair-form" class="form-section" aria-labelledby="repair-form-title">
+    <div class="form-section__head">
+      <p class="eyebrow">{t.formEyebrow}</p>
+      <h2 id="repair-form-title" class="form-section__title">{t.formTitle}</h2>
+      <p class="form-section__sub">{t.formSub}</p>
+    </div>
+
+    <div class="repair-formgrid">
+      <div class="repair-formgrid__info" data-anim="fade-up">
+        <h3>{t.infoTitle}</h3>
+        <p>{t.infoCopy}</p>
+        <ul class="repair-info__list">
+          {t.infoList.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <form class="form js-demo-form repair-form" action="#" method="POST" data-success={t.formSuccess}>
+        <div class="form__row">
+          <div class="form__field">
+            <label for="repair-name">{t.fName}</label>
+            <input id="repair-name" type="text" name="name" required autocomplete="name" placeholder={t.fNamePh} />
+          </div>
+          <div class="form__field">
+            <label for="repair-location">{t.fLocation}</label>
+            <input id="repair-location" type="text" name="location" autocomplete="address-level2" placeholder={t.fLocationPh} />
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="form__field">
+            <label for="repair-phone">{t.fPhone}</label>
+            <input id="repair-phone" type="tel" name="phone" required autocomplete="tel" placeholder={t.fPhonePh} />
+          </div>
+          <div class="form__field">
+            <label for="repair-email">{t.fEmail}</label>
+            <input id="repair-email" type="email" name="email" required autocomplete="email" placeholder={t.fEmailPh} />
+          </div>
+        </div>
+
+        <div class="form__field">
+          <label for="repair-equipment">{t.fEquipment}</label>
+          <input id="repair-equipment" type="text" name="equipment" placeholder={t.fEquipmentPh} />
+        </div>
+
+        <div class="form__field">
+          <label for="repair-issue">{t.fIssue}</label>
+          <textarea id="repair-issue" name="message" rows="5" required placeholder={t.fIssuePh}></textarea>
+        </div>
+
+        <div class="form__row">
+          <div class="form__field">
+            <label for="repair-items">{t.fItems}</label>
+            <input id="repair-items" type="number" name="items" required min="1" step="1" inputmode="numeric" placeholder={t.fItemsPh} />
+          </div>
+        </div>
+
+        <div class="form-section__actions">
+          <button type="submit" class="btn btn--primary btn--lg">{t.fSubmit}</button>
+          <p class="form-section__legal">
+            {t.legalPre} <a href={p('/privacy')}>{t.legalLink}</a>. {t.legalPost}
+          </p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ==================== CROSS-SELL ==================== -->
+  <section class="repair-xsell" aria-label={t.xsellAria}>
+    <div class="repair-xsell__grid">
+      {t.xsell.map((card) => (
+        <a href={p(card.link)} class="repair-xsell__card" data-anim="fade-up">
+          <p class="repair-xsell__kicker">{card.kicker}</p>
+          <h3>{card.title}</h3>
+          <p>{card.copy}</p>
+          <span class="repair-xsell__link">{card.linkLabel} <span aria-hidden="true">→</span></span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section id="cta" class="cta" aria-labelledby="cta-title">
+    <div class="cta__inner">
+      <h2 id="cta-title" class="cta__title">{t.ctaTitle}</h2>
+      <p class="cta__copy">{t.ctaCopy}</p>
+      <div class="cta__actions">
+        <a href="#repair-form" class="btn btn--primary btn--lg">{t.ctaBtn1}</a>
+        <a href="tel:+17867632091" class="btn btn--ghost btn--lg">{t.ctaBtn2}</a>
+      </div>
+    </div>
+  </section>
+</Base>

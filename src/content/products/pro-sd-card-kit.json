@@ -1,0 +1,37 @@
+{
+  "slug": "pro-sd-card-kit",
+  "name": {
+    "en": "Pro SD Card Kit — 2× 128GB V60",
+    "es": "Kit Pro de Tarjetas SD — 2× 128GB V60"
+  },
+  "price": 79,
+  "category": {
+    "en": "Accessories",
+    "es": "Accesorios"
+  },
+  "img": "https://images.unsplash.com/photo-1499336969384-ebe67b79faa8?w=1200&q=80&auto=format&fit=crop",
+  "desc": {
+    "en": "Two 128GB UHS-II V60 SD cards with a weather-resistant carry case — ready for 4K video and high-resolution bursts. Each card is speed-tested and health-verified in-house before shipping. 6-month warranty included.",
+    "es": "Dos tarjetas SD UHS-II V60 de 128GB con estuche resistente al clima — listas para video 4K y ráfagas de alta resolución. Cada tarjeta se prueba de velocidad y estado in-house antes del envío. Incluye garantía de 6 meses."
+  },
+  "condition": {
+    "en": "Speed-tested in-house — 6-month warranty",
+    "es": "Probadas de velocidad in-house — garantía de 6 meses"
+  },
+  "specs": {
+    "en": [
+      "2× 128GB SDXC UHS-II, V60 rated",
+      "Sustained write speeds for 4K 60p recording",
+      "Read/write speeds verified card-by-card in-house",
+      "Weather-resistant hard case for 8 cards included",
+      "Works with all current Canon, Nikon, Sony, Fujifilm bodies"
+    ],
+    "es": [
+      "2× SDXC UHS-II de 128GB, clasificación V60",
+      "Velocidades de escritura sostenidas para grabar 4K 60p",
+      "Velocidades de lectura/escritura verificadas tarjeta por tarjeta in-house",
+      "Incluye estuche rígido resistente al clima para 8 tarjetas",
+      "Compatibles con cuerpos actuales Canon, Nikon, Sony y Fujifilm"
+    ]
+  }
+}
