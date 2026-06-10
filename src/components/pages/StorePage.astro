@@ -1,0 +1,332 @@
+---
+import Base from '../../layouts/Base.astro';
+import { localePath, type Locale } from '../../lib/i18n';
+import { products } from '../../data/products';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const p = (path: string) => localePath(locale, path);
+
+const t = locale === 'es' ? {
+  title: 'Tienda Online | Cámaras y Accesorios Revisados In-House — MPC',
+  description: 'Cámaras, lentes y accesorios usados, revisados y calibrados in-house por nuestros técnicos. Garantía de 6 meses. Envíos a todo Estados Unidos.',
+  breadcrumbHome: 'Inicio',
+  breadcrumbStore: 'Tienda',
+  heroEyebrow: 'Tienda',
+  heroTitle: 'Tienda Online.',
+  heroLede: 'Cámaras y accesorios, revisados y calibrados in-house. Envíos a todo Estados Unidos.',
+  filterLabel: 'Filtrar por categoría',
+  filters: [
+    { key: 'all', label: 'Todo' },
+    { key: 'cameras', label: 'Cámaras' },
+    { key: 'lenses', label: 'Lentes' },
+    { key: 'accessories', label: 'Accesorios' },
+  ],
+  viewProduct: 'Ver producto',
+  trust: [
+    { title: 'Garantía de 6 meses', copy: 'Todo equipo usado sale con garantía real de 6 meses.' },
+    { title: 'Envíos a todo EE. UU.', copy: 'Empaque protegido y número de seguimiento en cada orden.' },
+    { title: 'Calibrado por nuestros técnicos', copy: 'Cada pieza pasa por nuestro propio taller antes de publicarse.' },
+  ],
+} : {
+  title: 'Online Store | Used Cameras & Gear, Serviced In-House — MPC',
+  description: 'Used cameras, lenses, and accessories — inspected and serviced in-house by our technicians. 6-month warranty. Shipped anywhere in the US.',
+  breadcrumbHome: 'Home',
+  breadcrumbStore: 'Store',
+  heroEyebrow: 'Store',
+  heroTitle: 'Online Store.',
+  heroLede: 'Cameras and gear, inspected and serviced in-house. Shipped anywhere in the US.',
+  filterLabel: 'Filter by category',
+  filters: [
+    { key: 'all', label: 'All' },
+    { key: 'cameras', label: 'Cameras' },
+    { key: 'lenses', label: 'Lenses' },
+    { key: 'accessories', label: 'Accessories' },
+  ],
+  viewProduct: 'View product',
+  trust: [
+    { title: '6-month warranty', copy: 'Every piece of used gear ships with a real 6-month warranty.' },
+    { title: 'US-wide shipping', copy: 'Protective packaging and a tracking number on every order.' },
+    { title: 'Serviced by our own technicians', copy: 'Every item goes through our own workshop before it’s listed.' },
+  ],
+};
+
+const categoryKey = (en: string) => en.toLowerCase();
+const formatPrice = (n: number) => `$${n.toLocaleString('en-US')}`;
+---
+<Base locale={locale} title={t.title} description={t.description}>
+  <!-- ==================== PAGE HERO ==================== -->
+  <header class="page-hero">
+    <div class="page-hero__inner">
+      <nav class="breadcrumbs" aria-label={locale === 'es' ? 'Ruta de navegación' : 'Breadcrumb'}>
+        <a href={p('/')}>{t.breadcrumbHome}</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{t.breadcrumbStore}</span>
+      </nav>
+      <p class="eyebrow" data-anim="fade-up">{t.heroEyebrow}</p>
+      <h1 class="page-hero__title" data-anim="fade-up">{t.heroTitle}</h1>
+      <p class="page-hero__lede" data-anim="fade-up">{t.heroLede}</p>
+    </div>
+  </header>
+
+  <!-- ==================== TRUST STRIP ==================== -->
+  <section class="store-trust" aria-label={locale === 'es' ? 'Por qué comprar con MPC' : 'Why buy from MPC'}>
+    <ul class="store-trust__grid">
+      {t.trust.map((item) => (
+        <li class="store-trust__item" data-anim="fade-up">
+          <span class="store-trust__check" aria-hidden="true">✓</span>
+          <div>
+            <h2 class="store-trust__title">{item.title}</h2>
+            <p class="store-trust__copy">{item.copy}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- ==================== CATALOG ==================== -->
+  <section class="store-catalog" aria-label={locale === 'es' ? 'Catálogo de productos' : 'Product catalog'}>
+    <div class="store-catalog__inner">
+      <div class="store-filters" role="group" aria-label={t.filterLabel}>
+        {t.filters.map((filter, i) => (
+          <button
+            type="button"
+            class={`store-filters__chip${i === 0 ? ' is-active' : ''}`}
+            data-filter={filter.key}
+            aria-pressed={i === 0 ? 'true' : 'false'}
+          >{filter.label}</button>
+        ))}
+      </div>
+
+      <ul class="store-grid" id="storeGrid">
+        {products.map((product) => (
+          <li class="store-card" data-category={categoryKey(product.category.en)} data-anim="fade-up">
+            <a href={p(`/store/${product.slug}`)} class="store-card__link-wrap">
+              <div class="store-card__media">
+                <img
+                  src={product.img}
+                  alt={product.name[locale]}
+                  width="1200" height="800"
+                  loading="lazy" decoding="async" />
+              </div>
+              <div class="store-card__body">
+                <p class="store-card__category">{product.category[locale]}</p>
+                <h2 class="store-card__name">{product.name[locale]}</h2>
+                <p class="store-card__badge">{product.condition[locale]}</p>
+                <div class="store-card__foot">
+                  <span class="store-card__price">{formatPrice(product.price)}</span>
+                  <span class="store-card__cta">{t.viewProduct} <span aria-hidden="true">→</span></span>
+                </div>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Category filter — guarded, no dependencies -->
+  <script is:inline>
+    (function () {
+      var chips = document.querySelectorAll('.store-filters__chip');
+      var cards = document.querySelectorAll('.store-card[data-category]');
+      if (!chips.length || !cards.length) return;
+      chips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+          var filter = chip.getAttribute('data-filter');
+          chips.forEach(function (c) {
+            var active = c === chip;
+            c.classList.toggle('is-active', active);
+            c.setAttribute('aria-pressed', String(active));
+          });
+          cards.forEach(function (card) {
+            var show = filter === 'all' || card.getAttribute('data-category') === filter;
+            card.style.display = show ? '' : 'none';
+          });
+        });
+      });
+    })();
+  </script>
+</Base>
+
+<style is:global>
+/* ============================================================
+   STORE — catalog
+   ============================================================ */
+.store-trust {
+  padding: 0 var(--gutter) 24px;
+  background: var(--color-fog-canvas);
+}
+.store-trust__grid {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.store-trust__item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: var(--color-pure-white);
+  border-radius: var(--r-card);
+  padding: 24px 26px;
+}
+.store-trust__check {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0, 113, 227, 0.1);
+  color: var(--color-electric-blue);
+  font-size: 14px;
+  font-weight: 700;
+}
+.store-trust__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: -0.32px;
+  color: var(--color-apple-ink);
+  margin-bottom: 4px;
+}
+.store-trust__copy {
+  font-size: 14px;
+  color: var(--color-graphite);
+  line-height: 1.5;
+}
+@media (max-width: 900px) {
+  .store-trust__grid { grid-template-columns: 1fr; }
+}
+
+.store-catalog {
+  padding: 40px var(--gutter) var(--section-gap);
+  background: var(--color-fog-canvas);
+}
+.store-catalog__inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+}
+
+/* Filter chips */
+.store-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+.store-filters__chip {
+  font-size: 15px;
+  letter-spacing: -0.2px;
+  padding: 9px 20px;
+  border-radius: var(--r-chip);
+  border: 1px solid var(--color-ash);
+  background: var(--color-pure-white);
+  color: var(--color-charcoal);
+  transition: background .25s var(--ease-out), color .25s var(--ease-out), border-color .25s var(--ease-out);
+}
+.store-filters__chip:hover { border-color: var(--color-graphite); }
+.store-filters__chip.is-active {
+  background: var(--color-apple-ink);
+  border-color: var(--color-apple-ink);
+  color: var(--color-pure-white);
+}
+
+/* Product grid */
+.store-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+@media (max-width: 1180px) { .store-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 900px) { .store-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .store-grid { grid-template-columns: 1fr; } }
+
+.store-card {
+  background: var(--color-pure-white);
+  border-radius: var(--r-card);
+  overflow: hidden;
+  transition: transform .4s var(--ease-out), box-shadow .4s var(--ease-out);
+}
+.store-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.08);
+}
+.store-card__link-wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.store-card__media {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--color-ash);
+}
+.store-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .8s var(--ease-out);
+}
+.store-card:hover .store-card__media img { transform: scale(1.05); }
+.store-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 22px 24px 24px;
+  flex: 1;
+}
+.store-card__category {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-electric-blue);
+}
+.store-card__name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 1.25;
+  letter-spacing: -0.32px;
+  color: var(--color-apple-ink);
+}
+.store-card__badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.1px;
+  color: #1d7a3a;
+  background: rgba(29, 122, 58, 0.1);
+  border-radius: var(--r-chip);
+  padding: 4px 12px;
+}
+.store-card__foot {
+  margin-top: auto;
+  padding-top: 14px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+.store-card__price {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  color: var(--color-apple-ink);
+}
+.store-card__cta {
+  font-size: 14px;
+  color: var(--color-link-blue);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+</style>

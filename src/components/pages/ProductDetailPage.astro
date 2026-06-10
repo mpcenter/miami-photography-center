@@ -1,0 +1,345 @@
+---
+import Base from '../../layouts/Base.astro';
+import { localePath, type Locale } from '../../lib/i18n';
+import type { Product } from '../../data/products';
+
+interface Props {
+  locale: Locale;
+  product: Product;
+}
+const { locale, product } = Astro.props;
+const p = (path: string) => localePath(locale, path);
+
+const t = locale === 'es' ? {
+  breadcrumbHome: 'Inicio',
+  breadcrumbStore: 'Tienda',
+  specsTitle: 'Especificaciones',
+  qtyLabel: 'Cantidad',
+  buyNow: 'Comprar ahora',
+  stripeNote: 'Pago seguro vía Stripe — se activa en el lanzamiento.',
+  formSuccess: 'Solicitud de orden recibida — el checkout se activa en el lanzamiento.',
+  shippingTitle: 'Envíos',
+  shippingCopy: 'Enviamos a todo Estados Unidos con empaque protegido y número de seguimiento. Las órdenes se despachan en 1–2 días hábiles desde nuestro taller en West Park, FL. Retiro en tienda disponible sin costo.',
+  warrantyTitle: 'Garantía de 6 meses',
+  warrantyCopy: 'Todo el equipo usado se revisa y calibra en nuestro propio taller antes de publicarse. Cada compra incluye una garantía de 6 meses que cubre fallas de funcionamiento del equipo tal como fue vendido. Si algo falla, lo reparamos in-house — los mismos técnicos que lo revisaron.',
+  crossTitle: '¿Necesitas servicio para tu propio equipo?',
+  crossCopy: 'Los mismos técnicos que revisan cada producto de la tienda reparan cámaras y lentes todos los días. Garantía de 6 meses en cada reparación.',
+  crossCta: 'Conoce el servicio de reparación',
+} : {
+  breadcrumbHome: 'Home',
+  breadcrumbStore: 'Store',
+  specsTitle: 'Specifications',
+  qtyLabel: 'Quantity',
+  buyNow: 'Buy now',
+  stripeNote: 'Secure checkout via Stripe — activating at launch.',
+  formSuccess: 'Order request received — checkout goes live at launch.',
+  shippingTitle: 'Shipping',
+  shippingCopy: 'We ship anywhere in the US with protective packaging and a tracking number. Orders dispatch within 1–2 business days from our workshop in West Park, FL. Free in-store pickup is also available.',
+  warrantyTitle: '6-month warranty',
+  warrantyCopy: 'Every piece of used gear is inspected and serviced in our own workshop before it’s listed. Each purchase includes a 6-month warranty covering functional failures of the gear as sold. If anything goes wrong, we fix it in-house — the same technicians who serviced it.',
+  crossTitle: 'Need your own gear serviced?',
+  crossCopy: 'The same technicians who inspect every store item repair cameras and lenses every day. 6-month warranty on every repair.',
+  crossCta: 'Explore camera repair',
+};
+
+const formatPrice = (n: number) => `$${n.toLocaleString('en-US')}`;
+const pageTitle = locale === 'es'
+  ? `${product.name.es} | Tienda MPC — Revisado In-House, Garantía de 6 Meses`
+  : `${product.name.en} | MPC Store — Serviced In-House, 6-Month Warranty`;
+const pageDescription = product.desc[locale];
+
+const site = 'https://miamiphotographycenter.com';
+const knownBrands = ['Canon', 'Nikon', 'Sony', 'Fujifilm', 'Profoto'];
+const brandName = knownBrands.find((b) => product.name.en.startsWith(b));
+const productSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: product.name[locale],
+  description: product.desc[locale],
+  image: product.img,
+  category: product.category.en,
+  ...(brandName ? { brand: { '@type': 'Brand', name: brandName } } : {}),
+  offers: {
+    '@type': 'Offer',
+    url: `${site}${p(`/store/${product.slug}`)}`,
+    priceCurrency: 'USD',
+    price: product.price.toFixed(2),
+    itemCondition: product.name.en.includes('(Used)')
+      ? 'https://schema.org/RefurbishedCondition'
+      : 'https://schema.org/NewCondition',
+    availability: 'https://schema.org/InStock',
+    seller: { '@type': 'LocalBusiness', name: 'Miami Photography Center' },
+  },
+});
+---
+<Base locale={locale} title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" set:html={productSchema} slot="head" is:inline />
+
+  <!-- ==================== PRODUCT ==================== -->
+  <article class="store-detail">
+    <div class="store-detail__inner">
+      <nav class="breadcrumbs" aria-label={locale === 'es' ? 'Ruta de navegación' : 'Breadcrumb'}>
+        <a href={p('/')}>{t.breadcrumbHome}</a>
+        <span aria-hidden="true">/</span>
+        <a href={p('/store')}>{t.breadcrumbStore}</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{product.name[locale]}</span>
+      </nav>
+
+      <div class="store-detail__grid">
+        <figure class="store-detail__media" data-anim="fade-up">
+          <img
+            src={product.img}
+            alt={product.name[locale]}
+            width="1200" height="800"
+            fetchpriority="high" decoding="async" />
+        </figure>
+
+        <div class="store-detail__info">
+          <p class="store-detail__category">{product.category[locale]}</p>
+          <h1 class="store-detail__name">{product.name[locale]}</h1>
+          <p class="store-detail__badge">{product.condition[locale]}</p>
+          <p class="store-detail__price">{formatPrice(product.price)}</p>
+          <p class="store-detail__desc">{product.desc[locale]}</p>
+
+          <h2 class="store-detail__specs-title">{t.specsTitle}</h2>
+          <ul class="store-detail__specs">
+            {product.specs[locale].map((spec) => (
+              <li><span aria-hidden="true">✓</span> {spec}</li>
+            ))}
+          </ul>
+
+          <form class="form js-demo-form store-detail__form" action="#" method="POST" data-success={t.formSuccess}>
+            <div class="form__field store-detail__qty">
+              <label for="qty">{t.qtyLabel}</label>
+              <select id="qty" name="quantity">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn--primary btn--lg store-detail__buy">
+              {t.buyNow} — {formatPrice(product.price)}
+            </button>
+            <p class="form__note">{t.stripeNote}</p>
+          </form>
+
+          <div class="store-detail__accordions">
+            <details class="store-detail__details">
+              <summary>{t.shippingTitle}</summary>
+              <p>{t.shippingCopy}</p>
+            </details>
+            <details class="store-detail__details">
+              <summary>{t.warrantyTitle}</summary>
+              <p>{t.warrantyCopy}</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ==================== CROSS-SELL ==================== -->
+  <section class="store-cross" aria-labelledby="store-cross-title">
+    <div class="store-cross__inner" data-anim="fade-up">
+      <div>
+        <h2 id="store-cross-title" class="store-cross__title">{t.crossTitle}</h2>
+        <p class="store-cross__copy">{t.crossCopy}</p>
+      </div>
+      <a href={p('/repair')} class="btn btn--primary">{t.crossCta} <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</Base>
+
+<style is:global>
+/* ============================================================
+   STORE — product detail
+   ============================================================ */
+.store-detail {
+  padding: 160px var(--gutter) var(--section-gap);
+  background: var(--color-fog-canvas);
+}
+.store-detail__inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+}
+.store-detail__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: clamp(28px, 4vw, 64px);
+  align-items: start;
+}
+@media (max-width: 980px) {
+  .store-detail { padding-top: 130px; }
+  .store-detail__grid { grid-template-columns: 1fr; }
+}
+
+.store-detail__media {
+  margin: 0;
+  position: sticky;
+  top: 110px;
+  border-radius: var(--r-card);
+  overflow: hidden;
+  background: var(--color-ash);
+}
+.store-detail__media img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+}
+@media (max-width: 980px) {
+  .store-detail__media { position: static; }
+}
+
+.store-detail__info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.store-detail__category {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-electric-blue);
+}
+.store-detail__badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.1px;
+  color: #1d7a3a;
+  background: rgba(29, 122, 58, 0.1);
+  border-radius: var(--r-chip);
+  padding: 5px 14px;
+}
+.store-detail__name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(30px, 3.6vw, 48px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--color-apple-ink);
+}
+.store-detail__price {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(26px, 2.6vw, 36px);
+  letter-spacing: -0.02em;
+  color: var(--color-apple-ink);
+}
+.store-detail__desc {
+  font-size: 17px;
+  color: var(--color-graphite);
+  line-height: 1.55;
+  max-width: 52ch;
+}
+.store-detail__specs-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 19px;
+  letter-spacing: -0.32px;
+  color: var(--color-apple-ink);
+  margin-top: 10px;
+}
+.store-detail__specs {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.store-detail__specs li {
+  font-size: 15px;
+  color: var(--color-charcoal);
+  line-height: 1.5;
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+.store-detail__specs li span {
+  color: var(--color-electric-blue);
+  font-weight: 700;
+  flex: none;
+}
+
+.store-detail__form {
+  margin-top: 14px;
+  background: var(--color-pure-white);
+  border-radius: var(--r-card);
+  padding: 26px;
+}
+.store-detail__qty { max-width: 160px; }
+.store-detail__buy { justify-content: center; }
+
+.store-detail__accordions {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.store-detail__details {
+  background: var(--color-pure-white);
+  border-radius: 18px;
+  padding: 0 22px;
+}
+.store-detail__details summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.32px;
+  color: var(--color-apple-ink);
+}
+.store-detail__details summary::-webkit-details-marker { display: none; }
+.store-detail__details summary::after {
+  content: '+';
+  font-size: 20px;
+  color: var(--color-slate);
+  transition: transform .25s var(--ease-out);
+}
+.store-detail__details[open] summary::after { transform: rotate(45deg); }
+.store-detail__details p {
+  font-size: 15px;
+  color: var(--color-graphite);
+  line-height: 1.55;
+  padding-bottom: 20px;
+}
+
+/* Cross-sell band */
+.store-cross {
+  padding: 0 var(--gutter) var(--section-gap);
+  background: var(--color-fog-canvas);
+}
+.store-cross__inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  background: var(--color-apple-ink);
+  border-radius: var(--r-card);
+  padding: clamp(32px, 4vw, 56px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.store-cross__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(24px, 3vw, 38px);
+  letter-spacing: -0.015em;
+  color: var(--color-pure-white);
+  margin-bottom: 8px;
+}
+.store-cross__copy {
+  font-size: 16px;
+  color: var(--color-slate);
+  line-height: 1.5;
+  max-width: 56ch;
+}
+</style>

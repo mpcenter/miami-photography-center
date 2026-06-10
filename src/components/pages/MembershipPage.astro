@@ -1,0 +1,902 @@
+---
+import Base from '../../layouts/Base.astro';
+import { localePath, type Locale } from '../../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const p = (path: string) => localePath(locale, path);
+
+const t = locale === 'es' ? {
+  title: 'Membresía Anual MPC — Mantenimiento de Cámaras Todo el Año | Miami',
+  description: 'Tu equipo, mantenido todo el año. Limpiezas de sensor programadas, visitas on-site, prioridad en reparaciones y descuentos. Planes para fotógrafos, estudios, escuelas y productoras en el sur de Florida.',
+  breadcrumbHome: 'Inicio',
+  breadcrumbServices: 'Servicios',
+  breadcrumbCurrent: 'Membresía',
+  heroEyebrow: 'Membresía Anual',
+  heroTitle: 'Membresía Anual MPC.',
+  heroLede: 'Tu equipo, mantenido todo el año. Un solo plan. Cuidado programado. Servicio prioritario.',
+  heroCta1: 'Quiero ser miembro',
+  heroCta2: 'Ver planes',
+  benefitsEyebrow: 'Qué incluye',
+  benefitsTitle: 'Todo lo que tu equipo necesita, programado.',
+  benefits: [
+    { title: 'Limpiezas de sensor al año', copy: 'Limpiezas programadas según tu plan — tu sensor nunca acumula meses de polvo.' },
+    { title: 'Visitas on-site', copy: 'Nuestra unidad móvil va a tu estudio o locación, incluida en tu plan.' },
+    { title: 'Prioridad en reparaciones', copy: 'Tu equipo entra primero en la cola del taller. Menos tiempo sin trabajar.' },
+    { title: 'Descuentos en reparaciones', copy: 'Tarifa preferencial de miembro en reparaciones adicionales.' },
+    { title: 'Reporte anual de condición', copy: 'Un informe detallado del estado de cada cuerpo y lente cubierto.' },
+    { title: 'Actualizaciones de firmware', copy: 'Mantenemos tu equipo al día en cada visita, sin costo extra.' },
+  ],
+  tiersEyebrow: 'Planes',
+  tiersTitle: 'Tres planes. Un mismo estándar de cuidado.',
+  tiersNote: 'Precio introductorio — contáctanos',
+  tiersPrice: '$—',
+  tiersPer: '/año',
+  tiersBadge: 'Más popular',
+  tiersCta: 'Solicitar precio',
+  tiers: [
+    {
+      name: 'SOLO',
+      who: 'Para fotógrafos individuales',
+      accent: false,
+      features: [
+        '2 limpiezas de sensor al año',
+        '1 visita on-site al año',
+        'Prioridad en cola de reparación',
+        '10% de descuento en reparaciones',
+        'Hasta 1 cuerpo + 2 lentes',
+      ],
+    },
+    {
+      name: 'STUDIO',
+      who: 'Estudios y producciones pequeñas',
+      accent: true,
+      features: [
+        '6 limpiezas de sensor al año',
+        '4 visitas on-site al año',
+        'Diagnóstico gratis',
+        '15% de descuento en reparaciones',
+        'Hasta 3 cuerpos + 5 lentes',
+        'Reporte anual de condición de equipo',
+      ],
+    },
+    {
+      name: 'INSTITUTION',
+      who: 'Escuelas y productoras',
+      accent: false,
+      features: [
+        'Limpiezas ilimitadas en visitas programadas',
+        'Visita on-site mensual incluida',
+        'Soporte técnico directo',
+        'Plan personalizado por cantidad de equipos',
+        'Facturación corporativa',
+      ],
+    },
+  ],
+  compareEyebrow: 'La cuenta',
+  compareTitle: 'Servicio por servicio, o un solo plan.',
+  compareSingle: 'Pagando por servicio',
+  compareSingleItems: [
+    'Limpieza de sensor desde $49 por visita',
+    'Cargo de traslado en cada visita on-site',
+    'Cola estándar de reparación',
+    'Precio completo en cada reparación',
+    'Sin reporte de condición de equipo',
+  ],
+  compareMember: 'Con la membresía',
+  compareMemberItems: [
+    'Limpiezas programadas, incluidas en el plan',
+    'Visitas on-site incluidas según tu plan',
+    'Prioridad en la cola de reparación',
+    'Descuento de miembro en reparaciones',
+    'Reporte anual de condición (planes Studio e Institution)',
+  ],
+  compareNote: 'Si cuidas tu equipo más de una vez al año, la membresía agrupa todo en un solo plan — con prioridad incluida.',
+  whoEyebrow: 'Para quién es',
+  whoTitle: 'Pensada para quienes viven de su equipo.',
+  who: [
+    { title: 'Fotógrafos', copy: 'Tu cámara es tu herramienta de trabajo. Mantenla lista todo el año.' },
+    { title: 'Estudios', copy: 'Varios cuerpos y lentes, un solo plan de mantenimiento programado.' },
+    { title: 'Escuelas', copy: 'Flotas de equipos para estudiantes, cuidadas con visitas regulares.' },
+    { title: 'Productoras', copy: 'Soporte directo y mantenimiento por lotes para tu inventario.' },
+  ],
+  faqEyebrow: 'Preguntas frecuentes',
+  faqTitle: 'Membresía, en claro.',
+  faq: [
+    { q: '¿Cuándo empieza mi membresía?', a: 'El día en que confirmamos tu solicitud. Desde ahí corre por 12 meses, con tus limpiezas y visitas programadas según el plan.' },
+    { q: '¿Puedo cambiar de plan durante el año?', a: 'Sí. Contáctanos y te movemos al plan superior por el resto de tu período. Queremos que el plan se ajuste a tu equipo, no al revés.' },
+    { q: '¿Qué equipos cubre?', a: 'Cuerpos de cámara y lentes según los límites de tu plan (por ejemplo, Solo cubre 1 cuerpo + 2 lentes). El plan Institution se dimensiona a tu inventario.' },
+    { q: '¿Cómo agendo mis limpiezas y visitas?', a: 'Por teléfono o email, con agenda prioritaria de miembro. También podemos dejar tus visitas programadas con fechas fijas desde el inicio.' },
+  ],
+  formEyebrow: 'Solicitud',
+  formTitle: 'Aplica a la membresía.',
+  formLede: 'Cuéntanos sobre tu equipo y el plan que te interesa. Te contactamos en un día hábil con el precio introductorio y los pasos siguientes.',
+  formName: 'Nombre completo',
+  formEmail: 'Email',
+  formPhone: 'Teléfono',
+  formTier: 'Plan que te interesa',
+  formTierOptions: ['Solo — fotógrafo individual', 'Studio — estudio o producción pequeña', 'Institution — escuela o productora', 'Aún no lo sé'],
+  formGear: '¿Cuántas cámaras y lentes?',
+  formGearPh: 'Ej. 2 cuerpos, 4 lentes',
+  formMessage: 'Mensaje',
+  formMessagePh: 'Cuéntanos sobre tu equipo, tu ritmo de trabajo o cualquier pregunta...',
+  formSubmit: 'Enviar solicitud',
+  formNote: 'Precio introductorio en definición — te lo confirmamos al responder. Sin compromiso.',
+  formSuccess: 'Solicitud recibida. Te contactamos en un día hábil con precios y pasos siguientes.',
+  ctaTitle: '¿Dudas sobre qué plan te conviene?',
+  ctaCopy: 'Llámanos y lo armamos contigo según tu equipo y tu ritmo de trabajo.',
+  ctaBtn1: 'Llamar (786) 763-2091',
+  ctaBtn2: 'Ver limpieza de sensor',
+} : {
+  title: 'MPC Annual Membership — Year-Round Camera Maintenance | Miami',
+  description: 'Your gear, maintained year-round. Scheduled sensor cleanings, on-site visits, priority repairs, and member discounts. Plans for photographers, studios, schools, and production companies in South Florida.',
+  breadcrumbHome: 'Home',
+  breadcrumbServices: 'Services',
+  breadcrumbCurrent: 'Membership',
+  heroEyebrow: 'Annual Membership',
+  heroTitle: 'MPC Annual Membership.',
+  heroLede: 'Your gear, maintained year-round. One plan. Scheduled care. Priority service.',
+  heroCta1: 'Become a Member',
+  heroCta2: 'See plans',
+  benefitsEyebrow: 'What’s included',
+  benefitsTitle: 'Everything your gear needs, on a schedule.',
+  benefits: [
+    { title: 'Sensor cleanings per year', copy: 'Scheduled cleanings based on your plan — your sensor never collects months of dust.' },
+    { title: 'On-site visits', copy: 'Our mobile unit comes to your studio or location, included in your plan.' },
+    { title: 'Priority repair queue', copy: 'Your gear goes to the front of the workshop queue. Less time out of action.' },
+    { title: 'Discounts on repairs', copy: 'Member pricing on any additional repairs your gear needs.' },
+    { title: 'Annual gear condition report', copy: 'A detailed report on the state of every covered body and lens.' },
+    { title: 'Firmware updates', copy: 'We keep your gear up to date at every visit, at no extra charge.' },
+  ],
+  tiersEyebrow: 'Plans',
+  tiersTitle: 'Three plans. One standard of care.',
+  tiersNote: 'Introductory pricing — contact us',
+  tiersPrice: '$—',
+  tiersPer: '/year',
+  tiersBadge: 'Most popular',
+  tiersCta: 'Request pricing',
+  tiers: [
+    {
+      name: 'SOLO',
+      who: 'For individual photographers',
+      accent: false,
+      features: [
+        '2 sensor cleanings per year',
+        '1 on-site visit per year',
+        'Priority repair queue',
+        '10% off additional repairs',
+        'Up to 1 body + 2 lenses',
+      ],
+    },
+    {
+      name: 'STUDIO',
+      who: 'Studios & small productions',
+      accent: true,
+      features: [
+        '6 sensor cleanings per year',
+        '4 on-site visits per year',
+        'Free diagnostics',
+        '15% off repairs',
+        'Up to 3 bodies + 5 lenses',
+        'Annual gear condition report',
+      ],
+    },
+    {
+      name: 'INSTITUTION',
+      who: 'Schools & production companies',
+      accent: false,
+      features: [
+        'Unlimited cleanings on scheduled visits',
+        'Monthly on-site visit included',
+        'Direct tech support',
+        'Custom plan sized to your inventory',
+        'Corporate invoicing',
+      ],
+    },
+  ],
+  compareEyebrow: 'The math',
+  compareTitle: 'Service by service, or one plan.',
+  compareSingle: 'Paying per service',
+  compareSingleItems: [
+    'Sensor cleaning from $49 per visit',
+    'Travel fee on every on-site visit',
+    'Standard repair queue',
+    'Full price on every repair',
+    'No gear condition report',
+  ],
+  compareMember: 'With membership',
+  compareMemberItems: [
+    'Scheduled cleanings included in the plan',
+    'On-site visits included per your tier',
+    'Priority repair queue',
+    'Member discount on repairs',
+    'Annual condition report (Studio & Institution)',
+  ],
+  compareNote: 'If you service your gear more than once a year, membership bundles it all into one plan — with priority built in.',
+  whoEyebrow: 'Who it’s for',
+  whoTitle: 'Built for people who work with their gear.',
+  who: [
+    { title: 'Photographers', copy: 'Your camera is your livelihood. Keep it ready all year long.' },
+    { title: 'Studios', copy: 'Multiple bodies and lenses, one scheduled maintenance plan.' },
+    { title: 'Schools', copy: 'Student gear fleets, cared for with regular scheduled visits.' },
+    { title: 'Production companies', copy: 'Direct support and batch maintenance for your inventory.' },
+  ],
+  faqEyebrow: 'FAQ',
+  faqTitle: 'Membership, made clear.',
+  faq: [
+    { q: 'When does my membership start?', a: 'The day we confirm your application. It runs for 12 months from there, with your cleanings and visits scheduled per your plan.' },
+    { q: 'Can I change tiers mid-year?', a: 'Yes. Contact us and we’ll move you up to the next tier for the remainder of your term. The plan should fit your gear — not the other way around.' },
+    { q: 'What gear is covered?', a: 'Camera bodies and lenses up to your tier’s limits (for example, Solo covers 1 body + 2 lenses). The Institution plan is sized to your inventory.' },
+    { q: 'How do I schedule my cleanings and visits?', a: 'By phone or email, with member-priority scheduling. We can also lock in your scheduled visits with fixed dates from day one.' },
+  ],
+  formEyebrow: 'Apply',
+  formTitle: 'Apply for membership.',
+  formLede: 'Tell us about your gear and the plan you’re interested in. We’ll get back within one business day with introductory pricing and next steps.',
+  formName: 'Full name',
+  formEmail: 'Email',
+  formPhone: 'Phone',
+  formTier: 'Tier you’re interested in',
+  formTierOptions: ['Solo — individual photographer', 'Studio — studio or small production', 'Institution — school or production company', 'Not sure yet'],
+  formGear: 'How many cameras & lenses?',
+  formGearPh: 'e.g. 2 bodies, 4 lenses',
+  formMessage: 'Message',
+  formMessagePh: 'Tell us about your gear, your workload, or any questions...',
+  formSubmit: 'Send Application',
+  formNote: 'Introductory pricing is being finalized — we’ll confirm it when we respond. No commitment.',
+  formSuccess: 'Application received. We’ll contact you within one business day with pricing and next steps.',
+  ctaTitle: 'Not sure which plan fits?',
+  ctaCopy: 'Call us and we’ll size it with you, based on your gear and how you work.',
+  ctaBtn1: 'Call (786) 763-2091',
+  ctaBtn2: 'See sensor cleaning',
+};
+
+const faqSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: t.faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+});
+---
+<Base locale={locale} title={t.title} description={t.description}>
+  <script type="application/ld+json" set:html={faqSchema} slot="head" is:inline />
+
+  <!-- ==================== PAGE HERO ==================== -->
+  <header class="page-hero">
+    <div class="page-hero__inner">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href={p('/')}>{t.breadcrumbHome}</a>
+        <span aria-hidden="true">›</span>
+        <a href={p('/services')}>{t.breadcrumbServices}</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">{t.breadcrumbCurrent}</span>
+      </nav>
+      <p class="eyebrow" data-anim="fade-up">{t.heroEyebrow}</p>
+      <h1 class="page-hero__title" data-anim="fade-up">{t.heroTitle}</h1>
+      <p class="page-hero__lede" data-anim="fade-up">{t.heroLede}</p>
+      <div class="members-hero__ctas" data-anim="fade-up">
+        <a href="#membership-form" class="btn btn--primary">{t.heroCta1}</a>
+        <a href="#plans" class="btn btn--ghost">{t.heroCta2} <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== BENEFITS CHECKLIST ==================== -->
+  <section class="members-benefits" aria-labelledby="benefits-title">
+    <div class="members-benefits__head">
+      <p class="eyebrow">{t.benefitsEyebrow}</p>
+      <h2 id="benefits-title" class="members-benefits__title">{t.benefitsTitle}</h2>
+    </div>
+    <ul class="members-benefits__grid">
+      {t.benefits.map((item) => (
+        <li class="members-benefits__item" data-anim="fade-up">
+          <span class="members-check" aria-hidden="true">✓</span>
+          <div>
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- ==================== PRICING TIERS ==================== -->
+  <section id="plans" class="members-tiers" aria-labelledby="tiers-title">
+    <div class="members-tiers__head">
+      <p class="eyebrow">{t.tiersEyebrow}</p>
+      <h2 id="tiers-title" class="members-tiers__title">{t.tiersTitle}</h2>
+    </div>
+    <div class="members-tiers__grid">
+      {t.tiers.map((tier) => (
+        <article class={`card members-tier${tier.accent ? ' card--accent' : ''}`} data-anim="fade-up">
+          <div class="card__inner members-tier__inner">
+            {tier.accent && <span class="members-tier__badge">{t.tiersBadge}</span>}
+            <h3 class="members-tier__name">{tier.name}</h3>
+            <p class="members-tier__who">{tier.who}</p>
+            <p class="members-tier__price">
+              <span class="members-tier__amount">{t.tiersPrice}</span><span class="members-tier__per">{t.tiersPer}</span>
+            </p>
+            <p class="members-tier__pricenote">{t.tiersNote}</p>
+            <ul class="members-tier__list">
+              {tier.features.map((feature) => (
+                <li><span class="members-check members-check--sm" aria-hidden="true">✓</span>{feature}</li>
+              ))}
+            </ul>
+            <a href="#membership-form" class={`btn ${tier.accent ? 'btn--primary' : 'btn--ghost'} members-tier__cta`}>{t.tiersCta}</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- ==================== COMPARISON STRIP ==================== -->
+  <section class="members-compare" aria-labelledby="compare-title">
+    <div class="members-compare__inner">
+      <div class="members-compare__head">
+        <p class="eyebrow eyebrow--inverse">{t.compareEyebrow}</p>
+        <h2 id="compare-title" class="members-compare__title">{t.compareTitle}</h2>
+      </div>
+      <div class="members-compare__grid">
+        <div class="members-compare__col" data-anim="fade-up">
+          <h3>{t.compareSingle}</h3>
+          <ul>
+            {t.compareSingleItems.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+        <div class="members-compare__col members-compare__col--member" data-anim="fade-up">
+          <h3>{t.compareMember}</h3>
+          <ul>
+            {t.compareMemberItems.map((item) => (
+              <li><span class="members-check members-check--sm" aria-hidden="true">✓</span>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <p class="members-compare__note" data-anim="fade-up">{t.compareNote}</p>
+    </div>
+  </section>
+
+  <!-- ==================== WHO IT'S FOR ==================== -->
+  <section class="members-who" aria-labelledby="who-title">
+    <div class="members-who__head">
+      <p class="eyebrow">{t.whoEyebrow}</p>
+      <h2 id="who-title" class="members-who__title">{t.whoTitle}</h2>
+    </div>
+    <ul class="members-who__grid">
+      {t.who.map((item) => (
+        <li class="members-who__card" data-anim="fade-up">
+          <h3>{item.title}</h3>
+          <p>{item.copy}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- ==================== FAQ ACCORDION ==================== -->
+  <section class="members-faq" aria-labelledby="faq-title">
+    <div class="members-faq__inner">
+      <div class="members-faq__head">
+        <p class="eyebrow">{t.faqEyebrow}</p>
+        <h2 id="faq-title" class="members-faq__title">{t.faqTitle}</h2>
+      </div>
+      <div class="members-faq__list">
+        {t.faq.map((item, i) => (
+          <div class="members-faq__item">
+            <h3>
+              <button
+                type="button"
+                class="members-faq__q"
+                id={`members-faq-q${i}`}
+                aria-expanded="false"
+                aria-controls={`members-faq-a${i}`}
+              >
+                {item.q}
+                <span class="members-faq__icon" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="members-faq__a" id={`members-faq-a${i}`} role="region" aria-labelledby={`members-faq-q${i}`} hidden>
+              <p>{item.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== APPLY FORM ==================== -->
+  <section class="members-form" aria-labelledby="apply-title">
+    <div class="members-form__inner">
+      <div class="members-form__intro">
+        <p class="eyebrow">{t.formEyebrow}</p>
+        <h2 id="apply-title" class="members-form__title">{t.formTitle}</h2>
+        <p class="members-form__lede">{t.formLede}</p>
+      </div>
+      <form id="membership-form" class="form js-demo-form" action="#" method="POST" data-success={t.formSuccess}>
+        <div class="form__row">
+          <div class="form__field">
+            <label for="mf-name">{t.formName} *</label>
+            <input id="mf-name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="form__field">
+            <label for="mf-email">{t.formEmail} *</label>
+            <input id="mf-email" name="email" type="email" autocomplete="email" required />
+          </div>
+        </div>
+        <div class="form__row">
+          <div class="form__field">
+            <label for="mf-phone">{t.formPhone} *</label>
+            <input id="mf-phone" name="phone" type="tel" autocomplete="tel" required />
+          </div>
+          <div class="form__field">
+            <label for="mf-tier">{t.formTier}</label>
+            <select id="mf-tier" name="tier">
+              {t.formTierOptions.map((opt) => <option value={opt}>{opt}</option>)}
+            </select>
+          </div>
+        </div>
+        <div class="form__field">
+          <label for="mf-gear">{t.formGear}</label>
+          <input id="mf-gear" name="gear" type="text" placeholder={t.formGearPh} />
+        </div>
+        <div class="form__field">
+          <label for="mf-message">{t.formMessage}</label>
+          <textarea id="mf-message" name="message" placeholder={t.formMessagePh}></textarea>
+        </div>
+        <div>
+          <button type="submit" class="btn btn--primary btn--lg">{t.formSubmit}</button>
+        </div>
+        <p class="form__note">{t.formNote}</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ==================== FINAL CTA ==================== -->
+  <section class="cta" aria-labelledby="cta-title">
+    <div class="cta__inner">
+      <h2 id="cta-title" class="cta__title">{t.ctaTitle}</h2>
+      <p class="cta__copy">{t.ctaCopy}</p>
+      <div class="cta__actions">
+        <a href="tel:+17867632091" class="btn btn--primary btn--lg">{t.ctaBtn1}</a>
+        <a href={p('/sensor-cleaning')} class="btn btn--ghost btn--lg">{t.ctaBtn2}</a>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      function initMembersFaq() {
+        var faq = document.querySelector('.members-faq');
+        if (!faq || faq.dataset.faqInit === '1') return;
+        faq.dataset.faqInit = '1';
+        var buttons = faq.querySelectorAll('.members-faq__q');
+        buttons.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var wasOpen = btn.getAttribute('aria-expanded') === 'true';
+            buttons.forEach(function (b) {
+              b.setAttribute('aria-expanded', 'false');
+              var panel = document.getElementById(b.getAttribute('aria-controls'));
+              if (panel) panel.hidden = true;
+              var icon = b.querySelector('.members-faq__icon');
+              if (icon) icon.textContent = '+';
+            });
+            if (!wasOpen) {
+              btn.setAttribute('aria-expanded', 'true');
+              var open = document.getElementById(btn.getAttribute('aria-controls'));
+              if (open) open.hidden = false;
+              var openIcon = btn.querySelector('.members-faq__icon');
+              if (openIcon) openIcon.textContent = '−';
+            }
+          });
+        });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMembersFaq);
+      } else {
+        initMembersFaq();
+      }
+    })();
+  </script>
+</Base>
+
+<style is:global>
+/* ============================================================
+   MEMBERSHIP PAGE (.members-)
+   ============================================================ */
+.members-hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* Shared check bullet */
+.members-check {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-electric-blue);
+  color: var(--color-pure-white);
+  font-size: 14px;
+  font-weight: 700;
+}
+.members-check--sm {
+  width: 20px;
+  height: 20px;
+  font-size: 11px;
+  margin-right: 10px;
+}
+
+/* Benefits checklist */
+.members-benefits {
+  padding: var(--section-gap) var(--gutter);
+  background: var(--color-pure-white);
+}
+.members-benefits__head {
+  max-width: var(--page-max);
+  margin: 0 auto 60px;
+}
+.members-benefits__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(36px, 5vw, 72px);
+  line-height: 1.07;
+  letter-spacing: -0.015em;
+  max-width: 22ch;
+}
+.members-benefits__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: var(--page-max);
+  margin: 0 auto;
+}
+.members-benefits__item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: var(--color-fog-canvas);
+  border-radius: var(--r-card);
+  padding: 28px 26px;
+  transition: transform .4s var(--ease-out);
+}
+.members-benefits__item:hover { transform: translateY(-4px); }
+.members-benefits__item .members-check { margin-top: 2px; }
+.members-benefits__item h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 19px;
+  letter-spacing: -0.015em;
+  color: var(--color-apple-ink);
+  margin-bottom: 6px;
+}
+.members-benefits__item p {
+  font-size: 15px;
+  color: var(--color-graphite);
+  line-height: 1.5;
+}
+@media (max-width: 1024px) { .members-benefits__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 700px) { .members-benefits__grid { grid-template-columns: 1fr; } }
+
+/* Tiers */
+.members-tiers {
+  padding: var(--section-gap) var(--gutter);
+  background: var(--color-fog-canvas);
+}
+.members-tiers__head {
+  max-width: var(--page-max);
+  margin: 0 auto 60px;
+}
+.members-tiers__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(36px, 5vw, 72px);
+  line-height: 1.07;
+  letter-spacing: -0.015em;
+  max-width: 22ch;
+}
+.members-tiers__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  align-items: stretch;
+}
+.members-tier__inner {
+  min-height: auto;
+  gap: 0;
+}
+.members-tier__badge {
+  align-self: flex-start;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-pure-white);
+  background: var(--color-electric-blue);
+  border-radius: var(--r-chip);
+  padding: 6px 14px;
+  margin-bottom: 18px;
+}
+.members-tier__name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  color: var(--color-electric-blue);
+  margin-bottom: 8px;
+}
+.card--accent .members-tier__name { color: #5ac8fa; }
+.members-tier__who {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(22px, 2vw, 28px);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--color-apple-ink);
+  margin-bottom: 22px;
+}
+.card--accent .members-tier__who { color: var(--color-fog-canvas); }
+.members-tier__price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.members-tier__amount {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(40px, 4vw, 56px);
+  letter-spacing: -0.02em;
+  color: var(--color-apple-ink);
+  line-height: 1;
+}
+.card--accent .members-tier__amount { color: var(--color-pure-white); }
+.members-tier__per {
+  font-size: 17px;
+  color: var(--color-graphite);
+}
+.card--accent .members-tier__per { color: var(--color-slate); }
+.members-tier__pricenote {
+  font-size: 13px;
+  color: var(--color-slate);
+  margin: 10px 0 26px;
+}
+.members-tier__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+.members-tier__list li {
+  display: flex;
+  align-items: flex-start;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--color-charcoal);
+}
+.card--accent .members-tier__list li { color: var(--color-ash); }
+.members-tier__list .members-check--sm { margin-top: 1px; }
+.members-tier__cta {
+  margin-top: auto;
+  justify-content: center;
+}
+@media (max-width: 1024px) {
+  .members-tiers__grid { grid-template-columns: 1fr; max-width: 560px; }
+}
+
+/* Comparison strip (dark band) */
+.members-compare {
+  padding: var(--section-gap) var(--gutter);
+  background: var(--color-apple-ink);
+  color: var(--color-fog-canvas);
+}
+.members-compare__inner { max-width: var(--page-max); margin: 0 auto; }
+.members-compare__head { margin-bottom: 48px; }
+.members-compare__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(36px, 5vw, 72px);
+  line-height: 1.07;
+  letter-spacing: -0.015em;
+  color: var(--color-pure-white);
+  max-width: 22ch;
+}
+.members-compare__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+.members-compare__col {
+  border-radius: var(--r-card);
+  padding: 32px 34px;
+  background: rgba(245,245,247,0.06);
+  border: 1px solid rgba(245,245,247,0.12);
+}
+.members-compare__col--member {
+  background: rgba(0,113,227,0.14);
+  border-color: rgba(0,113,227,0.45);
+}
+.members-compare__col h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.015em;
+  color: var(--color-pure-white);
+  margin-bottom: 20px;
+}
+.members-compare__col ul {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.members-compare__col li {
+  display: flex;
+  align-items: flex-start;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-slate);
+}
+.members-compare__col--member li { color: var(--color-ash); }
+.members-compare__col--member .members-check--sm { margin-top: 2px; }
+.members-compare__note {
+  font-size: clamp(17px, 1.4vw, 21px);
+  color: var(--color-ash);
+  max-width: 64ch;
+  line-height: 1.5;
+}
+@media (max-width: 820px) {
+  .members-compare__grid { grid-template-columns: 1fr; }
+}
+
+/* Who it's for */
+.members-who {
+  padding: var(--section-gap) var(--gutter);
+  background: var(--color-pure-white);
+}
+.members-who__head {
+  max-width: var(--page-max);
+  margin: 0 auto 60px;
+}
+.members-who__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(36px, 5vw, 72px);
+  line-height: 1.07;
+  letter-spacing: -0.015em;
+  max-width: 22ch;
+}
+.members-who__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: var(--page-max);
+  margin: 0 auto;
+}
+.members-who__card {
+  background: var(--color-fog-canvas);
+  border-radius: var(--r-card);
+  padding: 30px 28px;
+  transition: transform .4s var(--ease-out);
+}
+.members-who__card:hover { transform: translateY(-4px); }
+.members-who__card h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 21px;
+  letter-spacing: -0.015em;
+  color: var(--color-apple-ink);
+  margin-bottom: 8px;
+}
+.members-who__card p {
+  font-size: 15px;
+  color: var(--color-graphite);
+  line-height: 1.5;
+}
+@media (max-width: 1024px) { .members-who__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .members-who__grid { grid-template-columns: 1fr; } }
+
+/* FAQ accordion */
+.members-faq {
+  padding: var(--section-gap) var(--gutter);
+  background: var(--color-fog-canvas);
+}
+.members-faq__inner { max-width: 900px; margin: 0 auto; }
+.members-faq__head { margin-bottom: 48px; }
+.members-faq__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(32px, 4.5vw, 60px);
+  line-height: 1.07;
+  letter-spacing: -0.015em;
+}
+.members-faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.members-faq__item {
+  background: var(--color-pure-white);
+  border-radius: 20px;
+  overflow: hidden;
+}
+.members-faq__item h3 { margin: 0; }
+.members-faq__q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  text-align: left;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 19px;
+  letter-spacing: -0.015em;
+  color: var(--color-apple-ink);
+  padding: 22px 26px;
+  transition: color .2s ease;
+}
+.members-faq__q:hover { color: var(--color-electric-blue); }
+.members-faq__q:focus-visible {
+  outline: 2px solid var(--color-electric-blue);
+  outline-offset: -2px;
+  border-radius: 20px;
+}
+.members-faq__icon {
+  flex: 0 0 auto;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--color-electric-blue);
+  line-height: 1;
+}
+.members-faq__a { padding: 0 26px 24px; }
+.members-faq__a p {
+  font-size: 16px;
+  color: var(--color-graphite);
+  line-height: 1.55;
+  max-width: 64ch;
+}
+
+/* Apply form */
+.members-form {
+  padding: var(--section-gap) var(--gutter);
+  background: var(--color-pure-white);
+}
+.members-form__inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(36px, 5vw, 80px);
+  align-items: start;
+}
+.members-form__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(34px, 4.5vw, 60px);
+  line-height: 1.07;
+  letter-spacing: -0.015em;
+  margin-bottom: 18px;
+}
+.members-form__lede {
+  font-size: 17px;
+  color: var(--color-graphite);
+  line-height: 1.5;
+  max-width: 44ch;
+}
+.members-form .form {
+  background: var(--color-fog-canvas);
+  border-radius: var(--r-card);
+  padding: clamp(28px, 3.5vw, 44px);
+}
+@media (max-width: 900px) {
+  .members-form__inner { grid-template-columns: 1fr; }
+}
+</style>

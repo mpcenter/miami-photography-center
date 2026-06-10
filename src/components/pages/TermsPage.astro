@@ -1,0 +1,289 @@
+---
+import Base from '../../layouts/Base.astro';
+import { localePath, type Locale } from '../../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const p = (path: string) => localePath(locale, path);
+
+interface LegalSection {
+  h: string;
+  ps: string[];
+  bullets?: string[];
+}
+
+const t = locale === 'es' ? {
+  title: 'Términos y Condiciones | Miami Photography Center',
+  description: 'Términos y condiciones de servicio de Miami Photography Center: presupuestos y aprobación, garantía de 6 meses, envíos, pagos, límites de responsabilidad y ley aplicable (Florida).',
+  heroEyebrow: 'Legal',
+  heroTitle: 'Términos y Condiciones.',
+  draftNote: 'Borrador de trabajo — el texto final está sujeto a revisión legal.',
+  updated: 'Última actualización: junio de 2026',
+  sections: [
+    {
+      h: 'Aceptación de los términos',
+      ps: [
+        'Estos términos rigen el uso del sitio miamiphotographycenter.com y de los servicios de Miami Photography Center («MPC», «nosotros»). Al solicitar un servicio o usar este sitio, aceptas estos términos.',
+      ],
+    },
+    {
+      h: 'Servicios',
+      ps: [
+        'MPC ofrece reparación y mantenimiento de cámaras, lentes y equipos audiovisuales, limpieza de sensor, servicio móvil on-site, y producciones de foto y video. El alcance específico de cada trabajo se confirma por escrito (email o presupuesto) antes de comenzar.',
+      ],
+    },
+    {
+      h: 'Diagnósticos, presupuestos y aprobación',
+      ps: [
+        'Antes de realizar cualquier reparación, hacemos un diagnóstico y te enviamos un presupuesto. No se realiza ningún trabajo sin tu aprobación.',
+        'Si el diagnóstico requiere desarme o una evaluación avanzada, puede aplicar un cargo técnico; siempre te informamos antes de proceder. En visitas on-site, puede aplicar un cargo por traslado según tu ubicación.',
+      ],
+    },
+    {
+      h: 'Garantía de servicio (6 meses)',
+      ps: [
+        'Todas las reparaciones incluyen una garantía de 6 meses que cubre la mano de obra y las piezas del trabajo realizado. Si la misma falla reaparece dentro del período de garantía, la atendemos de nuevo sin costo.',
+        'La garantía no cubre:',
+      ],
+      bullets: [
+        'Fallas nuevas no relacionadas con la reparación realizada',
+        'Daños posteriores causados por accidentes, caídas, líquidos, arena o condiciones extremas',
+        'Equipos abiertos, modificados o intervenidos por terceros después de nuestra reparación',
+        'Desgaste normal por uso',
+      ],
+    },
+    {
+      h: 'Envíos y manejo del equipo',
+      ps: [
+        'Si nos envías tu equipo, eres responsable de empacarlo de forma segura; recomendamos el empaque original o una caja acolchada. Manejamos todos los equipos con cuidado profesional desde su recepción hasta su retorno y te mantenemos informado en cada etapa.',
+        'El tránsito con el transportista se rige por los términos y la cobertura del propio transportista. Te recomendamos retirar tarjetas de memoria y respaldar tus archivos antes de enviar o entregar tu equipo.',
+      ],
+    },
+    {
+      h: 'Pagos',
+      ps: [
+        'El pago del servicio se realiza al completarse el trabajo aprobado, antes de la entrega o el envío de retorno del equipo. Los precios de los presupuestos pueden ajustarse solo con tu aprobación previa si durante la reparación se detectan problemas adicionales.',
+      ],
+    },
+    {
+      h: 'Límite de responsabilidad',
+      ps: [
+        'En la máxima medida permitida por la ley, la responsabilidad total de MPC por cualquier reclamo relacionado con un servicio se limita al monto pagado por ese servicio. MPC no es responsable por daños indirectos o incidentales, lucro cesante, ni por la pérdida de datos almacenados en tarjetas de memoria o medios internos; respalda siempre tus archivos antes del servicio.',
+      ],
+    },
+    {
+      h: 'Ley aplicable',
+      ps: [
+        'Estos términos se rigen por las leyes del Estado de Florida, Estados Unidos. Cualquier disputa se resolverá en los tribunales competentes de Florida.',
+      ],
+    },
+    {
+      h: 'Cambios a estos términos',
+      ps: [
+        'Podemos actualizar estos términos ocasionalmente. Cualquier cambio se publicará en esta página con la fecha de actualización.',
+      ],
+    },
+  ] as LegalSection[],
+  contactH: 'Contacto',
+  contactP: 'Si tienes preguntas sobre estos términos, escríbenos a',
+  contactEnd: 'o llámanos al +1 (786) 763-2091. Dirección: 3911 SW 27th St, West Park, FL 33023.',
+  backLabel: 'Volver al inicio',
+} : {
+  title: 'Terms & Conditions | Miami Photography Center',
+  description: 'Miami Photography Center terms of service: estimates and approval, 6-month repair warranty, shipping, payments, liability limits, and governing law (Florida).',
+  heroEyebrow: 'Legal',
+  heroTitle: 'Terms & Conditions.',
+  draftNote: 'Working draft — final text subject to legal review.',
+  updated: 'Last updated: June 2026',
+  sections: [
+    {
+      h: 'Acceptance of terms',
+      ps: [
+        'These terms govern the use of miamiphotographycenter.com and the services of Miami Photography Center (“MPC”, “we”). By requesting a service or using this site, you agree to these terms.',
+      ],
+    },
+    {
+      h: 'Services',
+      ps: [
+        'MPC provides repair and maintenance of cameras, lenses, and audiovisual equipment, sensor cleaning, mobile on-site service, and photo & video productions. The specific scope of each job is confirmed in writing (email or quote) before work begins.',
+      ],
+    },
+    {
+      h: 'Diagnostics, estimates & approval',
+      ps: [
+        'Before any repair is performed, we run a diagnostic and send you a quote. No work is carried out without your approval.',
+        'If a diagnosis requires disassembly or advanced evaluation, a technical fee may apply; we always inform you before proceeding. For on-site visits, a travel fee may apply depending on your location.',
+      ],
+    },
+    {
+      h: 'Service warranty (6 months)',
+      ps: [
+        'All repairs include a 6-month warranty covering both labor and parts on the work performed. If the same fault reappears within the warranty period, we service it again at no cost.',
+        'The warranty does not cover:',
+      ],
+      bullets: [
+        'New faults unrelated to the repair performed',
+        'Subsequent damage caused by accidents, drops, liquids, sand, or extreme conditions',
+        'Equipment opened, modified, or serviced by third parties after our repair',
+        'Normal wear and tear',
+      ],
+    },
+    {
+      h: 'Shipping & equipment handling',
+      ps: [
+        'If you ship your equipment to us, you are responsible for packing it securely; we recommend the original packaging or a padded box. We handle all equipment with professional care from reception to return and keep you informed at every stage.',
+        'Carrier transit is governed by the carrier’s own terms and coverage. We recommend removing memory cards and backing up your files before shipping or dropping off your gear.',
+      ],
+    },
+    {
+      h: 'Payments',
+      ps: [
+        'Payment is due upon completion of the approved work, before the equipment is returned or shipped back. Quoted prices may be adjusted only with your prior approval if additional issues are found during the repair.',
+      ],
+    },
+    {
+      h: 'Limitation of liability',
+      ps: [
+        'To the fullest extent permitted by law, MPC’s total liability for any claim related to a service is limited to the amount paid for that service. MPC is not liable for indirect or incidental damages, lost profits, or the loss of data stored on memory cards or internal media — always back up your files before service.',
+      ],
+    },
+    {
+      h: 'Governing law',
+      ps: [
+        'These terms are governed by the laws of the State of Florida, United States. Any dispute will be resolved in the competent courts of Florida.',
+      ],
+    },
+    {
+      h: 'Changes to these terms',
+      ps: [
+        'We may update these terms from time to time. Any changes will be posted on this page with an updated date.',
+      ],
+    },
+  ] as LegalSection[],
+  contactH: 'Contact',
+  contactP: 'If you have questions about these terms, write to us at',
+  contactEnd: 'or call +1 (786) 763-2091. Address: 3911 SW 27th St, West Park, FL 33023.',
+  backLabel: 'Back to home',
+};
+---
+<Base locale={locale} title={t.title} description={t.description}>
+
+  <!-- ==================== HERO ==================== -->
+  <header class="page-hero">
+    <div class="page-hero__inner">
+      <p class="eyebrow" data-anim="fade-up">{t.heroEyebrow}</p>
+      <h1 class="page-hero__title" data-anim="fade-up">{t.heroTitle}</h1>
+    </div>
+  </header>
+
+  <!-- ==================== LEGAL PROSE ==================== -->
+  <article class="legal">
+    <div class="legal__inner">
+      <p class="legal-note">{t.draftNote}</p>
+      <p class="legal-updated">{t.updated}</p>
+
+      {t.sections.map((section) => (
+        <section class="legal-section">
+          <h2>{section.h}</h2>
+          {section.ps.map((para) => <p>{para}</p>)}
+          {section.bullets && (
+            <ul>
+              {section.bullets.map((item) => <li>{item}</li>)}
+            </ul>
+          )}
+        </section>
+      ))}
+
+      <section class="legal-section">
+        <h2>{t.contactH}</h2>
+        <p>
+          {t.contactP}
+          {' '}<a href="mailto:service@miamiphotographycenter.com">service@miamiphotographycenter.com</a>{' '}
+          {t.contactEnd}
+        </p>
+      </section>
+
+      <p class="legal-back"><a href={p('/')}>← {t.backLabel}</a></p>
+    </div>
+  </article>
+</Base>
+
+<style is:global>
+/* ============================================================
+   LEGAL PAGES (shared prose styles)
+   ============================================================ */
+.legal {
+  padding: 20px var(--gutter) var(--section-gap);
+}
+.legal__inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.legal-note {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: var(--r-chip);
+  background: rgba(0, 113, 227, 0.08);
+  border: 1px solid rgba(0, 113, 227, 0.25);
+  color: var(--color-electric-blue);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+.legal-updated {
+  font-size: 14px;
+  color: var(--color-slate);
+  margin-bottom: 40px;
+}
+.legal-section { margin-bottom: 40px; }
+.legal-section h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(21px, 2.2vw, 26px);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--color-apple-ink);
+  margin-bottom: 14px;
+}
+.legal-section p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-charcoal);
+}
+.legal-section p + p { margin-top: 12px; }
+.legal-section a {
+  color: var(--color-link-blue);
+}
+.legal-section a:hover { text-decoration: underline; }
+.legal-section ul {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.legal-section ul li {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--color-charcoal);
+  padding-left: 22px;
+  position: relative;
+}
+.legal-section ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 10px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-electric-blue);
+}
+.legal-back { margin-top: 56px; font-size: 15px; }
+.legal-back a {
+  color: var(--color-link-blue);
+  font-weight: 600;
+}
+.legal-back a:hover { text-decoration: underline; }
+</style>

@@ -1,0 +1,342 @@
+---
+import Base from '../../layouts/Base.astro';
+import { localePath, type Locale } from '../../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const p = (path: string) => localePath(locale, path);
+
+interface StatItem {
+  count?: string;
+  suffix?: string;
+  num?: string;
+  label: string;
+}
+
+const t = locale === 'es' ? {
+  title: 'Sobre Nosotros | Team MPC — Miami Photography Center',
+  description: 'Conoce al equipo de Miami Photography Center: técnicos y especialistas audiovisuales dedicados a apoyar a la comunidad creativa del sur de Florida con servicio técnico experto.',
+  heroEyebrow: 'Nosotros',
+  heroTitle: 'Team MPC.',
+  heroLede: 'Más que un negocio — un equipo dedicado.',
+  storyEyebrow: 'Nuestra historia',
+  storyTitle: 'Hecho por creadores, para creadores.',
+  storyP1: 'En Miami Photography Center somos más que un negocio: somos un equipo dedicado de profesionales unidos por una misión — apoyar e impulsar a la comunidad creativa del sur de Florida con servicio técnico experto y atención personalizada.',
+  storyP2: 'Nacido de la creciente necesidad de soluciones rápidas, locales y confiables, MPC ha evolucionado hasta convertirse en una red de servicio totalmente equipada — diseñada para ahorrarles tiempo a los creadores llevando soporte experto directamente a ellos. Nuestro equipo incluye técnicos experimentados y especialistas audiovisuales que conocen las herramientas del oficio — porque también las usamos.',
+  storyImgAlt: 'Técnico trabajando en una cámara profesional en un banco de trabajo',
+  quote: 'No solo reparamos cámaras. Restauramos la confianza, preservamos visiones y ayudamos a los profesionales a enfocarse en lo que más importa: crear.',
+  ceoEyebrow: 'Liderazgo',
+  ceoName: 'Orlando Untoria',
+  ceoRole: 'CEO',
+  ceoCreds: [
+    'MA en Fotografía Profesional',
+    'Director Creativo Asociado',
+    '2011–presente, Visual Works Studio',
+  ],
+  ceoImgAlt: 'Retrato profesional — imagen de referencia',
+  teamEyebrow: 'Formación y experiencia',
+  teamTitle: 'La experiencia detrás de cada servicio.',
+  team: [
+    { index: '01', title: 'MA en Fotografía Profesional' },
+    { index: '02', title: 'Técnico Especializado en Equipos Audiovisuales' },
+    { index: '03', title: 'Director de Fotografía y Producción de Video' },
+    { index: '04', title: 'Especialista en Creación de Contenido Visual' },
+    { index: '05', title: 'Consultor en Soluciones Audiovisuales' },
+  ],
+  stats: [
+    { count: '10', suffix: '+', label: 'Años de experiencia' },
+    { count: '6', suffix: ' mo', label: 'Garantía en cada reparación' },
+    { count: '12', suffix: '+', label: 'Marcas que atendemos' },
+    { num: 'S. FL', label: 'Cobertura en el sur de Florida' },
+  ] as StatItem[],
+  ctaTitle: 'Trabajemos juntos.',
+  ctaCopy: 'Cuéntanos qué necesita tu equipo — en nuestro taller o directamente en tu locación.',
+  ctaBtn1: 'Solicitar reparación',
+  ctaBtn2: 'Servicio on-site',
+} : {
+  title: 'About Us | Team MPC — Miami Photography Center',
+  description: 'Meet the team behind Miami Photography Center: experienced technicians and audiovisual specialists dedicated to supporting South Florida’s creative community with expert technical service.',
+  heroEyebrow: 'About',
+  heroTitle: 'Team MPC.',
+  heroLede: 'More than a business — a dedicated team.',
+  storyEyebrow: 'Our story',
+  storyTitle: 'Built by creators, for creators.',
+  storyP1: 'At Miami Photography Center, we’re more than just a business — we’re a dedicated team of professionals united by a mission: to support and empower South Florida’s creative community with expert technical service and personalized care.',
+  storyP2: 'Born from the growing need for fast, local, and reliable solutions, MPC has evolved into a fully equipped service network — designed to save creators time by delivering expert support directly to them. Our team includes experienced technicians and audiovisual specialists who know the tools of the trade — because we use them too.',
+  storyImgAlt: 'Technician working on a professional camera at a workbench',
+  quote: 'We don’t just repair cameras. We restore confidence, preserve visions, and help professionals focus on what matters most: creating.',
+  ceoEyebrow: 'Leadership',
+  ceoName: 'Orlando Untoria',
+  ceoRole: 'CEO',
+  ceoCreds: [
+    'MA in Professional Photography',
+    'Associate Creative Director',
+    '2011–present, Visual Works Studio',
+  ],
+  ceoImgAlt: 'Professional portrait — placeholder image',
+  teamEyebrow: 'Education & experience',
+  teamTitle: 'The expertise behind every service.',
+  team: [
+    { index: '01', title: 'MA in Professional Photography' },
+    { index: '02', title: 'Technician Specialized in Audiovisual Equipment' },
+    { index: '03', title: 'Director of Photography and Video Production' },
+    { index: '04', title: 'Specialist in Visual Content Creation' },
+    { index: '05', title: 'Consultant in Audiovisual Solutions' },
+  ],
+  stats: [
+    { count: '10', suffix: '+', label: 'Years of experience' },
+    { count: '6', suffix: ' mo', label: 'Warranty on every repair' },
+    { count: '12', suffix: '+', label: 'Brands serviced' },
+    { num: 'S. FL', label: 'South Florida coverage' },
+  ] as StatItem[],
+  ctaTitle: 'Let’s work together.',
+  ctaCopy: 'Tell us what your gear needs — at our workshop or right at your location.',
+  ctaBtn1: 'Request Repair',
+  ctaBtn2: 'On-Site Service',
+};
+---
+<Base locale={locale} title={t.title} description={t.description}>
+
+  <!-- ==================== HERO ==================== -->
+  <header class="page-hero">
+    <div class="page-hero__inner">
+      <p class="eyebrow" data-anim="fade-up">{t.heroEyebrow}</p>
+      <h1 class="page-hero__title" data-anim="fade-up">{t.heroTitle}</h1>
+      <p class="page-hero__lede" data-anim="fade-up">{t.heroLede}</p>
+    </div>
+  </header>
+
+  <!-- ==================== STORY ==================== -->
+  <section class="about-story" aria-labelledby="about-story-title">
+    <div class="about-story__inner">
+      <div class="about-story__text" data-anim="fade-up">
+        <p class="eyebrow">{t.storyEyebrow}</p>
+        <h2 id="about-story-title" class="about-story__title">{t.storyTitle}</h2>
+        <p class="about-story__p">{t.storyP1}</p>
+        <p class="about-story__p">{t.storyP2}</p>
+      </div>
+      <figure class="about-story__media" data-anim="fade-up">
+        <img
+          src="https://images.unsplash.com/photo-1606980625154-7e8b9eafcce6?w=1200&q=80&auto=format&fit=crop"
+          alt={t.storyImgAlt}
+          width="1200" height="800" loading="lazy" decoding="async" />
+      </figure>
+    </div>
+  </section>
+
+  <!-- ==================== PULL-QUOTE BAND ==================== -->
+  <section class="cta about-quoteband" aria-label={locale === 'es' ? 'Nuestra misión' : 'Our mission'}>
+    <div class="cta__inner">
+      <blockquote class="about-quoteband__quote" data-anim="fade-up">
+        <p>“{t.quote}”</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ==================== CEO ==================== -->
+  <section class="about-ceo" aria-labelledby="about-ceo-name">
+    <div class="about-ceo__inner" data-anim="fade-up">
+      <figure class="about-ceo__media">
+        <img
+          src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=900&q=80&auto=format&fit=crop"
+          alt={t.ceoImgAlt}
+          width="900" height="1100" loading="lazy" decoding="async" />
+      </figure>
+      <div class="about-ceo__body">
+        <p class="eyebrow">{t.ceoEyebrow}</p>
+        <h2 id="about-ceo-name" class="about-ceo__name">{t.ceoName}</h2>
+        <p class="about-ceo__role">{t.ceoRole}</p>
+        <ul class="about-ceo__creds">
+          {t.ceoCreds.map((cred) => <li>{cred}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TEAM EXPERTISE GRID ==================== -->
+  <section class="about-team" aria-labelledby="about-team-title">
+    <div class="about-team__head">
+      <p class="eyebrow">{t.teamEyebrow}</p>
+      <h2 id="about-team-title" class="about-team__title">{t.teamTitle}</h2>
+    </div>
+    <div class="about-team__grid">
+      {t.team.map((item) => (
+        <article class="card about-team__card" data-anim="fade-up">
+          <div class="card__inner">
+            <span class="card__index">{item.index}</span>
+            <h3 class="card__title about-team__card-title">{item.title}</h3>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- ==================== STATS ==================== -->
+  <section class="stats" aria-label={locale === 'es' ? 'Por qué MPC' : 'Why MPC'}>
+    <div class="stats__grid">
+      {t.stats.map((stat) => (
+        <div class="stats__item">
+          {stat.count
+            ? <span class="stats__num" data-count={stat.count} data-suffix={stat.suffix}>{stat.count}{stat.suffix}</span>
+            : <span class="stats__num">{stat.num}</span>}
+          <span class="stats__label">{stat.label}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="cta" aria-labelledby="about-cta-title">
+    <div class="cta__inner">
+      <h2 id="about-cta-title" class="cta__title">{t.ctaTitle}</h2>
+      <p class="cta__copy">{t.ctaCopy}</p>
+      <div class="cta__actions">
+        <a href={p('/repair')} class="btn btn--primary btn--lg">{t.ctaBtn1}</a>
+        <a href={p('/on-site')} class="btn btn--ghost btn--lg">{t.ctaBtn2}</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style is:global>
+/* ============================================================
+   ABOUT PAGE
+   ============================================================ */
+.about-story {
+  padding: var(--section-gap) var(--gutter);
+}
+.about-story__inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: clamp(40px, 6vw, 90px);
+  align-items: center;
+}
+.about-story__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+.about-story__p {
+  font-size: clamp(17px, 1.4vw, 19px);
+  line-height: 1.6;
+  color: var(--color-charcoal);
+}
+.about-story__p + .about-story__p { margin-top: 18px; }
+.about-story__media {
+  margin: 0;
+  border-radius: var(--r-card);
+  overflow: hidden;
+}
+.about-story__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-quoteband { padding-top: clamp(80px, 10vw, 140px); padding-bottom: clamp(80px, 10vw, 140px); }
+.about-quoteband__quote { margin: 0; }
+.about-quoteband__quote p {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(26px, 3.6vw, 46px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  max-width: 26ch;
+  margin: 0 auto;
+}
+
+.about-ceo {
+  padding: var(--section-gap) var(--gutter);
+  background: var(--color-pure-white);
+}
+.about-ceo__inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
+  gap: clamp(36px, 5vw, 70px);
+  align-items: center;
+}
+.about-ceo__media {
+  margin: 0;
+  border-radius: var(--r-card);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+}
+.about-ceo__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.about-ceo__name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(30px, 4vw, 48px);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.about-ceo__role {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-electric-blue);
+  margin-top: 8px;
+}
+.about-ceo__creds {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.about-ceo__creds li {
+  font-size: 17px;
+  color: var(--color-charcoal);
+  padding-left: 26px;
+  position: relative;
+}
+.about-ceo__creds li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 12px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-electric-blue);
+}
+
+.about-team { padding: var(--section-gap) var(--gutter); }
+.about-team__head {
+  max-width: var(--page-max);
+  margin: 0 auto 48px;
+}
+.about-team__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(30px, 4vw, 48px);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.about-team__grid {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+.about-team__card .card__inner { padding: 32px 28px; }
+.about-team__card-title { font-size: clamp(19px, 1.6vw, 22px); line-height: 1.25; }
+
+@media (max-width: 900px) {
+  .about-story__inner { grid-template-columns: 1fr; }
+  .about-story__media { order: -1; max-height: 360px; }
+  .about-ceo__inner { grid-template-columns: 1fr; }
+  .about-ceo__media { max-width: 420px; }
+}
+</style>

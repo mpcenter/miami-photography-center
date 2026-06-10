@@ -1,0 +1,424 @@
+---
+import Base from '../../layouts/Base.astro';
+import { localePath, type Locale } from '../../lib/i18n';
+import '../../styles/services.css';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const p = (path: string) => localePath(locale, path);
+
+const t = locale === 'es' ? {
+  title: 'Servicios de Cámara en Miami | Reparación, Membresía, Limpieza de Sensor, On-Site y Producciones — MPC',
+  description: 'Servicios técnicos de fotografía en Miami: reparación de cámaras y equipos, membresía anual, limpieza de sensor desde $49, servicio móvil on-site en el sur de Florida y producciones de foto y video. Garantía de 6 meses.',
+  breadcrumbHome: 'Inicio',
+  breadcrumbCurrent: 'Servicios',
+  heroEyebrow: 'Catálogo completo de servicios',
+  heroTitle: 'Todo lo que tu equipo<br/>necesita. En un solo lugar.',
+  heroLede: 'Reparación, membresía anual, limpieza de sensor, servicio móvil on-site y producciones completas de foto y video. Un taller, cinco verticales, garantía de seis meses en cada reparación.',
+  heroCta1: 'Explorar servicios',
+  heroCta2: 'Ayúdame a elegir',
+  heroAlt: 'Cámara profesional de formato medio, foto de producto — Miami Photography Center',
+  blocks: [
+    {
+      id: undefined, reverse: false,
+      num: '01 · Taller',
+      title: 'Reparación de Cámaras y Equipos',
+      copy: 'DSLR, mirrorless, película, drones, lentes. Mantenimiento interno, reemplazo de sensor, lubricación, electrónica, firmware. Cada trabajo incluye garantía de seis meses.',
+      bullets: [
+        'Canon, Nikon, Sony, Fujifilm, Leica, Panasonic',
+        'Diagnóstico en 24 horas · presupuesto por escrito',
+        'La mayoría de reparaciones en 3–5 días hábiles',
+        'Desde <strong>$149</strong> el servicio completo de cuerpo',
+      ],
+      cta: 'Ver detalles de reparación', link: '/repair',
+      img: 'https://images.unsplash.com/photo-1500634245200-e5245c7574ef?w=1400&q=85&auto=format&fit=crop',
+      imgAlt: 'Cuerpo de cámara abierto en el banco de trabajo de un técnico',
+    },
+    {
+      id: 'membership', reverse: true,
+      num: '02 · Todo el año',
+      title: 'Membresía Anual',
+      copy: 'Tu equipo, mantenido todo el año. Limpiezas programadas, prioridad en reparaciones y descuentos para miembros — un solo plan que mantiene cada cámara lista para disparar.',
+      bullets: [
+        'Limpiezas de sensor programadas durante el año',
+        'Prioridad en los tiempos de reparación',
+        'Descuentos exclusivos para miembros',
+        'Planes para fotógrafos, estudios, escuelas y productoras',
+      ],
+      cta: 'Ver planes de membresía', link: '/membership',
+      img: 'https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?w=1400&q=85&auto=format&fit=crop',
+      imgAlt: 'Equipo fotográfico profesional ordenado y mantenido',
+    },
+    {
+      id: 'sensor-cleaning', reverse: false,
+      num: '03 · Mientras esperas',
+      title: 'Limpieza de Sensor',
+      copy: 'Ultrasónica, antiestática, soluciones certificadas. La mayoría de los equipos completos en 30 minutos. Incluye garantía de re-limpieza gratis por 30 días.',
+      bullets: [
+        'Sensores APS-C, full-frame y formato medio',
+        'Incluye espejo, pantalla de enfoque y exterior',
+        'Inspección con lupa de sensor antes y después, documentada',
+        'Desde <strong>$49</strong> · <strong>$79</strong> on-site en tu locación',
+      ],
+      cta: 'Reservar limpieza de sensor', link: '/sensor-cleaning',
+      img: 'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=1400&q=85&auto=format&fit=crop',
+      imgAlt: 'Primer plano de un sensor de cámara durante una sesión de limpieza de precisión',
+    },
+    {
+      id: undefined, reverse: true,
+      num: '04 · Móvil',
+      title: 'Servicio On-Site',
+      copy: 'Nuestra unidad calibrada va a tu estudio, set o locación en el sur de Florida. Cero tiempo muerto para tu sesión. Tarifas por día de producción disponibles.',
+      bullets: [
+        'Miami-Dade · Broward · Palm Beach · Cayos de Florida',
+        'Despacho de emergencia el mismo día (según disponibilidad)',
+        'Día de producción desde <strong>$299</strong> · hasta 8 horas',
+        'Limpieza de sensor on-site desde <strong>$79</strong>',
+      ],
+      cta: 'Ver cobertura y agenda', link: '/on-site',
+      img: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=1400&q=85&auto=format&fit=crop',
+      imgAlt: 'Unidad de servicio fotográfico móvil trabajando en un set de producción',
+    },
+    {
+      id: undefined, reverse: false,
+      num: '05 · Editorial y comercial',
+      title: 'Producciones de Foto y Video',
+      copy: 'Crew completo, equipo y postproducción. Producción editorial, comercial, audiovisual y campañas de marca lideradas por profesionales en activo.',
+      bullets: [
+        'Concepto · producción · dirección · post',
+        'Capacidad en estudio, locación y set',
+        'Equipo propio de principio a fin — sin alquileres de los que preocuparse',
+        'Presupuesto a medida por proyecto',
+      ],
+      cta: 'Ver trabajos de producción', link: '/productions',
+      img: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1400&q=85&auto=format&fit=crop',
+      imgAlt: 'Detrás de cámaras de un set de producción fotográfica comercial',
+    },
+  ],
+  chooserEyebrow: 'Ayúdame a elegir',
+  chooserTitle: '¿Qué servicio necesitas?',
+  chooserSub: 'Elige la situación que más se parezca a la tuya. Te llevamos a la página correcta.',
+  pickers: [
+    { when: 'Mi cámara', h: 'Algo está roto o no funciona.', copy: 'Reparaciones, calibración, fallas mecánicas, códigos de error, polvo en el sensor.', cta: 'Ir a reparación', href: '/repair', anchor: '#repair-form', accent: false },
+    { when: 'Membresía', h: 'Quiero mantenimiento todo el año.', copy: 'Limpiezas programadas, prioridad en reparaciones y descuentos para miembros.', cta: 'Ver planes', href: '/membership', anchor: '', accent: false },
+    { when: 'Tengo una sesión', h: 'Necesito servicio sin salir de mi locación.', copy: 'Limpieza de sensor móvil, diagnóstico en set, tarifa por día de producción.', cta: 'Agendar on-site', href: '/on-site', anchor: '#booking-form', accent: true },
+    { when: 'Mi sensor', h: 'Veo manchas de polvo en mis imágenes.', copy: 'Limpieza de sensor, espejo y pantalla de enfoque incluidos. Mientras esperas.', cta: 'Reservar limpieza', href: '/sensor-cleaning', anchor: '', accent: false },
+    { when: 'Necesito contenido', h: 'Quiero producción completa de foto o video.', copy: 'Editorial, comercial, campañas de marca. Crew completo, equipo completo, post completa.', cta: 'Ver producciones', href: '/productions', anchor: '', accent: false },
+  ],
+  methodEyebrow: 'Método compartido',
+  methodTitle: 'Cuatro pasos.<br/>Cada servicio.',
+  steps: [
+    { num: '01', title: 'Solicita', copy: 'Cuéntanos qué necesitas. Formulario, teléfono o en persona. Respondemos en un día hábil.' },
+    { num: '02', title: 'Diagnóstico', copy: 'Diagnóstico gratuito, presupuesto por escrito. Nunca empezamos a trabajar sin tu aprobación.' },
+    { num: '03', title: 'Ejecución', copy: 'Técnicos in-house, repuestos y herramientas certificadas, prueba funcional completa antes de la entrega.' },
+    { num: '04', title: 'Retorno', copy: 'Recogida, envío de retorno o entrega on-site. Garantía de seis meses incluida en reparaciones.' },
+  ],
+  pricesEyebrow: 'Precios transparentes',
+  pricesTitle: 'Tarifas iniciales,<br/>en todos los servicios.',
+  pricesSub: 'El precio final depende del diagnóstico. Siempre cotizamos por escrito antes de cualquier trabajo. Descuentos por varias cámaras y por volumen disponibles.',
+  tableHead: ['Servicio', 'Desde', 'Dónde', 'Tiempo'],
+  rows: [
+    ['Limpieza de sensor', '<strong>$49</strong>', 'Taller', 'Mientras esperas'],
+    ['Limpieza de sensor · on-site', '<strong>$79</strong>', 'Tu locación', '30 min on-site'],
+    ['Calibración de lente', '<strong>$79</strong>', 'Taller u on-site', 'El mismo día'],
+    ['CLA de cámara de película', '<strong>$129</strong>', 'Taller', '5–7 días hábiles'],
+    ['Servicio completo de cuerpo', '<strong>$149</strong>', 'Taller', '3–5 días hábiles'],
+    ['Día de producción', '<strong>$299</strong>', 'On-site, hasta 8 h', 'Reserva anticipada'],
+    ['Producción de foto y video', 'A medida', 'Estudio o locación', 'Por proyecto'],
+    ['Tarifa de traslado (on-site)', '<strong>$25</strong>', 'Miami-Dade y Broward · PB +$50 · Cayos por cotización', 'Despacho el mismo día'],
+  ],
+  ctaTitle: 'Elige un servicio.<br/>Nosotros hacemos el resto.',
+  ctaCopy: 'Cuéntanos qué necesita tu equipo. Respondemos en un día hábil.',
+  ctaBtn1: 'Iniciar una reparación',
+  ctaBtn2: 'Llamar (786) 763-2091',
+} : {
+  title: 'Camera Services Miami | Repair, Membership, Sensor Cleaning, On-Site & Productions — MPC',
+  description: 'Full photography technical services in Miami: camera and gear repair, annual membership, sensor cleaning from $49, on-site mobile service across South Florida, and photo & video productions. Six-month warranty.',
+  breadcrumbHome: 'Home',
+  breadcrumbCurrent: 'Services',
+  heroEyebrow: 'Full service catalog',
+  heroTitle: 'Everything your gear<br/>needs. Under one roof.',
+  heroLede: 'Repair, annual membership, sensor cleaning, mobile on-site service, and full photo & video productions. One workshop, five verticals, six-month warranty on every repair.',
+  heroCta1: 'Explore services',
+  heroCta2: 'Help me choose',
+  heroAlt: 'Professional medium-format camera, transparent product shot — Miami Photography Center',
+  blocks: [
+    {
+      id: undefined, reverse: false,
+      num: '01 · Workshop',
+      title: 'Camera & Gear Repair',
+      copy: 'DSLR, mirrorless, film, drones, lenses. Internal maintenance, sensor replacement, lubrication, electronics, firmware. Every job carries a six-month warranty.',
+      bullets: [
+        'Canon, Nikon, Sony, Fujifilm, Leica, Panasonic',
+        'Diagnostic within 24 hours · written quote',
+        'Most repairs done in 3–5 business days',
+        'From <strong>$149</strong> for full body service',
+      ],
+      cta: 'See repair details', link: '/repair',
+      img: 'https://images.unsplash.com/photo-1500634245200-e5245c7574ef?w=1400&q=85&auto=format&fit=crop',
+      imgAlt: 'Camera body opened on a technician workbench',
+    },
+    {
+      id: 'membership', reverse: true,
+      num: '02 · Year-round',
+      title: 'Annual Membership',
+      copy: 'Your gear, maintained year-round. Scheduled cleanings, priority repairs, and member discounts — one plan that keeps every camera ready to shoot.',
+      bullets: [
+        'Scheduled sensor cleanings throughout the year',
+        'Priority turnaround on repairs',
+        'Exclusive member discounts',
+        'Plans for photographers, studios, schools, and production companies',
+      ],
+      cta: 'See membership plans', link: '/membership',
+      img: 'https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?w=1400&q=85&auto=format&fit=crop',
+      imgAlt: 'Professional photography gear, organized and maintained',
+    },
+    {
+      id: 'sensor-cleaning', reverse: false,
+      num: '03 · While you wait',
+      title: 'Sensor Cleaning',
+      copy: 'Ultrasonic, anti-static, certified solutions. Most full setups done in 30 minutes. Includes a 30-day free re-clean guarantee.',
+      bullets: [
+        'APS-C, full-frame, and medium-format sensors',
+        'Mirror, focusing screen, and exterior also cleaned',
+        'Before and after sensor-loupe inspection, documented',
+        'From <strong>$49</strong> · <strong>$79</strong> on-site at your location',
+      ],
+      cta: 'Book a sensor clean', link: '/sensor-cleaning',
+      img: 'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=1400&q=85&auto=format&fit=crop',
+      imgAlt: 'Camera sensor close-up during a precision cleaning session',
+    },
+    {
+      id: undefined, reverse: true,
+      num: '04 · Mobile',
+      title: 'On-Site Service',
+      copy: 'Our calibrated unit comes to your studio, set, or location across South Florida. Zero downtime for your shoot. Production day rates available.',
+      bullets: [
+        'Miami-Dade · Broward · Palm Beach · Florida Keys',
+        'Same-day emergency dispatch (subject to availability)',
+        'Production day rate from <strong>$299</strong> · up to 8 hours',
+        'On-site sensor clean from <strong>$79</strong>',
+      ],
+      cta: 'See coverage & schedule', link: '/on-site',
+      img: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=1400&q=85&auto=format&fit=crop',
+      imgAlt: 'Mobile photography service unit working on a production set',
+    },
+    {
+      id: undefined, reverse: false,
+      num: '05 · Editorial & commercial',
+      title: 'Photo & Video Productions',
+      copy: 'Full crew, gear, and post-production. Editorial, commercial, audiovisual, and brand campaigns led by working professionals.',
+      bullets: [
+        'Concept · production · direction · post',
+        'Studio, location, and on-set capability',
+        'End-to-end gear ownership — no rentals to worry about',
+        'Custom quote per project',
+      ],
+      cta: 'See production work', link: '/productions',
+      img: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1400&q=85&auto=format&fit=crop',
+      imgAlt: 'Behind-the-scenes of a commercial photography production set',
+    },
+  ],
+  chooserEyebrow: 'Help me choose',
+  chooserTitle: 'Which service do you need?',
+  chooserSub: 'Pick the situation that matches yours. We’ll point you to the right page.',
+  pickers: [
+    { when: 'My camera', h: 'Something is broken or not working.', copy: 'Repairs, calibration, mechanical issues, error codes, dust on sensor.', cta: 'Go to repair', href: '/repair', anchor: '#repair-form', accent: false },
+    { when: 'Membership', h: 'I want year-round maintenance.', copy: 'Scheduled cleanings, priority repairs, and member discounts in one plan.', cta: 'See plans', href: '/membership', anchor: '', accent: false },
+    { when: 'I have a shoot', h: 'I need service without leaving my location.', copy: 'Mobile sensor clean, on-set diagnostic, production day rate.', cta: 'Schedule on-site', href: '/on-site', anchor: '#booking-form', accent: true },
+    { when: 'My sensor', h: 'I see dust spots in my images.', copy: 'Sensor cleaning, mirror & focusing screen included. While you wait.', cta: 'Book sensor clean', href: '/sensor-cleaning', anchor: '', accent: false },
+    { when: 'I need content', h: 'I want full photo or video production.', copy: 'Editorial, commercial, brand campaigns. Full crew, full gear, full post.', cta: 'See productions', href: '/productions', anchor: '', accent: false },
+  ],
+  methodEyebrow: 'Shared method',
+  methodTitle: 'Four steps.<br/>Every service.',
+  steps: [
+    { num: '01', title: 'Request', copy: 'Tell us what you need. Form, phone, or in-person. We respond within one business day.' },
+    { num: '02', title: 'Diagnose', copy: 'Free diagnostic, written quote. We never start work without your approval.' },
+    { num: '03', title: 'Execute', copy: 'In-house technicians, certified parts and tools, full functional test before sign-off.' },
+    { num: '04', title: 'Return', copy: 'Pickup, return shipping, or on-site delivery. Six-month warranty included on repairs.' },
+  ],
+  pricesEyebrow: 'Transparent pricing',
+  pricesTitle: 'Starting rates,<br/>across every service.',
+  pricesSub: 'Final price depends on diagnostic. We always quote in writing before any work. Multi-camera and bulk discounts available.',
+  tableHead: ['Service', 'Starting at', 'Where', 'Turnaround'],
+  rows: [
+    ['Sensor cleaning', '<strong>$49</strong>', 'Workshop', 'While you wait'],
+    ['Sensor cleaning · on-site', '<strong>$79</strong>', 'Your location', '30 min on-site'],
+    ['Lens calibration', '<strong>$79</strong>', 'Workshop or on-site', 'Same day'],
+    ['Film camera CLA', '<strong>$129</strong>', 'Workshop', '5–7 business days'],
+    ['Full body service', '<strong>$149</strong>', 'Workshop', '3–5 business days'],
+    ['Production day rate', '<strong>$299</strong>', 'On-site, up to 8h', 'Booked in advance'],
+    ['Photo & video production', 'Custom', 'Studio or location', 'Per project'],
+    ['Travel fee (on-site)', '<strong>$25</strong>', 'Miami-Dade & Broward · PB +$50 · Keys by quote', 'Day-of dispatch'],
+  ],
+  ctaTitle: 'Pick a service.<br/>We’ll do the rest.',
+  ctaCopy: 'Tell us what your gear needs. We respond within one business day.',
+  ctaBtn1: 'Start a repair',
+  ctaBtn2: 'Call (786) 763-2091',
+};
+
+const origin = 'https://miamiphotographycenter.com';
+
+const breadcrumbSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: t.breadcrumbHome, item: origin + p('/') },
+    { '@type': 'ListItem', position: 2, name: t.breadcrumbCurrent, item: origin + p('/services') },
+  ],
+});
+
+const catalogSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Photography Technical Services',
+  name: 'Miami Photography Center — Full Service Catalog',
+  provider: { '@id': 'https://miamiphotographycenter.com/#localbusiness' },
+  areaServed: 'South Florida',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'All Services',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Camera & Gear Repair', url: origin + p('/repair') }, priceCurrency: 'USD', price: '149' },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Annual Membership', url: origin + p('/membership') } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Sensor Cleaning', url: origin + p('/sensor-cleaning') }, priceCurrency: 'USD', price: '49' },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'On-Site Mobile Service', url: origin + p('/on-site') }, priceCurrency: 'USD', price: '79' },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Photo & Video Productions', url: origin + p('/productions') } },
+    ],
+  },
+});
+---
+<Base locale={locale} title={t.title} description={t.description}>
+  <script type="application/ld+json" set:html={breadcrumbSchema} slot="head" is:inline />
+  <script type="application/ld+json" set:html={catalogSchema} slot="head" is:inline />
+
+  <!-- ==================== HERO ==================== -->
+  <header class="hero hero--services">
+    <div class="hero__ring" aria-hidden="true"></div>
+
+    <div class="hero__container hero__container--split">
+      <div class="hero__text">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href={p('/')}>{t.breadcrumbHome}</a></li>
+            <li aria-current="page">{t.breadcrumbCurrent}</li>
+          </ol>
+        </nav>
+
+        <p class="hero__eyebrow" data-anim="fade-up">{t.heroEyebrow}</p>
+        <h1 class="hero__title" data-anim="hero-title" set:html={t.heroTitle} />
+        <p class="hero__lede" data-anim="fade-up">{t.heroLede}</p>
+        <div class="hero__ctas" data-anim="fade-up">
+          <a href="#catalog" class="btn btn--primary">{t.heroCta1}</a>
+          <a href="#chooser" class="btn btn--ghost">{t.heroCta2} <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+      <div class="hero__camera">
+        <img src="/sfx30.webp" alt={t.heroAlt} width="1024" height="1024" fetchpriority="high" decoding="async" />
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== CATALOG — 5 alternating service blocks ==================== -->
+  <section id="catalog" class="catalog" aria-label={t.breadcrumbCurrent}>
+    {t.blocks.map((block) => (
+      <article id={block.id} class={`svc-block${block.reverse ? ' svc-block--reverse' : ''}`} data-anim="fade-up">
+        <div class="svc-block__inner">
+          <div class="svc-block__media">
+            <img loading="lazy" decoding="async" src={block.img} alt={block.imgAlt} width="1400" height="900" />
+          </div>
+          <div class="svc-block__text">
+            <p class="svc-block__num">{block.num}</p>
+            <h2 class="svc-block__title">{block.title}</h2>
+            <p class="svc-block__copy">{block.copy}</p>
+            <ul class="svc-block__bullets">
+              {block.bullets.map((bullet) => <li set:html={bullet} />)}
+            </ul>
+            <a href={p(block.link)} class="btn btn--primary">{block.cta}</a>
+          </div>
+        </div>
+      </article>
+    ))}
+  </section>
+
+  <!-- ==================== SERVICE CHOOSER ==================== -->
+  <section id="chooser" class="chooser" aria-labelledby="chooser-title">
+    <div class="chooser__head">
+      <p class="eyebrow">{t.chooserEyebrow}</p>
+      <h2 id="chooser-title" class="chooser__title">{t.chooserTitle}</h2>
+      <p class="chooser__sub">{t.chooserSub}</p>
+    </div>
+
+    <div class="chooser__grid">
+      {t.pickers.map((picker) => (
+        <a href={p(picker.href) + picker.anchor} class={`picker${picker.accent ? ' picker--accent' : ''}`}>
+          <p class="picker__when">{picker.when}</p>
+          <h3>{picker.h}</h3>
+          <p class="picker__copy">{picker.copy}</p>
+          <span class="picker__cta">{picker.cta} <span aria-hidden="true">→</span></span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- ==================== PROCESS — Shared method ==================== -->
+  <section class="repair-process" aria-labelledby="method-title">
+    <div class="repair-process__head">
+      <p class="eyebrow">{t.methodEyebrow}</p>
+      <h2 id="method-title" class="repair-process__title" set:html={t.methodTitle} />
+    </div>
+    <ol class="timeline timeline--4">
+      {t.steps.map((step) => (
+        <li class="timeline__item" data-anim="fade-up">
+          <span class="timeline__dot"></span>
+          <div class="timeline__card">
+            <p class="timeline__num">{step.num}</p>
+            <h3>{step.title}</h3>
+            <p>{step.copy}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- ==================== COMBINED PRICING TABLE ==================== -->
+  <section class="price-table" aria-labelledby="prices-title">
+    <div class="price-table__head">
+      <p class="eyebrow">{t.pricesEyebrow}</p>
+      <h2 id="prices-title" class="price-table__title" set:html={t.pricesTitle} />
+      <p class="price-table__sub">{t.pricesSub}</p>
+    </div>
+
+    <div class="price-table__inner">
+      <table class="price-table__grid">
+        <thead>
+          <tr>
+            {t.tableHead.map((head) => <th scope="col">{head}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {t.rows.map((row) => (
+            <tr>
+              {row.map((cell) => <td set:html={cell} />)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="cta" aria-labelledby="cta-title">
+    <div class="cta__inner">
+      <h2 id="cta-title" class="cta__title" set:html={t.ctaTitle} />
+      <p class="cta__copy">{t.ctaCopy}</p>
+      <div class="cta__actions">
+        <a href={p('/repair') + '#repair-form'} class="btn btn--primary btn--lg">{t.ctaBtn1}</a>
+        <a href="tel:+17867632091" class="btn btn--ghost btn--lg">{t.ctaBtn2}</a>
+      </div>
+    </div>
+  </section>
+</Base>

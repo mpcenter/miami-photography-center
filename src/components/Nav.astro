@@ -1,0 +1,51 @@
+---
+import { localePath, altLocalePath, otherLocale, type Locale } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = locale === 'es'
+  ? {
+      repair: 'Reparación',
+      onSite: 'On-Site',
+      membership: 'Membresía',
+      productions: 'Producciones',
+      store: 'Tienda',
+      contact: 'Contacto',
+      cta: 'Solicitar reparación',
+      switchLabel: 'EN',
+      brandAria: 'Miami Photography Center — inicio',
+    }
+  : {
+      repair: 'Repair',
+      onSite: 'On-Site',
+      membership: 'Membership',
+      productions: 'Productions',
+      store: 'Store',
+      contact: 'Contact',
+      cta: 'Request Repair',
+      switchLabel: 'ES',
+      brandAria: 'Miami Photography Center home',
+    };
+const p = (path: string) => localePath(locale, path);
+const altPath = altLocalePath(locale, Astro.url.pathname);
+---
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href={p('/')} class="nav__brand" aria-label={t.brandAria}>MPC</a>
+    <ul class="nav__links">
+      <li><a href={p('/repair')}>{t.repair}</a></li>
+      <li><a href={p('/on-site')}>{t.onSite}</a></li>
+      <li><a href={p('/membership')}>{t.membership}</a></li>
+      <li><a href={p('/productions')}>{t.productions}</a></li>
+      <li><a href={p('/store')}>{t.store}</a></li>
+      <li><a href={p('/contact')}>{t.contact}</a></li>
+    </ul>
+    <a href={altPath} class="nav__lang" aria-label={otherLocale(locale) === 'es' ? 'Cambiar a español' : 'Switch to English'}>{t.switchLabel}</a>
+    <a href={p('/repair') + '#repair-form'} class="nav__cta">{t.cta}</a>
+    <button class="nav__burger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
