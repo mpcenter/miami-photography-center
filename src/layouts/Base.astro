@@ -52,17 +52,17 @@ const esUrl = locale === 'es' ? canonical : altUrl;
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer is:inline></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer is:inline></script>
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js" defer is:inline></script>
+  <script src="/scripts/vendor/gsap.min.js" defer is:inline></script>
+  <script src="/scripts/vendor/ScrollTrigger.min.js" defer is:inline></script>
+  <script src="/scripts/vendor/lenis.min.js" defer is:inline></script>
   <script src="/scripts/main.js" defer is:inline></script>
 
   <slot name="head" />
 </head>
 
 <body class={minimal ? 'is-landing' : undefined}>
+  <a href="#main" class="skip-link">{locale === 'es' ? 'Saltar al contenido' : 'Skip to content'}</a>
   {minimal ? (
     <nav class="nav nav--minimal" aria-label="Primary">
       <div class="nav__inner">
@@ -74,7 +74,9 @@ const esUrl = locale === 'es' ? canonical : altUrl;
     <Nav locale={locale} />
   )}
 
-  <slot />
+  <main id="main">
+    <slot />
+  </main>
 
   {!minimal && <Footer locale={locale} />}
   {minimal && (

@@ -16,17 +16,28 @@
     init3DTilt();
     initParallax();
     initDemoForms();
-
-    if (window.gsap && window.ScrollTrigger) {
-      gsap.registerPlugin(ScrollTrigger);
-      initLenis();
-      initStoryScrollytelling();
-      initCoverageParallax();
-      initHeroParallax();
-      initCounters();
-      initMarqueeDrift();
-    }
+    initGsapFeatures();
   });
+
+  /* GSAP-dependent features. If the vendor scripts haven't executed yet
+     (slow network), retry once on window load so animations never
+     silently disappear. */
+  let gsapInitDone = false;
+  function initGsapFeatures() {
+    if (gsapInitDone) return;
+    if (!(window.gsap && window.ScrollTrigger)) {
+      window.addEventListener('load', initGsapFeatures, { once: true });
+      return;
+    }
+    gsapInitDone = true;
+    gsap.registerPlugin(ScrollTrigger);
+    initLenis();
+    initStoryScrollytelling();
+    initCoverageParallax();
+    initHeroParallax();
+    initCounters();
+    initMarqueeDrift();
+  }
 
   /* ===== LENIS SMOOTH SCROLL (synced with ScrollTrigger) ===== */
   function initLenis() {
@@ -116,24 +127,37 @@
   /* ===== NAV ===== */
   function initNav() {
     const nav = document.querySelector('.nav');
-    const burger = document.querySelector('.nav__burger');
-    const links = document.querySelector('.nav__links');
+    if (!nav) return;
+    const burger = nav.querySelector('.nav__burger');
+    const menu = nav.querySelector('.nav__menu');
 
     // Background opacity on scroll
-    let lastY = window.scrollY;
     window.addEventListener('scroll', () => {
       const y = window.scrollY;
       if (y > 30) nav.style.background = 'rgba(29, 29, 31, 0.86)';
       else nav.style.background = 'rgba(29, 29, 31, 0.72)';
-      lastY = y;
     }, { passive: true });
 
-    // Mobile burger (basic toggle — links would need overlay panel)
-    if (burger && links) {
+    // Mobile overlay menu
+    if (burger && menu) {
+      const setOpen = (open) => {
+        nav.classList.toggle('nav--open', open);
+        burger.setAttribute('aria-expanded', String(open));
+      };
       burger.addEventListener('click', () => {
-        const open = burger.getAttribute('aria-expanded') === 'true';
-        burger.setAttribute('aria-expanded', String(!open));
-        links.style.display = open ? '' : 'flex';
+        setOpen(!nav.classList.contains('nav--open'));
+      });
+      menu.querySelectorAll('a').forEach((a) => {
+        a.addEventListener('click', () => setOpen(false));
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.classList.contains('nav--open')) {
+          setOpen(false);
+          burger.focus();
+        }
+      });
+      document.addEventListener('click', (e) => {
+        if (nav.classList.contains('nav--open') && !nav.contains(e.target)) setOpen(false);
       });
     }
   }
@@ -145,6 +169,8 @@
       els.forEach(el => el.classList.add('is-in'));
       return;
     }
+    // threshold must stay near 0: tall blocks never reach higher ratios
+    // (viewport/height < threshold) and would stay invisible forever.
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e, i) => {
         if (e.isIntersecting) {
@@ -153,8 +179,13 @@
           io.unobserve(e.target);
         }
       });
-    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-    els.forEach(el => io.observe(el));
+    }, { threshold: 0.01, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(el => {
+      // Anything already on screen (deep links, restored scroll) shows now
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('is-in');
+      else io.observe(el);
+    });
   }
 
   /* ===== 3D TILT ON SERVICE CARDS ===== */
@@ -226,7 +257,7 @@
 
     // Camera image sources per scene
     const sceneImages = [
-      'https://images.unsplash.com/photo-1606980625154-7e8b9eafcce6?w=1600&q=85&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1519183071298-a2962feb14f4?w=1600&q=85&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=1600&q=85&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1500634245200-e5245c7574ef?w=1600&q=85&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1600&q=85&auto=format&fit=crop'

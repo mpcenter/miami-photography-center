@@ -240,6 +240,11 @@ const faqSchema = JSON.stringify({
   <!-- ==================== HERO ==================== -->
   <header class="page-hero">
     <div class="page-hero__inner">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href={p('/')}>{locale === 'es' ? 'Inicio' : 'Home'}</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">{locale === 'es' ? 'Preguntas frecuentes' : 'FAQs'}</span>
+      </nav>
       <p class="eyebrow" data-anim="fade-up">{t.heroEyebrow}</p>
       <h1 class="page-hero__title" data-anim="fade-up">{t.heroTitle}</h1>
       <p class="page-hero__lede" data-anim="fade-up">{t.heroLede}</p>

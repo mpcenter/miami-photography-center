@@ -1,0 +1,37 @@
+{
+  "slug": "carbon-fiber-travel-tripod",
+  "name": {
+    "en": "Carbon Fiber Travel Tripod",
+    "es": "Trípode de Viaje de Fibra de Carbono"
+  },
+  "price": 229,
+  "category": {
+    "en": "Accessories",
+    "es": "Accesorios"
+  },
+  "img": "https://images.unsplash.com/photo-1545254000-6c843440c5cd?w=1200&q=80&auto=format&fit=crop",
+  "desc": {
+    "en": "Lightweight carbon fiber tripod with a fluid-smooth ball head, ideal for travel and on-location work. Every unit is assembled, checked, and load-tested in-house before it ships. Covered by our 6-month warranty.",
+    "es": "Trípode liviano de fibra de carbono con rótula de bola suave, ideal para viajes y trabajo en locación. Cada unidad se arma, revisa y prueba de carga in-house antes de enviarse. Cubierto por nuestra garantía de 6 meses."
+  },
+  "condition": {
+    "en": "Inspected & load-tested in-house — 6-month warranty",
+    "es": "Revisado y probado de carga in-house — garantía de 6 meses"
+  },
+  "specs": {
+    "en": [
+      "Carbon fiber legs, 3.1 lb (1.4 kg) total weight",
+      "Supports up to 22 lb (10 kg) of gear",
+      "Ball head with Arca-type quick-release plate",
+      "Folds to 17 in (43 cm) for carry-on travel",
+      "Locks and head torque checked in-house"
+    ],
+    "es": [
+      "Patas de fibra de carbono, 1.4 kg de peso total",
+      "Soporta hasta 10 kg de equipo",
+      "Rótula de bola con placa de liberación rápida tipo Arca",
+      "Se pliega a 43 cm para llevar en cabina",
+      "Seguros y torque de la rótula verificados in-house"
+    ]
+  }
+}

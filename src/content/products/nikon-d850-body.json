@@ -1,0 +1,37 @@
+{
+  "slug": "nikon-d850-body",
+  "name": {
+    "en": "Nikon D850 — Body (Used)",
+    "es": "Nikon D850 — Cuerpo (Usada)"
+  },
+  "price": 1699,
+  "category": {
+    "en": "Cameras",
+    "es": "Cámaras"
+  },
+  "img": "https://images.unsplash.com/photo-1614108830714-74f0e4c8cd7e?w=1200&q=80&auto=format&fit=crop",
+  "desc": {
+    "en": "The legendary 45.7MP DSLR for studio, landscape, and editorial work. Fully inspected and serviced in-house: sensor cleaned, mirror box checked, firmware updated. Covered by our 6-month warranty.",
+    "es": "La legendaria DSLR de 45.7MP para estudio, paisaje y trabajo editorial. Totalmente revisada y calibrada in-house: sensor limpio, caja de espejo verificada y firmware actualizado. Cubierta por nuestra garantía de 6 meses."
+  },
+  "condition": {
+    "en": "Inspected & serviced in-house — 6-month warranty",
+    "es": "Revisada y calibrada in-house — garantía de 6 meses"
+  },
+  "specs": {
+    "en": [
+      "45.7MP BSI full-frame sensor, F mount",
+      "153-point AF system, 7 fps burst",
+      "4K UHD video, dual card slots (XQD + SD)",
+      "Mirror and shutter mechanism serviced in-house",
+      "Includes battery, charger, and body cap"
+    ],
+    "es": [
+      "Sensor BSI full-frame de 45.7MP, montura F",
+      "Sistema AF de 153 puntos, ráfaga de 7 fps",
+      "Video 4K UHD, doble ranura (XQD + SD)",
+      "Mecanismo de espejo y obturador calibrado in-house",
+      "Incluye batería, cargador y tapa de cuerpo"
+    ]
+  }
+}

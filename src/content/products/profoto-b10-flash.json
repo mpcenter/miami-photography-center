@@ -1,0 +1,37 @@
+{
+  "slug": "profoto-b10-flash",
+  "name": {
+    "en": "Profoto B10 OCF Flash (Used)",
+    "es": "Flash Profoto B10 OCF (Usado)"
+  },
+  "price": 995,
+  "category": {
+    "en": "Accessories",
+    "es": "Accesorios"
+  },
+  "img": "https://images.unsplash.com/photo-1514916726007-68847f06dd03?w=1200&q=80&auto=format&fit=crop",
+  "desc": {
+    "en": "Compact 250Ws battery strobe with continuous LED light — studio power that fits in a backpack. Flash tube, battery, and electronics inspected and serviced in-house. Backed by our 6-month warranty.",
+    "es": "Flash compacto de batería de 250Ws con luz LED continua — potencia de estudio que cabe en una mochila. Tubo de flash, batería y electrónica revisados y calibrados in-house. Respaldado por nuestra garantía de 6 meses."
+  },
+  "condition": {
+    "en": "Inspected & serviced in-house — 6-month warranty",
+    "es": "Revisado y calibrado in-house — garantía de 6 meses"
+  },
+  "specs": {
+    "en": [
+      "250Ws output, 10-stop power range",
+      "Built-in continuous LED modeling light",
+      "Li-ion battery tested for full-capacity cycles",
+      "AirTTL and HSS compatible (remote sold separately)",
+      "Electronics bench-tested in-house"
+    ],
+    "es": [
+      "Potencia de 250Ws, rango de 10 pasos",
+      "Luz LED continua de modelado integrada",
+      "Batería Li-ion probada en ciclos de capacidad completa",
+      "Compatible con AirTTL y HSS (disparador se vende aparte)",
+      "Electrónica probada en banco in-house"
+    ]
+  }
+}
