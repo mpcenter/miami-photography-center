@@ -35,16 +35,22 @@ slug evita URLs rotas. El cliente no puede romper el diseño: solo edita datos.
 
 ## Acceso del cliente — 2 opciones
 
-### Opción A — Token personal (funciona HOY, 10 minutos de setup)
+### Opción A — Token personal (funciona HOY, sin instalar nada)
 
-1. El cliente crea una cuenta gratuita en github.com (o usa la tuya al inicio).
+⚠️ **Importante:** en la pantalla de login NO uses el botón "Sign In with
+GitHub" (ese requiere el proxy OAuth de la Opción B y da "Not Found"). Usa el
+botón **"Sign In Using Access Token"**.
+
+1. El cliente crea una cuenta gratuita en github.com (o usas la tuya al inicio).
 2. Tú lo invitas como colaborador del repositorio
    `oreste2b/miami-photography-center` (Settings → Collaborators).
-3. El cliente genera un token: GitHub → Settings → Developer settings →
-   Fine-grained tokens → New token → Repository access: solo
-   `miami-photography-center` → Permissions: **Contents: Read and write**.
-4. En `/admin` pulsa **"Sign in with GitHub"** y Sveltia ofrece la opción de
-   entrar con token personal; lo pega una vez y el navegador lo recuerda.
+3. Genera un token en GitHub → Settings → Developer settings →
+   **Fine-grained tokens** → Generate new token:
+   - Repository access: **Only select repositories** → `miami-photography-center`
+   - Permissions → Repository permissions → **Contents: Read and write**
+   - (alternativa: un **classic token** con el scope `repo`)
+4. En `/admin` pulsa **"Sign In Using Access Token"**, pega el token en el
+   diálogo y "Sign In". El navegador lo recuerda; no hay que repetirlo.
 
 ### Opción B — Botón "Entrar con GitHub" sin tokens (recomendada al lanzar)
 
