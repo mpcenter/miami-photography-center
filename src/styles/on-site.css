@@ -63,8 +63,8 @@
   transform-box: fill-box;
 }
 @keyframes vanBob {
-  0%, 100% { transform: translate(170px, 440px); }
-  50% { transform: translate(170px, 436px); }
+  0%, 100% { transform: translate(244px, 432px); }
+  50% { transform: translate(244px, 428px); }
 }
 
 @media (max-width: 900px) {
