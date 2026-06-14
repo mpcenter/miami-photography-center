@@ -10,15 +10,15 @@ const { locale } = Astro.props;
 const p = (path: string) => localePath(locale, path);
 
 const t = locale === 'es' ? {
-  title: 'Servicio On-Site de Cámaras en Miami | Limpieza de Sensor Móvil y Reparación — MPC',
-  description: 'Servicio móvil de cámaras en el sur de Florida. Limpieza de sensor en 30 minutos, diagnóstico on-site, recogida y entrega de equipos, soporte en eventos y planes de mantenimiento a medida — donde estés.',
+  title: 'Servicio On-Site de Cámaras en Miami | Limpieza de Sensor Móvil y Reparación · MPC',
+  description: 'Servicio móvil de cámaras en el sur de Florida. Limpieza de sensor en 30 minutos, diagnóstico on-site, recogida y entrega de equipos, soporte en eventos y planes de mantenimiento a medida, donde estés.',
   breadcrumbHome: 'Inicio',
   breadcrumbServices: 'Servicios',
   breadcrumbCurrent: 'Servicios On-Site',
   heroEyebrow: 'Servicio móvil · Sur de Florida',
   heroTitle: 'Servicios On-Site',
-  heroSub: 'Mantenimiento profesional — donde estés',
-  heroLede: 'Más que una van — un laboratorio de servicio completo sobre ruedas. Vamos a tu locación para limpieza, diagnóstico y reparaciones expertas. O recogemos tu equipo, lo atendemos en nuestro centro técnico y te lo devolvemos listo para disparar.',
+  heroSub: 'Mantenimiento profesional, donde estés',
+  heroLede: 'Más que una van: un laboratorio de servicio completo sobre ruedas. Vamos a tu locación para limpieza, diagnóstico y reparaciones expertas. O recogemos tu equipo, lo atendemos en nuestro centro técnico y te lo devolvemos listo para disparar.',
   heroCta1: 'Agendar visita on-site',
   heroCta2: 'Ver cobertura',
   offersEyebrow: 'Qué hacemos on-site',
@@ -45,13 +45,13 @@ const t = locale === 'es' ? {
       featured: false,
       tag: 'Diagnóstico',
       title: 'Diagnóstico On-Site y Recogida de Equipos',
-      tagline: 'Detectamos el problema y lo resolvemos — sin que tengas que trasladarte.',
+      tagline: 'Detectamos el problema y lo resolvemos sin que tengas que trasladarte.',
       bullets: [
         'Diagnóstico on-site y presupuestos de reparación',
         'Recogida de equipos que requieren reparación de taller',
         'Entrega de retorno una vez completada la reparación',
       ],
-      note: 'Nota: si el diagnóstico implica desarme o evaluación avanzada, puede aplicar una tarifa técnica. Siempre te informamos antes — sin sorpresas.',
+      note: 'Nota: si el diagnóstico implica desarme o evaluación avanzada, puede aplicar una tarifa técnica. Siempre te avisamos antes, sin sorpresas.',
       link: '', linkLabel: '',
     },
     {
@@ -102,7 +102,7 @@ const t = locale === 'es' ? {
   steps: [
     { num: '01', title: 'Agenda', copy: 'Reserva fecha, hora y locación. Cuéntanos qué equipo y qué servicio. Confirmamos en un día hábil.' },
     { num: '02', title: 'Llegamos', copy: 'A tiempo, totalmente equipados. Estación de limpieza calibrada, flujo antiestático, cada herramienta de nuestro taller.' },
-    { num: '03', title: 'Servicio en el lugar', copy: 'La mayoría de los trabajos mientras observas. Limpieza de sensor, calibración de lentes, firmware, diagnóstico — normalmente de 20 a 60 minutos por cámara.' },
+    { num: '03', title: 'Servicio en el lugar', copy: 'La mayoría de los trabajos mientras observas. Limpieza de sensor, calibración de lentes, firmware y diagnóstico. Normalmente de 20 a 60 minutos por cámara.' },
     { num: '04', title: 'De vuelta al trabajo', copy: 'Equipo listo, sin tiempo muerto, todo documentado. Las reparaciones mayores que requieren repuestos van a nuestro taller con fecha de retorno.' },
   ],
   zonesEyebrow: 'Zonas de cobertura',
@@ -148,7 +148,7 @@ const t = locale === 'es' ? {
   faq: [
     { q: '¿Qué incluye el servicio on-site?', a: 'Limpieza de sensor, calibración de lentes, pruebas de enfoque, ajustes mecánicos menores, actualizaciones de firmware y diagnóstico completo. Las reparaciones complejas que requieren repuestos van a nuestro taller.' },
     { q: '¿Qué tan rápido pueden llegar?', a: 'El mismo día para emergencias en Miami-Dade y Broward cuando hay disponibilidad. Citas estándar entre 24 y 72 horas en el sur de Florida. Los sets de producción y las bodas tienen despacho prioritario.' },
-    { q: '¿Qué zonas cubren?', a: 'Los condados Miami-Dade, Broward, Palm Beach y Monroe — de West Palm Beach a Key West. Las tarifas de traslado varían por zona.' },
+    { q: '¿Qué zonas cubren?', a: 'Los condados Miami-Dade, Broward, Palm Beach y Monroe, de West Palm Beach a Key West. Las tarifas de traslado varían por zona.' },
     { q: '¿Pueden dar servicio en un set de filmación?', a: 'Sí. Trabajamos alrededor de tu call sheet. Montaje discreto, flujo antiestático y nos movemos con tu producción. La limpieza de sensor suele hacerse entre tomas.' },
     { q: '¿Cuánto cuesta?', a: 'La tarifa de servicio empieza en $79 más traslado por zona. Miami-Dade y Broward desde $25, Palm Beach $50, Cayos de Florida por cotización. Descuentos por varias cámaras y por volumen disponibles.' },
     { q: '¿Traen sus propias herramientas?', a: 'Sí. Estación de limpieza calibrada, equipo antiestático, hisopos de sensor en todos los tamaños, peras de aire, lupas de sensor, cartas de calibración de lentes, ColorChecker y kit de diagnóstico. Todo lo que encontrarías en nuestro taller, portátil.' },
