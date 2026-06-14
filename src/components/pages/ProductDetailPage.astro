@@ -21,7 +21,7 @@ const t = locale === 'es' ? {
   shippingTitle: 'Envíos',
   shippingCopy: 'Enviamos a todo Estados Unidos con empaque protegido y número de seguimiento. Las órdenes se despachan en 1–2 días hábiles desde nuestro taller en West Park, FL. Retiro en tienda disponible sin costo.',
   warrantyTitle: 'Garantía de 6 meses',
-  warrantyCopy: 'Todo el equipo usado se revisa y calibra en nuestro propio taller antes de publicarse. Cada compra incluye una garantía de 6 meses que cubre fallas de funcionamiento del equipo tal como fue vendido. Si algo falla, lo reparamos in-house — los mismos técnicos que lo revisaron.',
+  warrantyCopy: 'Todo el equipo usado se revisa y calibra en nuestro propio taller antes de publicarse. Cada compra incluye una garantía de 6 meses que cubre fallas de funcionamiento del equipo tal como fue vendido. Si algo falla, lo reparamos en el taller — los mismos técnicos que lo revisaron.',
   crossTitle: '¿Necesitas servicio para tu propio equipo?',
   crossCopy: 'Los mismos técnicos que revisan cada producto de la tienda reparan cámaras y lentes todos los días. Garantía de 6 meses en cada reparación.',
   crossCta: 'Conoce el servicio de reparación',
@@ -44,7 +44,7 @@ const t = locale === 'es' ? {
 
 const formatPrice = (n: number) => `$${n.toLocaleString('en-US')}`;
 const pageTitle = locale === 'es'
-  ? `${product.name.es} | Tienda MPC — Revisado In-House, Garantía de 6 Meses`
+  ? `${product.name.es} | Tienda MPC — Revisado en el Taller, Garantía de 6 Meses`
   : `${product.name.en} | MPC Store — Serviced In-House, 6-Month Warranty`;
 const pageDescription = product.desc[locale];
 
