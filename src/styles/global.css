@@ -111,11 +111,40 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   transform: translateX(-50%);
   width: min(1024px, calc(100% - 24px));
   z-index: 100;
-  background: rgba(29, 29, 31, 0.72);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
   border-radius: var(--r-pill);
-  transition: background .3s var(--ease-out);
+  /* ===== Liquid glass material ===== */
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 55%),
+    rgba(28, 28, 30, 0.55);
+  backdrop-filter: blur(24px) saturate(190%) brightness(1.06);
+  -webkit-backdrop-filter: blur(24px) saturate(190%) brightness(1.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 10px 34px rgba(0, 0, 0, 0.30),            /* lift off the page */
+    0 2px 8px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.34),    /* top specular highlight */
+    inset 0 -1px 1px rgba(255, 255, 255, 0.06); /* faint bottom edge */
+  isolation: isolate;
+  transition: background .3s var(--ease-out), box-shadow .3s var(--ease-out), border-color .3s var(--ease-out);
+}
+/* Diagonal sheen — the "liquid" light sliding across the glass */
+.nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: -1;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0.20) 0%,
+    rgba(255, 255, 255, 0) 26%,
+    rgba(255, 255, 255, 0) 62%,
+    rgba(255, 255, 255, 0.10) 88%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  mix-blend-mode: screen;
+  opacity: 0.9;
 }
 .nav__inner {
   display: flex;
@@ -187,10 +216,17 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    background: #1d1d1f;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0) 40%),
+      rgba(28, 28, 30, 0.62);
+    backdrop-filter: blur(24px) saturate(190%) brightness(1.06);
+    -webkit-backdrop-filter: blur(24px) saturate(190%) brightness(1.06);
+    border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 24px;
     padding: 14px;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    box-shadow:
+      0 24px 60px rgba(0, 0, 0, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.22);
   }
   .nav--open .nav__menu { display: flex; }
   .nav__links {
