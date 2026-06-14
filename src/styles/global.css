@@ -352,6 +352,28 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   50% { transform: translateY(-16px); }
 }
 
+/* Home hero: text + camera side by side (instead of stacked) */
+.hero__container--home {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: clamp(32px, 5vw, 72px);
+}
+.hero__container--home .hero__text { min-width: 0; }
+.hero__container--home .hero__ctas { margin-bottom: 0; }
+.hero__container--home .hero__visual {
+  max-width: 560px;
+  width: 100%;
+  margin-inline: auto;
+}
+@media (max-width: 900px) {
+  .hero__container--home {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .hero__container--home .hero__visual { max-width: 440px; }
+}
+
 .hero__scroll-hint {
   position: absolute;
   bottom: 30px;
