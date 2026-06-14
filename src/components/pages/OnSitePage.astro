@@ -412,37 +412,42 @@ const faqSchema = JSON.stringify({
             <circle cx="320" cy="640" r="1.5" fill="#86868b"/>
           </g>
 
+          <!-- South Florida peninsula — tapering east coast with Cape Canaveral bump,
+               Gulf-coast curves (Charlotte Harbor / Tampa Bay), point at the south -->
           <path d="
-            M 50 60
-            L 340 70
-            Q 360 80 360 110
-            L 370 200
-            Q 365 240 350 280
-            L 340 360
-            Q 330 410 310 450
-            Q 280 490 250 510
-            Q 220 530 200 560
-            Q 180 600 160 640
-            L 100 680
-            Q 90 670 100 660
-            L 110 640
-            Q 105 600 95 560
-            L 80 480
-            Q 70 400 65 320
-            L 55 200
-            Q 50 130 50 60 Z
+            M 140 65
+            L 350 65
+            Q 357 115 356 160
+            Q 359 205 348 248
+            Q 342 292 328 332
+            Q 314 376 299 416
+            Q 286 456 268 496
+            Q 252 542 240 582
+            Q 233 600 224 606
+            Q 206 596 193 576
+            Q 179 556 173 531
+            Q 166 501 176 471
+            Q 183 449 166 433
+            Q 151 416 159 389
+            Q 166 361 151 341
+            Q 139 319 146 291
+            Q 153 256 141 221
+            Q 131 181 133 141
+            Q 135 101 140 65 Z
           " fill="url(#landGrad)" stroke="#3a3a3d" stroke-width="1"/>
 
+          <!-- Florida Keys — island chain trailing southwest from the tip -->
           <g class="map-keys">
-            <ellipse cx="180" cy="635" rx="20" ry="6" fill="url(#landGrad)" stroke="#3a3a3d" stroke-width="1"/>
-            <ellipse cx="230" cy="650" rx="16" ry="5" fill="url(#landGrad)" stroke="#3a3a3d" stroke-width="1"/>
-            <ellipse cx="275" cy="660" rx="14" ry="4.5" fill="url(#landGrad)" stroke="#3a3a3d" stroke-width="1"/>
-            <ellipse cx="315" cy="665" rx="12" ry="4" fill="url(#landGrad)" stroke="#3a3a3d" stroke-width="1"/>
+            <ellipse cx="212" cy="616" rx="13" ry="5" fill="url(#landGrad)" stroke="#3a3a3d" stroke-width="1"/>
+            <ellipse cx="194" cy="628" rx="11" ry="4.5" fill="url(#landGrad)" stroke="#3a3a3d" stroke-width="1"/>
+            <ellipse cx="178" cy="639" rx="10" ry="4" fill="url(#landGrad)" stroke="#3a3a3d" stroke-width="1"/>
+            <ellipse cx="164" cy="649" rx="8.5" ry="3.7" fill="url(#landGrad)" stroke="#3a3a3d" stroke-width="1"/>
+            <ellipse cx="152" cy="658" rx="7" ry="3.2" fill="url(#landGrad)" stroke="#3a3a3d" stroke-width="1"/>
           </g>
 
           <path
             id="serviceRoute"
-            d="M 280 120 Q 270 200 260 280 Q 250 360 230 440 Q 220 500 210 570 Q 200 615 235 645"
+            d="M 280 120 Q 270 240 255 340 Q 244 430 236 520 Q 230 572 222 598 Q 210 624 186 640 Q 170 650 156 658"
             fill="none"
             stroke="url(#routeGrad)"
             stroke-width="3"
@@ -459,42 +464,25 @@ const faqSchema = JSON.stringify({
             <text x="305" y="125" fill="#f5f5f7" font-family="Poppins, system-ui" font-size="14" font-weight="600">West Palm Beach</text>
           </g>
 
-          <g class="map-pin" data-pin="2" data-label="Boca Raton">
-            <circle cx="263" cy="230" r="28" fill="url(#pinGlow)"/>
-            <circle cx="263" cy="230" r="8" fill="#ffff00"/>
-            <circle cx="263" cy="230" r="3" fill="#ffffff"/>
-            <text x="285" y="234" fill="#f5f5f7" font-family="Poppins, system-ui" font-size="13" font-weight="600">Boca Raton</text>
+          <g class="map-pin" data-pin="5" data-label="The Keys">
+            <circle cx="152" cy="658" r="26" fill="url(#pinGlow)"/>
+            <circle cx="152" cy="658" r="8" fill="#ffff00"/>
+            <circle cx="152" cy="658" r="3" fill="#ffffff"/>
+            <text x="152" y="688" fill="#1d1d1f" text-anchor="middle" font-family="Poppins, system-ui" font-size="13" font-weight="600">The Keys</text>
           </g>
 
-          <g class="map-pin" data-pin="3" data-label="Fort Lauderdale">
-            <circle cx="250" cy="340" r="30" fill="url(#pinGlow)"/>
-            <circle cx="250" cy="340" r="9" fill="#ffff00"/>
-            <circle cx="250" cy="340" r="3" fill="#ffffff"/>
-            <text x="272" y="344" fill="#f5f5f7" font-family="Poppins, system-ui" font-size="13" font-weight="600">Fort Lauderdale</text>
-          </g>
-
-          <g class="map-pin map-pin--main" data-pin="4" data-label="Miami">
-            <circle cx="225" cy="450" r="42" fill="url(#pinGlow)"/>
-            <circle cx="225" cy="450" r="14" fill="#ffff00"/>
-            <circle cx="225" cy="450" r="6" fill="#ffffff"/>
-            <text x="252" y="455" fill="#f5f5f7" font-family="Poppins, system-ui" font-size="18" font-weight="600">Miami</text>
-            <text x="252" y="473" fill="#86868b" font-family="Poppins, system-ui" font-size="11" font-weight="400">MPC Workshop</text>
-          </g>
-
-          <g class="map-pin" data-pin="5" data-label="Key West">
-            <circle cx="235" cy="645" r="26" fill="url(#pinGlow)"/>
-            <circle cx="235" cy="645" r="8" fill="#ffff00"/>
-            <circle cx="235" cy="645" r="3" fill="#ffffff"/>
-            <text x="258" y="650" fill="#f5f5f7" font-family="Poppins, system-ui" font-size="13" font-weight="600">The Keys</text>
-          </g>
-
-          <g class="map-van" transform="translate(170, 440)">
-            <rect x="-22" y="-10" width="44" height="20" rx="3" fill="#1d1d1f" stroke="#ffff00" stroke-width="1.5"/>
-            <rect x="-18" y="-7" width="14" height="10" rx="1" fill="#ffff00" opacity="0.6"/>
-            <rect x="-2" y="-7" width="18" height="10" rx="1" fill="#3a3a3d"/>
-            <circle cx="-14" cy="11" r="4" fill="#0e0e10" stroke="#ffff00" stroke-width="1"/>
-            <circle cx="14" cy="11" r="4" fill="#0e0e10" stroke="#ffff00" stroke-width="1"/>
-            <rect x="-22" y="-13" width="6" height="3" rx="1" fill="#ffff00"/>
+          <!-- Service van — Mercedes-Benz Sprinter (high-roof) side profile, facing right -->
+          <g class="map-van" transform="translate(244, 432)">
+            <ellipse cx="0" cy="11" rx="26" ry="3" fill="#000000" opacity="0.25"/>
+            <path d="M -26 7 L -26 -15 Q -26 -16 -25 -16 L 9 -16 Q 12.5 -16 14.5 -12.5 L 20 -4 L 25 -3 Q 28 -2 28 2 L 28 6 Q 28 8 26 8 L -24 8 Q -26 8 -26 7 Z"
+                  fill="#1d1d1f" stroke="#ffff00" stroke-width="1.5" stroke-linejoin="round"/>
+            <rect x="-22" y="-13" width="19" height="8" rx="1" fill="#ffff00" opacity="0.55"/>
+            <path d="M 1 -13 L 12 -13 Q 13.5 -13 15 -10 L 19 -4 L 1 -4 Z" fill="#ffff00" opacity="0.35"/>
+            <circle cx="-15" cy="8" r="4.5" fill="#0e0e10" stroke="#ffff00" stroke-width="1.2"/>
+            <circle cx="16" cy="8" r="4.5" fill="#0e0e10" stroke="#ffff00" stroke-width="1.2"/>
+            <circle cx="-15" cy="8" r="1.6" fill="#ffff00"/>
+            <circle cx="16" cy="8" r="1.6" fill="#ffff00"/>
+            <rect x="25.5" y="0" width="2.5" height="2.5" rx="0.8" fill="#ffff00"/>
           </g>
         </svg>
       </div>
