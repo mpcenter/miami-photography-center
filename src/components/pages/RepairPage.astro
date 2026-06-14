@@ -17,7 +17,6 @@ const t = locale === 'es' ? {
   crumbPage: 'Reparación de Cámaras y Equipos',
   heroEyebrow: 'Reparación · Mantenimiento · Calibración',
   heroTitle: 'Reparación de<br/>Cámaras y Equipos',
-  heroSub: 'Reparaciones de precisión, hechas in-house por expertos.',
   heroLede: 'DSLR, mirrorless, cámaras análogas, lentes e iluminación. Diagnóstico en 24 horas. La mayoría de las reparaciones en 3 a 5 días hábiles. Cada trabajo con garantía de seis meses.',
   heroCta1: 'Iniciar una reparación',
   heroCta2: 'Qué reparamos',
@@ -129,7 +128,6 @@ const t = locale === 'es' ? {
   crumbPage: 'Camera & Gear Repair',
   heroEyebrow: 'Repair · Maintenance · Calibration',
   heroTitle: 'Camera &amp;<br/>Gear Repair',
-  heroSub: 'Precision Repairs, Done In-House by Experts.',
   heroLede: 'DSLR, mirrorless, film, lenses, and lighting. Diagnostic in 24 hours. Most repairs done in 3 to 5 business days. Every job carries a six-month warranty.',
   heroCta1: 'Start a Repair Request',
   heroCta2: 'What we repair',
@@ -302,7 +300,6 @@ const serviceSchema = JSON.stringify({
 
         <p class="hero__eyebrow" data-anim="fade-up">{t.heroEyebrow}</p>
         <h1 class="hero__title hero__title--repair" data-anim="hero-title" set:html={t.heroTitle} />
-        <p class="repair-hero__sub" data-anim="fade-up">{t.heroSub}</p>
         <p class="hero__lede" data-anim="fade-up">{t.heroLede}</p>
         <div class="hero__ctas" data-anim="fade-up">
           <a href="#repair-form" class="btn btn--primary">{t.heroCta1}</a>

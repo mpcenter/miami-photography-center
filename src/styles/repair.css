@@ -38,15 +38,6 @@
   font-size: clamp(40px, 7vw, 88px);
   max-width: 13ch;
 }
-.repair-hero__sub {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(21px, 2.4vw, 28px);
-  letter-spacing: -0.015em;
-  line-height: 1.2;
-  color: var(--color-apple-ink);
-  margin-bottom: 16px;
-}
 .hero__camera {
   position: relative;
   width: 100%;
