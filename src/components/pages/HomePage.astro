@@ -17,7 +17,6 @@ const t = locale === 'es' ? {
   heroCta1: 'Solicitar reparación',
   heroCta2: 'Mira cómo funciona',
   heroAlt: 'Cámara profesional de formato medio, foto de producto — Miami Photography Center',
-  scroll: 'Desliza',
   scenes: [
     { step: '1', title: 'Llevamos la precisión<br/>a tu puerta.', copy: 'Un equipo completo limpio en 30 minutos. Vamos a ti con herramientas calibradas, flujo antiestático y cero tiempo muerto para tu equipo.' },
     { step: '2', title: 'Sensor y espejo,<br/>limpieza profesional.', copy: 'Herramientas ultrasónicas, soluciones certificadas y garantía de re-limpieza gratis por 30 días. Cada trabajo documentado.' },
@@ -78,7 +77,6 @@ const t = locale === 'es' ? {
   heroCta1: 'Request Repair',
   heroCta2: 'See how it works',
   heroAlt: 'Professional medium-format camera, transparent product shot — Miami Photography Center',
-  scroll: 'Scroll',
   scenes: [
     { step: '1', title: 'We bring precision<br/>to your doorstep.', copy: 'A full setup cleaned in 30 minutes. We come to you with calibrated tools, anti-static workflow, and zero downtime for your gear.' },
     { step: '2', title: 'Sensor &amp; mirror,<br/>professionally cleaned.', copy: 'Ultrasonic tools, certified solutions, and a 30-day free re-clean guarantee. Every job documented, every dust speck accounted for.' },
@@ -180,11 +178,6 @@ const localBusinessSchema = JSON.stringify({
       <figure class="hero__visual">
         <img src="/sfx30.webp" alt={t.heroAlt} width="1024" height="1024" fetchpriority="high" decoding="async" />
       </figure>
-
-      <div class="hero__scroll-hint" aria-hidden="true">
-        <span>{t.scroll}</span>
-        <span class="hero__scroll-line"></span>
-      </div>
     </div>
   </header>
 
