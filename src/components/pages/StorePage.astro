@@ -323,5 +323,7 @@ const formatPrice = (n: number) => `$${n.toLocaleString('en-US')}`;
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  transition: color .2s var(--ease-out);
 }
+.store-card__link-wrap:hover .store-card__cta { color: var(--color-slate); }
 </style>
