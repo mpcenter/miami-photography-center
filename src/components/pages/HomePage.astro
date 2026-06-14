@@ -352,5 +352,10 @@ const localBusinessSchema = JSON.stringify({
        a colorful photo. Override lives here (not in global.css) per CONVENTIONS;
        `filter` has no competing base rule, so it wins regardless of bundle order. */
     .coverage__parallax { filter: grayscale(1) contrast(1.05); }
+    /* Home hero title is a touch large — scale it down a bit. Scoped to the
+       home hero (.hero__container--home) so on-site/services heroes keep the
+       base size; higher specificity (0,0,2,0) than the base .hero__title so it
+       wins regardless of CSS bundle order. */
+    .hero__container--home .hero__title { font-size: clamp(38px, 6.4vw, 78px); }
   </style>
 </Base>
