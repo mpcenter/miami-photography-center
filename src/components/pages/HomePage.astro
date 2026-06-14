@@ -357,5 +357,13 @@ const localBusinessSchema = JSON.stringify({
        base size; higher specificity (0,0,2,0) than the base .hero__title so it
        wins regardless of CSS bundle order. */
     .hero__container--home .hero__title { font-size: clamp(38px, 6.4vw, 78px); }
+    /* Scrollytelling fix: .story (in global.css) has no height of its own — its
+       scene spacers are position:absolute and add no scroll length, so the
+       sticky panel unpinned almost immediately and scenes 2–4 only appeared
+       once the next section was already scrolling in. Give .story the intended
+       4 scenes × 100vh + a tail so the sticky stays pinned long enough for all
+       four steps to show before releasing. #story (id) wins the cascade
+       regardless of bundle order; global.css is untouched. */
+    #story { min-height: 450vh; }
   </style>
 </Base>
