@@ -86,18 +86,41 @@
     });
   }
 
-  /* ===== MARQUEE: slight speed-up while scrolling ===== */
+  /* ===== BRANDS MARQUEE — GSAP-driven, subtle scroll-velocity speed-up =====
+     The old version rewrote the CSS `animation-duration` on every scroll
+     frame. Changing a running animation's duration remaps its keyframe
+     timeline, so the strip jumped on every scroll tick. GSAP `timeScale`
+     changes playback speed seamlessly (no position jump), so we drive the
+     loop with GSAP and only nudge timeScale with scroll velocity. */
   function initMarqueeDrift() {
-    if (prefersReducedMotion) return;
-    const track = document.querySelector('.brands__track');
-    if (!track) return;
-    ScrollTrigger.create({
-      trigger: '.brands',
-      start: 'top bottom',
-      end: 'bottom top',
-      onUpdate: (self) => {
-        track.style.animationDuration = `${40 - Math.min(Math.abs(self.getVelocity()) / 400, 15)}s`;
-      },
+    const tracks = document.querySelectorAll('.brands__track');
+    if (!tracks.length) return;
+
+    tracks.forEach((track) => {
+      track.style.animation = 'none'; // hand control to GSAP (CSS marquee is the no-JS fallback)
+      const loop = gsap.to(track, {
+        xPercent: -50,        // content is duplicated, so -50% is one seamless cycle
+        repeat: -1,
+        duration: 36,
+        ease: 'none',
+      });
+
+      if (prefersReducedMotion) { loop.progress(0).pause(); return; }
+
+      let slowDown;
+      ScrollTrigger.create({
+        trigger: track.closest('.brands') || track,
+        start: 'top bottom',
+        end: 'bottom top',
+        onUpdate: (self) => {
+          // Speed up subtly with scroll velocity (1×–4×); timeScale never jumps position.
+          loop.timeScale(1 + Math.min(Math.abs(self.getVelocity()) / 700, 3));
+          clearTimeout(slowDown);
+          slowDown = setTimeout(() => {
+            gsap.to(loop, { timeScale: 1, duration: 0.8, ease: 'power2.out', overwrite: true });
+          }, 140);
+        },
+      });
     });
   }
 

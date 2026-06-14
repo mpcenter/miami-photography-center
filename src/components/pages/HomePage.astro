@@ -44,7 +44,12 @@ const t = locale === 'es' ? {
   ],
   prodbandEyebrow: 'También hacemos',
   prodbandTitle: 'Producciones de foto y video.',
-  prodbandCopy: 'Crew completo, equipo y postproducción. Producción editorial, comercial y audiovisual liderada por profesionales en activo.',
+  prodbandCopy: 'No solo cuidamos tu equipo — también creamos contenido con él. Un crew completo con cámaras, iluminación y postproducción propios, para marcas, restaurantes y creadores de todo el sur de Florida.',
+  prodbandPoints: [
+    'Fotografía editorial, de producto y comercial',
+    'Video y contenido audiovisual para redes y campañas',
+    'Postproducción, edición y retoque profesional',
+  ],
   prodbandTags: ['Gastronomía', 'Producto', 'Retratos', 'Eventos', 'Naturaleza'],
   prodbandCta: 'Explorar producciones',
   stats: [
@@ -100,7 +105,12 @@ const t = locale === 'es' ? {
   ],
   prodbandEyebrow: 'We also do',
   prodbandTitle: 'Photo & Video Productions.',
-  prodbandCopy: 'Full crew, gear, and post. Editorial, commercial, and audiovisual production led by working professionals.',
+  prodbandCopy: 'We don’t just service your gear — we create with it. A full crew with our own cameras, lighting, and post-production, for brands, restaurants, and creators across South Florida.',
+  prodbandPoints: [
+    'Editorial, product, and commercial photography',
+    'Video & audiovisual content for social and campaigns',
+    'Post-production, editing, and professional retouching',
+  ],
   prodbandTags: ['Food & Restaurant', 'Product', 'Portraits', 'Events', 'Nature'],
   prodbandCta: 'Explore productions',
   stats: [
@@ -275,6 +285,9 @@ const localBusinessSchema = JSON.stringify({
         <p class="eyebrow eyebrow--inverse">{t.prodbandEyebrow}</p>
         <h2 id="prodband-title" class="prodband__title">{t.prodbandTitle}</h2>
         <p class="prodband__copy">{t.prodbandCopy}</p>
+        <ul class="prodband__points">
+          {t.prodbandPoints.map((point) => <li>{point}</li>)}
+        </ul>
         <ul class="prodband__tags">
           {t.prodbandTags.map((tag) => <li>{tag}</li>)}
         </ul>
@@ -327,4 +340,32 @@ const localBusinessSchema = JSON.stringify({
       </div>
     </div>
   </section>
+
+  <style is:global>
+    /* Productions band — service bullets (sits on the dark prodband panel) */
+    .prodband__points {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .prodband__points li {
+      position: relative;
+      padding-left: 26px;
+      font-size: 16px;
+      line-height: 1.45;
+      color: var(--color-ash);
+    }
+    .prodband__points li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 14px;
+      height: 7px;
+      border-left: 2px solid var(--color-electric-blue);
+      border-bottom: 2px solid var(--color-electric-blue);
+      transform: rotate(-45deg);
+    }
+  </style>
 </Base>

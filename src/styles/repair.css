@@ -106,8 +106,8 @@
   top: 7px;
   width: 14px;
   height: 7px;
-  border-left: 2px solid var(--color-electric-blue);
-  border-bottom: 2px solid var(--color-electric-blue);
+  border-left: 2px solid var(--color-apple-ink);
+  border-bottom: 2px solid var(--color-apple-ink);
   transform: rotate(-45deg);
 }
 
@@ -156,15 +156,15 @@
   left: 0; top: 8px;
   width: 16px;
   height: 8px;
-  border-left: 2px solid var(--color-electric-blue);
-  border-bottom: 2px solid var(--color-electric-blue);
+  border-left: 2px solid var(--color-apple-ink);
+  border-bottom: 2px solid var(--color-apple-ink);
   transform: rotate(-45deg);
 }
 .warranty__seal {
   max-width: 360px;
   margin-inline: auto;
   animation: sealRotate 30s linear infinite;
-  filter: drop-shadow(0 20px 40px rgba(0,113,227,0.25));
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.22));
 }
 @keyframes sealRotate {
   from { transform: rotate(0); }
@@ -252,8 +252,8 @@
   left: 0; top: 7px;
   width: 16px;
   height: 8px;
-  border-left: 2px solid var(--color-electric-blue);
-  border-bottom: 2px solid var(--color-electric-blue);
+  border-left: 2px solid var(--color-apple-ink);
+  border-bottom: 2px solid var(--color-apple-ink);
   transform: rotate(-45deg);
 }
 
@@ -275,7 +275,7 @@
   color: var(--color-slate);
   text-align: center;
 }
-.form-section__legal a { color: var(--color-link-blue); }
+.form-section__legal a { color: var(--color-apple-ink); }
 
 @media (max-width: 980px) {
   .repair-formgrid { grid-template-columns: 1fr; }
@@ -315,7 +315,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--color-electric-blue);
+  color: var(--color-apple-ink);
 }
 .repair-xsell__card h3 {
   font-family: var(--font-display);
@@ -335,7 +335,7 @@
   padding-top: 10px;
   font-weight: 600;
   font-size: 17px;
-  color: var(--color-link-blue);
+  color: var(--color-apple-ink);
   display: inline-flex;
   align-items: center;
   gap: 6px;
