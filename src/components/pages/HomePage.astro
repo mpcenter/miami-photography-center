@@ -166,13 +166,15 @@ const localBusinessSchema = JSON.stringify({
   <!-- ==================== HERO ==================== -->
   <header class="hero">
     <div class="hero__ring" aria-hidden="true"></div>
-    <div class="hero__container">
-      <p class="hero__eyebrow" data-anim="fade-up">{t.heroEyebrow}</p>
-      <h1 class="hero__title" data-anim="hero-title" set:html={locale === 'es' ? 'Reparación de cámaras,<br/>con precisión de ingeniería.' : 'Camera Repair,<br/>Engineered with Precision.'} />
-      <p class="hero__lede" data-anim="fade-up">{t.heroLede}</p>
-      <div class="hero__ctas" data-anim="fade-up">
-        <a href={p('/repair') + '#repair-form'} class="btn btn--primary">{t.heroCta1}</a>
-        <a href="#story" class="btn btn--ghost">{t.heroCta2} <span aria-hidden="true">→</span></a>
+    <div class="hero__container hero__container--home">
+      <div class="hero__text">
+        <p class="hero__eyebrow" data-anim="fade-up">{t.heroEyebrow}</p>
+        <h1 class="hero__title" data-anim="hero-title" set:html={locale === 'es' ? 'Reparación de cámaras,<br/>con precisión de ingeniería.' : 'Camera Repair,<br/>Engineered with Precision.'} />
+        <p class="hero__lede" data-anim="fade-up">{t.heroLede}</p>
+        <div class="hero__ctas" data-anim="fade-up">
+          <a href={p('/repair') + '#repair-form'} class="btn btn--primary">{t.heroCta1}</a>
+          <a href="#story" class="btn btn--ghost">{t.heroCta2} <span aria-hidden="true">→</span></a>
+        </div>
       </div>
 
       <figure class="hero__visual">
