@@ -109,7 +109,12 @@
   max-width: var(--page-max);
   margin: 0 auto;
 }
-.eyebrow--light { color: var(--color-pure-white); }
+/* Scoped + higher specificity (0,0,2,0) so it deterministically beats the
+   single-class base `.eyebrow { color: apple-ink }` from global.css regardless
+   of CSS bundle order. In the production build, on-site.css is emitted BEFORE
+   global's eyebrow rule, so a bare `.eyebrow--light` (equal specificity) lost
+   the cascade and rendered near-black. `.eyebrow--light` is used only here. */
+.coverage-zones .eyebrow--light { color: var(--color-pure-white); }
 .coverage-zones__title {
   font-family: var(--font-display);
   font-weight: 600;
@@ -124,18 +129,21 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+  align-items: stretch;
 }
+/* Flex column so the fee/divider row can be pinned to the bottom of every card
+   (see .zone__fee margin-top:auto) — keeps the divider aligned across cards
+   even when the city lists wrap to a different number of lines. No hover
+   affordance: these cards are plain <article>s, not links. */
 .zone {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   background: rgba(245, 245, 247, 0.04);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(245, 245, 247, 0.08);
   border-radius: var(--r-card);
   padding: 28px 24px;
-  transition: background .3s var(--ease-out), transform .3s var(--ease-out);
-}
-.zone:hover {
-  background: rgba(245, 245, 247, 0.08);
-  transform: translateY(-4px);
 }
 .zone__county {
   font-family: var(--font-display);
@@ -155,6 +163,7 @@
 .zone__fee {
   font-size: 14px;
   color: var(--color-slate);
+  margin-top: auto;
   padding-top: 14px;
   border-top: 1px solid rgba(245, 245, 247, 0.1);
 }
