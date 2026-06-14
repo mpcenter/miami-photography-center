@@ -75,9 +75,14 @@
 .timeline--4 {
   grid-template-columns: repeat(4, 1fr);
 }
-.timeline--4::before {
-  left: 10%;
-  right: 10%;
+/* Higher specificity than the base .timeline::before (which appears later in
+   this file) so it wins the cascade. Span the line exactly from the first
+   dot's center to the last dot's center: dots sit at left:4px (center ≈ 13px)
+   of each of the 4 equal columns with a 24px gap, so the last dot's center
+   lands at 75% + 31px. */
+.timeline.timeline--4::before {
+  left: 13px;
+  right: calc(25% - 31px);
 }
 @media (max-width: 900px) {
   .timeline--4 { grid-template-columns: 1fr; }
@@ -94,10 +99,7 @@
 .coverage-zones__parallax {
   position: absolute;
   inset: -20% 0;
-  background:
-    radial-gradient(circle at 20% 30%, rgba(255,221,0,0.16) 0%, transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(90,200,250,0.15) 0%, transparent 45%),
-    linear-gradient(180deg, #0e0e10 0%, #1d1d1f 100%);
+  background: #0a0a0b;
   will-change: transform;
   z-index: 0;
 }
@@ -107,7 +109,7 @@
   max-width: var(--page-max);
   margin: 0 auto;
 }
-.eyebrow--light { color: #ffff00; }
+.eyebrow--light { color: var(--color-pure-white); }
 .coverage-zones__title {
   font-family: var(--font-display);
   font-weight: 600;
