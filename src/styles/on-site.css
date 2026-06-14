@@ -12,7 +12,7 @@
   max-width: 580px;
   margin-inline: auto;
   z-index: 2;
-  filter: drop-shadow(0 30px 60px rgba(0,113,227,0.2));
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.20));
 }
 .hero__map svg { width: 100%; height: auto; display: block; }
 
@@ -95,7 +95,7 @@
   position: absolute;
   inset: -20% 0;
   background:
-    radial-gradient(circle at 20% 30%, rgba(0,113,227,0.18) 0%, transparent 40%),
+    radial-gradient(circle at 20% 30%, rgba(255,221,0,0.16) 0%, transparent 40%),
     radial-gradient(circle at 80% 70%, rgba(90,200,250,0.15) 0%, transparent 45%),
     linear-gradient(180deg, #0e0e10 0%, #1d1d1f 100%);
   will-change: transform;
@@ -107,7 +107,7 @@
   max-width: var(--page-max);
   margin: 0 auto;
 }
-.eyebrow--light { color: #5ac8fa; }
+.eyebrow--light { color: #ffff00; }
 .coverage-zones__title {
   font-family: var(--font-display);
   font-weight: 600;
@@ -157,7 +157,7 @@
   border-top: 1px solid rgba(245, 245, 247, 0.1);
 }
 .zone__fee strong {
-  color: #5ac8fa;
+  color: #ffff00;
   font-weight: 600;
 }
 @media (max-width: 900px) { .zones__grid { grid-template-columns: repeat(2, 1fr); } }
@@ -243,8 +243,8 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: var(--color-electric-blue);
-  box-shadow: 0 0 0 6px rgba(0, 113, 227, 0.14);
+  background: var(--color-apple-ink);
+  box-shadow: 0 0 0 6px rgba(0,0,0,0.12);
 }
 .timeline__card {
   background: var(--color-pure-white);
@@ -257,7 +257,7 @@
   font-weight: 600;
   font-size: 14px;
   letter-spacing: 0.08em;
-  color: var(--color-electric-blue);
+  color: var(--color-apple-ink);
   margin-bottom: 10px;
 }
 .timeline__card h3 {
@@ -318,7 +318,7 @@
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-electric-blue);
+  color: var(--color-apple-ink);
   margin-bottom: 14px;
 }
 .offer__title {
@@ -355,8 +355,8 @@
   left: 0; top: 9px;
   width: 12px;
   height: 6px;
-  border-left: 2px solid var(--color-electric-blue);
-  border-bottom: 2px solid var(--color-electric-blue);
+  border-left: 2px solid var(--color-apple-ink);
+  border-bottom: 2px solid var(--color-apple-ink);
   transform: rotate(-45deg);
 }
 .offer__note {
@@ -369,7 +369,7 @@
 }
 .offer__link {
   margin-top: 20px;
-  color: var(--color-link-blue);
+  color: var(--color-apple-ink);
   font-size: 17px;
   display: inline-flex;
   align-items: center;
@@ -382,7 +382,7 @@
   grid-column: 1 / -1;
   background: var(--color-apple-ink);
 }
-.offer--featured .offer__tag { color: #5ac8fa; }
+.offer--featured .offer__tag { color: #ffff00; }
 .offer--featured .offer__title { color: var(--color-pure-white); }
 .offer--featured .offer__tagline { color: var(--color-ash); }
 .offer--featured .offer__bullets {
@@ -391,7 +391,7 @@
   gap: 10px 28px;
 }
 .offer--featured .offer__bullets li { color: var(--color-fog-canvas); }
-.offer--featured .offer__bullets li::before { border-color: #5ac8fa; }
+.offer--featured .offer__bullets li::before { border-color: #ffff00; }
 .offer--featured .offer__note {
   color: var(--color-slate);
   border-top-color: rgba(245, 245, 247, 0.12);
@@ -448,7 +448,7 @@
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-electric-blue);
+  color: var(--color-apple-ink);
 }
 .price-card__price {
   font-size: 16px;
@@ -469,7 +469,7 @@
   line-height: 1.5;
 }
 .price-card--accent { background: var(--color-apple-ink); }
-.price-card--accent .price-card__label { color: #5ac8fa; }
+.price-card--accent .price-card__label { color: #ffff00; }
 .price-card--accent .price-card__price { color: var(--color-slate); }
 .price-card--accent .price-card__price span { color: var(--color-pure-white); }
 @media (max-width: 900px) { .pricing__grid { grid-template-columns: repeat(2, 1fr); } }
@@ -509,7 +509,7 @@
   flex-wrap: wrap;
   margin-top: 10px;
 }
-.booking__actions .form__note a { color: var(--color-link-blue); }
+.booking__actions .form__note a { color: var(--color-apple-ink); }
 
 /* ===== FAQ ===== */
 .faq {
@@ -555,7 +555,7 @@
 .faq__item summary::-webkit-details-marker { display: none; }
 .faq__item summary::after {
   content: '+';
-  color: var(--color-electric-blue);
+  color: var(--color-apple-ink);
   font-size: 22px;
   line-height: 1;
   flex-shrink: 0;

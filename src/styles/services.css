@@ -60,7 +60,7 @@
   font-weight: 600;
   font-size: 14px;
   letter-spacing: 0.08em;
-  color: var(--color-electric-blue);
+  color: var(--color-apple-ink);
   margin-bottom: 18px;
   text-transform: uppercase;
 }
@@ -99,8 +99,8 @@
   left: 0; top: 9px;
   width: 12px;
   height: 6px;
-  border-left: 2px solid var(--color-electric-blue);
-  border-bottom: 2px solid var(--color-electric-blue);
+  border-left: 2px solid var(--color-apple-ink);
+  border-bottom: 2px solid var(--color-apple-ink);
   transform: rotate(-45deg);
 }
 .svc-block__bullets strong {
@@ -166,7 +166,7 @@
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--color-electric-blue);
+  color: var(--color-apple-ink);
   margin-bottom: 14px;
 }
 .picker h3 {
@@ -187,7 +187,7 @@
 .picker__cta {
   font-size: 16px;
   font-weight: 400;
-  color: var(--color-link-blue);
+  color: var(--color-apple-ink);
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -201,8 +201,8 @@
 }
 .picker--accent h3 { color: var(--color-pure-white); }
 .picker--accent .picker__copy { color: var(--color-slate); }
-.picker--accent .picker__when { color: #5ac8fa; }
-.picker--accent .picker__cta { color: #5ac8fa; }
+.picker--accent .picker__when { color: #ffff00; }
+.picker--accent .picker__cta { color: #ffff00; }
 .picker--accent:hover { background: #2a2a2c; }
 
 @media (max-width: 700px) {
@@ -372,8 +372,8 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: var(--color-electric-blue);
-  box-shadow: 0 0 0 6px rgba(0, 113, 227, 0.14);
+  background: var(--color-apple-ink);
+  box-shadow: 0 0 0 6px rgba(0,0,0,0.12);
 }
 .timeline__card {
   background: var(--color-fog-canvas);
@@ -386,7 +386,7 @@
   font-weight: 600;
   font-size: 14px;
   letter-spacing: 0.08em;
-  color: var(--color-electric-blue);
+  color: var(--color-apple-ink);
   margin-bottom: 10px;
 }
 .timeline__card h3 {
