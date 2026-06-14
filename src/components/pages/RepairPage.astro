@@ -61,10 +61,10 @@ const t = locale === 'es' ? {
     },
   ],
   stats: [
-    { count: '10', suffix: '+', label: 'Años de experiencia' },
-    { count: '6', suffix: '', unit: 'meses', label: 'Garantía en cada reparación' },
-    { count: '24', suffix: ' h', label: 'Diagnóstico gratuito' },
-    { count: '12', suffix: '+', label: 'Marcas que atendemos' },
+    { count: '10', unit: '+', label: 'Años de experiencia' },
+    { count: '6', unit: 'meses', label: 'Garantía en cada reparación' },
+    { count: '24', unit: 'h', label: 'Diagnóstico gratuito' },
+    { count: '12', unit: '+', label: 'Marcas que atendemos' },
   ],
   brandsLabel: 'Trabajamos con',
   brandsAria: 'Marcas que atendemos',
@@ -172,10 +172,10 @@ const t = locale === 'es' ? {
     },
   ],
   stats: [
-    { count: '10', suffix: '+', label: 'Years of experience' },
-    { count: '6', suffix: ' mo', label: 'Warranty on every repair' },
-    { count: '24', suffix: ' hr', label: 'Free diagnostic' },
-    { count: '12', suffix: '+', label: 'Brands serviced' },
+    { count: '10', unit: '+', label: 'Years of experience' },
+    { count: '6', unit: 'months', label: 'Warranty on every repair' },
+    { count: '24', unit: 'hr', label: 'Free diagnostic' },
+    { count: '12', unit: '+', label: 'Brands serviced' },
   ],
   brandsLabel: 'Brands we service',
   brandsAria: 'Brands we service',
@@ -351,8 +351,8 @@ const serviceSchema = JSON.stringify({
       {t.stats.map((stat) => (
         <div class="stats__item">
           <span class="repair-stat-figure">
-            <span class="stats__num" data-count={stat.count} data-suffix={stat.suffix}>{stat.count}{stat.suffix}</span>
-            {'unit' in stat && stat.unit && <span class="repair-stat-unit">{stat.unit}</span>}
+            <span class="stats__num" data-count={stat.count}>{stat.count}</span>
+            <span class="repair-stat-unit">{stat.unit}</span>
           </span>
           <span class="stats__label">{stat.label}</span>
         </div>
