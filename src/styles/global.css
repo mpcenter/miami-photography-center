@@ -217,10 +217,8 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
     align-items: stretch;
     gap: 0;
     background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0) 40%),
-      rgba(28, 28, 30, 0.62);
-    backdrop-filter: blur(24px) saturate(190%) brightness(1.06);
-    -webkit-backdrop-filter: blur(24px) saturate(190%) brightness(1.06);
+      linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 40%),
+      #1a1a1c;
     border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 24px;
     padding: 14px;
