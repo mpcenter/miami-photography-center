@@ -186,7 +186,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 .nav__links a[aria-current="page"] {
   opacity: 1;
   font-weight: 600;
-  box-shadow: 0 1.5px 0 0 var(--color-fog-canvas);
+  color: var(--color-electric-blue); /* yellow accent — color highlight, no underline */
 }
 .nav__actions { display: flex; align-items: center; gap: 10px; }
 .nav__cta {

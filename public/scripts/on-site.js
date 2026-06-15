@@ -17,25 +17,28 @@
     }
   });
 
-  /* ===== Service van drives slowly along the coverage route ===== */
+  /* ===== Service van rides the route, driven by scroll =====
+     Scroll down → van travels from West Palm Beach to the Keys;
+     scroll up → it drives back. Position is scrubbed to scroll. */
   function initVanRoute() {
     if (prefersReducedMotion) return;
     const van = document.querySelector('.map-van');
     const route = document.querySelector('#serviceRoute');
     if (!van || !route || !window.MotionPathPlugin) return;
     gsap.registerPlugin(MotionPathPlugin);
-    // Start the drive after the route line finishes drawing (~3.4s in CSS)
     gsap.to(van, {
-      duration: 9,
-      repeat: -1,
-      yoyo: true,            // glide back instead of snapping to the start
-      ease: 'power1.inOut',
-      delay: 3.4,
+      ease: 'none',
       motionPath: {
         path: route,
         align: route,
         alignOrigin: [0.5, 0.5],
         autoRotate: false,   // keep the van upright
+      },
+      scrollTrigger: {
+        trigger: '.hero--onsite',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 0.6,          // van eases toward the scroll position
       },
     });
   }
