@@ -154,12 +154,9 @@
     const burger = nav.querySelector('.nav__burger');
     const menu = nav.querySelector('.nav__menu');
 
-    // Background opacity on scroll
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      if (y > 30) nav.style.background = 'rgba(29, 29, 31, 0.86)';
-      else nav.style.background = 'rgba(29, 29, 31, 0.72)';
-    }, { passive: true });
+    // Note: the nav keeps its CSS liquid-glass background at all scroll
+    // positions. (An older inline rgba override is intentionally removed —
+    // it flattened the glass gradient and forced ~86% opacity.)
 
     // Mobile overlay menu
     if (burger && menu) {
