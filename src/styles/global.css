@@ -913,7 +913,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   margin-bottom: 14px;
   line-height: 1.6;
 }
-.footer__contact a { color: var(--color-apple-ink); }
+.footer__contact a { color: var(--color-apple-ink); overflow-wrap: anywhere; }
 .footer__heading {
   font-family: var(--font-display);
   font-weight: 600;
@@ -943,8 +943,12 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 .footer__bottom a:hover { color: var(--color-apple-ink); }
 
 @media (max-width: 820px) {
-  .footer__inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer__inner { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
+  .footer__col--brand { grid-column: 1 / -1; }
   .footer__bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
+}
+@media (max-width: 480px) {
+  .footer__inner { grid-template-columns: 1fr; gap: 32px; }
 }
 
 /* ============================================================
