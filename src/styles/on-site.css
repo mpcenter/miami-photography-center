@@ -17,33 +17,9 @@
   max-width: 760px;
   margin-inline: auto;
   z-index: 2;
-  /* ===== Liquid glass tile holding the map ===== */
-  padding: clamp(18px, 2.6vw, 34px);
-  border-radius: 36px;
-  background:
-    linear-gradient(160deg, rgba(255, 255, 255, 0.30) 0%, rgba(255, 255, 255, 0.05) 55%),
-    rgba(255, 255, 255, 0.10);
-  backdrop-filter: blur(18px) saturate(160%);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow:
-    0 28px 64px rgba(0, 0, 0, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.65);
-  isolation: isolate;
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.20));
 }
-/* Diagonal sheen sliding across the glass tile */
-.hero__map::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  background: linear-gradient(115deg,
-    rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 30%,
-    rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0.14) 90%, rgba(255, 255, 255, 0) 100%);
-  mix-blend-mode: screen;
-}
-.hero__map svg { width: 100%; height: auto; display: block; position: relative; }
+.hero__map svg { width: 100%; height: auto; display: block; }
 
 /* Pin entrance — pins scale in sequentially */
 .map-pin {
