@@ -774,6 +774,15 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   flex-direction: column;
   gap: 10px;
 }
+/* Figure = big number + smaller unit (meses/mo, min, +) on one baseline.
+   The unit lives outside .stats__num because main.js rewrites that
+   element's textContent every frame while the counter animates. */
+.stats__figure {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 5px;
+}
 .stats__num {
   font-family: var(--font-display);
   font-weight: 600;
@@ -781,6 +790,14 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   letter-spacing: -0.025em;
   color: var(--color-apple-ink);
   line-height: 1;
+}
+.stats__unit {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(20px, 2.4vw, 32px);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--color-apple-ink);
 }
 .stats__label {
   font-size: 15px;
