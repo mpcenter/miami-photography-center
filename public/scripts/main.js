@@ -280,10 +280,10 @@
 
     // Camera image sources per scene
     const sceneImages = [
-      'https://images.unsplash.com/photo-1519183071298-a2962feb14f4?w=1600&q=85&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=1600&q=85&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1500634245200-e5245c7574ef?w=1600&q=85&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1600&q=85&auto=format&fit=crop'
+      '/images/van-exterior.jpg',
+      '/images/sensor-clean.jpg',
+      '/images/sensor-clean-bw.jpg',
+      '/images/van-rear.jpg'
     ];
 
     let currentScene = -1;

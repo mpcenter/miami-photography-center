@@ -26,9 +26,9 @@ const t = locale === 'es' ? {
   featuredEyebrow: 'Destacados',
   featuredTitle: 'Tres formas de cuidar tu equipo.',
   featured: [
-    { index: '01', title: 'Membresía Anual', copy: 'Tu equipo, mantenido todo el año. Limpiezas programadas, prioridad en reparaciones y descuentos exclusivos en un solo plan.', link: '/membership', linkLabel: 'Ver planes', img: 'https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?w=1200&q=80&auto=format&fit=crop', accent: true },
-    { index: '02', title: 'Limpieza de Sensor', copy: 'Desde $49. Ultrasónica, antiestática, soluciones certificadas. En nuestro estudio mientras esperas, o en tu locación.', link: '/sensor-cleaning', linkLabel: 'Conoce más', img: 'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=1200&q=80&auto=format&fit=crop', accent: false },
-    { index: '03', title: 'Servicio In Situ', copy: 'Nuestra unidad móvil va a tu estudio, locación o set. Cobertura en el sur de Florida. Herramientas calibradas. Cero downtime.', link: '/on-site', linkLabel: 'Cobertura y agenda', img: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=1200&q=80&auto=format&fit=crop', accent: false },
+    { index: '01', title: 'Membresía Anual', copy: 'Tu equipo, mantenido todo el año. Limpiezas programadas, prioridad en reparaciones y descuentos exclusivos en un solo plan.', link: '/membership', linkLabel: 'Ver planes', img: '/images/sensor-tech.jpg', accent: true },
+    { index: '02', title: 'Limpieza de Sensor', copy: 'Desde $49. Ultrasónica, antiestática, soluciones certificadas. En nuestro estudio mientras esperas, o en tu locación.', link: '/sensor-cleaning', linkLabel: 'Conoce más', img: '/images/sensor-clean.jpg', accent: false },
+    { index: '03', title: 'Servicio In Situ', copy: 'Nuestra unidad móvil va a tu estudio, locación o set. Cobertura en el sur de Florida. Herramientas calibradas. Cero downtime.', link: '/on-site', linkLabel: 'Cobertura y agenda', img: '/images/van-interior.jpg', accent: false },
   ],
   coverageEyebrow: 'Cobertura',
   coverageTitle: 'De West Palm Beach<br/>a los Cayos de Florida.',
@@ -86,9 +86,9 @@ const t = locale === 'es' ? {
   featuredEyebrow: 'Featured',
   featuredTitle: 'Three ways to keep your gear ready.',
   featured: [
-    { index: '01', title: 'Annual Membership', copy: 'Your gear, maintained year-round. Scheduled cleanings, priority repairs, and exclusive discounts in one plan.', link: '/membership', linkLabel: 'See plans', img: 'https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?w=1200&q=80&auto=format&fit=crop', accent: true },
-    { index: '02', title: 'Sensor Cleaning', copy: 'From $49. Ultrasonic, anti-static, certified solutions. While-you-wait at our studio or on-site at your location.', link: '/sensor-cleaning', linkLabel: 'Learn more', img: 'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=1200&q=80&auto=format&fit=crop', accent: false },
-    { index: '03', title: 'On-Site Service', copy: 'Our mobile unit comes to your studio, location, or set. South Florida coverage. Calibrated tools. Zero downtime.', link: '/on-site', linkLabel: 'See coverage & schedule', img: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=1200&q=80&auto=format&fit=crop', accent: false },
+    { index: '01', title: 'Annual Membership', copy: 'Your gear, maintained year-round. Scheduled cleanings, priority repairs, and exclusive discounts in one plan.', link: '/membership', linkLabel: 'See plans', img: '/images/sensor-tech.jpg', accent: true },
+    { index: '02', title: 'Sensor Cleaning', copy: 'From $49. Ultrasonic, anti-static, certified solutions. While-you-wait at our studio or on-site at your location.', link: '/sensor-cleaning', linkLabel: 'Learn more', img: '/images/sensor-clean.jpg', accent: false },
+    { index: '03', title: 'On-Site Service', copy: 'Our mobile unit comes to your studio, location, or set. South Florida coverage. Calibrated tools. Zero downtime.', link: '/on-site', linkLabel: 'See coverage & schedule', img: '/images/van-interior.jpg', accent: false },
   ],
   coverageEyebrow: 'Coverage',
   coverageTitle: 'From West Palm Beach<br/>to the Florida Keys.',
@@ -186,7 +186,7 @@ const localBusinessSchema = JSON.stringify({
     <div class="story__sticky">
       <div class="story__media">
         <img class="story__image" id="storyImage"
-          src="https://images.unsplash.com/photo-1519183071298-a2962feb14f4?w=1600&q=85&auto=format&fit=crop"
+          src="/images/van-exterior.jpg"
           alt="Professional camera body partially disassembled on a workbench"
           width="1600" height="1067" loading="lazy" decoding="async" />
       </div>
