@@ -52,10 +52,10 @@ const t = locale === 'es' ? {
   prodbandTags: ['Gastronomía', 'Producto', 'Retratos', 'Eventos', 'Naturaleza'],
   prodbandCta: 'Explorar producciones',
   stats: [
-    { count: '10', suffix: '+', label: 'Años de experiencia' },
-    { count: '6', suffix: ' mo', label: 'Garantía en cada reparación' },
-    { count: '30', suffix: ' min', label: 'Limpieza de sensor in situ' },
-    { count: '12', suffix: '+', label: 'Marcas que atendemos' },
+    { count: '10', unit: '+', label: 'Años de experiencia' },
+    { count: '6', unit: 'meses', label: 'Garantía en cada reparación' },
+    { count: '30', unit: 'min', label: 'Limpieza de sensor in situ' },
+    { count: '12', unit: '+', label: 'Marcas que atendemos' },
   ],
   reviewsEyebrow: 'Reseñas',
   reviewsTitle: 'Lo que dicen los fotógrafos.',
@@ -112,10 +112,10 @@ const t = locale === 'es' ? {
   prodbandTags: ['Food & Restaurant', 'Product', 'Portraits', 'Events', 'Nature'],
   prodbandCta: 'Explore productions',
   stats: [
-    { count: '10', suffix: '+', label: 'Years of experience' },
-    { count: '6', suffix: ' mo', label: 'Warranty on every repair' },
-    { count: '30', suffix: ' min', label: 'Average on-site sensor clean' },
-    { count: '12', suffix: '+', label: 'Brands serviced' },
+    { count: '10', unit: '+', label: 'Years of experience' },
+    { count: '6', unit: 'mo', label: 'Warranty on every repair' },
+    { count: '30', unit: 'min', label: 'Average on-site sensor clean' },
+    { count: '12', unit: '+', label: 'Brands serviced' },
   ],
   reviewsEyebrow: 'Reviews',
   reviewsTitle: 'What photographers say.',
@@ -286,7 +286,10 @@ const localBusinessSchema = JSON.stringify({
     <div class="stats__grid">
       {t.stats.map((stat) => (
         <div class="stats__item">
-          <span class="stats__num" data-count={stat.count} data-suffix={stat.suffix}>{stat.count}{stat.suffix}</span>
+          <span class="stats__figure">
+            <span class="stats__num" data-count={stat.count}>{stat.count}</span>
+            <span class="stats__unit">{stat.unit}</span>
+          </span>
           <span class="stats__label">{stat.label}</span>
         </div>
       ))}
