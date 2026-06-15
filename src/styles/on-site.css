@@ -4,12 +4,17 @@
    ===================================================== */
 
 /* ===== HERO MAP ===== */
-.hero--onsite { min-height: 100vh; }
+/* .hero.hero--onsite — two classes beat the base `.hero` (min-height:100vh,
+   padding-bottom:60) regardless of stylesheet order, killing the dead space. */
+.hero.hero--onsite {
+  min-height: auto;
+  padding-bottom: clamp(36px, 4vw, 64px);
+}
 
 .hero__map {
   position: relative;
   width: 100%;
-  max-width: 580px;
+  max-width: 760px;
   margin-inline: auto;
   z-index: 2;
   filter: drop-shadow(0 30px 60px rgba(0,0,0,0.20));
@@ -56,16 +61,9 @@
   to { stroke-dashoffset: 0; }
 }
 
-/* Van — subtle bob */
-.map-van {
-  animation: vanBob 4s ease-in-out infinite;
-  transform-origin: center;
-  transform-box: fill-box;
-}
-@keyframes vanBob {
-  0%, 100% { transform: translate(244px, 432px); }
-  50% { transform: translate(244px, 428px); }
-}
+/* Van — driven along the route by GSAP MotionPath (see on-site.js).
+   No CSS transform here so the plugin fully controls its position. */
+.map-van { will-change: transform; }
 
 @media (max-width: 900px) {
   .hero__map { max-width: 420px; margin-top: 30px; }
@@ -184,7 +182,7 @@
 /* Hero split layout */
 .hero__container--split {
   display: grid;
-  grid-template-columns: 1.05fr 1fr;
+  grid-template-columns: 1fr 1.15fr;
   align-items: center;
   gap: clamp(32px, 5vw, 72px);
 }
