@@ -1098,6 +1098,21 @@ html.lenis-on { scroll-behavior: auto; height: auto; }
   padding: 180px var(--gutter) 70px;
   background: var(--color-fog-canvas);
 }
+/* Bare hero — breadcrumb only (no title/lede); tighten the spacing */
+.page-hero--bare {
+  padding-top: 120px;
+  padding-bottom: 24px;
+}
+/* Visually hidden but available to screen readers / SEO */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
 .page-hero__inner { max-width: var(--page-max); margin: 0 auto; }
 .page-hero__title {
   font-family: var(--font-display);
