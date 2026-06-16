@@ -58,16 +58,14 @@ const formatPrice = (n: number) => `$${n.toLocaleString('en-US')}`;
 ---
 <Base locale={locale} title={t.title} description={t.description}>
   <!-- ==================== PAGE HERO ==================== -->
-  <header class="page-hero">
+  <header class="page-hero page-hero--bare">
     <div class="page-hero__inner">
       <nav class="breadcrumbs" aria-label={locale === 'es' ? 'Ruta de navegación' : 'Breadcrumb'}>
         <a href={p('/')}>{t.breadcrumbHome}</a>
         <span aria-hidden="true">/</span>
         <span aria-current="page">{t.breadcrumbStore}</span>
       </nav>
-      <p class="eyebrow" data-anim="fade-up">{t.heroEyebrow}</p>
-      <h1 class="page-hero__title" data-anim="fade-up">{t.heroTitle}</h1>
-      <p class="page-hero__lede" data-anim="fade-up">{t.heroLede}</p>
+      <h1 class="sr-only">{t.heroTitle}</h1>
     </div>
   </header>
 
