@@ -3,5 +3,8 @@
   "enabled": true,
   "image": "/images/van-exterior.jpg",
   "alt": "Servicio móvil de Miami Photography Center",
-  "link": "/on-site"
+  "link": "/on-site",
+  "text": "10% de descuento para primeros servicios durante todo el mes de julio",
+  "textEn": "10% off your first services all through July",
+  "highlight": "10%"
 }

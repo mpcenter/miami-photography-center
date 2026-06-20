@@ -13,6 +13,12 @@ export interface Banner {
   image: string;
   alt: string;
   link?: string;
+  /** Optional promo text shown over the image (ES). */
+  text?: string;
+  /** Optional English version of the text (falls back to `text`). */
+  textEn?: string;
+  /** Substring of the text to highlight in brand yellow (e.g. "10%"). */
+  highlight?: string;
 }
 
 const modules = import.meta.glob<{ default: Banner }>('../content/banners/*.json', { eager: true });

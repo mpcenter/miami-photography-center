@@ -14,6 +14,22 @@ const resolveLink = (link?: string) => {
   return link;
 };
 const label = locale === 'es' ? 'Promociones' : 'Promotions';
+
+// Build the overlay text for a banner, wrapping the `highlight` substring in a
+// yellow span. Escapes HTML first so client-managed copy can't inject markup.
+const escapeHtml = (s: string) =>
+  s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+const overlayHtml = (b: (typeof banners)[number]) => {
+  const raw = locale === 'es' ? b.text : b.textEn || b.text;
+  if (!raw) return null;
+  let html = escapeHtml(raw);
+  if (b.highlight) {
+    const safe = escapeHtml(b.highlight);
+    html = html.split(safe).join(`<span class="promo__hl">${safe}</span>`);
+  }
+  return html;
+};
 ---
 {banners.length > 0 && (
   <section class="promo" aria-label={label}>
@@ -22,6 +38,7 @@ const label = locale === 'es' ? 'Promociones' : 'Promotions';
         {banners.map((b, i) => {
           const href = resolveLink(b.link);
           const Slide = href ? 'a' : 'div';
+          const text = overlayHtml(b);
           return (
             <Slide
               class:list={['promo__slide', { 'is-active': i === 0 }]}
@@ -30,6 +47,11 @@ const label = locale === 'es' ? 'Promociones' : 'Promotions';
               aria-hidden={i === 0 ? undefined : 'true'}
             >
               <img src={b.image} alt={b.alt || ''} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" />
+              {text && (
+                <div class="promo__overlay">
+                  <p class="promo__text" set:html={text}></p>
+                </div>
+              )}
             </Slide>
           );
         })}
