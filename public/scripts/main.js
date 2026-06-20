@@ -333,8 +333,8 @@
 
     // Camera image sources per scene
     const sceneImages = [
-      '/images/sensor-clean-bw.jpg', // 1 · Expert repairs
-      '/images/van-exterior.jpg',    // 2 · Precision service · pickup & delivery
+      '/images/repair-expert.jpg',   // 1 · Expert repairs
+      '/images/repair-service.jpg',  // 2 · Precision service · pickup & delivery
       '/images/sensor-clean.jpg',    // 3 · Sensor & mirror cleaned
       '/images/van-rear.jpg'         // 4 · Ship it
     ];
