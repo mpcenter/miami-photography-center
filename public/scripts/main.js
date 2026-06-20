@@ -16,8 +16,64 @@
     init3DTilt();
     initParallax();
     initDemoForms();
+    initPromoCarousel();
     initGsapFeatures();
   });
+
+  /* ===== PROMO BANNER CAROUSEL (home) ===== */
+  function initPromoCarousel() {
+    const wrap = document.querySelector('[data-carousel]');
+    if (!wrap) return; // 0 or 1 banner → nothing to rotate
+    const slides = [...wrap.querySelectorAll('.promo__slide')];
+    const dots = [...wrap.querySelectorAll('.promo__dot')];
+    if (slides.length < 2) return;
+
+    let current = 0;
+    let timer = null;
+    const INTERVAL = 5500;
+
+    const show = (n) => {
+      current = (n + slides.length) % slides.length;
+      slides.forEach((s, i) => {
+        const on = i === current;
+        s.classList.toggle('is-active', on);
+        if (on) s.removeAttribute('aria-hidden'); else s.setAttribute('aria-hidden', 'true');
+      });
+      dots.forEach((d, i) => {
+        d.classList.toggle('is-active', i === current);
+        d.setAttribute('aria-selected', i === current ? 'true' : 'false');
+      });
+    };
+
+    const start = () => {
+      if (prefersReducedMotion) return;
+      stop();
+      timer = setInterval(() => show(current + 1), INTERVAL);
+    };
+    const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
+
+    dots.forEach((d, i) => d.addEventListener('click', () => { show(i); start(); }));
+
+    // Pause on hover / focus within
+    wrap.addEventListener('mouseenter', stop);
+    wrap.addEventListener('mouseleave', start);
+    wrap.addEventListener('focusin', stop);
+    wrap.addEventListener('focusout', start);
+
+    // Touch swipe
+    let x0 = null;
+    wrap.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; stop(); }, { passive: true });
+    wrap.addEventListener('touchend', (e) => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 40) show(current + (dx < 0 ? 1 : -1));
+      x0 = null;
+      start();
+    }, { passive: true });
+
+    show(0);
+    start();
+  }
 
   /* GSAP-dependent features. If the vendor scripts haven't executed yet
      (slow network), retry once on window load so animations never

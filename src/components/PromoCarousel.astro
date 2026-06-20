@@ -1,0 +1,53 @@
+---
+import { banners } from '../data/banners';
+import { localePath, type Locale } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+
+// Localize internal links (/store → /es/store); leave external links as-is.
+const resolveLink = (link?: string) => {
+  if (!link) return undefined;
+  if (link.startsWith('/')) return localePath(locale, link);
+  return link;
+};
+const label = locale === 'es' ? 'Promociones' : 'Promotions';
+---
+{banners.length > 0 && (
+  <section class="promo" aria-label={label}>
+    <div class="promo__wrap" data-carousel={banners.length > 1 ? 'true' : undefined}>
+      <div class="promo__track">
+        {banners.map((b, i) => {
+          const href = resolveLink(b.link);
+          const Slide = href ? 'a' : 'div';
+          return (
+            <Slide
+              class:list={['promo__slide', { 'is-active': i === 0 }]}
+              data-index={i}
+              {...(href ? { href } : {})}
+              aria-hidden={i === 0 ? undefined : 'true'}
+            >
+              <img src={b.image} alt={b.alt || ''} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" />
+            </Slide>
+          );
+        })}
+      </div>
+
+      {banners.length > 1 && (
+        <div class="promo__dots" role="tablist" aria-label={label}>
+          {banners.map((_, i) => (
+            <button
+              type="button"
+              class:list={['promo__dot', { 'is-active': i === 0 }]}
+              data-dot={i}
+              aria-label={`${locale === 'es' ? 'Banner' : 'Slide'} ${i + 1}`}
+              aria-selected={i === 0 ? 'true' : 'false'}
+            ></button>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+)}

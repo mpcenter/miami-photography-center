@@ -18,6 +18,42 @@ media_folder: public/uploads
 public_folder: /uploads
 
 collections:
+  - name: banners
+    label: Inicio — Banner promocional
+    label_singular: Banner
+    description: Imágenes del carrusel promocional en la página de inicio. Sube tu imagen, ponle orden y actívala. Si pones varias, se rotan solas. Tamaño recomendado 1600×480 px.
+    folder: src/content/banners
+    extension: json
+    format: json
+    create: true
+    delete: true
+    identifier_field: alt
+    summary: '{{alt}} (orden {{order}})'
+    fields:
+      - name: image
+        label: Imagen del banner
+        widget: image
+        hint: Tamaño recomendado 1600×480 px (horizontal). Si quieres texto, inclúyelo dentro de la imagen.
+      - name: alt
+        label: Descripción de la imagen (para Google y accesibilidad)
+        widget: string
+        default: 'Promoción Miami Photography Center'
+      - name: link
+        label: Enlace al hacer clic (opcional)
+        widget: string
+        required: false
+        hint: 'Interno: /store, /membership, /sensor-cleaning … o un enlace externo https://…'
+      - name: order
+        label: Orden
+        widget: number
+        value_type: int
+        default: 1
+        hint: Menor número aparece primero.
+      - name: enabled
+        label: Activado (mostrar en el sitio)
+        widget: boolean
+        default: true
+
   - name: products
     label: Tienda — Productos
     label_singular: Producto
