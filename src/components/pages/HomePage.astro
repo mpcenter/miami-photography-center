@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PromoCarousel from '../PromoCarousel.astro';
 import { localePath, type Locale } from '../../lib/i18n';
 
 interface Props {
@@ -226,6 +227,9 @@ const localBusinessSchema = JSON.stringify({
       ))}
     </div>
   </section>
+
+  <!-- ==================== PROMO BANNER CAROUSEL (managed from /admin) ==================== -->
+  <PromoCarousel locale={locale} />
 
   <!-- ==================== COVERAGE (PARALLAX) ==================== -->
   <section id="coverage" class="coverage" aria-labelledby="coverage-title">
