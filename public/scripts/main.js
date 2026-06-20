@@ -336,7 +336,7 @@
       '/images/repair-expert.jpg',   // 1 · Expert repairs
       '/images/repair-service.jpg',  // 2 · Precision service · pickup & delivery
       '/images/sensor-clean.jpg',    // 3 · Sensor & mirror cleaned
-      '/images/van-rear.jpg'         // 4 · Ship it
+      '/images/van-ship.jpg'         // 4 · Ship it
     ];
 
     let currentScene = -1;
