@@ -277,10 +277,10 @@
 
     // Camera image sources per scene
     const sceneImages = [
-      '/images/van-exterior.jpg',
-      '/images/sensor-clean.jpg',
-      '/images/sensor-clean-bw.jpg',
-      '/images/van-rear.jpg'
+      '/images/sensor-clean-bw.jpg', // 1 · Expert repairs
+      '/images/van-exterior.jpg',    // 2 · Precision service · pickup & delivery
+      '/images/sensor-clean.jpg',    // 3 · Sensor & mirror cleaned
+      '/images/van-rear.jpg'         // 4 · Ship it
     ];
 
     let currentScene = -1;
