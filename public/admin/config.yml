@@ -33,7 +33,22 @@ collections:
       - name: image
         label: Imagen del banner
         widget: image
-        hint: Tamaño recomendado 1600×480 px (horizontal). Si quieres texto, inclúyelo dentro de la imagen.
+        hint: Tamaño recomendado 1600×480 px (horizontal). Puedes poner texto encima con los campos de abajo.
+      - name: text
+        label: Texto sobre la imagen (opcional, español)
+        widget: string
+        required: false
+        hint: 'Ej.: 10% de descuento para primeros servicios durante todo el mes de julio. Se muestra sobre la imagen.'
+      - name: textEn
+        label: Texto en inglés (opcional)
+        widget: string
+        required: false
+        hint: 'Versión en inglés del texto. Si lo dejas vacío, se usa el español.'
+      - name: highlight
+        label: Parte a resaltar en amarillo (opcional)
+        widget: string
+        required: false
+        hint: 'Escribe el fragmento exacto del texto que quieres en amarillo. Ej.: 10%'
       - name: alt
         label: Descripción de la imagen (para Google y accesibilidad)
         widget: string
