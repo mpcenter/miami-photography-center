@@ -1147,9 +1147,9 @@ html.lenis-on { scroll-behavior: auto; height: auto; }
    FORMS (shared)
    ============================================================ */
 .form { display: flex; flex-direction: column; gap: 18px; }
-.form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-@media (max-width: 700px) { .form__row { grid-template-columns: 1fr; } }
-.form__field { display: flex; flex-direction: column; gap: 8px; }
+.form__row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; }
+@media (max-width: 900px) { .form__row { grid-template-columns: 1fr; } }
+.form__field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 .form__field label {
   font-size: 13px;
   font-weight: 600;
@@ -1162,6 +1162,9 @@ html.lenis-on { scroll-behavior: auto; height: auto; }
 .form__field textarea {
   font: inherit;
   letter-spacing: -0.2px;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
   padding: 14px 16px;
   border: 1px solid var(--color-ash);
   border-radius: 14px;
