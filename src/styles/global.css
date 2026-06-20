@@ -1215,7 +1215,7 @@ html.lenis-on { scroll-behavior: auto; height: auto; }
    PROMO BANNER CAROUSEL (home) — managed from /admin
    ============================================================ */
 .promo {
-  padding: clamp(24px, 5vw, 56px) var(--gutter) 0;
+  padding: clamp(20px, 4vw, 44px) var(--gutter) clamp(56px, 9vw, 110px);
 }
 .promo__wrap {
   position: relative;
