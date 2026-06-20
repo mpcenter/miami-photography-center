@@ -530,6 +530,8 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   transition: transform .5s var(--ease-out);
   transform-style: preserve-3d;
   will-change: transform;
+  display: flex;            /* let .card__inner fill the (equal) card height */
+  flex-direction: column;
 }
 .card__inner {
   padding: 40px 36px 36px;
@@ -537,6 +539,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   flex-direction: column;
   gap: 18px;
   min-height: 480px;
+  flex: 1 1 auto;           /* stretch to the card's full height */
   position: relative;
   z-index: 2;
 }
