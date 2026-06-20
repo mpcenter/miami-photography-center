@@ -31,48 +31,52 @@ const t = locale === 'es' ? {
   ],
   tiersEyebrow: 'Planes',
   tiersTitle: 'Tres planes. Un mismo estándar de cuidado.',
-  tiersNote: 'Precio introductorio — contáctanos',
-  tiersPrice: '$—',
-  tiersPer: '/año',
   tiersBadge: 'Más popular',
-  tiersCta: 'Solicitar precio',
+  tiersCta: 'Solicitar información',
   tiers: [
     {
       name: 'SOLO',
       who: 'Para fotógrafos individuales',
+      program: 'Programa de membresía introductorio',
       accent: false,
       features: [
-        '2 limpiezas de sensor al año',
-        '1 visita in situ al año',
-        'Prioridad en cola de reparación',
-        '10% de descuento en reparaciones',
-        'Hasta 1 cuerpo + 2 lentes',
+        'Visitas de servicio Camera Care',
+        'Limpieza profesional de sensor',
+        'Opciones de servicio in situ',
+        'Agendamiento prioritario',
+        'Cobertura diseñada según tu equipo',
       ],
+      footer: 'Construyamos un plan que se ajuste a tu flujo de trabajo.',
     },
     {
       name: 'STUDIO',
-      who: 'Estudios y producciones pequeñas',
+      who: 'Para estudios y equipos de producción pequeños',
+      program: 'Programa de membresía introductorio',
       accent: true,
       features: [
-        '6 limpiezas de sensor al año',
-        '4 visitas in situ al año',
-        'Diagnóstico gratis',
-        '15% de descuento en reparaciones',
-        'Hasta 3 cuerpos + 5 lentes',
-        'Reporte anual de condición de equipo',
+        'Planificación de mantenimiento Camera Care',
+        'Limpieza profesional de sensor',
+        'Disponibilidad de servicio in situ',
+        'Evaluaciones técnicas',
+        'Reporte de condición del equipo',
+        'Cobertura diseñada según tu inventario',
       ],
+      footer: 'Membresías a la medida de tu estudio.',
     },
     {
       name: 'INSTITUTION',
-      who: 'Escuelas y productoras',
+      who: 'Para escuelas, universidades y productoras',
+      program: 'Programa de mantenimiento personalizado',
       accent: false,
       features: [
-        'Limpiezas ilimitadas en visitas programadas',
-        'Visita in situ mensual incluida',
-        'Soporte técnico directo',
-        'Plan personalizado por cantidad de equipos',
-        'Facturación corporativa',
+        'Servicios Camera Care programados',
+        'Limpieza profesional de sensor',
+        'Programas de soporte in situ',
+        'Reporte de condición del equipo',
+        'Coordinación técnica dedicada',
+        'Cobertura según tu inventario',
       ],
+      footer: 'Diseñada según los requerimientos operativos de tu organización.',
     },
   ],
   compareEyebrow: 'La cuenta',
@@ -107,12 +111,12 @@ const t = locale === 'es' ? {
   faq: [
     { q: '¿Cuándo empieza mi membresía?', a: 'El día en que confirmamos tu solicitud. Desde ahí corre por 12 meses, con tus limpiezas y visitas programadas según el plan.' },
     { q: '¿Puedo cambiar de plan durante el año?', a: 'Sí. Contáctanos y te movemos al plan superior por el resto de tu período. Queremos que el plan se ajuste a tu equipo, no al revés.' },
-    { q: '¿Qué equipos cubre?', a: 'Cuerpos de cámara y lentes según los límites de tu plan (por ejemplo, Solo cubre 1 cuerpo + 2 lentes). El plan Institution se dimensiona a tu inventario.' },
+    { q: '¿Qué equipos cubre?', a: 'Cuerpos de cámara y lentes, con la cobertura diseñada según tu equipo o tu inventario. En la solicitud nos cuentas qué tienes y armamos el plan a tu medida.' },
     { q: '¿Cómo agendo mis limpiezas y visitas?', a: 'Por teléfono o email, con agenda prioritaria de miembro. También podemos dejar tus visitas programadas con fechas fijas desde el inicio.' },
   ],
   formEyebrow: 'Solicitud',
   formTitle: 'Aplica a la membresía.',
-  formLede: 'Cuéntanos sobre tu equipo y el plan que te interesa. Te contactamos en un día hábil con el precio introductorio y los pasos siguientes.',
+  formLede: 'Cuéntanos sobre tu equipo y el plan que te interesa. Te contactamos en un día hábil con los detalles del plan y los pasos siguientes.',
   formName: 'Nombre completo',
   formEmail: 'Email',
   formPhone: 'Teléfono',
@@ -123,8 +127,8 @@ const t = locale === 'es' ? {
   formMessage: 'Mensaje',
   formMessagePh: 'Cuéntanos sobre tu equipo, tu ritmo de trabajo o cualquier pregunta...',
   formSubmit: 'Enviar solicitud',
-  formNote: 'Precio introductorio en definición — te lo confirmamos al responder. Sin compromiso.',
-  formSuccess: 'Solicitud recibida. Te contactamos en un día hábil con precios y pasos siguientes.',
+  formNote: 'Programa introductorio. Te enviamos los detalles del plan al responder. Sin compromiso.',
+  formSuccess: 'Solicitud recibida. Te contactamos en un día hábil con los detalles del plan y los pasos siguientes.',
   ctaTitle: '¿Dudas sobre qué plan te conviene?',
   ctaCopy: 'Llámanos y lo armamos contigo según tu equipo y tu ritmo de trabajo.',
   ctaBtn1: 'Llamar (786) 763-2091',
@@ -152,48 +156,52 @@ const t = locale === 'es' ? {
   ],
   tiersEyebrow: 'Plans',
   tiersTitle: 'Three plans. One standard of care.',
-  tiersNote: 'Introductory pricing — contact us',
-  tiersPrice: '$—',
-  tiersPer: '/year',
   tiersBadge: 'Most popular',
-  tiersCta: 'Request pricing',
+  tiersCta: 'Request info',
   tiers: [
     {
       name: 'SOLO',
-      who: 'For individual photographers',
+      who: 'For Individual Photographers',
+      program: 'Introductory membership program',
       accent: false,
       features: [
-        '2 sensor cleanings per year',
-        '1 on-site visit per year',
-        'Priority repair queue',
-        '10% off additional repairs',
-        'Up to 1 body + 2 lenses',
+        'Camera Care service visits',
+        'Professional Sensor Cleaning',
+        'On-Site service options',
+        'Priority scheduling',
+        'Coverage designed around your equipment setup',
       ],
+      footer: 'Let’s build a plan that fits your workflow.',
     },
     {
       name: 'STUDIO',
-      who: 'Studios & small productions',
+      who: 'For Studios & Small Production Teams',
+      program: 'Introductory membership program',
       accent: true,
       features: [
-        '6 sensor cleanings per year',
-        '4 on-site visits per year',
-        'Free diagnostics',
-        '15% off repairs',
-        'Up to 3 bodies + 5 lenses',
-        'Annual gear condition report',
+        'Camera Care maintenance planning',
+        'Professional Sensor Cleaning',
+        'On-Site service availability',
+        'Technical evaluations',
+        'Equipment condition reporting',
+        'Coverage designed around your equipment inventory',
       ],
+      footer: 'Memberships tailored to the needs of your studio.',
     },
     {
       name: 'INSTITUTION',
-      who: 'Schools & production companies',
+      who: 'For Schools, Universities & Production Companies',
+      program: 'Custom maintenance program',
       accent: false,
       features: [
-        'Unlimited cleanings on scheduled visits',
-        'Monthly on-site visit included',
-        'Direct tech support',
-        'Custom plan sized to your inventory',
-        'Corporate invoicing',
+        'Scheduled Camera Care services',
+        'Professional Sensor Cleaning',
+        'On-Site support programs',
+        'Equipment condition reporting',
+        'Dedicated technical coordination',
+        'Coverage based on equipment inventory',
       ],
+      footer: 'Designed around the operational requirements of your organization.',
     },
   ],
   compareEyebrow: 'The math',
@@ -228,12 +236,12 @@ const t = locale === 'es' ? {
   faq: [
     { q: 'When does my membership start?', a: 'The day we confirm your application. It runs for 12 months from there, with your cleanings and visits scheduled per your plan.' },
     { q: 'Can I change tiers mid-year?', a: 'Yes. Contact us and we’ll move you up to the next tier for the remainder of your term. The plan should fit your gear — not the other way around.' },
-    { q: 'What gear is covered?', a: 'Camera bodies and lenses up to your tier’s limits (for example, Solo covers 1 body + 2 lenses). The Institution plan is sized to your inventory.' },
+    { q: 'What gear is covered?', a: 'Camera bodies and lenses, with coverage designed around your setup or inventory. Tell us what you have in the application and we’ll size the plan to you.' },
     { q: 'How do I schedule my cleanings and visits?', a: 'By phone or email, with member-priority scheduling. We can also lock in your scheduled visits with fixed dates from day one.' },
   ],
   formEyebrow: 'Apply',
   formTitle: 'Apply for membership.',
-  formLede: 'Tell us about your gear and the plan you’re interested in. We’ll get back within one business day with introductory pricing and next steps.',
+  formLede: 'Tell us about your gear and the plan you’re interested in. We’ll get back within one business day with plan details and next steps.',
   formName: 'Full name',
   formEmail: 'Email',
   formPhone: 'Phone',
@@ -244,8 +252,8 @@ const t = locale === 'es' ? {
   formMessage: 'Message',
   formMessagePh: 'Tell us about your gear, your workload, or any questions...',
   formSubmit: 'Send Application',
-  formNote: 'Introductory pricing is being finalized — we’ll confirm it when we respond. No commitment.',
-  formSuccess: 'Application received. We’ll contact you within one business day with pricing and next steps.',
+  formNote: 'Introductory program. We’ll send the plan details when we respond. No commitment.',
+  formSuccess: 'Application received. We’ll contact you within one business day with plan details and next steps.',
   ctaTitle: 'Not sure which plan fits?',
   ctaCopy: 'Call us and we’ll size it with you, based on your gear and how you work.',
   ctaBtn1: 'Call (786) 763-2091',
@@ -317,15 +325,13 @@ const faqSchema = JSON.stringify({
             {tier.accent && <span class="members-tier__badge">{t.tiersBadge}</span>}
             <h3 class="members-tier__name">{tier.name}</h3>
             <p class="members-tier__who">{tier.who}</p>
-            <p class="members-tier__price">
-              <span class="members-tier__amount">{t.tiersPrice}</span><span class="members-tier__per">{t.tiersPer}</span>
-            </p>
-            <p class="members-tier__pricenote">{t.tiersNote}</p>
+            <p class="members-tier__program">{tier.program}</p>
             <ul class="members-tier__list">
               {tier.features.map((feature) => (
                 <li><span class="members-check members-check--sm" aria-hidden="true">✓</span>{feature}</li>
               ))}
             </ul>
+            <p class="members-tier__foot">{tier.footer}</p>
             <a href="#membership-form" class={`btn ${tier.accent ? 'btn--primary' : 'btn--ghost'} members-tier__cta`}>{t.tiersCta}</a>
           </div>
         </article>
@@ -644,30 +650,21 @@ const faqSchema = JSON.stringify({
   margin-bottom: 22px;
 }
 .card--accent .members-tier__who { color: var(--color-fog-canvas); }
-.members-tier__price {
-  display: flex;
-  align-items: baseline;
-  gap: 4px;
-}
-.members-tier__amount {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(40px, 4vw, 56px);
-  letter-spacing: -0.02em;
-  color: var(--color-apple-ink);
-  line-height: 1;
-}
-.card--accent .members-tier__amount { color: var(--color-pure-white); }
-.members-tier__per {
-  font-size: 17px;
-  color: var(--color-graphite);
-}
-.card--accent .members-tier__per { color: var(--color-slate); }
-.members-tier__pricenote {
+.members-tier__program {
   font-size: 13px;
-  color: var(--color-slate);
-  margin: 10px 0 26px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-apple-ink);
+  margin: 6px 0 22px;
 }
+.card--accent .members-tier__program { color: var(--color-electric-blue); }
+.members-tier__foot {
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--color-graphite);
+  margin: 4px 0 24px;
+}
+.card--accent .members-tier__foot { color: var(--color-ash); }
 .members-tier__list {
   display: flex;
   flex-direction: column;
