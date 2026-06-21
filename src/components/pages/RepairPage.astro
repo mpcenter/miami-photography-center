@@ -94,20 +94,26 @@ const t = locale === 'es' ? {
   ],
   fName: 'Nombre completo *',
   fNamePh: '¿Cómo te llamas?',
-  fLocation: 'Tu ubicación',
-  fLocationPh: 'Ciudad o zona',
+  fAddress: 'Dirección completa (para la devolución) *',
+  fAddressPh: 'Calle, ciudad, estado, ZIP',
   fPhone: 'Teléfono *',
   fPhonePh: '(786) 555-0100',
   fEmail: 'Correo electrónico *',
   fEmailPh: 'tu@correo.com',
-  fEquipment: 'Marca y modelo del equipo',
-  fEquipmentPh: 'p. ej. Sony A7 IV, Canon RF 24-70mm',
+  fBrand: 'Marca *',
+  fBrandPh: 'Selecciona la marca',
+  fModel: 'Modelo *',
+  fModelPh: 'p. ej. A7 IV, EOS R6, D850',
+  brands: ['Canon', 'Nikon', 'Sony', 'Fujifilm', 'Panasonic / Lumix', 'Olympus / OM System', 'Pentax', 'Leica', 'Sigma', 'Tamron', 'GoPro', 'DJI', 'Otra'],
   fIssue: 'Descripción del problema *',
   fIssuePh: '¿Qué le pasa a tu equipo? ¿Cuándo empezó? ¿Algún código de error?',
   fItems: 'Número de equipos *',
   fItemsPh: '1',
   fSubmit: 'Enviar solicitud',
-  formSuccess: 'Solicitud recibida. Revisaremos tu caso y te contactaremos dentro de un día hábil con los próximos pasos.',
+  fSending: 'Enviando…',
+  fRefLabel: 'Tu número de referencia:',
+  fErrorMsg: 'No pudimos enviar tu solicitud. Inténtalo de nuevo o llámanos al (786) 763-2091.',
+  formSuccess: 'Solicitud recibida. Te enviamos por correo una hoja imprimible con tu número de referencia: imprímela y pégala en tu paquete antes de enviarlo. Revisaremos tu caso y te contactaremos dentro de un día hábil.',
   legalPre: 'Al enviar aceptas nuestra',
   legalLink: 'política de privacidad',
   legalPost: 'Nunca compartimos tus datos.',
@@ -205,20 +211,26 @@ const t = locale === 'es' ? {
   ],
   fName: 'Full Name *',
   fNamePh: 'What’s your name?',
-  fLocation: 'Your Location',
-  fLocationPh: 'City or area',
+  fAddress: 'Full Address (for return) *',
+  fAddressPh: 'Street, city, state, ZIP',
   fPhone: 'Phone *',
   fPhonePh: '(786) 555-0100',
   fEmail: 'Email *',
   fEmailPh: 'you@example.com',
-  fEquipment: 'Equipment Brand & Model',
-  fEquipmentPh: 'e.g. Sony A7 IV, Canon RF 24-70mm',
+  fBrand: 'Brand *',
+  fBrandPh: 'Select the brand',
+  fModel: 'Model *',
+  fModelPh: 'e.g. A7 IV, EOS R6, D850',
+  brands: ['Canon', 'Nikon', 'Sony', 'Fujifilm', 'Panasonic / Lumix', 'Olympus / OM System', 'Pentax', 'Leica', 'Sigma', 'Tamron', 'GoPro', 'DJI', 'Other'],
   fIssue: 'Description of the Issue *',
   fIssuePh: 'What’s happening with your gear? When did it start? Any error codes?',
   fItems: 'Number of Items *',
   fItemsPh: '1',
   fSubmit: 'Send Request',
-  formSuccess: 'Request received. We will review your case and contact you within one business day with the next steps.',
+  fSending: 'Sending…',
+  fRefLabel: 'Your reference number:',
+  fErrorMsg: 'We could not send your request. Please try again or call us at (786) 763-2091.',
+  formSuccess: 'Request received. We emailed you a printable sheet with your reference number — print it and tape it to your package before shipping. We will review your case and contact you within one business day.',
   legalPre: 'By submitting you agree to our',
   legalLink: 'privacy policy',
   legalPost: 'We never share your data.',
@@ -407,16 +419,24 @@ const serviceSchema = JSON.stringify({
         </ul>
       </div>
 
-      <form class="form js-demo-form repair-form" action="#" method="POST" data-success={t.formSuccess}>
-        <div class="form__row">
-          <div class="form__field">
-            <label for="repair-name">{t.fName}</label>
-            <input id="repair-name" type="text" name="name" required autocomplete="name" placeholder={t.fNamePh} />
-          </div>
-          <div class="form__field">
-            <label for="repair-location">{t.fLocation}</label>
-            <input id="repair-location" type="text" name="location" autocomplete="address-level2" placeholder={t.fLocationPh} />
-          </div>
+      <form
+        class="form js-intake-form repair-form"
+        action="/api/repair-intake"
+        method="POST"
+        data-success={t.formSuccess}
+        data-sending={t.fSending}
+        data-error={t.fErrorMsg}
+        data-ref-label={t.fRefLabel}
+        data-locale={locale}
+      >
+        <div class="form__field">
+          <label for="repair-name">{t.fName}</label>
+          <input id="repair-name" type="text" name="name" required autocomplete="name" placeholder={t.fNamePh} />
+        </div>
+
+        <div class="form__field">
+          <label for="repair-address">{t.fAddress}</label>
+          <input id="repair-address" type="text" name="address" required autocomplete="street-address" placeholder={t.fAddressPh} />
         </div>
 
         <div class="form__row">
@@ -430,9 +450,18 @@ const serviceSchema = JSON.stringify({
           </div>
         </div>
 
-        <div class="form__field">
-          <label for="repair-equipment">{t.fEquipment}</label>
-          <input id="repair-equipment" type="text" name="equipment" placeholder={t.fEquipmentPh} />
+        <div class="form__row">
+          <div class="form__field">
+            <label for="repair-brand">{t.fBrand}</label>
+            <select id="repair-brand" name="brand" required>
+              <option value="" disabled selected>{t.fBrandPh}</option>
+              {t.brands.map((b) => <option value={b}>{b}</option>)}
+            </select>
+          </div>
+          <div class="form__field">
+            <label for="repair-model">{t.fModel}</label>
+            <input id="repair-model" type="text" name="model" required placeholder={t.fModelPh} />
+          </div>
         </div>
 
         <div class="form__field">
@@ -446,6 +475,9 @@ const serviceSchema = JSON.stringify({
             <input id="repair-items" type="number" name="items" required min="1" step="1" inputmode="numeric" placeholder={t.fItemsPh} />
           </div>
         </div>
+
+        {/* honeypot anti-spam — hidden from humans */}
+        <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
 
         <div class="form-section__actions">
           <button type="submit" class="btn btn--primary btn--lg">{t.fSubmit}</button>
