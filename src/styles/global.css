@@ -173,6 +173,14 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   display: block;
   filter: brightness(0) invert(1); /* black logo → white for the dark nav */
 }
+.nav__wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--color-fog-canvas);
+}
 .nav__menu {
   display: flex;
   align-items: center;
