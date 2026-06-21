@@ -7,11 +7,11 @@
 # Mientras tanto funciona "Sign in with a personal access token" de Sveltia.
 backend:
   name: github
-  repo: oreste2b/miami-photography-center
+  repo: mpcenter/miami-photography-center
   branch: main
 
-site_url: https://miamiphotographycenter.vercel.app
-display_url: https://miamiphotographycenter.vercel.app
+site_url: https://miamiphotographycenter.com
+display_url: https://miamiphotographycenter.com
 logo_url: https://miamiphotographycenter.vercel.app/favicon.svg
 
 media_folder: public/uploads
