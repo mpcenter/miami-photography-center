@@ -7,8 +7,13 @@
 // Required env var (set in the Vercel project): RESEND_API_KEY
 // Optional env vars: SHOP_EMAIL, FROM_EMAIL
 
-const SHOP_EMAIL = process.env.SHOP_EMAIL || 'service@miamiphotographycenter.com';
-const FROM_EMAIL = process.env.FROM_EMAIL || 'Miami Photography Center <service@miamiphotographycenter.com>';
+// Env vars are read case-insensitively (FROM_EMAIL or from_email) to avoid
+// casing footguns when set in the dashboard.
+const SHOP_EMAIL = process.env.SHOP_EMAIL || process.env.shop_email || 'service@miamiphotographycenter.com';
+const FROM_EMAIL = process.env.FROM_EMAIL || process.env.from_email || 'Miami Photography Center <service@miamiphotographycenter.com>';
+// Resend's shared test sender (onboarding@resend.dev) can only deliver to the
+// account owner, so we skip the shop bcc when testing with it.
+const IS_TEST_SENDER = /resend\.dev/i.test(FROM_EMAIL);
 
 const SHOP = {
   name: 'Miami Photography Center',
@@ -187,7 +192,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         from: FROM_EMAIL,
         to: [email],
-        bcc: [SHOP_EMAIL],
+        ...(IS_TEST_SENDER ? {} : { bcc: [SHOP_EMAIL] }),
         reply_to: SHOP_EMAIL,
         subject,
         html,
