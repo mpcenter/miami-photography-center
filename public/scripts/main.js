@@ -16,6 +16,7 @@
     init3DTilt();
     initParallax();
     initDemoForms();
+    initIntakeForms();
     initPromoCarousel();
     initGsapFeatures();
   });
@@ -199,6 +200,56 @@
         }
         note.textContent = '✓ ' + msg;
         form.querySelectorAll('button[type="submit"]').forEach((b) => { b.disabled = true; b.style.opacity = '0.6'; });
+      });
+    });
+  }
+
+  /* ===== INTAKE FORMS (real POST to a serverless function) =====
+     <form class="js-intake-form" action="/api/..."> posts JSON, shows the
+     returned reference number, and confirms the printable sheet was emailed. */
+  function initIntakeForms() {
+    document.querySelectorAll('form.js-intake-form').forEach((form) => {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+
+        const btns = [...form.querySelectorAll('button[type="submit"]')];
+        const labels = btns.map((b) => b.textContent);
+        btns.forEach((b) => { b.disabled = true; b.style.opacity = '0.6'; if (form.dataset.sending) b.textContent = form.dataset.sending; });
+
+        let note = form.querySelector('.form__success');
+        if (!note) {
+          note = document.createElement('p');
+          note.className = 'form__success';
+          note.setAttribute('role', 'status');
+          form.appendChild(note);
+        }
+        note.style.cssText = 'font-weight:600;font-size:15px;margin-top:8px;';
+
+        const payload = Object.fromEntries(new FormData(form).entries());
+        payload.locale = form.dataset.locale || document.documentElement.lang || 'en';
+
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+          const data = await res.json().catch(() => ({}));
+          if (res.ok && data.ok) {
+            note.style.color = '#1d7a3a';
+            const refLabel = form.dataset.refLabel || 'Reference:';
+            note.innerHTML = '✓ ' + (form.dataset.success || 'Request received.') +
+              (data.reference ? '<br><strong>' + refLabel + ' ' + data.reference + '</strong>' : '');
+            form.querySelectorAll('input, select, textarea').forEach((el) => { el.disabled = true; });
+          } else {
+            throw new Error(data.error || 'send failed');
+          }
+        } catch (err) {
+          note.style.color = '#c0392b';
+          note.textContent = '✕ ' + (form.dataset.error || 'Something went wrong. Please try again.');
+          btns.forEach((b, i) => { b.disabled = false; b.style.opacity = '1'; b.textContent = labels[i]; });
+        }
       });
     });
   }
