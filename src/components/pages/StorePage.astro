@@ -1,7 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { localePath, type Locale } from '../../lib/i18n';
-import { products } from '../../data/products';
 
 interface Props {
   locale: Locale;
@@ -10,51 +9,30 @@ const { locale } = Astro.props;
 const p = (path: string) => localePath(locale, path);
 
 const t = locale === 'es' ? {
-  title: 'Tienda Online | Cámaras y Accesorios Revisados en el Taller — MPC',
-  description: 'Cámaras, lentes y accesorios usados, revisados y calibrados en el taller por nuestros técnicos. Garantía de 6 meses. Envíos a todo Estados Unidos.',
+  title: 'Tienda — Próximamente | Miami Photography Center',
+  description: 'Nuestra tienda de cámaras y equipo usado, revisado y calibrado en el taller con garantía de 6 meses, estará disponible muy pronto. Escríbenos para consultar disponibilidad.',
   breadcrumbHome: 'Inicio',
   breadcrumbStore: 'Tienda',
-  heroEyebrow: 'Tienda',
-  heroTitle: 'Tienda Online.',
-  heroLede: 'Cámaras y accesorios, revisados y calibrados en el taller. Envíos a todo Estados Unidos.',
-  filterLabel: 'Filtrar por categoría',
-  filters: [
-    { key: 'all', label: 'Todo' },
-    { key: 'cameras', label: 'Cámaras' },
-    { key: 'lenses', label: 'Lentes' },
-    { key: 'accessories', label: 'Accesorios' },
-  ],
-  viewProduct: 'Ver producto',
-  trust: [
-    { title: 'Garantía de 6 meses', copy: 'Todo equipo usado sale con garantía real de 6 meses.' },
-    { title: 'Envíos a todo EE. UU.', copy: 'Empaque protegido y número de seguimiento en cada orden.' },
-    { title: 'Calibrado por nuestros técnicos', copy: 'Cada pieza pasa por nuestro propio taller antes de publicarse.' },
-  ],
+  eyebrow: 'Tienda',
+  heading: 'Próximamente',
+  lede: 'Estamos preparando nuestra tienda de cámaras, lentes y accesorios usados — revisados y calibrados en el taller, con garantía de 6 meses y envíos a todo Estados Unidos.',
+  ctaCopy: '¿Buscas equipo usado? Escríbenos y te avisamos en cuanto esté disponible.',
+  ctaButton: 'Escríbenos por correo',
+  mailSubject: 'Consulta de equipo usado',
 } : {
-  title: 'Online Store | Used Cameras & Gear, Serviced In-House — MPC',
-  description: 'Used cameras, lenses, and accessories — inspected and serviced in-house by our technicians. 6-month warranty. Shipped anywhere in the US.',
+  title: 'Store — Coming Soon | Miami Photography Center',
+  description: 'Our store of used cameras and gear — inspected and serviced in-house with a 6-month warranty — is coming soon. Get in touch to ask about availability.',
   breadcrumbHome: 'Home',
   breadcrumbStore: 'Store',
-  heroEyebrow: 'Store',
-  heroTitle: 'Online Store.',
-  heroLede: 'Cameras and gear, inspected and serviced in-house. Shipped anywhere in the US.',
-  filterLabel: 'Filter by category',
-  filters: [
-    { key: 'all', label: 'All' },
-    { key: 'cameras', label: 'Cameras' },
-    { key: 'lenses', label: 'Lenses' },
-    { key: 'accessories', label: 'Accessories' },
-  ],
-  viewProduct: 'View product',
-  trust: [
-    { title: '6-month warranty', copy: 'Every piece of used gear ships with a real 6-month warranty.' },
-    { title: 'US-wide shipping', copy: 'Protective packaging and a tracking number on every order.' },
-    { title: 'Serviced by our own technicians', copy: 'Every item goes through our own workshop before it’s listed.' },
-  ],
+  eyebrow: 'Store',
+  heading: 'Coming soon',
+  lede: 'We’re putting together our store of used cameras, lenses, and accessories — inspected and serviced in-house, with a 6-month warranty and US-wide shipping.',
+  ctaCopy: 'Looking for used gear? Send us a note and we’ll let you know as soon as it’s live.',
+  ctaButton: 'Email us',
+  mailSubject: 'Used gear inquiry',
 };
 
-const categoryKey = (en: string) => en.toLowerCase();
-const formatPrice = (n: number) => `$${n.toLocaleString('en-US')}`;
+const mailto = `mailto:service@miamiphotographycenter.com?subject=${encodeURIComponent(t.mailSubject)}`;
 ---
 <Base locale={locale} title={t.title} description={t.description}>
   <!-- ==================== PAGE HERO ==================== -->
@@ -65,263 +43,74 @@ const formatPrice = (n: number) => `$${n.toLocaleString('en-US')}`;
         <span aria-hidden="true">/</span>
         <span aria-current="page">{t.breadcrumbStore}</span>
       </nav>
-      <h1 class="sr-only">{t.heroTitle}</h1>
+      <h1 class="sr-only">{t.breadcrumbStore} — {t.heading}</h1>
     </div>
   </header>
 
-  <!-- ==================== TRUST STRIP ==================== -->
-  <section class="store-trust" aria-label={locale === 'es' ? 'Por qué comprar con MPC' : 'Why buy from MPC'}>
-    <ul class="store-trust__grid">
-      {t.trust.map((item) => (
-        <li class="store-trust__item" data-anim="fade-up">
-          <span class="store-trust__check" aria-hidden="true">✓</span>
-          <div>
-            <h2 class="store-trust__title">{item.title}</h2>
-            <p class="store-trust__copy">{item.copy}</p>
-          </div>
-        </li>
-      ))}
-    </ul>
-  </section>
-
-  <!-- ==================== CATALOG ==================== -->
-  <section class="store-catalog" aria-label={locale === 'es' ? 'Catálogo de productos' : 'Product catalog'}>
-    <div class="store-catalog__inner">
-      <div class="store-filters" role="group" aria-label={t.filterLabel}>
-        {t.filters.map((filter, i) => (
-          <button
-            type="button"
-            class={`store-filters__chip${i === 0 ? ' is-active' : ''}`}
-            data-filter={filter.key}
-            aria-pressed={i === 0 ? 'true' : 'false'}
-          >{filter.label}</button>
-        ))}
-      </div>
-
-      <ul class="store-grid" id="storeGrid">
-        {products.map((product) => (
-          <li class="store-card" data-category={categoryKey(product.category.en)} data-anim="fade-up">
-            <a href={p(`/store/${product.slug}`)} class="store-card__link-wrap">
-              <div class="store-card__media">
-                <img
-                  src={product.img}
-                  alt={product.name[locale]}
-                  width="1200" height="800"
-                  loading="lazy" decoding="async" />
-              </div>
-              <div class="store-card__body">
-                <p class="store-card__category">{product.category[locale]}</p>
-                <h2 class="store-card__name">{product.name[locale]}</h2>
-                <p class="store-card__badge">{product.condition[locale]}</p>
-                <div class="store-card__foot">
-                  <span class="store-card__price">{formatPrice(product.price)}</span>
-                  <span class="store-card__cta">{t.viewProduct} <span aria-hidden="true">→</span></span>
-                </div>
-              </div>
-            </a>
-          </li>
-        ))}
-      </ul>
+  <!-- ==================== COMING SOON ==================== -->
+  <section class="store-soon" aria-label={t.heading}>
+    <div class="store-soon__inner" data-anim="fade-up">
+      <p class="store-soon__eyebrow">{t.eyebrow}</p>
+      <p class="store-soon__heading">{t.heading}</p>
+      <p class="store-soon__lede">{t.lede}</p>
+      <p class="store-soon__cta-copy">{t.ctaCopy}</p>
+      <a href={mailto} class="store-soon__cta">{t.ctaButton} <span aria-hidden="true">→</span></a>
     </div>
   </section>
-
-  <!-- Category filter — guarded, no dependencies -->
-  <script is:inline>
-    (function () {
-      var chips = document.querySelectorAll('.store-filters__chip');
-      var cards = document.querySelectorAll('.store-card[data-category]');
-      if (!chips.length || !cards.length) return;
-      chips.forEach(function (chip) {
-        chip.addEventListener('click', function () {
-          var filter = chip.getAttribute('data-filter');
-          chips.forEach(function (c) {
-            var active = c === chip;
-            c.classList.toggle('is-active', active);
-            c.setAttribute('aria-pressed', String(active));
-          });
-          cards.forEach(function (card) {
-            var show = filter === 'all' || card.getAttribute('data-category') === filter;
-            card.style.display = show ? '' : 'none';
-          });
-        });
-      });
-    })();
-  </script>
 </Base>
 
 <style is:global>
 /* ============================================================
-   STORE — catalog
+   STORE — coming soon
    ============================================================ */
-.store-trust {
-  padding: 0 var(--gutter) 24px;
+.store-soon {
+  padding: clamp(40px, 8vw, 110px) var(--gutter) var(--section-gap);
   background: var(--color-fog-canvas);
 }
-.store-trust__grid {
-  max-width: var(--page-max);
+.store-soon__inner {
+  max-width: 680px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  text-align: center;
 }
-.store-trust__item {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-  background: var(--color-pure-white);
-  border-radius: var(--r-card);
-  padding: 24px 26px;
-}
-.store-trust__check {
-  flex: none;
-  width: 28px;
-  height: 28px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: rgba(0, 113, 227, 0.1);
-  color: var(--color-apple-ink);
-  font-size: 14px;
-  font-weight: 700;
-}
-.store-trust__title {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 17px;
-  letter-spacing: -0.32px;
-  color: var(--color-apple-ink);
-  margin-bottom: 4px;
-}
-.store-trust__copy {
-  font-size: 14px;
-  color: var(--color-graphite);
-  line-height: 1.5;
-}
-@media (max-width: 900px) {
-  .store-trust__grid { grid-template-columns: 1fr; }
-}
-
-.store-catalog {
-  padding: 40px var(--gutter) var(--section-gap);
-  background: var(--color-fog-canvas);
-}
-.store-catalog__inner {
-  max-width: var(--page-max);
-  margin: 0 auto;
-}
-
-/* Filter chips */
-.store-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 36px;
-}
-.store-filters__chip {
-  font-size: 15px;
-  letter-spacing: -0.2px;
-  padding: 9px 20px;
-  border-radius: var(--r-chip);
-  border: 1px solid var(--color-ash);
-  background: var(--color-pure-white);
-  color: var(--color-charcoal);
-  transition: background .25s var(--ease-out), color .25s var(--ease-out), border-color .25s var(--ease-out);
-}
-.store-filters__chip:hover { border-color: var(--color-graphite); }
-.store-filters__chip.is-active {
-  background: var(--color-apple-ink);
-  border-color: var(--color-apple-ink);
-  color: var(--color-pure-white);
-}
-
-/* Product grid */
-.store-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-@media (max-width: 1180px) { .store-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 900px) { .store-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px) { .store-grid { grid-template-columns: 1fr; } }
-
-.store-card {
-  background: var(--color-pure-white);
-  border-radius: var(--r-card);
-  overflow: hidden;
-  transition: transform .4s var(--ease-out), box-shadow .4s var(--ease-out);
-}
-.store-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.08);
-}
-.store-card__link-wrap {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-.store-card__media {
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  background: var(--color-ash);
-}
-.store-card__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform .8s var(--ease-out);
-}
-.store-card:hover .store-card__media img { transform: scale(1.05); }
-.store-card__body {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 22px 24px 24px;
-  flex: 1;
-}
-.store-card__category {
-  font-size: 12px;
+.store-soon__eyebrow {
+  font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   color: var(--color-apple-ink);
+  margin-bottom: 14px;
 }
-.store-card__name {
+.store-soon__heading {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 19px;
-  line-height: 1.25;
-  letter-spacing: -0.32px;
-  color: var(--color-apple-ink);
-}
-.store-card__badge {
-  font-size: 13px;
-  font-weight: 400;
-  letter-spacing: -0.1px;
-  color: var(--color-apple-ink);
-}
-.store-card__foot {
-  margin-top: auto;
-  padding-top: 14px;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-}
-.store-card__price {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 22px;
+  font-weight: 700;
+  font-size: clamp(34px, 6vw, 60px);
+  line-height: 1.05;
   letter-spacing: -0.02em;
   color: var(--color-apple-ink);
+  margin-bottom: 22px;
 }
-.store-card__cta {
-  font-size: 14px;
-  color: var(--color-apple-ink);
+.store-soon__lede {
+  font-size: clamp(16px, 2.2vw, 19px);
+  line-height: 1.6;
+  color: var(--color-graphite);
+  margin-bottom: 28px;
+}
+.store-soon__cta-copy {
+  font-size: 15px;
+  color: var(--color-charcoal);
+  margin-bottom: 22px;
+}
+.store-soon__cta {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  transition: color .2s var(--ease-out);
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: var(--r-chip);
+  background: var(--color-electric-blue);
+  color: var(--color-apple-ink);
+  font-weight: 600;
+  font-size: 16px;
+  transition: transform .25s var(--ease-out), opacity .25s var(--ease-out);
 }
-.store-card__link-wrap:hover .store-card__cta { color: var(--color-slate); }
+.store-soon__cta:hover { transform: translateY(-2px); opacity: 0.9; }
 </style>

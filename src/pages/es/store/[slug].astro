@@ -1,12 +1,10 @@
 ---
 import ProductDetailPage from '../../../components/pages/ProductDetailPage.astro';
-import { products } from '../../../data/products';
 
+// Store is in "coming soon" mode — demo product detail pages are not generated.
+// Restore products.map(...) here to re-enable real product pages.
 export function getStaticPaths() {
-  return products.map((product) => ({
-    params: { slug: product.slug },
-    props: { product },
-  }));
+  return [];
 }
 
 const { product } = Astro.props;
