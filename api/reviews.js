@@ -8,8 +8,9 @@
 //   GOOGLE_PLACES_API_KEY  — API key with "Places API (New)" enabled
 //   GOOGLE_PLACE_ID        — the business Place ID
 
-const API_KEY = process.env.GOOGLE_PLACES_API_KEY || process.env.google_places_api_key;
-const PLACE_ID = process.env.GOOGLE_PLACE_ID || process.env.google_place_id;
+// Trim to tolerate stray spaces/newlines pasted into the dashboard values.
+const API_KEY = (process.env.GOOGLE_PLACES_API_KEY || process.env.google_places_api_key || '').trim();
+const PLACE_ID = (process.env.GOOGLE_PLACE_ID || process.env.google_place_id || '').trim();
 
 export default async function handler(req, res) {
   if (!API_KEY || !PLACE_ID) {
