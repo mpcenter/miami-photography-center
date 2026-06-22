@@ -39,7 +39,9 @@ const t =
   <div class="reviews__grid" data-reviews-grid></div>
 </section>
 
-<style>
+{/* Global (not scoped) because the cards are injected via innerHTML and would
+    not carry Astro's scope attribute. */}
+<style is:global>
   .reviews__rating {
     display: inline-flex;
     align-items: center;
@@ -54,16 +56,26 @@ const t =
   }
   .reviews__rating:hover { border-color: currentColor; }
 
-  .gr-card { display: flex; flex-direction: column; gap: 10px; }
+  /* Review cards: tighter, equal-height, capped to a fixed number of lines. */
+  .reviews__grid .gr-card { gap: 14px; }
   .gr-stars {
     color: #f5a623;
     font-size: 16px;
     letter-spacing: 2px;
     line-height: 1;
   }
-  .gr-card blockquote {
+  /* Higher specificity than `.quote blockquote` so it overrides the big
+     testimonial style with a readable review style + line clamp. */
+  .reviews__grid .gr-card blockquote {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: var(--color-graphite, #424245);
+    overflow-wrap: anywhere;
     display: -webkit-box;
-    -webkit-line-clamp: 7;
+    -webkit-line-clamp: 6;
+    line-clamp: 6;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
@@ -72,9 +84,11 @@ const t =
     align-items: center;
     gap: 10px;
     margin-top: auto;
+    font-size: 15px;
+    color: var(--color-apple-ink, #1d1d1f);
   }
   .gr-avatar { border-radius: 50%; object-fit: cover; flex: none; }
-  .gr-time { color: var(--color-fog, #6e6e73); font-weight: 400; font-size: 13px; }
+  .gr-time { color: var(--color-graphite, #6e6e73); font-weight: 400; font-size: 13px; }
 </style>
 
 <script is:inline>
