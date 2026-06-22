@@ -20,6 +20,8 @@ export default async function handler(req, res) {
     return res.status(200).json({ ok: false, reviews: [], error: 'not_configured' });
   }
 
+  const DEBUG_RAW = req.query && req.query.debug === 'raw';
+
   try {
     const r = await fetch(
       `https://places.googleapis.com/v1/places/${encodeURIComponent(PLACE_ID)}?languageCode=es`,
@@ -37,6 +39,7 @@ export default async function handler(req, res) {
     }
 
     const data = await r.json();
+    if (DEBUG_RAW) return res.status(200).json({ keys: Object.keys(data), reviewsLen: (data.reviews || []).length, firstReview: (data.reviews || [])[0] || null, data });
     const reviews = (data.reviews || [])
       .map((rv) => ({
         author: rv.authorAttribution?.displayName || '',
