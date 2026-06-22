@@ -10,30 +10,12 @@
 
 // Trim to tolerate stray spaces/newlines pasted into the dashboard values.
 const API_KEY = (process.env.GOOGLE_PLACES_API_KEY || process.env.google_places_api_key || '').trim();
-const PLACE_ID = (process.env.GOOGLE_PLACE_ID || process.env.google_place_id || '').trim();
+// Place ID is public + stable, so it's hardcoded here (only the API key is a
+// secret kept in env). Hardcoded outright because the env var holds a wrong
+// pasted value; the GOOGLE_PLACE_ID env var is no longer used.
+const PLACE_ID = 'ChIJMZHpzKqt2YgRGuM9p0PfTh4'; // Miami Photography Center (5★)
 
 export default async function handler(req, res) {
-  // Temporary diagnostic: /api/reviews?debug=search&q=...  → list candidate
-  // places with their IDs and review counts, to pick the right Place ID.
-  if (req.query && req.query.debug === 'search' && API_KEY) {
-    const q = req.query.q || 'Miami Photography Center, 3911 SW 27th St, West Park, FL 33023';
-    try {
-      const sr = await fetch('https://places.googleapis.com/v1/places:searchText', {
-        method: 'POST',
-        headers: {
-          'X-Goog-Api-Key': API_KEY,
-          'X-Goog-FieldMask':
-            'places.id,places.displayName,places.formattedAddress,places.rating,places.userRatingCount,places.googleMapsUri',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ textQuery: q }),
-      });
-      return res.status(200).json(await sr.json());
-    } catch (e) {
-      return res.status(200).json({ error: String(e) });
-    }
-  }
-
   if (!API_KEY || !PLACE_ID) {
     return res.status(200).json({ ok: false, reviews: [], error: 'not_configured' });
   }
