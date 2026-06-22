@@ -1,0 +1,124 @@
+---
+import type { Locale } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+
+const t =
+  locale === 'es'
+    ? {
+        eyebrow: 'Reseñas de Google',
+        title: 'Lo que dicen nuestros clientes',
+        based: 'reseñas en Google',
+      }
+    : {
+        eyebrow: 'Google reviews',
+        title: 'What our clients say',
+        based: 'reviews on Google',
+      };
+---
+
+{/* Real Google reviews, loaded client-side from /api/reviews and cached at the
+    edge. The section starts hidden and only appears once reviews load, so it
+    degrades to nothing if the API isn't configured or fails. */}
+<section
+  id="reviews"
+  class="reviews"
+  aria-labelledby="reviews-title"
+  data-google-reviews
+  data-based={t.based}
+  hidden
+>
+  <div class="reviews__head">
+    <p class="eyebrow">{t.eyebrow}</p>
+    <h2 id="reviews-title" class="reviews__title">{t.title}</h2>
+    <a class="reviews__rating" data-rating-link href="#" target="_blank" rel="noopener" hidden></a>
+  </div>
+  <div class="reviews__grid" data-reviews-grid></div>
+</section>
+
+<style>
+  .reviews__rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--color-apple-ink, #1d1d1f);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+  .reviews__rating:hover { border-color: currentColor; }
+
+  .gr-card { display: flex; flex-direction: column; gap: 10px; }
+  .gr-stars {
+    color: #f5a623;
+    font-size: 16px;
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+  .gr-card blockquote {
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .gr-author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+  }
+  .gr-avatar { border-radius: 50%; object-fit: cover; flex: none; }
+  .gr-time { color: var(--color-fog, #6e6e73); font-weight: 400; font-size: 13px; }
+</style>
+
+<script is:inline>
+  (async () => {
+    const section = document.querySelector('[data-google-reviews]');
+    if (!section) return;
+    const based = section.getAttribute('data-based') || 'reviews on Google';
+    const esc = (s) =>
+      String(s == null ? '' : s).replace(/[&<>"]/g, (c) =>
+        ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])
+      );
+    const stars = (n) => {
+      const r = Math.max(0, Math.min(5, Math.round(n)));
+      return '★★★★★'.slice(0, r) + '☆☆☆☆☆'.slice(0, 5 - r);
+    };
+    try {
+      const res = await fetch('/api/reviews');
+      const data = await res.json();
+      if (!data || !data.ok || !data.reviews || !data.reviews.length) return;
+
+      const grid = section.querySelector('[data-reviews-grid]');
+      grid.innerHTML = data.reviews
+        .map(
+          (r) => `
+        <figure class="quote gr-card">
+          <div class="gr-stars" aria-label="${r.rating} / 5">${stars(r.rating)}</div>
+          <blockquote>${esc(r.text)}</blockquote>
+          <figcaption class="gr-author">
+            ${r.photo ? `<img class="gr-avatar" src="${esc(r.photo)}" alt="" referrerpolicy="no-referrer" width="40" height="40" loading="lazy">` : ''}
+            <span><strong>${esc(r.author)}</strong>${r.time ? `<br><span class="gr-time">${esc(r.time)}</span>` : ''}</span>
+          </figcaption>
+        </figure>`
+        )
+        .join('');
+
+      if (data.rating && data.url) {
+        const link = section.querySelector('[data-rating-link]');
+        link.textContent = `★ ${Number(data.rating).toFixed(1)} · ${data.total} ${based} →`;
+        link.href = data.url;
+        link.hidden = false;
+      }
+      section.hidden = false;
+    } catch (e) {
+      /* leave the section hidden on any error */
+    }
+  })();
+</script>

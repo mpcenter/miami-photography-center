@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import PromoCarousel from '../PromoCarousel.astro';
+import GoogleReviews from '../GoogleReviews.astro';
 import { localePath, type Locale } from '../../lib/i18n';
 
 interface Props {
@@ -300,21 +301,8 @@ const localBusinessSchema = JSON.stringify({
     </div>
   </section>
 
-  <!-- ==================== REVIEWS ==================== -->
-  <section id="reviews" class="reviews" aria-labelledby="reviews-title">
-    <div class="reviews__head">
-      <p class="eyebrow">{t.reviewsEyebrow}</p>
-      <h2 id="reviews-title" class="reviews__title">{t.reviewsTitle}</h2>
-    </div>
-    <div class="reviews__grid">
-      {t.reviews.map((review) => (
-        <figure class="quote" data-anim="fade-up">
-          <blockquote>{review.quote}</blockquote>
-          <figcaption>{review.author}</figcaption>
-        </figure>
-      ))}
-    </div>
-  </section>
+  <!-- ==================== REVIEWS (real Google reviews via /api/reviews) ==================== -->
+  <GoogleReviews locale={locale} />
 
   <!-- ==================== CTA ==================== -->
   <section id="cta" class="cta" aria-labelledby="cta-title">
