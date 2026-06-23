@@ -253,20 +253,22 @@ const localBusinessSchema = JSON.stringify({
       <p class="eyebrow">{t.processEyebrow}</p>
       <h2 id="process-title" class="process__title" set:html={t.processTitle} />
     </div>
-    <ol class="process__steps">
-      {t.process.map((step) => (
-        <li class="process__step" data-anim="fade-up">
-          <span class="process__num">{step.num}</span>
-          <h3>{step.title}</h3>
-          <p>{step.copy}</p>
-        </li>
-      ))}
-    </ol>
+    <div class="process__layout">
+      <ol class="process__steps">
+        {t.process.map((step) => (
+          <li class="process__step" data-anim="fade-up">
+            <span class="process__num">{step.num}</span>
+            <h3>{step.title}</h3>
+            <p>{step.copy}</p>
+          </li>
+        ))}
+      </ol>
 
-    <div class="process__form" data-anim="fade-up">
-      <h3 class="process__form-title">{locale === 'es' ? 'Solicita tu reparación' : 'Request your repair'}</h3>
-      <p class="process__form-sub">{locale === 'es' ? 'Describe el problema y te contactamos en un día hábil para coordinar el siguiente paso: taller, recogida o envío.' : 'Describe the issue and we’ll contact you within one business day to coordinate the next step: workshop, pickup, or mail.'}</p>
-      <RepairIntakeForm locale={locale} idPrefix="home-repair" />
+      <div class="process__form" data-anim="fade-up">
+        <h3 class="process__form-title">{locale === 'es' ? 'Solicita tu reparación' : 'Request your repair'}</h3>
+        <p class="process__form-sub">{locale === 'es' ? 'Describe el problema y te contactamos en un día hábil para coordinar el siguiente paso: taller, recogida o envío.' : 'Describe the issue and we’ll contact you within one business day to coordinate the next step: workshop, pickup, or mail.'}</p>
+        <RepairIntakeForm locale={locale} idPrefix="home-repair" />
+      </div>
     </div>
   </section>
 
@@ -324,26 +326,40 @@ const localBusinessSchema = JSON.stringify({
   </section>
 
   <style is:global>
-    /* Repair form embedded in the home Process section */
+    /* Process section: 3 step cards (left) + repair form (right) */
+    .process__layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: clamp(28px, 4vw, 56px);
+      max-width: var(--page-max);
+      margin: 0 auto;
+      align-items: start;
+    }
+    .process__layout .process__steps {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-width: none;
+      margin: 0;
+    }
     .process__form {
-      max-width: 640px;
-      margin: clamp(40px, 6vw, 72px) auto 0;
-      width: 100%;
+      background: var(--color-pure-white);
+      border-radius: var(--r-card);
+      padding: clamp(26px, 3.5vw, 40px);
     }
     .process__form-title {
       font-family: var(--font-display);
       font-weight: 600;
-      font-size: clamp(24px, 3vw, 32px);
+      font-size: clamp(22px, 2.4vw, 30px);
       letter-spacing: -0.02em;
       color: var(--color-apple-ink);
-      text-align: center;
       margin: 0 0 8px;
     }
     .process__form-sub {
-      text-align: center;
       color: var(--color-graphite);
-      max-width: 52ch;
-      margin: 0 auto 28px;
+      margin: 0 0 24px;
+    }
+    @media (max-width: 900px) {
+      .process__layout { grid-template-columns: 1fr; gap: 40px; }
     }
 
     /* Productions band — service bullets (sits on the dark prodband panel) */
