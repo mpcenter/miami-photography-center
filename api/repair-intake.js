@@ -10,6 +10,9 @@
 // Env vars are read case-insensitively (FROM_EMAIL or from_email) to avoid
 // casing footguns when set in the dashboard.
 const SHOP_EMAIL = process.env.SHOP_EMAIL || process.env.shop_email || 'service@miamiphotographycenter.com';
+// Guaranteed copy so a repair lead never gets lost if the shop mailbox fails.
+const COPY_EMAIL = (process.env.NOTIFY_EMAIL || process.env.notify_email || 'adminwebmpc@gmail.com').trim();
+const SHOP_BCC = [...new Set([SHOP_EMAIL, COPY_EMAIL].filter(Boolean))];
 const FROM_EMAIL = process.env.FROM_EMAIL || process.env.from_email || 'Miami Photography Center <service@miamiphotographycenter.com>';
 // Resend's shared test sender (onboarding@resend.dev) can only deliver to the
 // account owner, so we skip the shop bcc when testing with it.
@@ -185,7 +188,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         from: FROM_EMAIL,
         to: [email],
-        ...(IS_TEST_SENDER ? {} : { bcc: [SHOP_EMAIL] }),
+        ...(IS_TEST_SENDER ? {} : { bcc: SHOP_BCC }),
         reply_to: SHOP_EMAIL,
         subject,
         html,

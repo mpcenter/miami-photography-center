@@ -7,6 +7,9 @@
 
 const API_KEY = (process.env.RESEND_API_KEY || process.env.resend_api_key || '').trim();
 const SHOP_EMAIL = (process.env.SHOP_EMAIL || process.env.shop_email || 'service@miamiphotographycenter.com').trim();
+// Guaranteed copy so a lead never gets lost if the shop mailbox has issues.
+const COPY_EMAIL = (process.env.NOTIFY_EMAIL || process.env.notify_email || 'adminwebmpc@gmail.com').trim();
+const RECIPIENTS = [...new Set([SHOP_EMAIL, COPY_EMAIL].filter(Boolean))];
 const FROM_EMAIL = (
   process.env.FROM_EMAIL ||
   process.env.from_email ||
@@ -107,7 +110,7 @@ export default async function handler(req, res) {
       headers: { Authorization: `Bearer ${API_KEY}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
         from: FROM_EMAIL,
-        to: [SHOP_EMAIL],
+        to: RECIPIENTS,
         ...(emailValid ? { reply_to: customerEmail } : {}),
         subject: `MPC — ${formName}${body.name ? ` · ${body.name}` : ''}`,
         html,
