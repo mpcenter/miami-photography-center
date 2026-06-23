@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import PromoCarousel from '../PromoCarousel.astro';
 import GoogleReviews from '../GoogleReviews.astro';
+import RepairIntakeForm from '../RepairIntakeForm.astro';
 import { localePath, type Locale } from '../../lib/i18n';
 
 interface Props {
@@ -261,6 +262,12 @@ const localBusinessSchema = JSON.stringify({
         </li>
       ))}
     </ol>
+
+    <div class="process__form" data-anim="fade-up">
+      <h3 class="process__form-title">{locale === 'es' ? 'Solicita tu reparación' : 'Request your repair'}</h3>
+      <p class="process__form-sub">{locale === 'es' ? 'Describe el problema y te contactamos en un día hábil para coordinar el siguiente paso: taller, recogida o envío.' : 'Describe the issue and we’ll contact you within one business day to coordinate the next step: workshop, pickup, or mail.'}</p>
+      <RepairIntakeForm locale={locale} idPrefix="home-repair" />
+    </div>
   </section>
 
   <!-- ==================== PRODUCTIONS BAND (secondary) ==================== -->
@@ -317,6 +324,28 @@ const localBusinessSchema = JSON.stringify({
   </section>
 
   <style is:global>
+    /* Repair form embedded in the home Process section */
+    .process__form {
+      max-width: 640px;
+      margin: clamp(40px, 6vw, 72px) auto 0;
+      width: 100%;
+    }
+    .process__form-title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(24px, 3vw, 32px);
+      letter-spacing: -0.02em;
+      color: var(--color-apple-ink);
+      text-align: center;
+      margin: 0 0 8px;
+    }
+    .process__form-sub {
+      text-align: center;
+      color: var(--color-graphite);
+      max-width: 52ch;
+      margin: 0 auto 28px;
+    }
+
     /* Productions band — service bullets (sits on the dark prodband panel) */
     .prodband__points {
       display: flex;

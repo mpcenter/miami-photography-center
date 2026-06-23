@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import RepairIntakeForm from '../RepairIntakeForm.astro';
 import { localePath, type Locale } from '../../lib/i18n';
 import '../../styles/repair.css';
 
@@ -419,73 +420,7 @@ const serviceSchema = JSON.stringify({
         </ul>
       </div>
 
-      <form
-        class="form js-intake-form repair-form"
-        action="/api/repair-intake"
-        method="POST"
-        data-success={t.formSuccess}
-        data-sending={t.fSending}
-        data-error={t.fErrorMsg}
-        data-ref-label={t.fRefLabel}
-        data-locale={locale}
-      >
-        <div class="form__field">
-          <label for="repair-name">{t.fName}</label>
-          <input id="repair-name" type="text" name="name" required autocomplete="name" placeholder={t.fNamePh} />
-        </div>
-
-        <div class="form__field">
-          <label for="repair-address">{t.fAddress}</label>
-          <input id="repair-address" type="text" name="address" required autocomplete="street-address" placeholder={t.fAddressPh} />
-        </div>
-
-        <div class="form__row">
-          <div class="form__field">
-            <label for="repair-phone">{t.fPhone}</label>
-            <input id="repair-phone" type="tel" name="phone" required autocomplete="tel" placeholder={t.fPhonePh} />
-          </div>
-          <div class="form__field">
-            <label for="repair-email">{t.fEmail}</label>
-            <input id="repair-email" type="email" name="email" required autocomplete="email" placeholder={t.fEmailPh} />
-          </div>
-        </div>
-
-        <div class="form__row">
-          <div class="form__field">
-            <label for="repair-brand">{t.fBrand}</label>
-            <select id="repair-brand" name="brand" required>
-              <option value="" disabled selected>{t.fBrandPh}</option>
-              {t.brands.map((b) => <option value={b}>{b}</option>)}
-            </select>
-          </div>
-          <div class="form__field">
-            <label for="repair-model">{t.fModel}</label>
-            <input id="repair-model" type="text" name="model" required placeholder={t.fModelPh} />
-          </div>
-        </div>
-
-        <div class="form__field">
-          <label for="repair-issue">{t.fIssue}</label>
-          <textarea id="repair-issue" name="message" rows="5" required placeholder={t.fIssuePh}></textarea>
-        </div>
-
-        <div class="form__row">
-          <div class="form__field">
-            <label for="repair-items">{t.fItems}</label>
-            <input id="repair-items" type="number" name="items" required min="1" step="1" inputmode="numeric" placeholder={t.fItemsPh} />
-          </div>
-        </div>
-
-        {/* honeypot anti-spam — hidden from humans */}
-        <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
-
-        <div class="form-section__actions">
-          <button type="submit" class="btn btn--primary btn--lg">{t.fSubmit}</button>
-          <p class="form-section__legal">
-            {t.legalPre} <a href={p('/privacy')}>{t.legalLink}</a>. {t.legalPost}
-          </p>
-        </div>
-      </form>
+      <RepairIntakeForm locale={locale} idPrefix="repair" />
     </div>
   </section>
 
