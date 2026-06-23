@@ -146,8 +146,8 @@ export default async function handler(req, res) {
   }
   body = body || {};
 
-  // Honeypot: bots fill the hidden "company" field. Pretend success.
-  if (body.company) return res.status(200).json({ ok: true, reference: makeReference() });
+  // Honeypot: bots fill the hidden "website" field. Pretend success.
+  if (body.website) return res.status(200).json({ ok: true, reference: makeReference() });
 
   const locale = body.locale === 'es' ? 'es' : 'en';
   const name = (body.name || '').trim();
