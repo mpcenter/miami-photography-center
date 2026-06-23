@@ -100,7 +100,7 @@ const t = locale === 'es' ? {
   steps: [
     { num: '01', title: 'Agenda', copy: 'Reserva fecha, hora y locación. Cuéntanos qué equipo y qué servicio. Confirmamos en un día hábil.' },
     { num: '02', title: 'Llegamos', copy: 'A tiempo, totalmente equipados. Estación de limpieza calibrada, flujo antiestático, cada herramienta de nuestro taller.' },
-    { num: '03', title: 'Servicio en el lugar', copy: 'La mayoría de los trabajos mientras observas. Limpieza de sensor, calibración de lentes, firmware y diagnóstico. Normalmente de 20 a 60 minutos por cámara.' },
+    { num: '03', title: 'Servicio en el lugar', copy: 'La mayoría de los trabajos se completan en el momento: limpieza de sensor, calibración de lentes, firmware y diagnóstico. Normalmente de 20 a 60 minutos por cámara.' },
     { num: '04', title: 'De vuelta al trabajo', copy: 'Equipo listo, sin tiempo muerto, todo documentado. Las reparaciones mayores que requieren repuestos van a nuestro taller con fecha de retorno.' },
   ],
   zonesEyebrow: 'Zonas de cobertura',
@@ -144,8 +144,8 @@ const t = locale === 'es' ? {
   faqEyebrow: 'Preguntas frecuentes',
   faqTitle: 'Dudas sobre el servicio in situ.',
   faq: [
-    { q: '¿Qué incluye el servicio in situ?', a: 'Limpieza de sensor, calibración de lentes, pruebas de enfoque, ajustes mecánicos menores, actualizaciones de firmware y diagnóstico completo. Las reparaciones complejas que requieren repuestos van a nuestro taller.' },
-    { q: '¿Qué tan rápido pueden llegar?', a: 'El mismo día para emergencias en Miami-Dade y Broward cuando hay disponibilidad. Citas estándar entre 24 y 72 horas en el sur de Florida. Los sets de producción y las bodas tienen despacho prioritario.' },
+    { q: '¿Qué incluye el servicio in situ?', a: 'Limpieza profesional de sensor, mantenimiento preventivo (camera care), inspección del equipo, limpieza de contactos electrónicos, lubricación funcional, evaluación del equipo, ajustes menores cuando es viable y coordinación de reparaciones en taller cuando es necesario.' },
+    { q: '¿Qué tan rápido pueden llegar?', a: 'La disponibilidad depende de tu ubicación, la agenda de la unidad móvil y la cobertura del área. Las visitas se programan con antelación para garantizar disponibilidad y tiempos de servicio adecuados. El mismo día para emergencias en Miami-Dade y Broward cuando hay disponibilidad; citas estándar entre 24 y 72 horas en el sur de Florida.' },
     { q: '¿Qué zonas cubren?', a: 'Los condados Miami-Dade, Broward, Palm Beach y Monroe, de West Palm Beach a Key West. Las tarifas de traslado varían por zona.' },
     { q: '¿Pueden dar servicio en un set de filmación?', a: 'Sí. Trabajamos alrededor de tu call sheet. Montaje discreto, flujo antiestático y nos movemos con tu producción. La limpieza de sensor suele hacerse entre tomas.' },
     { q: '¿Cuánto cuesta?', a: 'La tarifa de servicio empieza en $99 más traslado por zona. Miami-Dade y Broward desde $35, Palm Beach $49, Cayos de Florida por cotización. Descuentos por varias cámaras y por volumen disponibles.' },
@@ -245,7 +245,7 @@ const t = locale === 'es' ? {
   steps: [
     { num: '01', title: 'Schedule', copy: 'Book a date, time, and location. Tell us what gear and what service. We confirm within one business day.' },
     { num: '02', title: 'We arrive', copy: 'On time, fully equipped. Calibrated cleaning station, anti-static workflow, every tool you’d find in our workshop.' },
-    { num: '03', title: 'Service on-site', copy: 'Most jobs done while you watch. Sensor clean, lens calibration, firmware, diagnostic — typically 20 to 60 minutes per camera.' },
+    { num: '03', title: 'Service on-site', copy: 'Most jobs are completed on the spot: sensor clean, lens calibration, firmware, diagnostic — typically 20 to 60 minutes per camera.' },
     { num: '04', title: 'Back to work', copy: 'Gear ready, no downtime, fully documented. Major repairs that require parts come back to our workshop with a return-by date.' },
   ],
   zonesEyebrow: 'Coverage zones',
@@ -289,8 +289,8 @@ const t = locale === 'es' ? {
   faqEyebrow: 'FAQ',
   faqTitle: 'On-site questions.',
   faq: [
-    { q: 'What does on-site service include?', a: 'Sensor cleaning, lens calibration, focus testing, minor mechanical adjustments, firmware updates, and full diagnostic. Complex repairs requiring parts come back to our workshop.' },
-    { q: 'How fast can you arrive?', a: 'Same-day for emergencies in Miami-Dade and Broward when slots are available. Standard appointments within 24 to 72 hours across South Florida. Production sets and weddings get priority dispatch.' },
+    { q: 'What does on-site service include?', a: 'Professional sensor cleaning, camera-care preventive maintenance, equipment inspection, electronic contact cleaning, functional lubrication, equipment evaluation, minor adjustments when viable, and coordination for workshop repairs when necessary.' },
+    { q: 'How fast can you arrive?', a: 'Availability depends on your location, the mobile unit’s schedule, and area coverage. Visits are scheduled in advance to guarantee availability and proper service time. Same-day for emergencies in Miami-Dade and Broward when slots are available; standard appointments within 24 to 72 hours across South Florida.' },
     { q: 'Where do you cover?', a: 'Miami-Dade, Broward, Palm Beach, and Monroe counties — from West Palm Beach to Key West. Travel fees vary by zone.' },
     { q: 'Can you service on a film set?', a: 'Yes. We work around your call sheet. Discreet setup, anti-static workflow, and we move with your production. Sensor cleaning typically done between takes.' },
     { q: 'What does it cost?', a: 'Service fee starts at $99 plus travel by zone. Miami-Dade and Broward zones from $35, Palm Beach $49, Florida Keys custom. Multiple cameras and bulk discounts available.' },
@@ -471,7 +471,7 @@ const faqSchema = JSON.stringify({
       <p class="booking__sub">{t.bookingSub}</p>
     </div>
 
-    <form id="booking-form" class="form js-demo-form" action="#" method="POST" data-success={t.formSuccess}>
+    <form id="booking-form" class="form js-intake-form" action="/api/contact" method="POST" data-form="On-Site / Coverage visit" data-locale={locale} data-success={t.formSuccess} data-error={locale === 'es' ? 'No pudimos enviar tu solicitud. Inténtalo de nuevo o llámanos al (786) 763-2091.' : 'We could not send your request. Please try again or call us at (786) 763-2091.'}>
       <div class="form__row">
         <div class="form__field">
           <label for="bk-name">{t.fName}</label>

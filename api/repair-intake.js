@@ -44,10 +44,13 @@ function buildSheet({ locale, reference, name, address, phone, email, brand, mod
   const es = locale === 'es';
   const T = es
     ? {
-        title: 'Hoja de envío — Reparación',
-        intro: 'Imprime esta hoja y pégala (o métela) en tu paquete antes de enviarlo.',
+        title: 'Solicitud de reparación recibida',
+        intro: 'Recibimos tu solicitud de reparación. La revisaremos y te contactaremos dentro de un día hábil para coordinar los próximos pasos. Guarda tu número de referencia.',
         ref: 'Número de referencia',
-        shipTo: 'Enviar a',
+        steps: 'Cómo seguimos',
+        step1: 'Revisamos tu caso y te contactamos dentro de un día hábil.',
+        step2: 'Coordinamos juntos la entrega del equipo: llevarlo al taller, solicitar recogida (según cobertura) o enviarlo por correo.',
+        step3: 'Te damos un presupuesto por escrito antes de cualquier trabajo.',
         customer: 'Datos del cliente',
         name: 'Nombre',
         address: 'Dirección',
@@ -58,17 +61,16 @@ function buildSheet({ locale, reference, name, address, phone, email, brand, mod
         model: 'Modelo',
         items: 'Nº de equipos',
         problem: 'Problema reportado',
-        tips: 'Antes de enviar',
-        tip1: 'Empaca el equipo con protección (espuma o burbujas) y batería/tarjeta fuera si es posible.',
-        tip2: 'Incluye esta hoja dentro de la caja y escribe el número de referencia por fuera.',
-        tip3: 'Te contactaremos en un día hábil con el diagnóstico y el presupuesto.',
         footer: 'Diagnóstico gratuito · Garantía de 6 meses · Est. 2011',
       }
     : {
-        title: 'Shipping Sheet — Repair',
-        intro: 'Print this sheet and tape it to (or place it inside) your package before shipping.',
+        title: 'Repair request received',
+        intro: 'We received your repair request. We’ll review it and contact you within one business day to coordinate the next steps. Keep your reference number.',
         ref: 'Reference number',
-        shipTo: 'Ship to',
+        steps: 'What happens next',
+        step1: 'We review your case and contact you within one business day.',
+        step2: 'We coordinate delivery together: drop it off at the workshop, request a pickup (where covered), or ship it by mail.',
+        step3: 'You get a written quote before any work.',
         customer: 'Customer details',
         name: 'Name',
         address: 'Address',
@@ -79,10 +81,6 @@ function buildSheet({ locale, reference, name, address, phone, email, brand, mod
         model: 'Model',
         items: 'Items',
         problem: 'Reported problem',
-        tips: 'Before you ship',
-        tip1: 'Pack the gear with protection (foam or bubble wrap); remove battery/card if possible.',
-        tip2: 'Include this sheet inside the box and write the reference number on the outside.',
-        tip3: 'We will contact you within one business day with the diagnosis and quote.',
         footer: 'Free diagnostic · 6-month warranty · Est. 2011',
       };
 
@@ -103,11 +101,6 @@ function buildSheet({ locale, reference, name, address, phone, email, brand, mod
         <div style="color:#1d1d1f;font-size:26px;font-weight:800;letter-spacing:0.02em;">${esc(reference)}</div>
       </div>
 
-      <h3 style="margin:0 0 6px;color:#1d1d1f;font-size:13px;text-transform:uppercase;letter-spacing:0.04em;">${esc(T.shipTo)}</h3>
-      <p style="margin:0 0 22px;color:#1d1d1f;font-size:15px;font-weight:600;line-height:1.5;">
-        ${esc(SHOP.name)}<br/>${esc(SHOP.street)}<br/>${esc(SHOP.city)}<br/>${esc(SHOP.phone)}
-      </p>
-
       <h3 style="margin:0 0 4px;color:#1d1d1f;font-size:13px;text-transform:uppercase;letter-spacing:0.04em;">${esc(T.customer)}</h3>
       <table style="border-collapse:collapse;margin-bottom:18px;width:100%;">
         ${row(T.name, name)}
@@ -124,11 +117,11 @@ function buildSheet({ locale, reference, name, address, phone, email, brand, mod
         ${row(T.problem, message)}
       </table>
 
-      <h3 style="margin:0 0 8px;color:#1d1d1f;font-size:13px;text-transform:uppercase;letter-spacing:0.04em;">${esc(T.tips)}</h3>
+      <h3 style="margin:0 0 8px;color:#1d1d1f;font-size:13px;text-transform:uppercase;letter-spacing:0.04em;">${esc(T.steps)}</h3>
       <ol style="margin:0 0 8px;padding-left:18px;color:#1d1d1f;font-size:14px;line-height:1.6;">
-        <li>${esc(T.tip1)}</li>
-        <li>${esc(T.tip2)}</li>
-        <li>${esc(T.tip3)}</li>
+        <li>${esc(T.step1)}</li>
+        <li>${esc(T.step2)}</li>
+        <li>${esc(T.step3)}</li>
       </ol>
     </div>
     <div style="background:#fff;border-radius:0 0 16px 16px;border-top:1px solid #ededf0;padding:16px 28px;color:#6e6e73;font-size:12px;">
@@ -179,8 +172,8 @@ export default async function handler(req, res) {
   const html = buildSheet({ locale, reference, name, address, phone, email, brand, model, message, items });
   const subject =
     locale === 'es'
-      ? `MPC — Hoja de envío de reparación (${reference})`
-      : `MPC — Repair shipping sheet (${reference})`;
+      ? `MPC — Solicitud de reparación (${reference})`
+      : `MPC — Repair request (${reference})`;
 
   try {
     const r = await fetch('https://api.resend.com/emails', {

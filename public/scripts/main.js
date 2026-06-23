@@ -228,6 +228,7 @@
 
         const payload = Object.fromEntries(new FormData(form).entries());
         payload.locale = form.dataset.locale || document.documentElement.lang || 'en';
+        if (form.dataset.form) payload._form = form.dataset.form;
 
         try {
           const res = await fetch(form.action, {
