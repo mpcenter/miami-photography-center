@@ -183,7 +183,7 @@ const t = locale === 'es' ? {
     <div class="lp-form__inner">
       <h2 id="lp-form-title" class="lp-section__title">{t.formTitle}</h2>
       <p class="lp-form__copy">{t.formCopy}</p>
-      <form class="form js-demo-form" action="#" method="POST" data-success={t.formSuccess}>
+      <form class="form js-intake-form" action="/api/contact" method="POST" data-form="LP — Camera repair Miami" data-locale={locale} data-success={t.formSuccess} data-error={locale === 'es' ? 'No pudimos enviar tu solicitud. Inténtalo de nuevo o llámanos al (786) 763-2091.' : 'We could not send your request. Please try again or call us at (786) 763-2091.'}>
         <div class="form__row">
           <div class="form__field">
             <label for="lp-name">{t.fName} *</label>

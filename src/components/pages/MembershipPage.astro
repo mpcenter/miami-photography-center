@@ -109,9 +109,9 @@ const t = locale === 'es' ? {
   faqEyebrow: 'Preguntas frecuentes',
   faqTitle: 'Membresía, en claro.',
   faq: [
-    { q: '¿Cuándo empieza mi membresía?', a: 'El día en que confirmamos tu solicitud. Desde ahí corre por 12 meses, con tus limpiezas y visitas programadas según el plan.' },
+    { q: '¿Cuándo empieza mi membresía?', a: 'El día en que aprobamos tu solicitud y completamos la activación de la membresía. Desde ahí corre por 12 meses, con tus limpiezas y visitas programadas según el plan.' },
     { q: '¿Puedo cambiar de plan durante el año?', a: 'Sí. Contáctanos y te movemos al plan superior por el resto de tu período. Queremos que el plan se ajuste a tu equipo, no al revés.' },
-    { q: '¿Qué equipos cubre?', a: 'Cuerpos de cámara y lentes, con la cobertura diseñada según tu equipo o tu inventario. En la solicitud nos cuentas qué tienes y armamos el plan a tu medida.' },
+    { q: '¿Qué equipos cubre?', a: 'Cuerpos de cámara y lentes, además de trípodes, equipos de iluminación, battery grips, accesorios y equipo de soporte — la cobertura se diseña según tu equipo o inventario. En la solicitud nos cuentas qué tienes y armamos el plan a tu medida.' },
     { q: '¿Cómo agendo mis limpiezas y visitas?', a: 'Por teléfono o email, con agenda prioritaria de miembro. También podemos dejar tus visitas programadas con fechas fijas desde el inicio.' },
   ],
   formEyebrow: 'Solicitud',
@@ -234,9 +234,9 @@ const t = locale === 'es' ? {
   faqEyebrow: 'FAQ',
   faqTitle: 'Membership, made clear.',
   faq: [
-    { q: 'When does my membership start?', a: 'The day we confirm your application. It runs for 12 months from there, with your cleanings and visits scheduled per your plan.' },
+    { q: 'When does my membership start?', a: 'The day we approve your application and complete membership activation. It runs for 12 months from there, with your cleanings and visits scheduled per your plan.' },
     { q: 'Can I change tiers mid-year?', a: 'Yes. Contact us and we’ll move you up to the next tier for the remainder of your term. The plan should fit your gear — not the other way around.' },
-    { q: 'What gear is covered?', a: 'Camera bodies and lenses, with coverage designed around your setup or inventory. Tell us what you have in the application and we’ll size the plan to you.' },
+    { q: 'What gear is covered?', a: 'Camera bodies and lenses, plus tripods, lighting equipment, battery grips, accessories, and support equipment — coverage designed around your setup or inventory. Tell us what you have in the application and we’ll size the plan to you.' },
     { q: 'How do I schedule my cleanings and visits?', a: 'By phone or email, with member-priority scheduling. We can also lock in your scheduled visits with fixed dates from day one.' },
   ],
   formEyebrow: 'Apply',
@@ -421,7 +421,7 @@ const faqSchema = JSON.stringify({
         <h2 id="apply-title" class="members-form__title">{t.formTitle}</h2>
         <p class="members-form__lede">{t.formLede}</p>
       </div>
-      <form id="membership-form" class="form js-demo-form" action="#" method="POST" data-success={t.formSuccess}>
+      <form id="membership-form" class="form js-intake-form" action="/api/contact" method="POST" data-form="Membership application" data-locale={locale} data-success={t.formSuccess} data-error={locale === 'es' ? 'No pudimos enviar tu solicitud. Inténtalo de nuevo o llámanos al (786) 763-2091.' : 'We could not send your request. Please try again or call us at (786) 763-2091.'}>
         <div class="form__row">
           <div class="form__field">
             <label for="mf-name">{t.formName} *</label>

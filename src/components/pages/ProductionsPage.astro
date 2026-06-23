@@ -293,7 +293,7 @@ const serviceSchema = JSON.stringify({
         <h2 id="prods-form-title" class="prods-form__title">{t.formTitle}</h2>
         <p class="prods-form__lede">{t.formLede}</p>
       </div>
-      <form id="production-form" class="form js-demo-form" action="#" method="POST" data-success={t.formSuccess}>
+      <form id="production-form" class="form js-intake-form" action="/api/contact" method="POST" data-form="Production brief" data-locale={locale} data-success={t.formSuccess} data-error={locale === 'es' ? 'No pudimos enviar tu solicitud. Inténtalo de nuevo o llámanos al (786) 763-2091.' : 'We could not send your request. Please try again or call us at (786) 763-2091.'}>
         <div class="form__row">
           <div class="form__field">
             <label for="pf-name">{t.formName} *</label>

@@ -10,7 +10,7 @@ const p = (path: string) => localePath(locale, path);
 
 const t = locale === 'es' ? {
   title: 'Contacto | Miami Photography Center',
-  description: 'Contáctanos: +1 (786) 763-2091, service@miamiphotographycenter.com, o visítanos en 3911 SW 27th St, West Park, FL 33023. Lunes a viernes, 9:00–18:00.',
+  description: 'Contáctanos: +1 (786) 763-2091, service@miamiphotographycenter.com, o visítanos en 3911 SW 27th St, West Park, FL 33023. Lunes a sábado, 9:00–18:00.',
   heroEyebrow: 'Contacto',
   heroTitle: 'Hablemos.',
   heroLede: 'Llámanos, escríbenos o visítanos. Respondemos en un día hábil.',
@@ -19,7 +19,7 @@ const t = locale === 'es' ? {
   emailLabel: 'Email',
   addressLabel: 'Dirección',
   hoursLabel: 'Horario',
-  hours: 'Lunes a viernes · 9:00 – 18:00',
+  hours: 'Lunes a sábado · 9:00 – 18:00',
   socialLabel: 'Síguenos',
   formTitle: 'Envíanos un mensaje',
   formCopy: 'Cuéntanos en qué podemos ayudarte y te responderemos pronto.',
@@ -39,7 +39,7 @@ const t = locale === 'es' ? {
   mapTitle: 'Mapa: Miami Photography Center — 3911 SW 27th St, West Park, FL 33023',
 } : {
   title: 'Contact Us | Miami Photography Center',
-  description: 'Get in touch: +1 (786) 763-2091, service@miamiphotographycenter.com, or visit us at 3911 SW 27th St, West Park, FL 33023. Monday–Friday, 9:00–18:00.',
+  description: 'Get in touch: +1 (786) 763-2091, service@miamiphotographycenter.com, or visit us at 3911 SW 27th St, West Park, FL 33023. Monday–Saturday, 9:00–18:00.',
   heroEyebrow: 'Contact',
   heroTitle: 'Get in Touch.',
   heroLede: 'Call, write, or stop by. We respond within one business day.',
@@ -48,7 +48,7 @@ const t = locale === 'es' ? {
   emailLabel: 'Email',
   addressLabel: 'Address',
   hoursLabel: 'Hours',
-  hours: 'Monday – Friday · 9:00 – 18:00',
+  hours: 'Monday – Saturday · 9:00 – 18:00',
   socialLabel: 'Follow us',
   formTitle: 'Send us a message',
   formCopy: 'Tell us how we can help and we’ll get back to you shortly.',
@@ -133,7 +133,7 @@ const social = [
       <div class="contactp__form-wrap" data-anim="fade-up">
         <h2 class="contactp__heading">{t.formTitle}</h2>
         <p class="contactp__form-copy">{t.formCopy}</p>
-        <form class="form js-demo-form" id="contact-form" action="#" method="POST" data-success={t.fSuccess}>
+        <form class="form js-intake-form" id="contact-form" action="/api/contact" method="POST" data-form="Contact message" data-locale={locale} data-success={t.fSuccess} data-error={locale === 'es' ? 'No pudimos enviar tu mensaje. Inténtalo de nuevo o llámanos al (786) 763-2091.' : 'We could not send your message. Please try again or call us at (786) 763-2091.'}>
           <div class="form__row">
             <div class="form__field">
               <label for="contact-name">{t.fName} *</label>
