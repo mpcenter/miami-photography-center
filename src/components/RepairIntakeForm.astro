@@ -1,0 +1,139 @@
+---
+// Reusable repair intake form. Posts to /api/repair-intake (generates a
+// reference number, emails the customer + a copy to the shop). Used on the
+// Repair page and the home "Ship it" section. Single source of truth.
+import { localePath, type Locale } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+  /** Unique prefix for field ids, so two instances on different pages don't clash. */
+  idPrefix?: string;
+}
+const { locale, idPrefix = 'repair' } = Astro.props;
+const p = (path: string) => localePath(locale, path);
+
+const t =
+  locale === 'es'
+    ? {
+        fName: 'Nombre completo *',
+        fNamePh: '¿Cómo te llamas?',
+        fAddress: 'Dirección completa (para la devolución) *',
+        fAddressPh: 'Calle, ciudad, estado, ZIP',
+        fPhone: 'Teléfono *',
+        fPhonePh: '(786) 555-0100',
+        fEmail: 'Correo electrónico *',
+        fEmailPh: 'tu@correo.com',
+        fBrand: 'Marca *',
+        fBrandPh: 'Selecciona la marca',
+        fModel: 'Modelo *',
+        fModelPh: 'p. ej. A7 IV, EOS R6, D850',
+        brands: ['Canon', 'Nikon', 'Sony', 'Fujifilm', 'Panasonic / Lumix', 'Olympus / OM System', 'Pentax', 'Leica', 'Sigma', 'Tamron', 'GoPro', 'DJI', 'Otra'],
+        fIssue: 'Descripción del problema *',
+        fIssuePh: '¿Qué le pasa a tu equipo? ¿Cuándo empezó? ¿Algún código de error?',
+        fItems: 'Número de equipos *',
+        fItemsPh: '1',
+        fSubmit: 'Enviar solicitud',
+        fSending: 'Enviando…',
+        fRefLabel: 'Tu número de referencia:',
+        fErrorMsg: 'No pudimos enviar tu solicitud. Inténtalo de nuevo o llámanos al (786) 763-2091.',
+        formSuccess: 'Solicitud recibida. Revisaremos tu caso y te contactaremos dentro de un día hábil para coordinar el siguiente paso: llevarlo al taller, solicitar recogida (si aplica) o enviarlo por correo.',
+        legalPre: 'Al enviar aceptas nuestra',
+        legalLink: 'política de privacidad',
+        legalPost: 'Nunca compartimos tus datos.',
+      }
+    : {
+        fName: 'Full Name *',
+        fNamePh: 'What’s your name?',
+        fAddress: 'Full Address (for return) *',
+        fAddressPh: 'Street, city, state, ZIP',
+        fPhone: 'Phone *',
+        fPhonePh: '(786) 555-0100',
+        fEmail: 'Email *',
+        fEmailPh: 'you@example.com',
+        fBrand: 'Brand *',
+        fBrandPh: 'Select the brand',
+        fModel: 'Model *',
+        fModelPh: 'e.g. A7 IV, EOS R6, D850',
+        brands: ['Canon', 'Nikon', 'Sony', 'Fujifilm', 'Panasonic / Lumix', 'Olympus / OM System', 'Pentax', 'Leica', 'Sigma', 'Tamron', 'GoPro', 'DJI', 'Other'],
+        fIssue: 'Description of the Issue *',
+        fIssuePh: 'What’s happening with your gear? When did it start? Any error codes?',
+        fItems: 'Number of Items *',
+        fItemsPh: '1',
+        fSubmit: 'Send Request',
+        fSending: 'Sending…',
+        fRefLabel: 'Your reference number:',
+        fErrorMsg: 'We could not send your request. Please try again or call us at (786) 763-2091.',
+        formSuccess: 'Request received. We’ll review your case and contact you within one business day to coordinate the next step: drop it off at the workshop, request a pickup (if available), or ship it by mail.',
+        legalPre: 'By submitting you agree to our',
+        legalLink: 'privacy policy',
+        legalPost: 'We never share your data.',
+      };
+---
+
+<form
+  class="form js-intake-form repair-form"
+  action="/api/repair-intake"
+  method="POST"
+  data-success={t.formSuccess}
+  data-sending={t.fSending}
+  data-error={t.fErrorMsg}
+  data-ref-label={t.fRefLabel}
+  data-locale={locale}
+>
+  <div class="form__field">
+    <label for={`${idPrefix}-name`}>{t.fName}</label>
+    <input id={`${idPrefix}-name`} type="text" name="name" required autocomplete="name" placeholder={t.fNamePh} />
+  </div>
+
+  <div class="form__field">
+    <label for={`${idPrefix}-address`}>{t.fAddress}</label>
+    <input id={`${idPrefix}-address`} type="text" name="address" required autocomplete="street-address" placeholder={t.fAddressPh} />
+  </div>
+
+  <div class="form__row">
+    <div class="form__field">
+      <label for={`${idPrefix}-phone`}>{t.fPhone}</label>
+      <input id={`${idPrefix}-phone`} type="tel" name="phone" required autocomplete="tel" placeholder={t.fPhonePh} />
+    </div>
+    <div class="form__field">
+      <label for={`${idPrefix}-email`}>{t.fEmail}</label>
+      <input id={`${idPrefix}-email`} type="email" name="email" required autocomplete="email" placeholder={t.fEmailPh} />
+    </div>
+  </div>
+
+  <div class="form__row">
+    <div class="form__field">
+      <label for={`${idPrefix}-brand`}>{t.fBrand}</label>
+      <select id={`${idPrefix}-brand`} name="brand" required>
+        <option value="" disabled selected>{t.fBrandPh}</option>
+        {t.brands.map((b) => <option value={b}>{b}</option>)}
+      </select>
+    </div>
+    <div class="form__field">
+      <label for={`${idPrefix}-model`}>{t.fModel}</label>
+      <input id={`${idPrefix}-model`} type="text" name="model" required placeholder={t.fModelPh} />
+    </div>
+  </div>
+
+  <div class="form__field">
+    <label for={`${idPrefix}-issue`}>{t.fIssue}</label>
+    <textarea id={`${idPrefix}-issue`} name="message" rows="5" required placeholder={t.fIssuePh}></textarea>
+  </div>
+
+  <div class="form__row">
+    <div class="form__field">
+      <label for={`${idPrefix}-items`}>{t.fItems}</label>
+      <input id={`${idPrefix}-items`} type="number" name="items" required min="1" step="1" inputmode="numeric" placeholder={t.fItemsPh} />
+    </div>
+  </div>
+
+  {/* honeypot anti-spam — hidden from humans */}
+  <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
+
+  <div class="form-section__actions">
+    <button type="submit" class="btn btn--primary btn--lg">{t.fSubmit}</button>
+    <p class="form-section__legal">
+      {t.legalPre} <a href={p('/privacy')}>{t.legalLink}</a>. {t.legalPost}
+    </p>
+  </div>
+</form>
