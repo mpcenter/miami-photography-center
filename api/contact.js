@@ -39,7 +39,8 @@ const LABELS = {
   plan: 'Plan',
   date: 'Fecha / Date',
   budget: 'Presupuesto / Budget',
-  company_name: 'Empresa / Company',
+  company: 'Empresa / Company',
+  brief: 'Brief',
 };
 
 const prettify = (k) =>
@@ -57,8 +58,8 @@ export default async function handler(req, res) {
   }
   body = body || {};
 
-  // Honeypot: bots fill the hidden "company" field.
-  if (body.company) return res.status(200).json({ ok: true });
+  // Honeypot: bots fill the hidden "website" field (real forms never send it).
+  if (body.website) return res.status(200).json({ ok: true });
 
   if (!API_KEY) {
     return res.status(500).json({ ok: false, error: 'Email service not configured (RESEND_API_KEY missing)' });
@@ -68,7 +69,7 @@ export default async function handler(req, res) {
   const locale = body.locale === 'es' ? 'es' : 'en';
 
   // Collect the real submitted fields (skip internal/control keys + honeypot).
-  const skip = new Set(['_form', 'locale', 'company']);
+  const skip = new Set(['_form', 'locale', 'website']);
   const entries = Object.entries(body).filter(
     ([k, v]) => !skip.has(k) && v != null && String(v).trim() !== ''
   );
