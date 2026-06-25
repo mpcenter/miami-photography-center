@@ -230,6 +230,20 @@ const localBusinessSchema = JSON.stringify({
     </div>
   </section>
 
+  <!-- ==================== VIDEO REEL ==================== -->
+  <section class="homevideo" aria-labelledby="homevideo-title">
+    <div class="homevideo__head">
+      <p class="eyebrow">{locale === 'es' ? 'Conócenos' : 'Get to know us'}</p>
+      <h2 id="homevideo-title" class="homevideo__title">{locale === 'es' ? 'Míranos en acción.' : 'See us in action.'}</h2>
+      <p class="homevideo__sub">{locale === 'es' ? 'Nuestro equipo en el taller y en tu locación — reparaciones, limpieza de sensor, producciones de foto y video, y lo que dicen los fotógrafos que confían en nosotros.' : 'Our team at the workshop and on location — repairs, sensor cleaning, photo & video productions, and what the photographers who trust us have to say.'}</p>
+    </div>
+    <div class="homevideo__frame">
+      <video class="homevideo__video" controls preload="none" playsinline poster="/images/mpc-reel-poster.jpg" width="1920" height="1080">
+        <source src="/videos/mpc-reel.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </section>
+
   <!-- ==================== PROMO BANNER CAROUSEL (managed from /admin) ==================== -->
   <PromoCarousel locale={locale} />
 
@@ -326,6 +340,29 @@ const localBusinessSchema = JSON.stringify({
   </section>
 
   <style is:global>
+    /* Brand video reel */
+    .homevideo { padding: var(--section-gap) var(--gutter); background: var(--color-fog-canvas); }
+    .homevideo__head { max-width: var(--page-max); margin: 0 auto 36px; text-align: center; }
+    .homevideo__title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(32px, 4.5vw, 56px);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--color-apple-ink);
+    }
+    .homevideo__sub { color: var(--color-graphite); max-width: 58ch; margin: 14px auto 0; }
+    .homevideo__frame {
+      max-width: 1000px;
+      margin: 0 auto;
+      border-radius: var(--r-card);
+      overflow: hidden;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.20);
+      background: #000;
+      aspect-ratio: 16 / 9;
+    }
+    .homevideo__video { width: 100%; height: 100%; display: block; object-fit: cover; }
+
     /* Process section: 3 step cards (left) + repair form (right) */
     .process__layout {
       display: grid;
