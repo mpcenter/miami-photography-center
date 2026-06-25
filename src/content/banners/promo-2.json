@@ -1,7 +1,10 @@
 {
-  "order": 2,
-  "enabled": true,
   "image": "/images/sensor-clean.jpg",
+  "text": "",
+  "textEn": "",
+  "highlight": "",
   "alt": "Limpieza de sensor profesional desde $99",
-  "link": "/sensor-cleaning"
+  "link": "/sensor-cleaning",
+  "order": 2,
+  "enabled": false
 }
