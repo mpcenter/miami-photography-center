@@ -1,10 +1,12 @@
-// Vercel Serverless Function — printable ship-in label.
-// For customers whose repair is already approved: builds a printable "ship to
-// MPC" label (no carrier postage — they add postage at their carrier), emails
-// it to the customer + a copy to the shop, and returns the label HTML so the
-// page can open it for immediate printing.
+// Vercel Serverless Function — printable ship-in label (PDF).
+// For customers whose repair is already approved: builds a downloadable PDF
+// "ship to MPC" label (no carrier postage — they add postage at their carrier),
+// returns it (base64) for download, and emails it as a PDF attachment to the
+// customer + a copy to the shop.
 //
 // Env vars: RESEND_API_KEY. Optional: SHOP_EMAIL, FROM_EMAIL, NOTIFY_EMAIL.
+
+import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
 
 const API_KEY = (process.env.RESEND_API_KEY || process.env.resend_api_key || '').trim();
 const SHOP_EMAIL = (process.env.SHOP_EMAIL || process.env.shop_email || 'service@miamiphotographycenter.com').trim();
@@ -15,93 +17,108 @@ const FROM_EMAIL = (
   'Miami Photography Center <service@mail.miamiphotographycenter.com>'
 ).trim();
 
-const SHOP = {
-  name: 'Miami Photography Center',
-  street: '3911 SW 27th St',
-  city: 'West Park, FL 33023',
-  phone: '+1 (786) 763-2091',
-};
+const SHOP = { name: 'Miami Photography Center', street: '3911 SW 27th St', city: 'West Park, FL 33023', phone: '+1 (786) 763-2091' };
 
 const esc = (v) =>
-  String(v == null ? '' : v)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+  String(v == null ? '' : v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+// pdf-lib's standard (WinAnsi) fonts can't encode every char; strip the few we
+// might hit (e.g. — → smart punctuation) to plain ASCII to avoid encode errors.
+const ascii = (s) =>
+  String(s == null ? '' : s)
+    .replace(/[—–]/g, '-')
+    .replace(/[’‘]/g, "'")
+    .replace(/[“”]/g, '"')
+    .replace(/·/g, '-')
+    .replace(/[^\x20-\x7E]/g, '');
 
 function makeReference() {
   const d = new Date();
-  const ymd =
-    d.getUTCFullYear().toString() +
-    String(d.getUTCMonth() + 1).padStart(2, '0') +
-    String(d.getUTCDate()).padStart(2, '0');
+  const ymd = d.getUTCFullYear().toString() + String(d.getUTCMonth() + 1).padStart(2, '0') + String(d.getUTCDate()).padStart(2, '0');
   let rand = '';
   for (let i = 0; i < 4; i++) rand += '0123456789ABCDEFGHJKLMNPQRSTUVWXYZ'[Math.floor(Math.random() * 34)];
   return `MPC-${ymd}-${rand}`;
 }
 
-function buildLabel({ locale, reference, name, address, phone, email, equipment, items }) {
+function wrap(text, font, size, maxWidth) {
+  const words = ascii(text).split(/\s+/);
+  const lines = [];
+  let line = '';
+  for (const w of words) {
+    const test = line ? line + ' ' + w : w;
+    if (font.widthOfTextAtSize(test, size) > maxWidth && line) { lines.push(line); line = w; }
+    else line = test;
+  }
+  if (line) lines.push(line);
+  return lines;
+}
+
+async function buildPdf({ locale, reference, name, address, phone, equipment, items }) {
   const es = locale === 'es';
   const T = es
-    ? {
-        title: 'Etiqueta de envío — Reparación',
-        ref: 'Referencia',
-        shipTo: 'Enviar a',
-        from: 'Remitente',
-        equipment: 'Equipo',
-        items: 'Nº de equipos',
-        note: 'Reparación aprobada. Empaca el equipo con protección, pega esta etiqueta por fuera de la caja y añade el franqueo en tu transportista (USPS/UPS/FedEx). Dudas: (786) 763-2091.',
-        print: 'Imprimir etiqueta',
-      }
-    : {
-        title: 'Ship-in label — Repair',
-        ref: 'Reference',
-        shipTo: 'Ship to',
-        from: 'From',
-        equipment: 'Equipment',
-        items: 'Items',
-        note: 'Approved repair. Pack the gear securely, tape this label to the outside of the box, and add postage at your carrier (USPS/UPS/FedEx). Questions: (786) 763-2091.',
-        print: 'Print label',
-      };
+    ? { title: 'Etiqueta de envio - Reparacion', ref: 'Referencia', shipTo: 'ENVIAR A', from: 'REMITENTE', equip: 'Equipo', items: 'Equipos', note: 'Reparacion aprobada. Empaca el equipo con proteccion, pega esta etiqueta por fuera de la caja y anade el franqueo en tu transportista (USPS / UPS / FedEx). Dudas: (786) 763-2091.' }
+    : { title: 'Ship-in label - Repair', ref: 'Reference', shipTo: 'SHIP TO', from: 'FROM', equip: 'Equipment', items: 'Items', note: 'Approved repair. Pack the gear securely, tape this label to the outside of the box, and add postage at your carrier (USPS / UPS / FedEx). Questions: (786) 763-2091.' };
 
-  return `<!doctype html><html lang="${es ? 'es' : 'en'}"><head><meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MPC — ${esc(reference)}</title>
-<style>
-  @page { margin: 14mm; }
-  * { box-sizing: border-box; }
-  body { font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; color:#1d1d1f; margin:0; padding:24px; background:#fff; }
-  .label { border:2px solid #1d1d1f; border-radius:10px; padding:26px 28px; max-width:660px; margin:0 auto; }
-  .row { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; border-bottom:2px solid #1d1d1f; padding-bottom:14px; margin-bottom:18px; }
-  .brand { font-size:26px; font-weight:800; letter-spacing:-0.01em; }
-  .brand small { display:block; font-size:11px; font-weight:600; color:#6e6e73; letter-spacing:0.04em; text-transform:uppercase; }
-  .ref { text-align:right; }
-  .ref span { font-size:11px; color:#6e6e73; text-transform:uppercase; letter-spacing:0.06em; }
-  .ref b { display:block; font-size:22px; letter-spacing:1px; }
-  .h { font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:#6e6e73; margin:0 0 4px; }
-  .ship { font-size:27px; font-weight:700; line-height:1.32; margin:0 0 22px; }
-  .from { font-size:16px; line-height:1.5; margin:0 0 18px; }
-  .meta { font-size:14px; margin:0 0 6px; }
-  .note { margin-top:20px; padding:13px 16px; background:#ffff00; border-radius:8px; font-size:13px; font-weight:600; line-height:1.45; }
-  .printbtn { display:inline-block; margin:22px auto 0; padding:12px 22px; background:#1d1d1f; color:#fff; border:0; border-radius:999px; font-size:15px; font-weight:600; cursor:pointer; }
-  .actions { text-align:center; }
-  @media print { .actions { display:none; } body { padding:0; } }
-</style></head>
-<body>
-  <div class="label">
-    <div class="row">
-      <div class="brand">MPC<small>${esc(T.title)}</small></div>
-      <div class="ref"><span>${esc(T.ref)}</span><b>${esc(reference)}</b></div>
-    </div>
-    <p class="h">${esc(T.shipTo)}</p>
-    <p class="ship">${esc(SHOP.name)}<br/>${esc(SHOP.street)}<br/>${esc(SHOP.city)}<br/>${esc(SHOP.phone)}</p>
-    <p class="h">${esc(T.from)}</p>
-    <p class="from">${esc(name)}<br/>${esc(address)}<br/>${esc(phone)}</p>
-    ${equipment ? `<p class="meta"><strong>${esc(T.equipment)}:</strong> ${esc(equipment)}${items ? ` &middot; ${esc(T.items)}: ${esc(items)}` : ''}</p>` : ''}
-    <div class="note">${esc(T.note)}</div>
-  </div>
-  <div class="actions"><button class="printbtn" onclick="window.print()">${esc(T.print)}</button></div>
-</body></html>`;
+  const INK = rgb(0.114, 0.114, 0.122);
+  const GRAY = rgb(0.43, 0.43, 0.45);
+  const YELLOW = rgb(1, 1, 0);
+
+  const doc = await PDFDocument.create();
+  const page = doc.addPage([612, 792]); // US Letter
+  const font = await doc.embedFont(StandardFonts.Helvetica);
+  const bold = await doc.embedFont(StandardFonts.HelveticaBold);
+
+  // Outer border
+  const L = 56, R = 556, TOP = 740, BOT = 320;
+  page.drawRectangle({ x: L, y: BOT, width: R - L, height: TOP - BOT, borderColor: INK, borderWidth: 2 });
+  const cl = L + 26; // content left
+
+  // Header: brand + reference
+  page.drawText('MPC', { x: cl, y: TOP - 44, size: 30, font: bold, color: INK });
+  page.drawText(ascii(T.title), { x: cl, y: TOP - 60, size: 9, font, color: GRAY });
+  const refLabel = ascii(T.ref).toUpperCase();
+  page.drawText(refLabel, { x: R - 26 - bold.widthOfTextAtSize(refLabel, 8), y: TOP - 30, size: 8, font, color: GRAY });
+  page.drawText(ascii(reference), { x: R - 26 - bold.widthOfTextAtSize(ascii(reference), 16), y: TOP - 50, size: 16, font: bold, color: INK });
+  page.drawLine({ start: { x: cl, y: TOP - 74 }, end: { x: R - 26, y: TOP - 74 }, thickness: 1.5, color: INK });
+
+  // Ship to (big)
+  let y = TOP - 100;
+  page.drawText(ascii(T.shipTo), { x: cl, y, size: 10, font: bold, color: GRAY });
+  y -= 26;
+  for (const line of [SHOP.name, SHOP.street, SHOP.city, SHOP.phone]) {
+    page.drawText(ascii(line), { x: cl, y, size: 19, font: bold, color: INK });
+    y -= 25;
+  }
+
+  // From
+  y -= 14;
+  page.drawText(ascii(T.from), { x: cl, y, size: 10, font: bold, color: GRAY });
+  y -= 20;
+  for (const line of [name, address, phone]) {
+    page.drawText(ascii(line), { x: cl, y, size: 13, font, color: INK });
+    y -= 18;
+  }
+
+  // Equipment
+  if (equipment) {
+    y -= 8;
+    const eq = `${ascii(T.equip)}: ${ascii(equipment)}${items ? `   ${ascii(T.items)}: ${ascii(items)}` : ''}`;
+    page.drawText(eq, { x: cl, y, size: 12, font, color: INK });
+  }
+
+  // Note box (yellow)
+  const noteLines = wrap(T.note, font, 11, R - L - 52);
+  const boxH = 22 + noteLines.length * 15;
+  const boxY = BOT + 20;
+  page.drawRectangle({ x: L + 16, y: boxY, width: R - L - 32, height: boxH, color: YELLOW });
+  let ny = boxY + boxH - 18;
+  for (const line of noteLines) {
+    page.drawText(line, { x: L + 28, y: ny, size: 11, font: bold, color: INK });
+    ny -= 15;
+  }
+
+  const bytes = await doc.save();
+  return Buffer.from(bytes).toString('base64');
 }
 
 export default async function handler(req, res) {
@@ -111,16 +128,11 @@ export default async function handler(req, res) {
   }
 
   let body = req.body;
-  if (typeof body === 'string') {
-    try { body = JSON.parse(body); } catch { body = {}; }
-  }
+  if (typeof body === 'string') { try { body = JSON.parse(body); } catch { body = {}; } }
   body = body || {};
 
   if (body.website) return res.status(200).json({ ok: true, reference: makeReference() });
-
-  if (!API_KEY) {
-    return res.status(500).json({ ok: false, error: 'Email service not configured (RESEND_API_KEY missing)' });
-  }
+  if (!API_KEY) return res.status(500).json({ ok: false, error: 'Email service not configured (RESEND_API_KEY missing)' });
 
   const locale = body.locale === 'es' ? 'es' : 'en';
   const name = (body.name || '').trim();
@@ -131,19 +143,25 @@ export default async function handler(req, res) {
   const items = (body.items || '').toString().trim();
   const provided = (body.reference || '').trim();
 
-  if (!name || !address || !phone || !email) {
-    return res.status(400).json({ ok: false, error: 'Missing required fields' });
-  }
-  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-    return res.status(400).json({ ok: false, error: 'Invalid email' });
-  }
+  if (!name || !address || !phone || !email) return res.status(400).json({ ok: false, error: 'Missing required fields' });
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return res.status(400).json({ ok: false, error: 'Invalid email' });
 
   const reference = provided || makeReference();
-  const labelHtml = buildLabel({ locale, reference, name, address, phone, email, equipment, items });
-  const subject =
-    locale === 'es'
-      ? `MPC — Etiqueta de envío (${reference})`
-      : `MPC — Ship-in label (${reference})`;
+  let pdfBase64;
+  try {
+    pdfBase64 = await buildPdf({ locale, reference, name, address, phone, equipment, items });
+  } catch (err) {
+    return res.status(500).json({ ok: false, error: 'PDF generation failed', detail: String(err) });
+  }
+
+  const filename = `mpc-ship-label-${reference}.pdf`;
+  const es = locale === 'es';
+  const subject = es ? `MPC — Etiqueta de envío (${reference})` : `MPC — Ship-in label (${reference})`;
+  const bodyHtml = `<!doctype html><html><body style="font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#1d1d1f;padding:20px;">
+    <p style="font-size:18px;font-weight:700;margin:0 0 8px;">MPC — ${es ? 'Etiqueta de envío' : 'Ship-in label'}</p>
+    <p style="margin:0 0 6px;">${es ? 'Adjuntamos tu etiqueta de envío en PDF. Imprímela y pégala por fuera de la caja con tu equipo, y añade el franqueo en tu transportista.' : 'Your ship-in label is attached as a PDF. Print it and tape it to the outside of the box with your gear, then add postage at your carrier.'}</p>
+    <p style="margin:0;color:#6e6e73;font-size:13px;">${es ? 'Referencia' : 'Reference'}: <strong>${esc(reference)}</strong></p>
+  </body></html>`;
 
   try {
     const r = await fetch('https://api.resend.com/emails', {
@@ -155,16 +173,18 @@ export default async function handler(req, res) {
         bcc: [...new Set([SHOP_EMAIL, COPY_EMAIL].filter(Boolean))],
         reply_to: SHOP_EMAIL,
         subject,
-        html: labelHtml,
+        html: bodyHtml,
+        attachments: [{ filename, content: pdfBase64 }],
       }),
     });
     if (!r.ok) {
       const detail = await r.text();
-      return res.status(502).json({ ok: false, error: 'Email send failed', detail });
+      // Email failed, but still let the user download the PDF.
+      return res.status(200).json({ ok: true, reference, pdfBase64, filename, emailWarning: detail });
     }
   } catch (err) {
-    return res.status(502).json({ ok: false, error: 'Email send error', detail: String(err) });
+    return res.status(200).json({ ok: true, reference, pdfBase64, filename, emailWarning: String(err) });
   }
 
-  return res.status(200).json({ ok: true, reference, labelHtml });
+  return res.status(200).json({ ok: true, reference, pdfBase64, filename });
 }

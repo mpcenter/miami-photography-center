@@ -19,7 +19,7 @@ const t =
         notYet: '¿Aún no tienes diagnóstico?',
         notYetLink: 'Solicita tu reparación primero →',
         formTitle: 'Genera tu etiqueta',
-        formSub: 'Completa tus datos. Te mostramos la etiqueta para imprimir al instante y también te la enviamos por correo.',
+        formSub: 'Completa tus datos. Descargas la etiqueta en PDF al instante y también te la enviamos por correo.',
         fRef: 'Nº de referencia o presupuesto (si lo tienes)',
         fRefPh: 'Ej. MPC-20260625-AB12',
         fName: 'Nombre completo *',
@@ -34,10 +34,10 @@ const t =
         fEquipmentPh: 'p. ej. Canon EOS R6',
         fItems: 'Nº de equipos',
         fItemsPh: '1',
-        fSubmit: 'Generar etiqueta',
+        fSubmit: 'Descargar etiqueta (PDF)',
         fSending: 'Generando…',
-        fSuccess: 'Etiqueta lista. Se abrió para imprimir y te la enviamos por correo. Pégala por fuera de la caja y añade el franqueo en tu transportista.',
-        fPrint: 'Volver a imprimir la etiqueta',
+        fSuccess: 'Etiqueta lista. Se descargó tu PDF y te lo enviamos por correo. Imprímela, pégala por fuera de la caja y añade el franqueo en tu transportista.',
+        fDownload: 'Descargar de nuevo',
         fErrorMsg: 'No pudimos generar tu etiqueta. Inténtalo de nuevo o llámanos al (786) 763-2091.',
         legalPre: 'Al enviar aceptas nuestra',
         legalLink: 'política de privacidad',
@@ -52,7 +52,7 @@ const t =
         notYet: 'No diagnostic yet?',
         notYetLink: 'Request your repair first →',
         formTitle: 'Generate your label',
-        formSub: 'Fill in your details. We show the label to print right away and also email it to you.',
+        formSub: 'Fill in your details. You download the label as a PDF right away and we also email it to you.',
         fRef: 'Reference or quote number (if you have one)',
         fRefPh: 'e.g. MPC-20260625-AB12',
         fName: 'Full Name *',
@@ -67,10 +67,10 @@ const t =
         fEquipmentPh: 'e.g. Canon EOS R6',
         fItems: 'Items',
         fItemsPh: '1',
-        fSubmit: 'Generate label',
+        fSubmit: 'Download label (PDF)',
         fSending: 'Generating…',
-        fSuccess: 'Label ready. It opened to print and we emailed it to you. Tape it to the outside of the box and add postage at your carrier.',
-        fPrint: 'Print the label again',
+        fSuccess: 'Label ready. Your PDF downloaded and we emailed it to you. Print it, tape it to the outside of the box, and add postage at your carrier.',
+        fDownload: 'Download again',
         fErrorMsg: 'We could not generate your label. Please try again or call us at (786) 763-2091.',
         legalPre: 'By submitting you agree to our',
         legalLink: 'privacy policy',
@@ -99,7 +99,7 @@ const t =
         data-success={t.fSuccess}
         data-sending={t.fSending}
         data-error={t.fErrorMsg}
-        data-print={t.fPrint}
+        data-download={t.fDownload}
       >
         <div class="form__field">
           <label for="si-ref">{t.fRef}</label>
