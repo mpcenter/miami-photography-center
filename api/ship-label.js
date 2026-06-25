@@ -1,8 +1,8 @@
-// Vercel Serverless Function — printable ship-in label (PDF).
-// For customers whose repair is already approved: builds a downloadable PDF
-// "ship to MPC" label (no carrier postage — they add postage at their carrier),
-// returns it (base64) for download, and emails it as a PDF attachment to the
-// customer + a copy to the shop.
+// Vercel Serverless Function — ship-in label (PDF) by email.
+// For customers whose repair is already approved: builds a "ship to MPC" label
+// (no carrier postage — they add postage at their carrier) and emails it as a
+// PDF attachment to the customer, with a copy to the shop. The page only shows
+// a confirmation; the customer downloads/prints the PDF from the email.
 //
 // Env vars: RESEND_API_KEY. Optional: SHOP_EMAIL, FROM_EMAIL, NOTIFY_EMAIL.
 
@@ -55,11 +55,11 @@ function wrap(text, font, size, maxWidth) {
   return lines;
 }
 
-async function buildPdf({ locale, reference, name, address, phone, equipment, items }) {
+export async function buildPdf({ locale, reference, name, address, phone, equipment, items }) {
   const es = locale === 'es';
   const T = es
-    ? { title: 'Etiqueta de envío — Reparación', ref: 'Referencia', shipTo: 'ENVIAR A', from: 'REMITENTE', equip: 'Equipo', items: 'Equipos', note: 'Reparación aprobada. Empaca el equipo con protección, pega esta etiqueta por fuera de la caja y añade el franqueo en tu transportista (USPS / UPS / FedEx). Dudas: (786) 763-2091.' }
-    : { title: 'Ship-in label - Repair', ref: 'Reference', shipTo: 'SHIP TO', from: 'FROM', equip: 'Equipment', items: 'Items', note: 'Approved repair. Pack the gear securely, tape this label to the outside of the box, and add postage at your carrier (USPS / UPS / FedEx). Questions: (786) 763-2091.' };
+    ? { title: 'Etiqueta de envío — Reparación', ref: 'Referencia', shipTo: 'ENVIAR A', from: 'REMITENTE', equip: 'Equipo', items: 'Equipos', note: 'Empaca el equipo con protección, pega esta etiqueta por fuera de la caja y añade el franqueo en tu transportista (USPS / UPS / FedEx). Dudas: (786) 763-2091.' }
+    : { title: 'Ship-in label - Repair', ref: 'Reference', shipTo: 'SHIP TO', from: 'FROM', equip: 'Equipment', items: 'Items', note: 'Pack the gear securely, tape this label to the outside of the box, and add postage at your carrier (USPS / UPS / FedEx). Questions: (786) 763-2091.' };
 
   const INK = rgb(0.114, 0.114, 0.122);
   const GRAY = rgb(0.43, 0.43, 0.45);
@@ -71,7 +71,7 @@ async function buildPdf({ locale, reference, name, address, phone, equipment, it
   const bold = await doc.embedFont(StandardFonts.HelveticaBold);
 
   // Outer border
-  const L = 56, R = 556, TOP = 740, BOT = 320;
+  const L = 56, R = 556, TOP = 750, BOT = 300;
   page.drawRectangle({ x: L, y: BOT, width: R - L, height: TOP - BOT, borderColor: INK, borderWidth: 2 });
   const cl = L + 26; // content left
 
@@ -92,28 +92,36 @@ async function buildPdf({ locale, reference, name, address, phone, equipment, it
     y -= 25;
   }
 
-  // From
+  // From (name + address may wrap + phone)
   y -= 14;
   page.drawText(ascii(T.from), { x: cl, y, size: 10, font: bold, color: GRAY });
   y -= 20;
-  for (const line of [name, address, phone]) {
-    page.drawText(ascii(line), { x: cl, y, size: 13, font, color: INK });
+  page.drawText(ascii(name), { x: cl, y, size: 13, font, color: INK });
+  y -= 18;
+  for (const aline of wrap(address, font, 13, R - L - 52)) {
+    page.drawText(aline, { x: cl, y, size: 13, font, color: INK });
     y -= 18;
   }
+  page.drawText(ascii(phone), { x: cl, y, size: 13, font, color: INK });
+  y -= 18;
 
-  // Equipment
+  // Equipment (may wrap)
   if (equipment) {
     y -= 8;
-    const eq = `${ascii(T.equip)}: ${ascii(equipment)}${items ? `   ${ascii(T.items)}: ${ascii(items)}` : ''}`;
-    page.drawText(eq, { x: cl, y, size: 12, font, color: INK });
+    const eq = `${T.equip}: ${equipment}${items ? `   ${T.items}: ${items}` : ''}`;
+    for (const eline of wrap(eq, font, 12, R - L - 52)) {
+      page.drawText(eline, { x: cl, y, size: 12, font, color: INK });
+      y -= 16;
+    }
   }
 
-  // Note box (yellow)
-  const noteLines = wrap(T.note, font, 11, R - L - 52);
-  const boxH = 22 + noteLines.length * 15;
-  const boxY = BOT + 20;
-  page.drawRectangle({ x: L + 16, y: boxY, width: R - L - 32, height: boxH, color: YELLOW });
-  let ny = boxY + boxH - 18;
+  // Note box (yellow) — measured with the SAME bold font we draw with, so the
+  // text always stays inside the box (regular-font widths underestimated bold).
+  const noteLines = wrap(T.note, bold, 11, R - L - 56);
+  const boxH = 20 + noteLines.length * 15;
+  const boxY = BOT + 18;
+  page.drawRectangle({ x: L + 14, y: boxY, width: R - L - 28, height: boxH, color: YELLOW });
+  let ny = boxY + boxH - 17;
   for (const line of noteLines) {
     page.drawText(line, { x: L + 28, y: ny, size: 11, font: bold, color: INK });
     ny -= 15;
@@ -181,12 +189,11 @@ export default async function handler(req, res) {
     });
     if (!r.ok) {
       const detail = await r.text();
-      // Email failed, but still let the user download the PDF.
-      return res.status(200).json({ ok: true, reference, pdfBase64, filename, emailWarning: detail });
+      return res.status(502).json({ ok: false, error: 'Email delivery failed', detail });
     }
   } catch (err) {
-    return res.status(200).json({ ok: true, reference, pdfBase64, filename, emailWarning: String(err) });
+    return res.status(502).json({ ok: false, error: 'Email delivery failed', detail: String(err) });
   }
 
-  return res.status(200).json({ ok: true, reference, pdfBase64, filename });
+  return res.status(200).json({ ok: true, reference });
 }
