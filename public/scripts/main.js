@@ -17,7 +17,6 @@
     initParallax();
     initDemoForms();
     initIntakeForms();
-    initShipLabelForm();
     initPromoCarousel();
     initGsapFeatures();
   });
@@ -246,79 +245,6 @@
             form.querySelectorAll('input, select, textarea').forEach((el) => { el.disabled = true; });
           } else {
             throw new Error(data.error || 'send failed');
-          }
-        } catch (err) {
-          note.style.color = '#c0392b';
-          note.textContent = '✕ ' + (form.dataset.error || 'Something went wrong. Please try again.');
-          btns.forEach((b, i) => { b.disabled = false; b.style.opacity = '1'; b.textContent = labels[i]; });
-        }
-      });
-    });
-  }
-
-  /* ===== SHIP-IN LABEL FORM =====
-     <form class="js-shiplabel-form"> posts to /api/ship-label, downloads the
-     returned PDF label, and emails a copy. */
-  function initShipLabelForm() {
-    const downloadPdf = (base64, filename) => {
-      const bin = atob(base64);
-      const bytes = new Uint8Array(bin.length);
-      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
-      const url = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = filename || 'mpc-ship-label.pdf';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 5000);
-    };
-
-    document.querySelectorAll('form.js-shiplabel-form').forEach((form) => {
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        if (!form.reportValidity()) return;
-
-        const btns = [...form.querySelectorAll('button[type="submit"]')];
-        const labels = btns.map((b) => b.textContent);
-        btns.forEach((b) => { b.disabled = true; b.style.opacity = '0.6'; if (form.dataset.sending) b.textContent = form.dataset.sending; });
-
-        let note = form.querySelector('.form__success');
-        if (!note) {
-          note = document.createElement('p');
-          note.className = 'form__success';
-          note.setAttribute('role', 'status');
-          form.appendChild(note);
-        }
-        note.style.cssText = 'font-weight:600;font-size:15px;margin-top:8px;';
-
-        const payload = Object.fromEntries(new FormData(form).entries());
-        payload.locale = form.dataset.locale || document.documentElement.lang || 'en';
-
-        try {
-          const res = await fetch(form.action, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload),
-          });
-          const data = await res.json().catch(() => ({}));
-          if (res.ok && data.ok && data.pdfBase64) {
-            downloadPdf(data.pdfBase64, data.filename);
-            note.style.color = '#1d7a3a';
-            note.innerHTML = '✓ ' + (form.dataset.success || 'Label ready.') + (data.reference ? '<br><strong>' + data.reference + '</strong>' : '');
-            let again = form.querySelector('.js-download-again');
-            if (!again && form.dataset.download) {
-              again = document.createElement('button');
-              again.type = 'button';
-              again.className = 'btn btn--ghost js-download-again';
-              again.style.marginTop = '14px';
-              again.textContent = form.dataset.download;
-              note.after(again);
-            }
-            if (again) again.onclick = () => downloadPdf(data.pdfBase64, data.filename);
-            btns.forEach((b, i) => { b.disabled = false; b.style.opacity = '1'; b.textContent = labels[i]; });
-          } else {
-            throw new Error(data.error || 'label failed');
           }
         } catch (err) {
           note.style.color = '#c0392b';

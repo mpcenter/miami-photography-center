@@ -17,9 +17,9 @@ const t =
         heroTitle: 'Envía tu producto.',
         heroLede: 'Si ya tienes tu diagnóstico y presupuesto aprobado, genera aquí tu etiqueta de envío. La imprimes, la pegas en la caja y nos envías tu equipo.',
         notYet: '¿Aún no tienes diagnóstico?',
-        notYetLink: 'Solicita tu reparación primero →',
+        notYetLink: 'Solicítalo →',
         formTitle: 'Genera tu etiqueta',
-        formSub: 'Completa tus datos. Descargas la etiqueta en PDF al instante y también te la enviamos por correo.',
+        formSub: 'Completa tus datos y te enviaremos tu etiqueta de envío en PDF al correo para que la imprimas.',
         fRef: 'Nº de referencia o presupuesto (si lo tienes)',
         fRefPh: 'Ej. MPC-20260625-AB12',
         fName: 'Nombre completo *',
@@ -34,11 +34,11 @@ const t =
         fEquipmentPh: 'p. ej. Canon EOS R6',
         fItems: 'Nº de equipos',
         fItemsPh: '1',
-        fSubmit: 'Descargar etiqueta (PDF)',
-        fSending: 'Generando…',
-        fSuccess: 'Etiqueta lista. Se descargó tu PDF y te lo enviamos por correo. Imprímela, pégala por fuera de la caja y añade el franqueo en tu transportista.',
-        fDownload: 'Descargar de nuevo',
-        fErrorMsg: 'No pudimos generar tu etiqueta. Inténtalo de nuevo o llámanos al (786) 763-2091.',
+        fSubmit: 'Enviar mi etiqueta',
+        fSending: 'Enviando…',
+        fSuccess: 'Te enviamos tu etiqueta de envío en PDF al correo. Descárgala, imprímela y pégala por fuera de la caja con tu equipo.',
+        fRefLabel: 'Tu nº de referencia:',
+        fErrorMsg: 'No pudimos enviar tu etiqueta. Inténtalo de nuevo o llámanos al (786) 763-2091.',
         legalPre: 'Al enviar aceptas nuestra',
         legalLink: 'política de privacidad',
         legalPost: 'Nunca compartimos tus datos.',
@@ -50,9 +50,9 @@ const t =
         heroTitle: 'Send your product.',
         heroLede: 'If your diagnostic and quote are already approved, generate your ship-in label here. Print it, tape it to the box, and ship your gear to us.',
         notYet: 'No diagnostic yet?',
-        notYetLink: 'Request your repair first →',
+        notYetLink: 'Request it →',
         formTitle: 'Generate your label',
-        formSub: 'Fill in your details. You download the label as a PDF right away and we also email it to you.',
+        formSub: 'Fill in your details and we’ll email you your ship-in label as a PDF to print.',
         fRef: 'Reference or quote number (if you have one)',
         fRefPh: 'e.g. MPC-20260625-AB12',
         fName: 'Full Name *',
@@ -67,11 +67,11 @@ const t =
         fEquipmentPh: 'e.g. Canon EOS R6',
         fItems: 'Items',
         fItemsPh: '1',
-        fSubmit: 'Download label (PDF)',
-        fSending: 'Generating…',
-        fSuccess: 'Label ready. Your PDF downloaded and we emailed it to you. Print it, tape it to the outside of the box, and add postage at your carrier.',
-        fDownload: 'Download again',
-        fErrorMsg: 'We could not generate your label. Please try again or call us at (786) 763-2091.',
+        fSubmit: 'Send my label',
+        fSending: 'Sending…',
+        fSuccess: 'We’ve emailed you your ship-in label as a PDF. Download it, print it, and tape it to the outside of the box with your gear.',
+        fRefLabel: 'Your reference no.:',
+        fErrorMsg: 'We could not send your label. Please try again or call us at (786) 763-2091.',
         legalPre: 'By submitting you agree to our',
         legalLink: 'privacy policy',
         legalPost: 'We never share your data.',
@@ -92,14 +92,14 @@ const t =
       <p class="sendin__formsub">{t.formSub}</p>
 
       <form
-        class="form js-shiplabel-form"
+        class="form js-intake-form"
         action="/api/ship-label"
         method="POST"
         data-locale={locale}
         data-success={t.fSuccess}
         data-sending={t.fSending}
         data-error={t.fErrorMsg}
-        data-download={t.fDownload}
+        data-ref-label={t.fRefLabel}
       >
         <div class="form__field">
           <label for="si-ref">{t.fRef}</label>
@@ -173,5 +173,22 @@ const t =
       color: var(--color-apple-ink);
     }
     .sendin__formsub { color: var(--color-graphite); margin: 0 0 26px; }
+    .sendin .form-section__actions {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 14px;
+    }
+    .sendin .form-section__actions .btn { width: 100%; }
+    .sendin .form-section__legal {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--color-graphite);
+      text-align: center;
+    }
+    .sendin .form-section__legal a { color: var(--color-apple-ink); font-weight: 600; }
+    .sendin .form__success { text-align: center; }
   </style>
 </Base>
