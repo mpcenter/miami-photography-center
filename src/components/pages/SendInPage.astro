@@ -1,0 +1,177 @@
+---
+import Base from '../../layouts/Base.astro';
+import { localePath, type Locale } from '../../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const p = (path: string) => localePath(locale, path);
+
+const t =
+  locale === 'es'
+    ? {
+        title: 'Envía tu producto — Etiqueta de envío | Miami Photography Center',
+        description: '¿Ya tienes tu diagnóstico y presupuesto aprobado? Genera tu etiqueta de envío para mandar tu equipo a reparación a Miami Photography Center.',
+        eyebrow: 'Reparación aprobada',
+        heroTitle: 'Envía tu producto.',
+        heroLede: 'Si ya tienes tu diagnóstico y presupuesto aprobado, genera aquí tu etiqueta de envío. La imprimes, la pegas en la caja y nos envías tu equipo.',
+        notYet: '¿Aún no tienes diagnóstico?',
+        notYetLink: 'Solicita tu reparación primero →',
+        formTitle: 'Genera tu etiqueta',
+        formSub: 'Completa tus datos. Te mostramos la etiqueta para imprimir al instante y también te la enviamos por correo.',
+        fRef: 'Nº de referencia o presupuesto (si lo tienes)',
+        fRefPh: 'Ej. MPC-20260625-AB12',
+        fName: 'Nombre completo *',
+        fNamePh: '¿Cómo te llamas?',
+        fAddress: 'Tu dirección (remitente) *',
+        fAddressPh: 'Calle, ciudad, estado, ZIP',
+        fPhone: 'Teléfono *',
+        fPhonePh: '(786) 555-0100',
+        fEmail: 'Correo electrónico *',
+        fEmailPh: 'tu@correo.com',
+        fEquipment: 'Equipo (marca y modelo)',
+        fEquipmentPh: 'p. ej. Canon EOS R6',
+        fItems: 'Nº de equipos',
+        fItemsPh: '1',
+        fSubmit: 'Generar etiqueta',
+        fSending: 'Generando…',
+        fSuccess: 'Etiqueta lista. Se abrió para imprimir y te la enviamos por correo. Pégala por fuera de la caja y añade el franqueo en tu transportista.',
+        fPrint: 'Volver a imprimir la etiqueta',
+        fErrorMsg: 'No pudimos generar tu etiqueta. Inténtalo de nuevo o llámanos al (786) 763-2091.',
+        legalPre: 'Al enviar aceptas nuestra',
+        legalLink: 'política de privacidad',
+        legalPost: 'Nunca compartimos tus datos.',
+      }
+    : {
+        title: 'Send your product — Ship-in label | Miami Photography Center',
+        description: 'Already have your diagnostic and approved quote? Generate your ship-in label to send your gear to Miami Photography Center for repair.',
+        eyebrow: 'Approved repair',
+        heroTitle: 'Send your product.',
+        heroLede: 'If your diagnostic and quote are already approved, generate your ship-in label here. Print it, tape it to the box, and ship your gear to us.',
+        notYet: 'No diagnostic yet?',
+        notYetLink: 'Request your repair first →',
+        formTitle: 'Generate your label',
+        formSub: 'Fill in your details. We show the label to print right away and also email it to you.',
+        fRef: 'Reference or quote number (if you have one)',
+        fRefPh: 'e.g. MPC-20260625-AB12',
+        fName: 'Full Name *',
+        fNamePh: 'What’s your name?',
+        fAddress: 'Your address (sender) *',
+        fAddressPh: 'Street, city, state, ZIP',
+        fPhone: 'Phone *',
+        fPhonePh: '(786) 555-0100',
+        fEmail: 'Email *',
+        fEmailPh: 'you@example.com',
+        fEquipment: 'Equipment (brand & model)',
+        fEquipmentPh: 'e.g. Canon EOS R6',
+        fItems: 'Items',
+        fItemsPh: '1',
+        fSubmit: 'Generate label',
+        fSending: 'Generating…',
+        fSuccess: 'Label ready. It opened to print and we emailed it to you. Tape it to the outside of the box and add postage at your carrier.',
+        fPrint: 'Print the label again',
+        fErrorMsg: 'We could not generate your label. Please try again or call us at (786) 763-2091.',
+        legalPre: 'By submitting you agree to our',
+        legalLink: 'privacy policy',
+        legalPost: 'We never share your data.',
+      };
+---
+
+<Base locale={locale} title={t.title} description={t.description}>
+  <section class="form-section sendin" aria-labelledby="sendin-title">
+    <div class="form-section__head">
+      <p class="eyebrow">{t.eyebrow}</p>
+      <h1 id="sendin-title" class="form-section__title">{t.heroTitle}</h1>
+      <p class="form-section__sub">{t.heroLede}</p>
+      <p class="sendin__notyet">{t.notYet} <a href={`${p('/repair')}#repair-form`}>{t.notYetLink}</a></p>
+    </div>
+
+    <div class="sendin__formwrap">
+      <h2 class="sendin__formtitle">{t.formTitle}</h2>
+      <p class="sendin__formsub">{t.formSub}</p>
+
+      <form
+        class="form js-shiplabel-form"
+        action="/api/ship-label"
+        method="POST"
+        data-locale={locale}
+        data-success={t.fSuccess}
+        data-sending={t.fSending}
+        data-error={t.fErrorMsg}
+        data-print={t.fPrint}
+      >
+        <div class="form__field">
+          <label for="si-ref">{t.fRef}</label>
+          <input id="si-ref" type="text" name="reference" placeholder={t.fRefPh} />
+        </div>
+
+        <div class="form__field">
+          <label for="si-name">{t.fName}</label>
+          <input id="si-name" type="text" name="name" required autocomplete="name" placeholder={t.fNamePh} />
+        </div>
+
+        <div class="form__field">
+          <label for="si-address">{t.fAddress}</label>
+          <input id="si-address" type="text" name="address" required autocomplete="street-address" placeholder={t.fAddressPh} />
+        </div>
+
+        <div class="form__row">
+          <div class="form__field">
+            <label for="si-phone">{t.fPhone}</label>
+            <input id="si-phone" type="tel" name="phone" required autocomplete="tel" placeholder={t.fPhonePh} />
+          </div>
+          <div class="form__field">
+            <label for="si-email">{t.fEmail}</label>
+            <input id="si-email" type="email" name="email" required autocomplete="email" placeholder={t.fEmailPh} />
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="form__field">
+            <label for="si-equipment">{t.fEquipment}</label>
+            <input id="si-equipment" type="text" name="equipment" placeholder={t.fEquipmentPh} />
+          </div>
+          <div class="form__field">
+            <label for="si-items">{t.fItems}</label>
+            <input id="si-items" type="number" name="items" min="1" step="1" inputmode="numeric" placeholder={t.fItemsPh} />
+          </div>
+        </div>
+
+        {/* honeypot */}
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
+
+        <div class="form-section__actions">
+          <button type="submit" class="btn btn--primary btn--lg">{t.fSubmit}</button>
+          <p class="form-section__legal">
+            {t.legalPre} <a href={p('/privacy')}>{t.legalLink}</a>. {t.legalPost}
+          </p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <style>
+    .sendin { padding: calc(var(--nav-h, 80px) + clamp(40px, 7vw, 90px)) var(--gutter) clamp(60px, 9vw, 110px); }
+    .sendin .form-section__head { max-width: 720px; margin: 0 auto 36px; text-align: center; }
+    .sendin__notyet { margin-top: 16px; font-size: 15px; color: var(--color-graphite); }
+    .sendin__notyet a { font-weight: 600; color: var(--color-apple-ink); }
+    .sendin__formwrap {
+      max-width: 640px;
+      margin: 0 auto;
+      background: var(--color-pure-white);
+      border-radius: var(--r-card);
+      padding: clamp(26px, 4vw, 44px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.10);
+    }
+    .sendin__formtitle {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(22px, 2.6vw, 28px);
+      letter-spacing: -0.02em;
+      margin: 0 0 6px;
+      color: var(--color-apple-ink);
+    }
+    .sendin__formsub { color: var(--color-graphite); margin: 0 0 26px; }
+  </style>
+</Base>

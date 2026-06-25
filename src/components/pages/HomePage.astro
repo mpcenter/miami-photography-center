@@ -40,7 +40,7 @@ const t = locale === 'es' ? {
   processTitle: 'Envíalo.<br/>Nos encargamos del resto.',
   process: [
     { num: '01', title: 'Solicita y describe', copy: 'Cuéntanos qué le pasa a tu equipo en nuestro formulario. Fotos bienvenidas. Respondemos en un día hábil con un plan de diagnóstico.' },
-    { num: '02', title: 'Envía tu equipo', copy: 'Te enviamos por correo las instrucciones de envío y una etiqueta; empaca, envía y sigue cada paso. O agenda una visita in situ en el sur de Florida.' },
+    { num: '02', title: 'Envía tu equipo', copy: 'Generas tu etiqueta de envío, la imprimes y la pegas en la caja. Empacas tu equipo con protección y nos lo envías a nuestro taller.' },
     { num: '03', title: 'Reparación y retorno', copy: 'Presupuesto aprobado, reparación en el taller, prueba completa y envío de retorno. La mayoría en 7–15 días hábiles. Garantía de 6 meses.' },
   ],
   prodbandEyebrow: 'También hacemos',
@@ -100,7 +100,7 @@ const t = locale === 'es' ? {
   processTitle: 'Ship it.<br/>We’ll handle the rest.',
   process: [
     { num: '01', title: 'Request & describe', copy: 'Tell us what’s wrong in our short form. Photos welcome. We respond within one business day with a diagnostic plan.' },
-    { num: '02', title: 'Send your gear', copy: 'We email you shipping instructions and a label — pack it, send it, and track every step. Or schedule an on-site visit across South Florida.' },
+    { num: '02', title: 'Send your gear', copy: 'Generate your shipping label, print it, and tape it to the box. Pack your gear securely and ship it to our workshop.' },
     { num: '03', title: 'Repair & return', copy: 'Approved quote, in-house repair, full test, and return shipping. Most jobs done in 7–15 business days. Six-month warranty.' },
   ],
   prodbandEyebrow: 'We also do',
@@ -218,7 +218,7 @@ const localBusinessSchema = JSON.stringify({
     </ol>
 
     <div class="process__cta" data-anim="fade-up">
-      <a href={`${p('/repair')}#repair-form`} class="btn btn--primary btn--lg">{locale === 'es' ? 'Solicitar reparación' : 'Request your repair'} <span aria-hidden="true">→</span></a>
+      <a href={p('/send-in')} class="btn btn--primary btn--lg">{locale === 'es' ? 'Envía tu producto' : 'Send your product'} <span aria-hidden="true">→</span></a>
     </div>
   </section>
 
