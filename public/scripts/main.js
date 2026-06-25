@@ -17,6 +17,7 @@
     initParallax();
     initDemoForms();
     initIntakeForms();
+    initShipLabelForm();
     initPromoCarousel();
     initGsapFeatures();
   });
@@ -247,6 +248,73 @@
             throw new Error(data.error || 'send failed');
           }
         } catch (err) {
+          note.style.color = '#c0392b';
+          note.textContent = '✕ ' + (form.dataset.error || 'Something went wrong. Please try again.');
+          btns.forEach((b, i) => { b.disabled = false; b.style.opacity = '1'; b.textContent = labels[i]; });
+        }
+      });
+    });
+  }
+
+  /* ===== SHIP-IN LABEL FORM =====
+     <form class="js-shiplabel-form"> posts to /api/ship-label, opens the
+     returned printable label in a new window (opened up-front to dodge popup
+     blockers), and emails a copy. */
+  function initShipLabelForm() {
+    document.querySelectorAll('form.js-shiplabel-form').forEach((form) => {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+
+        // Open the print window now, within the click gesture, then fill it.
+        const win = window.open('', '_blank');
+
+        const btns = [...form.querySelectorAll('button[type="submit"]')];
+        const labels = btns.map((b) => b.textContent);
+        btns.forEach((b) => { b.disabled = true; b.style.opacity = '0.6'; if (form.dataset.sending) b.textContent = form.dataset.sending; });
+
+        let note = form.querySelector('.form__success');
+        if (!note) {
+          note = document.createElement('p');
+          note.className = 'form__success';
+          note.setAttribute('role', 'status');
+          form.appendChild(note);
+        }
+        note.style.cssText = 'font-weight:600;font-size:15px;margin-top:8px;';
+
+        const payload = Object.fromEntries(new FormData(form).entries());
+        payload.locale = form.dataset.locale || document.documentElement.lang || 'en';
+
+        const writeLabel = (target, html) => { try { target.document.open(); target.document.write(html); target.document.close(); } catch (e) {} };
+
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+          const data = await res.json().catch(() => ({}));
+          if (res.ok && data.ok && data.labelHtml) {
+            if (win && !win.closed) { writeLabel(win, data.labelHtml); win.focus(); }
+            note.style.color = '#1d7a3a';
+            note.innerHTML = '✓ ' + (form.dataset.success || 'Label ready.') + (data.reference ? '<br><strong>' + data.reference + '</strong>' : '');
+            // "print again" button (re-opens the label on a fresh gesture)
+            let again = form.querySelector('.js-print-again');
+            if (!again && form.dataset.print) {
+              again = document.createElement('button');
+              again.type = 'button';
+              again.className = 'btn btn--ghost js-print-again';
+              again.style.marginTop = '14px';
+              again.textContent = form.dataset.print;
+              note.after(again);
+            }
+            if (again) again.onclick = () => { const w = window.open('', '_blank'); if (w) writeLabel(w, data.labelHtml); };
+            btns.forEach((b, i) => { b.disabled = false; b.style.opacity = '1'; b.textContent = labels[i]; });
+          } else {
+            throw new Error(data.error || 'label failed');
+          }
+        } catch (err) {
+          if (win && !win.closed) win.close();
           note.style.color = '#c0392b';
           note.textContent = '✕ ' + (form.dataset.error || 'Something went wrong. Please try again.');
           btns.forEach((b, i) => { b.disabled = false; b.style.opacity = '1'; b.textContent = labels[i]; });
