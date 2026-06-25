@@ -1,7 +1,10 @@
 {
-  "order": 1,
-  "enabled": true,
   "image": "/images/van-exterior.jpg",
+  "text": "",
+  "textEn": "",
+  "highlight": "",
   "alt": "Servicio móvil de Miami Photography Center",
-  "link": "/on-site"
+  "link": "/on-site",
+  "order": 1,
+  "enabled": false
 }
