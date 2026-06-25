@@ -206,11 +206,7 @@ const localBusinessSchema = JSON.stringify({
   </section>
 
   <!-- ==================== PROCESS ==================== -->
-  <section id="process" class="process" aria-labelledby="process-title">
-    <div class="process__head">
-      <p class="eyebrow">{t.processEyebrow}</p>
-      <h2 id="process-title" class="process__title" set:html={t.processTitle} />
-    </div>
+  <section id="process" class="process" aria-label={locale === 'es' ? 'Proceso' : 'Process'}>
     <ol class="process__steps">
       {t.process.map((step) => (
         <li class="process__step" data-anim="fade-up">
