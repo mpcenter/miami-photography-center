@@ -205,6 +205,27 @@ const localBusinessSchema = JSON.stringify({
     </div>
   </section>
 
+  <!-- ==================== PROCESS ==================== -->
+  <section id="process" class="process" aria-labelledby="process-title">
+    <div class="process__head">
+      <p class="eyebrow">{t.processEyebrow}</p>
+      <h2 id="process-title" class="process__title" set:html={t.processTitle} />
+    </div>
+    <ol class="process__steps">
+      {t.process.map((step) => (
+        <li class="process__step" data-anim="fade-up">
+          <span class="process__num">{step.num}</span>
+          <h3>{step.title}</h3>
+          <p>{step.copy}</p>
+        </li>
+      ))}
+    </ol>
+
+    <div class="process__cta" data-anim="fade-up">
+      <a href={p('/repair')} class="btn btn--primary btn--lg">{locale === 'es' ? 'Solicitar reparación' : 'Request your repair'} <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
   <!-- ==================== FEATURED STRIP (3 destacados) ==================== -->
   <section id="services" class="services" aria-labelledby="services-title">
     <div class="services__head">
@@ -257,27 +278,6 @@ const localBusinessSchema = JSON.stringify({
         <li>Miami</li><li>Miami Beach</li><li>Fort Lauderdale</li><li>Boca Raton</li>
         <li>West Palm Beach</li><li>Key Largo</li><li>Marathon</li><li>Key West</li>
       </ul>
-    </div>
-  </section>
-
-  <!-- ==================== PROCESS ==================== -->
-  <section id="process" class="process" aria-labelledby="process-title">
-    <div class="process__head">
-      <p class="eyebrow">{t.processEyebrow}</p>
-      <h2 id="process-title" class="process__title" set:html={t.processTitle} />
-    </div>
-    <ol class="process__steps">
-      {t.process.map((step) => (
-        <li class="process__step" data-anim="fade-up">
-          <span class="process__num">{step.num}</span>
-          <h3>{step.title}</h3>
-          <p>{step.copy}</p>
-        </li>
-      ))}
-    </ol>
-
-    <div class="process__cta" data-anim="fade-up">
-      <a href={p('/repair')} class="btn btn--primary btn--lg">{locale === 'es' ? 'Solicitar reparación' : 'Request your repair'} <span aria-hidden="true">→</span></a>
     </div>
   </section>
 
