@@ -22,15 +22,17 @@ const SHOP = { name: 'Miami Photography Center', street: '3911 SW 27th St', city
 const esc = (v) =>
   String(v == null ? '' : v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-// pdf-lib's standard (WinAnsi) fonts can't encode every char; strip the few we
-// might hit (e.g. — → smart punctuation) to plain ASCII to avoid encode errors.
+// pdf-lib's standard fonts use WinAnsi (CP1252), which supports Latin-1 accents
+// (á é í ó ú ñ ü ¿ ¡ …). Keep those; only normalize the few chars outside it
+// (smart punctuation) and drop anything beyond Latin-1 to avoid encode errors.
 const ascii = (s) =>
   String(s == null ? '' : s)
+    .normalize('NFC')
     .replace(/[—–]/g, '-')
     .replace(/[’‘]/g, "'")
     .replace(/[“”]/g, '"')
-    .replace(/·/g, '-')
-    .replace(/[^\x20-\x7E]/g, '');
+    .replace(/…/g, '...')
+    .replace(/[^\x00-\xFF]/g, '');
 
 function makeReference() {
   const d = new Date();
@@ -56,7 +58,7 @@ function wrap(text, font, size, maxWidth) {
 async function buildPdf({ locale, reference, name, address, phone, equipment, items }) {
   const es = locale === 'es';
   const T = es
-    ? { title: 'Etiqueta de envio - Reparacion', ref: 'Referencia', shipTo: 'ENVIAR A', from: 'REMITENTE', equip: 'Equipo', items: 'Equipos', note: 'Reparacion aprobada. Empaca el equipo con proteccion, pega esta etiqueta por fuera de la caja y anade el franqueo en tu transportista (USPS / UPS / FedEx). Dudas: (786) 763-2091.' }
+    ? { title: 'Etiqueta de envío — Reparación', ref: 'Referencia', shipTo: 'ENVIAR A', from: 'REMITENTE', equip: 'Equipo', items: 'Equipos', note: 'Reparación aprobada. Empaca el equipo con protección, pega esta etiqueta por fuera de la caja y añade el franqueo en tu transportista (USPS / UPS / FedEx). Dudas: (786) 763-2091.' }
     : { title: 'Ship-in label - Repair', ref: 'Reference', shipTo: 'SHIP TO', from: 'FROM', equip: 'Equipment', items: 'Items', note: 'Approved repair. Pack the gear securely, tape this label to the outside of the box, and add postage at your carrier (USPS / UPS / FedEx). Questions: (786) 763-2091.' };
 
   const INK = rgb(0.114, 0.114, 0.122);
