@@ -257,17 +257,27 @@
   }
 
   /* ===== SHIP-IN LABEL FORM =====
-     <form class="js-shiplabel-form"> posts to /api/ship-label, opens the
-     returned printable label in a new window (opened up-front to dodge popup
-     blockers), and emails a copy. */
+     <form class="js-shiplabel-form"> posts to /api/ship-label, downloads the
+     returned PDF label, and emails a copy. */
   function initShipLabelForm() {
+    const downloadPdf = (base64, filename) => {
+      const bin = atob(base64);
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      const url = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename || 'mpc-ship-label.pdf';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 5000);
+    };
+
     document.querySelectorAll('form.js-shiplabel-form').forEach((form) => {
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
         if (!form.reportValidity()) return;
-
-        // Open the print window now, within the click gesture, then fill it.
-        const win = window.open('', '_blank');
 
         const btns = [...form.querySelectorAll('button[type="submit"]')];
         const labels = btns.map((b) => b.textContent);
@@ -285,8 +295,6 @@
         const payload = Object.fromEntries(new FormData(form).entries());
         payload.locale = form.dataset.locale || document.documentElement.lang || 'en';
 
-        const writeLabel = (target, html) => { try { target.document.open(); target.document.write(html); target.document.close(); } catch (e) {} };
-
         try {
           const res = await fetch(form.action, {
             method: 'POST',
@@ -294,27 +302,25 @@
             body: JSON.stringify(payload),
           });
           const data = await res.json().catch(() => ({}));
-          if (res.ok && data.ok && data.labelHtml) {
-            if (win && !win.closed) { writeLabel(win, data.labelHtml); win.focus(); }
+          if (res.ok && data.ok && data.pdfBase64) {
+            downloadPdf(data.pdfBase64, data.filename);
             note.style.color = '#1d7a3a';
             note.innerHTML = '✓ ' + (form.dataset.success || 'Label ready.') + (data.reference ? '<br><strong>' + data.reference + '</strong>' : '');
-            // "print again" button (re-opens the label on a fresh gesture)
-            let again = form.querySelector('.js-print-again');
-            if (!again && form.dataset.print) {
+            let again = form.querySelector('.js-download-again');
+            if (!again && form.dataset.download) {
               again = document.createElement('button');
               again.type = 'button';
-              again.className = 'btn btn--ghost js-print-again';
+              again.className = 'btn btn--ghost js-download-again';
               again.style.marginTop = '14px';
-              again.textContent = form.dataset.print;
+              again.textContent = form.dataset.download;
               note.after(again);
             }
-            if (again) again.onclick = () => { const w = window.open('', '_blank'); if (w) writeLabel(w, data.labelHtml); };
+            if (again) again.onclick = () => downloadPdf(data.pdfBase64, data.filename);
             btns.forEach((b, i) => { b.disabled = false; b.style.opacity = '1'; b.textContent = labels[i]; });
           } else {
             throw new Error(data.error || 'label failed');
           }
         } catch (err) {
-          if (win && !win.closed) win.close();
           note.style.color = '#c0392b';
           note.textContent = '✕ ' + (form.dataset.error || 'Something went wrong. Please try again.');
           btns.forEach((b, i) => { b.disabled = false; b.style.opacity = '1'; b.textContent = labels[i]; });
