@@ -364,26 +364,6 @@ const catalogSchema = JSON.stringify({
     </div>
   </section>
 
-  <!-- ==================== PROCESS — Shared method ==================== -->
-  <section class="repair-process" aria-labelledby="method-title">
-    <div class="repair-process__head">
-      <p class="eyebrow">{t.methodEyebrow}</p>
-      <h2 id="method-title" class="repair-process__title" set:html={t.methodTitle} />
-    </div>
-    <ol class="timeline timeline--4">
-      {t.steps.map((step) => (
-        <li class="timeline__item" data-anim="fade-up">
-          <span class="timeline__dot"></span>
-          <div class="timeline__card">
-            <p class="timeline__num">{step.num}</p>
-            <h3>{step.title}</h3>
-            <p>{step.copy}</p>
-          </div>
-        </li>
-      ))}
-    </ol>
-  </section>
-
   <!-- ==================== COMBINED PRICING TABLE ==================== -->
   <section class="price-table" aria-labelledby="prices-title">
     <div class="price-table__head">
