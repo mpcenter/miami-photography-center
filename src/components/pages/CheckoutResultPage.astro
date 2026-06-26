@@ -1,0 +1,95 @@
+---
+import Base from '../../layouts/Base.astro';
+import { localePath, type Locale } from '../../lib/i18n';
+
+interface Props {
+  locale: Locale;
+  variant: 'success' | 'cancel';
+}
+const { locale, variant } = Astro.props;
+const p = (path: string) => localePath(locale, path);
+const es = locale === 'es';
+const success = variant === 'success';
+
+const t = es
+  ? {
+      successTitle: '¡Gracias por tu compra! | Miami Photography Center',
+      cancelTitle: 'Pago cancelado | Miami Photography Center',
+      successH: '¡Gracias por tu compra!',
+      successP: 'Recibimos tu pago y ya estamos preparando tu envío. Te enviaremos el seguimiento por correo en cuanto salga. Si tienes dudas, escríbenos o llámanos al (786) 763-2091.',
+      cancelH: 'Pago cancelado',
+      cancelP: 'No se realizó ningún cargo. Puedes volver a la tienda y completar tu compra cuando quieras.',
+      backStore: 'Volver a la tienda',
+      backHome: 'Ir al inicio',
+    }
+  : {
+      successTitle: 'Thank you for your order | Miami Photography Center',
+      cancelTitle: 'Payment canceled | Miami Photography Center',
+      successH: 'Thank you for your order!',
+      successP: 'We received your payment and we’re preparing your shipment. We’ll email you tracking as soon as it ships. Questions? Reply to your confirmation email or call (786) 763-2091.',
+      cancelH: 'Payment canceled',
+      cancelP: 'No charge was made. You can head back to the store and complete your purchase whenever you’re ready.',
+      backStore: 'Back to the store',
+      backHome: 'Go to home',
+    };
+
+const title = success ? t.successTitle : t.cancelTitle;
+---
+
+<Base locale={locale} title={title} description={success ? t.successP : t.cancelP}>
+  <section class="checkout-result" aria-labelledby="cr-title">
+    <div class="checkout-result__card">
+      <div class={`checkout-result__icon ${success ? 'is-success' : 'is-cancel'}`} aria-hidden="true">
+        {success ? '✓' : '×'}
+      </div>
+      <h1 id="cr-title" class="checkout-result__title">{success ? t.successH : t.cancelH}</h1>
+      <p class="checkout-result__text">{success ? t.successP : t.cancelP}</p>
+      <div class="checkout-result__actions">
+        <a href={p('/store')} class="btn btn--primary btn--lg">{t.backStore}</a>
+        <a href={p('/')} class="btn btn--ghost btn--lg">{t.backHome}</a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .checkout-result {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: calc(var(--nav-h, 80px) + clamp(40px, 8vw, 90px)) var(--gutter) clamp(60px, 9vw, 110px);
+    }
+    .checkout-result__card {
+      max-width: 560px;
+      text-align: center;
+      background: var(--color-pure-white);
+      border-radius: var(--r-card);
+      padding: clamp(32px, 5vw, 56px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.10);
+    }
+    .checkout-result__icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 22px;
+      font-size: 34px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .checkout-result__icon.is-success { background: #1d7a3a; }
+    .checkout-result__icon.is-cancel { background: var(--color-graphite, #6e6e73); }
+    .checkout-result__title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(26px, 4vw, 36px);
+      letter-spacing: -0.02em;
+      margin: 0 0 14px;
+      color: var(--color-apple-ink);
+    }
+    .checkout-result__text { color: var(--color-graphite); line-height: 1.6; margin: 0 0 28px; }
+    .checkout-result__actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  </style>
+</Base>

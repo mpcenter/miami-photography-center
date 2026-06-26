@@ -16,10 +16,12 @@ const t = locale === 'es' ? {
   specsTitle: 'Especificaciones',
   qtyLabel: 'Cantidad',
   buyNow: 'Comprar ahora',
-  stripeNote: 'Pago seguro vía Stripe — se activa en el lanzamiento.',
-  formSuccess: 'Solicitud de orden recibida — el checkout se activa en el lanzamiento.',
+  stripeNote: 'Pago seguro con Stripe · Apple Pay y Google Pay · impuestos calculados al pagar.',
+  checkoutPending: 'Redirigiendo al pago…',
+  checkoutSoon: 'El pago en línea se activa muy pronto. Escríbenos por WhatsApp para reservar este artículo.',
+  checkoutError: 'No pudimos iniciar el pago. Inténtalo de nuevo o llámanos al (786) 763-2091.',
   shippingTitle: 'Envíos',
-  shippingCopy: 'Enviamos a todo Estados Unidos con empaque protegido y número de seguimiento. Las órdenes se despachan en 1–2 días hábiles desde nuestro taller en West Park, FL. Retiro en tienda disponible sin costo.',
+  shippingCopy: 'Enviamos a todo Estados Unidos con empaque protegido y número de seguimiento. Las órdenes se despachan en 1–2 días hábiles desde nuestro taller en West Park, FL.',
   warrantyTitle: 'Garantía de 6 meses',
   warrantyCopy: 'Todo el equipo usado se revisa y calibra en nuestro propio taller antes de publicarse. Cada compra incluye una garantía de 6 meses que cubre fallas de funcionamiento del equipo tal como fue vendido. Si algo falla, lo reparamos en el taller — los mismos técnicos que lo revisaron.',
   crossTitle: '¿Necesitas servicio para tu propio equipo?',
@@ -31,10 +33,12 @@ const t = locale === 'es' ? {
   specsTitle: 'Specifications',
   qtyLabel: 'Quantity',
   buyNow: 'Buy now',
-  stripeNote: 'Secure checkout via Stripe — activating at launch.',
-  formSuccess: 'Order request received — checkout goes live at launch.',
+  stripeNote: 'Secure checkout with Stripe · Apple Pay & Google Pay · tax calculated at checkout.',
+  checkoutPending: 'Redirecting to checkout…',
+  checkoutSoon: 'Online checkout is going live very soon. Message us on WhatsApp to reserve this item.',
+  checkoutError: 'We couldn’t start checkout. Please try again or call (786) 763-2091.',
   shippingTitle: 'Shipping',
-  shippingCopy: 'We ship anywhere in the US with protective packaging and a tracking number. Orders dispatch within 1–2 business days from our workshop in West Park, FL. Free in-store pickup is also available.',
+  shippingCopy: 'We ship anywhere in the US with protective packaging and a tracking number. Orders dispatch within 1–2 business days from our workshop in West Park, FL.',
   warrantyTitle: '6-month warranty',
   warrantyCopy: 'Every piece of used gear is inspected and serviced in our own workshop before it’s listed. Each purchase includes a 6-month warranty covering functional failures of the gear as sold. If anything goes wrong, we fix it in-house — the same technicians who serviced it.',
   crossTitle: 'Need your own gear serviced?',
@@ -109,7 +113,16 @@ const productSchema = JSON.stringify({
             ))}
           </ul>
 
-          <form class="form js-demo-form store-detail__form" action="#" method="POST" data-success={t.formSuccess}>
+          <form
+            class="form js-checkout-form store-detail__form"
+            action="/api/checkout"
+            method="POST"
+            data-slug={product.slug}
+            data-locale={locale}
+            data-pending={t.checkoutPending}
+            data-soon={t.checkoutSoon}
+            data-error={t.checkoutError}
+          >
             <div class="form__field store-detail__qty">
               <label for="qty">{t.qtyLabel}</label>
               <select id="qty" name="quantity">

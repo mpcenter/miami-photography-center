@@ -1,4 +1,7 @@
 {
+  "functions": {
+    "api/checkout.js": { "includeFiles": "src/content/products/**" }
+  },
   "redirects": [
     { "source": "/camera-and-gear-repair", "destination": "/repair", "permanent": true },
     { "source": "/on-site-services", "destination": "/on-site", "permanent": true },

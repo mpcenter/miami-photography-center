@@ -16,6 +16,7 @@
     init3DTilt();
     initParallax();
     initDemoForms();
+    initCheckoutForm();
     initIntakeForms();
     initPromoCarousel();
     initGsapFeatures();
@@ -200,6 +201,66 @@
         }
         note.textContent = '✓ ' + msg;
         form.querySelectorAll('button[type="submit"]').forEach((b) => { b.disabled = true; b.style.opacity = '0.6'; });
+      });
+    });
+  }
+
+  /* ===== STORE CHECKOUT (Stripe) =====
+     <form class="js-checkout-form" action="/api/checkout"> posts the product
+     slug + quantity, then redirects to the Stripe-hosted checkout. While the
+     gateway isn't keyed yet the API replies { reason:'not_configured' } and we
+     show a friendly "coming soon" note instead of breaking the button. */
+  function initCheckoutForm() {
+    document.querySelectorAll('form.js-checkout-form').forEach((form) => {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+
+        const btn = form.querySelector('button[type="submit"]');
+        const label = btn ? btn.textContent : '';
+        if (btn) { btn.disabled = true; btn.style.opacity = '0.6'; if (form.dataset.pending) btn.textContent = form.dataset.pending; }
+
+        let note = form.querySelector('.form__note');
+        const showNote = (msg, color) => {
+          if (!note) {
+            note = document.createElement('p');
+            note.className = 'form__note';
+            form.appendChild(note);
+          }
+          note.textContent = msg;
+          note.style.color = color;
+        };
+
+        const qty = form.querySelector('[name="quantity"]');
+        const payload = {
+          slug: form.dataset.slug || '',
+          quantity: qty ? qty.value : '1',
+          locale: form.dataset.locale || document.documentElement.lang || 'en',
+        };
+
+        const restore = () => { if (btn) { btn.disabled = false; btn.style.opacity = '1'; btn.textContent = label; } };
+
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+          const data = await res.json().catch(() => ({}));
+          if (data && data.ok && data.url) {
+            window.location.assign(data.url); // hand off to Stripe
+            return;
+          }
+          if (data && data.reason === 'not_configured') {
+            showNote(form.dataset.soon || 'Online checkout is coming soon.', '#1d1d1f');
+            restore();
+            return;
+          }
+          throw new Error((data && data.error) || 'checkout failed');
+        } catch (err) {
+          showNote('✕ ' + (form.dataset.error || 'Something went wrong. Please try again.'), '#c0392b');
+          restore();
+        }
       });
     });
   }
