@@ -165,13 +165,7 @@ export default async function handler(req, res) {
   }
 
   const filename = `mpc-ship-label-${reference}.pdf`;
-  const es = locale === 'es';
-  const subject = es ? `MPC — Etiqueta de envío (${reference})` : `MPC — Ship-in label (${reference})`;
-  const bodyHtml = `<!doctype html><html><body style="font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#1d1d1f;padding:20px;">
-    <p style="font-size:18px;font-weight:700;margin:0 0 8px;">MPC — ${es ? 'Etiqueta de envío' : 'Ship-in label'}</p>
-    <p style="margin:0 0 6px;">${es ? 'Adjuntamos tu etiqueta de envío en PDF. Imprímela y pégala por fuera de la caja con tu equipo, y añade el franqueo en tu transportista.' : 'Your ship-in label is attached as a PDF. Print it and tape it to the outside of the box with your gear, then add postage at your carrier.'}</p>
-    <p style="margin:0;color:#6e6e73;font-size:13px;">${es ? 'Referencia' : 'Reference'}: <strong>${esc(reference)}</strong></p>
-  </body></html>`;
+  const { subject, html: bodyHtml } = buildEmail({ locale, reference });
 
   try {
     const r = await fetch('https://api.resend.com/emails', {
@@ -196,4 +190,71 @@ export default async function handler(req, res) {
   }
 
   return res.status(200).json({ ok: true, reference });
+}
+
+// Builds the mail-in repair instructions email (subject + HTML), localized.
+export function buildEmail({ locale, reference }) {
+  const es = locale === 'es';
+  const subject = es
+    ? `Instrucciones para tu envío de reparación — ${reference}`
+    : `Mail-In Repair Instructions — ${reference}`;
+
+  const C = es
+    ? {
+        h: 'Instrucciones para envío de reparación',
+        intro: 'Gracias por elegir a Miami Photography Center para tu reparación. Sigue estas instrucciones con cuidado para que podamos procesar tu equipo de la forma más rápida y segura posible.',
+        refLabel: 'Referencia',
+        labelNote: 'Adjuntamos tu <strong>etiqueta de envío en PDF</strong>. Imprímela y pégala por fuera de la caja. Añade el franqueo en tu transportista (USPS / UPS / FedEx).',
+        beforeH: 'Antes de enviar',
+        beforeP: 'Retira los siguientes artículos, salvo que estén directamente relacionados con el problema reportado:',
+        removeItems: ['Tarjetas de memoria', 'Correas de cámara', 'Bolsas o estuches', 'Filtros', 'Accesorios personales', 'Cables', 'Cargadores', 'Battery grips (empuñaduras)', 'Cualquier otro accesorio no relacionado con la reparación'],
+        batteryH: 'Batería',
+        batteryP: 'Deja la batería instalada solo si es necesaria para diagnosticar o probar el equipo. Si el problema no tiene relación con la energía o el funcionamiento, puedes retirar la batería antes de enviar.',
+        packH: 'Embalaje',
+        packItems: ['Usa una caja de cartón resistente y en buen estado.', 'Envuelve el equipo con abundante plástico de burbujas.', 'Deja al menos 5 cm (2 pulgadas) de amortiguación entre el equipo y cada lado de la caja.', 'Rellena los espacios vacíos con material de embalaje para evitar que el equipo se mueva durante el transporte.'],
+        footer: 'Miami Photography Center · 3911 SW 27th St, West Park, FL 33023 · +1 (786) 763-2091',
+      }
+    : {
+        h: 'Mail-In Repair Instructions',
+        intro: 'Thank you for choosing Miami Photography Center for your repair. Please follow these instructions carefully to help us process your equipment as quickly and safely as possible.',
+        refLabel: 'Reference',
+        labelNote: 'Your <strong>ship-in label (PDF)</strong> is attached. Print it and tape it to the outside of the box. Add postage at your carrier (USPS / UPS / FedEx).',
+        beforeH: 'Before Shipping',
+        beforeP: 'Please remove the following items unless they are directly related to the reported problem:',
+        removeItems: ['Memory cards', 'Camera straps', 'Camera bags or cases', 'Filters', 'Personal accessories', 'Cables', 'Chargers', 'Battery grips', 'Any other accessories not related to the repair'],
+        batteryH: 'Battery',
+        batteryP: 'Please leave the battery installed only if it is necessary to diagnose or test the equipment. If the issue is unrelated to power or operation, you may remove the battery before shipping.',
+        packH: 'Packaging',
+        packItems: ['Use a sturdy cardboard box in good condition.', 'Wrap the equipment with plenty of bubble wrap.', 'Leave at least 2 inches (5 cm) of protective cushioning between the equipment and every side of the box.', 'Fill any empty spaces with packing material to prevent movement during transit.'],
+        footer: 'Miami Photography Center · 3911 SW 27th St, West Park, FL 33023 · +1 (786) 763-2091',
+      };
+
+  const li = (arr) => arr.map((x) => `<li style="margin:0 0 6px;">${esc(x)}</li>`).join('');
+  const bodyHtml = `<!doctype html><html><body style="margin:0;background:#f4f4f5;padding:24px;font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#1d1d1f;">
+    <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:14px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+      <div style="background:#1d1d1f;padding:20px 28px;">
+        <span style="color:#ffffff;font-size:22px;font-weight:800;letter-spacing:0.04em;">MPC</span>
+        <span style="color:#9b9b9f;font-size:12px;display:block;margin-top:2px;">Miami Photography Center</span>
+      </div>
+      <div style="padding:28px;">
+        <h1 style="font-size:20px;margin:0 0 14px;">${esc(C.h)}</h1>
+        <p style="margin:0 0 16px;line-height:1.55;">${esc(C.intro)}</p>
+        <p style="margin:0 0 20px;font-size:14px;color:#6e6e73;">${esc(C.refLabel)}: <strong style="color:#1d1d1f;">${esc(reference)}</strong></p>
+        <div style="background:#fffae6;border:1px solid #f2e27a;border-radius:10px;padding:14px 16px;margin:0 0 24px;line-height:1.5;font-size:14px;">${C.labelNote}</div>
+
+        <h2 style="font-size:16px;margin:0 0 8px;">${esc(C.beforeH)}</h2>
+        <p style="margin:0 0 10px;line-height:1.5;">${esc(C.beforeP)}</p>
+        <ul style="margin:0 0 20px;padding-left:20px;line-height:1.5;">${li(C.removeItems)}</ul>
+
+        <h2 style="font-size:16px;margin:0 0 8px;">${esc(C.batteryH)}</h2>
+        <p style="margin:0 0 20px;line-height:1.55;">${esc(C.batteryP)}</p>
+
+        <h2 style="font-size:16px;margin:0 0 8px;">${esc(C.packH)}</h2>
+        <ul style="margin:0;padding-left:20px;line-height:1.5;">${li(C.packItems)}</ul>
+      </div>
+      <div style="border-top:1px solid #ececee;padding:16px 28px;font-size:12px;color:#9b9b9f;line-height:1.5;">${esc(C.footer)}</div>
+    </div>
+  </body></html>`;
+
+  return { subject, html: bodyHtml };
 }
