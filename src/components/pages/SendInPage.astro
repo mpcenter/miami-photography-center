@@ -20,8 +20,6 @@ const t =
         notYetLink: 'Solicítalo →',
         formTitle: 'Genera tu etiqueta',
         formSub: 'Completa tus datos y te enviaremos tu etiqueta de envío en PDF al correo para que la imprimas.',
-        fRef: 'Nº de referencia o presupuesto (si lo tienes)',
-        fRefPh: 'Ej. MPC-20260625-AB12',
         fName: 'Nombre completo *',
         fNamePh: '¿Cómo te llamas?',
         fAddress: 'Tu dirección (remitente) *',
@@ -37,7 +35,6 @@ const t =
         fSubmit: 'Enviar mi etiqueta',
         fSending: 'Enviando…',
         fSuccess: 'Te enviamos tu etiqueta de envío en PDF al correo. Descárgala, imprímela y pégala por fuera de la caja con tu equipo.',
-        fRefLabel: 'Tu nº de referencia:',
         fErrorMsg: 'No pudimos enviar tu etiqueta. Inténtalo de nuevo o llámanos al (786) 763-2091.',
         legalPre: 'Al enviar aceptas nuestra',
         legalLink: 'política de privacidad',
@@ -53,8 +50,6 @@ const t =
         notYetLink: 'Request it →',
         formTitle: 'Generate your label',
         formSub: 'Fill in your details and we’ll email you your ship-in label as a PDF to print.',
-        fRef: 'Reference or quote number (if you have one)',
-        fRefPh: 'e.g. MPC-20260625-AB12',
         fName: 'Full Name *',
         fNamePh: 'What’s your name?',
         fAddress: 'Your address (sender) *',
@@ -70,7 +65,6 @@ const t =
         fSubmit: 'Send my label',
         fSending: 'Sending…',
         fSuccess: 'We’ve emailed you your ship-in label as a PDF. Download it, print it, and tape it to the outside of the box with your gear.',
-        fRefLabel: 'Your reference no.:',
         fErrorMsg: 'We could not send your label. Please try again or call us at (786) 763-2091.',
         legalPre: 'By submitting you agree to our',
         legalLink: 'privacy policy',
@@ -98,13 +92,7 @@ const t =
         data-success={t.fSuccess}
         data-sending={t.fSending}
         data-error={t.fErrorMsg}
-        data-ref-label={t.fRefLabel}
       >
-        <div class="form__field">
-          <label for="si-ref">{t.fRef}</label>
-          <input id="si-ref" type="text" name="reference" placeholder={t.fRefPh} />
-        </div>
-
         <div class="form__field">
           <label for="si-name">{t.fName}</label>
           <input id="si-name" type="text" name="name" required autocomplete="name" placeholder={t.fNamePh} />
