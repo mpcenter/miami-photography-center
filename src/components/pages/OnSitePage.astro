@@ -471,7 +471,7 @@ const faqSchema = JSON.stringify({
       <p class="booking__sub">{t.bookingSub}</p>
     </div>
 
-    <form id="booking-form" class="form js-intake-form" action="/api/contact" method="POST" data-form="On-Site / Coverage visit" data-locale={locale} data-success={t.formSuccess} data-error={locale === 'es' ? 'No pudimos enviar tu solicitud. Inténtalo de nuevo o llámanos al (786) 763-2091.' : 'We could not send your request. Please try again or call us at (786) 763-2091.'}>
+    <form id="booking-form" class="form js-intake-form" action="/api/contact" method="POST" data-form="On-Site / Coverage visit" data-locale={locale} data-sent={locale === 'es' ? '✓ Enviado' : '✓ Sent'} data-success={t.formSuccess} data-error={locale === 'es' ? 'No pudimos enviar tu solicitud. Inténtalo de nuevo o llámanos al (786) 763-2091.' : 'We could not send your request. Please try again or call us at (786) 763-2091.'}>
       <div class="form__row">
         <div class="form__field">
           <label for="bk-name">{t.fName}</label>

@@ -19,6 +19,8 @@ const WEBHOOK_SECRET = (process.env.STRIPE_WEBHOOK_SECRET || '').trim();
 const RESEND_KEY = (process.env.RESEND_API_KEY || process.env.resend_api_key || '').trim();
 const SHOP_EMAIL = (process.env.SHOP_EMAIL || process.env.shop_email || 'service@miamiphotographycenter.com').trim();
 const COPY_EMAIL = (process.env.NOTIFY_EMAIL || process.env.notify_email || 'adminwebmpc@gmail.com').trim();
+// Every sale also notifies this owner inbox (configurable via SALES_NOTIFY_EMAIL).
+const SALES_EMAIL = (process.env.SALES_NOTIFY_EMAIL || process.env.sales_notify_email || 'miamipcenter@gmail.com').trim();
 const FROM_EMAIL = (
   process.env.FROM_EMAIL ||
   process.env.from_email ||
@@ -39,11 +41,19 @@ function readRaw(req) {
 
 async function sendEmail({ to, subject, html, replyTo }) {
   if (!RESEND_KEY) return;
-  await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${RESEND_KEY}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ from: FROM_EMAIL, to, subject, html, ...(replyTo ? { reply_to: replyTo } : {}) }),
-  }).catch(() => {});
+  try {
+    const r = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${RESEND_KEY}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ from: FROM_EMAIL, to, subject, html, ...(replyTo ? { reply_to: replyTo } : {}) }),
+    });
+    // Surface delivery failures in the Vercel logs. The payment already
+    // succeeded, so we never fail the webhook here — returning 500 would make
+    // Stripe retry and duplicate these emails. The sale is always in Stripe too.
+    if (!r.ok) console.error('[stripe-webhook] Resend send failed', r.status, await r.text().catch(() => ''));
+  } catch (err) {
+    console.error('[stripe-webhook] Resend send error', String(err));
+  }
 }
 
 export default async function handler(req, res) {
@@ -81,7 +91,7 @@ export default async function handler(req, res) {
       <p style="margin:0 0 4px;"><strong>Ship to:</strong> ${esc(ship.name || cd.name || '')} — ${esc(addrLine)}</p>
       <p style="margin:12px 0 0;color:#6e6e73;font-size:13px;">Mark this item as sold in /admin so it can’t be bought twice.</p>
     </body></html>`;
-    await sendEmail({ to: [...new Set([SHOP_EMAIL, COPY_EMAIL].filter(Boolean))], subject: `New store order — $${amount}`, html: shopHtml, replyTo: cd.email || undefined });
+    await sendEmail({ to: [...new Set([SHOP_EMAIL, COPY_EMAIL, SALES_EMAIL].filter(Boolean))], subject: `New store order — $${amount}`, html: shopHtml, replyTo: cd.email || undefined });
 
     if (cd.email) {
       const custHtml = `<!doctype html><html><body style="margin:0;background:#f4f4f5;padding:24px;font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#1d1d1f;">

@@ -291,12 +291,18 @@
         payload.locale = form.dataset.locale || document.documentElement.lang || 'en';
         if (form.dataset.form) payload._form = form.dataset.form;
 
+        // Hard timeout so a stalled/cold-starting function can never leave the
+        // button hung on "Sending…" forever — it fails into the error branch.
+        const ac = new AbortController();
+        const timer = setTimeout(() => ac.abort(), 30000);
         try {
           const res = await fetch(form.action, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
+            signal: ac.signal,
           });
+          clearTimeout(timer);
           const data = await res.json().catch(() => ({}));
           if (res.ok && data.ok) {
             note.style.color = '#1d7a3a';
@@ -304,13 +310,19 @@
             note.innerHTML = '✓ ' + (form.dataset.success || 'Request received.') +
               (data.reference ? '<br><strong>' + refLabel + ' ' + data.reference + '</strong>' : '');
             form.querySelectorAll('input, select, textarea').forEach((el) => { el.disabled = true; });
+            // Resolve the button into a clear "done" state — never leave it
+            // stuck on the "Sending…" label even though the send succeeded.
+            btns.forEach((b, i) => { b.style.opacity = '1'; b.style.cursor = 'default'; b.textContent = form.dataset.sent || ('✓ ' + labels[i]); });
+            note.scrollIntoView({ behavior: 'smooth', block: 'center' });
           } else {
             throw new Error(data.error || 'send failed');
           }
         } catch (err) {
+          clearTimeout(timer);
           note.style.color = '#c0392b';
           note.textContent = '✕ ' + (form.dataset.error || 'Something went wrong. Please try again.');
           btns.forEach((b, i) => { b.disabled = false; b.style.opacity = '1'; b.textContent = labels[i]; });
+          note.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       });
     });

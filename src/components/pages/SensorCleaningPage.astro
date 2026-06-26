@@ -312,7 +312,7 @@ const serviceSchema = JSON.stringify({
         <h2 id="form-title" class="clean-form__title">{t.formTitle}</h2>
         <p class="clean-form__lede">{t.formLede}</p>
       </div>
-      <form id="cleaning-form" class="form js-intake-form" action="/api/contact" method="POST" data-form="Sensor cleaning request" data-locale={locale} data-success={t.formSuccess} data-error={locale === 'es' ? 'No pudimos enviar tu solicitud. Inténtalo de nuevo o llámanos al (786) 763-2091.' : 'We could not send your request. Please try again or call us at (786) 763-2091.'}>
+      <form id="cleaning-form" class="form js-intake-form" action="/api/contact" method="POST" data-form="Sensor cleaning request" data-locale={locale} data-sent={locale === 'es' ? '✓ Enviado' : '✓ Sent'} data-success={t.formSuccess} data-error={locale === 'es' ? 'No pudimos enviar tu solicitud. Inténtalo de nuevo o llámanos al (786) 763-2091.' : 'We could not send your request. Please try again or call us at (786) 763-2091.'}>
         <div class="form__row">
           <div class="form__field">
             <label for="cf-name">{t.formName} *</label>

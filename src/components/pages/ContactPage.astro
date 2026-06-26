@@ -133,7 +133,7 @@ const social = [
       <div class="contactp__form-wrap" data-anim="fade-up">
         <h2 class="contactp__heading">{t.formTitle}</h2>
         <p class="contactp__form-copy">{t.formCopy}</p>
-        <form class="form js-intake-form" id="contact-form" action="/api/contact" method="POST" data-form="Contact message" data-locale={locale} data-success={t.fSuccess} data-error={locale === 'es' ? 'No pudimos enviar tu mensaje. Inténtalo de nuevo o llámanos al (786) 763-2091.' : 'We could not send your message. Please try again or call us at (786) 763-2091.'}>
+        <form class="form js-intake-form" id="contact-form" action="/api/contact" method="POST" data-form="Contact message" data-locale={locale} data-sent={locale === 'es' ? '✓ Enviado' : '✓ Sent'} data-success={t.fSuccess} data-error={locale === 'es' ? 'No pudimos enviar tu mensaje. Inténtalo de nuevo o llámanos al (786) 763-2091.' : 'We could not send your message. Please try again or call us at (786) 763-2091.'}>
           <div class="form__row">
             <div class="form__field">
               <label for="contact-name">{t.fName} *</label>
