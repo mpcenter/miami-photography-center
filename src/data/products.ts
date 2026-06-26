@@ -10,6 +10,7 @@ export interface Product {
   slug: string;
   name: { en: string; es: string };
   price: number; // USD
+  shipping?: number; // continental-US shipping cost in USD (HI/AK add a surcharge)
   category: { en: string; es: string }; // Cameras | Lenses | Accessories
   img: string;
   desc: { en: string; es: string };
