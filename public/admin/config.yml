@@ -99,6 +99,14 @@ collections:
         widget: number
         value_type: float
         min: 0
+      - name: shipping
+        label: Envío — EE. UU. continental (USD)
+        widget: number
+        value_type: float
+        min: 0
+        required: false
+        default: 15
+        hint: Costo de envío de ESTE producto a EE. UU. continental (según su peso/caja). Hawái suma +$15 y Alaska +$43 automáticamente; el cliente elige su zona al pagar. Si lo dejas vacío se usa $15.
       - name: category
         label: Categoría
         widget: object

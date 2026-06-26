@@ -7,7 +7,8 @@
 // 'not_configured' } so the storefront keeps its pre-launch placeholder note
 // instead of breaking. Flip it live by adding the key in Vercel.
 //
-// Env: STRIPE_SECRET_KEY. Optional: SITE_URL, SHIPPING_FLAT_CENTS.
+// Env: STRIPE_SECRET_KEY. Optional: SITE_URL, SHIP_DEFAULT_CENTS,
+// SHIP_HI_SURCHARGE_CENTS, SHIP_AK_SURCHARGE_CENTS.
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -15,8 +16,14 @@ import Stripe from 'stripe';
 
 const SECRET = (process.env.STRIPE_SECRET_KEY || process.env.stripe_secret_key || '').trim();
 const SITE_URL = (process.env.SITE_URL || 'https://miamiphotographycenter.com').replace(/\/+$/, '');
-// Flat shipping in cents (e.g. 1500 = $15). 0 → free shipping (default).
-const SHIPPING_FLAT_CENTS = Math.max(0, parseInt(process.env.SHIPPING_FLAT_CENTS || '0', 10) || 0);
+
+// Shipping model — per-product continental rate + fixed HI/AK surcharge.
+// The customer picks their zone at checkout. Cents; env overrides the defaults
+// (keep in sync with src/lib/shipping.ts).
+const cents = (v, def) => { const n = parseInt(v, 10); return Number.isFinite(n) && n >= 0 ? n : def; };
+const SHIP_DEFAULT_CENTS = cents(process.env.SHIP_DEFAULT_CENTS, 1500); // $15 fallback
+const SHIP_HI_SURCHARGE_CENTS = cents(process.env.SHIP_HI_SURCHARGE_CENTS, 1500); // +$15
+const SHIP_AK_SURCHARGE_CENTS = cents(process.env.SHIP_AK_SURCHARGE_CENTS, 4300); // +$43
 
 // Products live in src/content/products/*.json (edited via /admin). The file is
 // bundled into this function via vercel.json `includeFiles`.
@@ -63,6 +70,26 @@ export default async function handler(req, res) {
     : undefined;
   const base = locale === 'es' ? `${SITE_URL}/es` : SITE_URL;
 
+  // Shipping: this product's continental rate + fixed HI/AK surcharges. The
+  // customer picks their zone at checkout (US only, all 50 states).
+  const shipCents = typeof product.shipping === 'number' && product.shipping >= 0
+    ? Math.round(product.shipping * 100)
+    : SHIP_DEFAULT_CENTS;
+  const shipRate = (displayName, amount) => ({
+    shipping_rate_data: {
+      type: 'fixed_amount',
+      display_name: displayName,
+      fixed_amount: { amount, currency: 'usd' },
+      tax_behavior: 'exclusive',
+      tax_code: 'txcd_92010001', // shipping
+    },
+  });
+  const shipping_options = [
+    shipRate(locale === 'es' ? 'EE. UU. continental (48 estados)' : 'Continental US (48 states)', shipCents),
+    shipRate('Hawaii', shipCents + SHIP_HI_SURCHARGE_CENTS),
+    shipRate('Alaska', shipCents + SHIP_AK_SURCHARGE_CENTS),
+  ];
+
   try {
     const stripe = new Stripe(SECRET);
     const session = await stripe.checkout.sessions.create({
@@ -88,21 +115,7 @@ export default async function handler(req, res) {
       billing_address_collection: 'required',
       shipping_address_collection: { allowed_countries: ['US'] },
       phone_number_collection: { enabled: true },
-      ...(SHIPPING_FLAT_CENTS > 0
-        ? {
-            shipping_options: [
-              {
-                shipping_rate_data: {
-                  type: 'fixed_amount',
-                  display_name: locale === 'es' ? 'Envío' : 'Shipping',
-                  fixed_amount: { amount: SHIPPING_FLAT_CENTS, currency: 'usd' },
-                  tax_behavior: 'exclusive',
-                  tax_code: 'txcd_92010001', // shipping
-                },
-              },
-            ],
-          }
-        : {}),
+      shipping_options,
       metadata: { slug, quantity: String(quantity) },
       success_url: `${base}/store/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${base}/store/cancel`,
