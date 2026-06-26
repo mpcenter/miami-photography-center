@@ -1,8 +1,9 @@
 // Vercel Serverless Function — repair send-in intake.
-// Receives the repair form, generates a reference number, and emails a
-// printable intake/shipping sheet to the customer (and a copy to the shop)
-// via Resend. Works with the static Astro site: Vercel serves everything in
-// /api as functions regardless of the framework.
+// Receives the repair form and emails a confirmation/receipt of what was
+// submitted to the customer (and a copy to the shop) via Resend. No reference
+// number — the shop assigns its own order number per case. Works with the
+// static Astro site: Vercel serves everything in /api as functions regardless
+// of the framework.
 //
 // Required env var (set in the Vercel project): RESEND_API_KEY
 // Optional env vars: SHOP_EMAIL, FROM_EMAIL
@@ -32,24 +33,12 @@ const esc = (v) =>
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 
-function makeReference() {
-  const d = new Date();
-  const ymd =
-    d.getUTCFullYear().toString() +
-    String(d.getUTCMonth() + 1).padStart(2, '0') +
-    String(d.getUTCDate()).padStart(2, '0');
-  let rand = '';
-  for (let i = 0; i < 4; i++) rand += '0123456789ABCDEFGHJKLMNPQRSTUVWXYZ'[Math.floor(Math.random() * 34)];
-  return `MPC-${ymd}-${rand}`;
-}
-
-function buildSheet({ locale, reference, name, address, phone, email, brand, model, message, items }) {
+function buildSheet({ locale, name, address, phone, email, brand, model, message, items }) {
   const es = locale === 'es';
   const T = es
     ? {
         title: 'Solicitud de reparación recibida',
-        intro: 'Recibimos tu solicitud de reparación. La revisaremos y te contactaremos dentro de un día hábil para coordinar los próximos pasos. Guarda tu número de referencia.',
-        ref: 'Número de referencia',
+        intro: 'Recibimos tu solicitud de reparación. La revisaremos y te contactaremos dentro de un día hábil para coordinar los próximos pasos.',
         steps: 'Cómo seguimos',
         step1: 'Revisamos tu caso y te contactamos dentro de un día hábil.',
         step2: 'Coordinamos juntos la entrega del equipo: llevarlo al taller, solicitar recogida (según cobertura) o enviarlo por correo.',
@@ -68,8 +57,7 @@ function buildSheet({ locale, reference, name, address, phone, email, brand, mod
       }
     : {
         title: 'Repair request received',
-        intro: 'We received your repair request. We’ll review it and contact you within one business day to coordinate the next steps. Keep your reference number.',
-        ref: 'Reference number',
+        intro: 'We received your repair request. We’ll review it and contact you within one business day to coordinate the next steps.',
         steps: 'What happens next',
         step1: 'We review your case and contact you within one business day.',
         step2: 'We coordinate delivery together: drop it off at the workshop, request a pickup (where covered), or ship it by mail.',
@@ -97,12 +85,7 @@ function buildSheet({ locale, reference, name, address, phone, email, brand, mod
       <span style="color:#9a9aa0;font-size:13px;margin-left:10px;">${esc(T.title)}</span>
     </div>
     <div style="background:#fff;padding:24px 28px;">
-      <p style="margin:0 0 18px;color:#1d1d1f;font-size:15px;">${esc(T.intro)}</p>
-
-      <div style="background:#ffff00;border-radius:12px;padding:14px 18px;margin-bottom:22px;">
-        <div style="color:#1d1d1f;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;">${esc(T.ref)}</div>
-        <div style="color:#1d1d1f;font-size:26px;font-weight:800;letter-spacing:0.02em;">${esc(reference)}</div>
-      </div>
+      <p style="margin:0 0 22px;color:#1d1d1f;font-size:15px;">${esc(T.intro)}</p>
 
       <h3 style="margin:0 0 4px;color:#1d1d1f;font-size:13px;text-transform:uppercase;letter-spacing:0.04em;">${esc(T.customer)}</h3>
       <table style="border-collapse:collapse;margin-bottom:18px;width:100%;">
@@ -147,7 +130,7 @@ export default async function handler(req, res) {
   body = body || {};
 
   // Honeypot: bots fill the hidden "website" field. Pretend success.
-  if (body.website) return res.status(200).json({ ok: true, reference: makeReference() });
+  if (body.website) return res.status(200).json({ ok: true });
 
   const locale = body.locale === 'es' ? 'es' : 'en';
   const name = (body.name || '').trim();
@@ -171,12 +154,11 @@ export default async function handler(req, res) {
     return res.status(500).json({ ok: false, error: 'Email service not configured (RESEND_API_KEY missing)' });
   }
 
-  const reference = makeReference();
-  const html = buildSheet({ locale, reference, name, address, phone, email, brand, model, message, items });
+  const html = buildSheet({ locale, name, address, phone, email, brand, model, message, items });
   const subject =
     locale === 'es'
-      ? `MPC — Solicitud de reparación (${reference})`
-      : `MPC — Repair request (${reference})`;
+      ? 'MPC — Solicitud de reparación recibida'
+      : 'MPC — Repair request received';
 
   try {
     const r = await fetch('https://api.resend.com/emails', {
@@ -203,5 +185,5 @@ export default async function handler(req, res) {
     return res.status(502).json({ ok: false, error: 'Email send error', detail: String(err) });
   }
 
-  return res.status(200).json({ ok: true, reference });
+  return res.status(200).json({ ok: true });
 }
