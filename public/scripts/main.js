@@ -305,6 +305,9 @@
           clearTimeout(timer);
           const data = await res.json().catch(() => ({}));
           if (res.ok && data.ok) {
+            // Opt-in: some forms hand off to a dedicated confirmation page
+            // instead of showing an inline note (e.g. the ship-in label).
+            if (form.dataset.redirect) { window.location.assign(form.dataset.redirect); return; }
             note.style.color = '#1d7a3a';
             const refLabel = form.dataset.refLabel || 'Reference:';
             note.innerHTML = '✓ ' + (form.dataset.success || 'Request received.') +

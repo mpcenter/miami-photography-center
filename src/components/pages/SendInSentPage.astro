@@ -1,0 +1,86 @@
+---
+import Base from '../../layouts/Base.astro';
+import { localePath, type Locale } from '../../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const p = (path: string) => localePath(locale, path);
+const es = locale === 'es';
+const home = p('/');
+
+const t = es
+  ? {
+      title: 'Etiqueta enviada | Miami Photography Center',
+      h: '¡Etiqueta enviada!',
+      text: 'Te enviamos tu etiqueta de envío en PDF al correo. Revisa tu bandeja (y la carpeta de spam), descárgala, imprímela y pégala por fuera de la caja con tu equipo.',
+      redirectNote: 'Te llevamos al inicio en unos segundos…',
+      home: 'Ir al inicio',
+    }
+  : {
+      title: 'Label sent | Miami Photography Center',
+      h: 'Label sent!',
+      text: 'We’ve emailed you your ship-in label as a PDF. Check your inbox (and spam folder), download it, print it, and tape it to the outside of the box with your gear.',
+      redirectNote: 'Taking you home in a few seconds…',
+      home: 'Go to home',
+    };
+---
+
+<Base locale={locale} title={t.title} description={t.text}>
+  <section class="sent-result" aria-labelledby="sent-title">
+    <div class="sent-result__card">
+      <div class="sent-result__icon" aria-hidden="true">✓</div>
+      <h1 id="sent-title" class="sent-result__title">{t.h}</h1>
+      <p class="sent-result__text">{t.text}</p>
+      <a href={home} class="btn btn--primary btn--lg">{t.home}</a>
+      <p class="sent-result__redirect">{t.redirectNote}</p>
+    </div>
+  </section>
+
+  <style>
+    .sent-result {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: calc(var(--nav-h, 80px) + clamp(40px, 8vw, 90px)) var(--gutter) clamp(60px, 9vw, 110px);
+    }
+    .sent-result__card {
+      max-width: 560px;
+      text-align: center;
+      background: var(--color-pure-white);
+      border-radius: var(--r-card);
+      padding: clamp(32px, 5vw, 56px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.10);
+    }
+    .sent-result__icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 22px;
+      font-size: 34px;
+      font-weight: 700;
+      color: #fff;
+      background: #1d7a3a;
+    }
+    .sent-result__title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(26px, 4vw, 36px);
+      letter-spacing: -0.02em;
+      margin: 0 0 14px;
+      color: var(--color-apple-ink);
+    }
+    .sent-result__text { color: var(--color-graphite); line-height: 1.6; margin: 0 0 28px; }
+    .sent-result__redirect { margin: 18px 0 0; font-size: 13px; color: var(--color-graphite); }
+  </style>
+
+  <script is:inline define:vars={{ home }}>
+    // Auto-return to the home page a few seconds after the label is sent.
+    setTimeout(function () { window.location.href = home; }, 8000);
+  </script>
+</Base>
