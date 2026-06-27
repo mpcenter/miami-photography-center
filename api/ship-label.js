@@ -191,6 +191,17 @@ export function buildEmail({ locale }) {
         h: 'Instrucciones para envío de reparación',
         intro: 'Gracias por elegir a Miami Photography Center para tu reparación. Sigue estas instrucciones con cuidado para que podamos procesar tu equipo de la forma más rápida y segura posible.',
         labelNote: 'Adjuntamos tu <strong>etiqueta de envío en PDF</strong>. Imprímela y pégala por fuera de la caja. Añade el franqueo en tu transportista (USPS / UPS / FedEx).',
+        includeH: 'Incluye una hoja con tus datos',
+        includeP: 'Por favor incluye una hoja impresa con la siguiente información:',
+        includeItems: ['Nombre completo', 'Dirección de envío', 'Número de teléfono', 'Correo electrónico', 'Breve descripción del problema', 'Cualquier información importante o solicitud especial'],
+        includeNote: 'Esta información nos permite generar tu Orden de Servicio de inmediato al recibir el equipo y comunicarnos contigo sin demoras.',
+        addressH: 'Dirección de envío',
+        addressLines: ['Miami Photography Center', '3911 SW 27th St', 'West Park, FL 33023', 'Estados Unidos'],
+        recsH: 'Recomendaciones de envío',
+        recsItems: ['Recomendamos usar un servicio de mensajería con número de rastreo (tracking) y seguro.', 'Conserva tu número de rastreo hasta que la reparación esté completada y el equipo te haya sido devuelto.', 'Miami Photography Center no se hace responsable por daños ocasionados durante el transporte por un embalaje insuficiente o inadecuado.'],
+        afterH: 'Después de recibir tu equipo',
+        afterIntro: 'Una vez que recibamos tu paquete:',
+        afterItems: ['Inspeccionamos el equipo.', 'Creamos tu Orden de Servicio.', 'Nos ponemos en contacto contigo con el diagnóstico, el estimado de reparación y los siguientes pasos.'],
         beforeH: 'Antes de enviar',
         beforeP: 'Retira los siguientes artículos, salvo que estén directamente relacionados con el problema reportado:',
         removeItems: ['Tarjetas de memoria', 'Correas de cámara', 'Bolsas o estuches', 'Filtros', 'Accesorios personales', 'Cables', 'Cargadores', 'Battery grips (empuñaduras)', 'Cualquier otro accesorio no relacionado con la reparación'],
@@ -204,6 +215,17 @@ export function buildEmail({ locale }) {
         h: 'Mail-In Repair Instructions',
         intro: 'Thank you for choosing Miami Photography Center for your repair. Please follow these instructions carefully to help us process your equipment as quickly and safely as possible.',
         labelNote: 'Your <strong>ship-in label (PDF)</strong> is attached. Print it and tape it to the outside of the box. Add postage at your carrier (USPS / UPS / FedEx).',
+        includeH: 'Include a sheet with your details',
+        includeP: 'Please include a printed sheet with the following information:',
+        includeItems: ['Full name', 'Shipping address', 'Phone number', 'Email address', 'A brief description of the problem', 'Any important details or special requests'],
+        includeNote: 'This lets us create your Service Order as soon as your equipment arrives and contact you without delays.',
+        addressH: 'Shipping Address',
+        addressLines: ['Miami Photography Center', '3911 SW 27th St', 'West Park, FL 33023', 'United States'],
+        recsH: 'Shipping Recommendations',
+        recsItems: ['We recommend using a courier service that includes tracking and insurance.', 'Keep your tracking number until the repair is complete and your equipment has been returned.', 'Miami Photography Center is not responsible for damage caused during transit due to insufficient or inadequate packaging.'],
+        afterH: 'After We Receive Your Equipment',
+        afterIntro: 'Once we receive your package:',
+        afterItems: ['We inspect the equipment.', 'We create your Service Order.', 'We contact you with the diagnosis, the repair estimate, and the next steps.'],
         beforeH: 'Before Shipping',
         beforeP: 'Please remove the following items unless they are directly related to the reported problem:',
         removeItems: ['Memory cards', 'Camera straps', 'Camera bags or cases', 'Filters', 'Personal accessories', 'Cables', 'Chargers', 'Battery grips', 'Any other accessories not related to the repair'],
@@ -226,6 +248,11 @@ export function buildEmail({ locale }) {
         <p style="margin:0 0 20px;line-height:1.55;">${esc(C.intro)}</p>
         <div style="background:#fffae6;border:1px solid #f2e27a;border-radius:10px;padding:14px 16px;margin:0 0 24px;line-height:1.5;font-size:14px;">${C.labelNote}</div>
 
+        <h2 style="font-size:16px;margin:0 0 8px;">${esc(C.includeH)}</h2>
+        <p style="margin:0 0 10px;line-height:1.5;">${esc(C.includeP)}</p>
+        <ul style="margin:0 0 12px;padding-left:20px;line-height:1.5;">${li(C.includeItems)}</ul>
+        <p style="margin:0 0 22px;line-height:1.5;">${esc(C.includeNote)}</p>
+
         <h2 style="font-size:16px;margin:0 0 8px;">${esc(C.beforeH)}</h2>
         <p style="margin:0 0 10px;line-height:1.5;">${esc(C.beforeP)}</p>
         <ul style="margin:0 0 20px;padding-left:20px;line-height:1.5;">${li(C.removeItems)}</ul>
@@ -234,7 +261,17 @@ export function buildEmail({ locale }) {
         <p style="margin:0 0 20px;line-height:1.55;">${esc(C.batteryP)}</p>
 
         <h2 style="font-size:16px;margin:0 0 8px;">${esc(C.packH)}</h2>
-        <ul style="margin:0;padding-left:20px;line-height:1.5;">${li(C.packItems)}</ul>
+        <ul style="margin:0 0 22px;padding-left:20px;line-height:1.5;">${li(C.packItems)}</ul>
+
+        <h2 style="font-size:16px;margin:0 0 8px;">${esc(C.addressH)}</h2>
+        <p style="margin:0 0 22px;line-height:1.6;"><strong>${esc(C.addressLines[0])}</strong><br>${C.addressLines.slice(1).map(esc).join('<br>')}</p>
+
+        <h2 style="font-size:16px;margin:0 0 8px;">${esc(C.recsH)}</h2>
+        <ul style="margin:0 0 22px;padding-left:20px;line-height:1.5;">${li(C.recsItems)}</ul>
+
+        <h2 style="font-size:16px;margin:0 0 8px;">${esc(C.afterH)}</h2>
+        <p style="margin:0 0 8px;line-height:1.5;">${esc(C.afterIntro)}</p>
+        <ol style="margin:0;padding-left:20px;line-height:1.5;">${li(C.afterItems)}</ol>
       </div>
       <div style="border-top:1px solid #ececee;padding:16px 28px;font-size:12px;color:#9b9b9f;line-height:1.5;">${esc(C.footer)}</div>
     </div>
