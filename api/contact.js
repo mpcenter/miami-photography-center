@@ -7,9 +7,9 @@
 
 const API_KEY = (process.env.RESEND_API_KEY || process.env.resend_api_key || '').trim();
 const SHOP_EMAIL = (process.env.SHOP_EMAIL || process.env.shop_email || 'service@miamiphotographycenter.com').trim();
-// Guaranteed copy so a lead never gets lost if the shop mailbox has issues.
-const COPY_EMAIL = (process.env.NOTIFY_EMAIL || process.env.notify_email || 'adminwebmpc@gmail.com').trim();
-const RECIPIENTS = [...new Set([SHOP_EMAIL, COPY_EMAIL].filter(Boolean))];
+// All form leads go to the shop's primary inbox only (service@) — the address
+// the client monitors and feeds into their CRM.
+const RECIPIENTS = [SHOP_EMAIL];
 const FROM_EMAIL = (
   process.env.FROM_EMAIL ||
   process.env.from_email ||

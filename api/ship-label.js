@@ -10,7 +10,6 @@ import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
 
 const API_KEY = (process.env.RESEND_API_KEY || process.env.resend_api_key || '').trim();
 const SHOP_EMAIL = (process.env.SHOP_EMAIL || process.env.shop_email || 'service@miamiphotographycenter.com').trim();
-const COPY_EMAIL = (process.env.NOTIFY_EMAIL || process.env.notify_email || 'adminwebmpc@gmail.com').trim();
 const FROM_EMAIL = (
   process.env.FROM_EMAIL ||
   process.env.from_email ||
@@ -161,7 +160,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         from: FROM_EMAIL,
         to: [email],
-        bcc: [...new Set([SHOP_EMAIL, COPY_EMAIL].filter(Boolean))],
+        bcc: [SHOP_EMAIL],
         // Reply goes to the customer (shop gets this via bcc).
         reply_to: email,
         subject,
