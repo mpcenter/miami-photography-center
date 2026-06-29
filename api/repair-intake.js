@@ -171,7 +171,9 @@ export default async function handler(req, res) {
         from: FROM_EMAIL,
         to: [email],
         ...(IS_TEST_SENDER ? {} : { bcc: SHOP_BCC }),
-        reply_to: SHOP_EMAIL,
+        // Reply goes to the customer: the shop receives this via bcc and hitting
+        // "Reply" in Gmail should reach the person who filled the form, not us.
+        reply_to: email,
         subject,
         html,
       }),
