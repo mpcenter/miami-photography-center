@@ -162,7 +162,8 @@ export default async function handler(req, res) {
         from: FROM_EMAIL,
         to: [email],
         bcc: [...new Set([SHOP_EMAIL, COPY_EMAIL].filter(Boolean))],
-        reply_to: SHOP_EMAIL,
+        // Reply goes to the customer (shop gets this via bcc).
+        reply_to: email,
         subject,
         html: bodyHtml,
         attachments: [{ filename, content: pdfBase64 }],
