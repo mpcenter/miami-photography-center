@@ -1,0 +1,30 @@
+{
+  "slug": "nikon-af-s-nikkor-24-70mm-f2-8e-ed-vr",
+  "name": {
+    "es": "Nikon AF-S NIKKOR 24-70mm f/2.8E ED VR",
+    "en": "Nikon AF-S NIKKOR 24-70mm f/2.8E ED VR"
+  },
+  "price": 10,
+  "shipping": 15,
+  "category": {
+    "es": "Lentes",
+    "en": "Lenses"
+  },
+  "img": "/uploads/IMG_9287.jpeg",
+  "desc": {
+    "es": "El Nikon AF-S NIKKOR 24-70mm f/2.8E ED VR es uno de los lentes profesionales más versátiles de Nikon. Su apertura constante de f/2.8 ofrece un excelente rendimiento en fotografía de eventos, retratos, bodas, paisajes y trabajo comercial.\n\nEste ejemplar ha sido inspeccionado y probado por nuestros técnicos para garantizar su correcto funcionamiento. Incluye parasol original Nikon y estuche Nikon CL-M3.\n\nIdeal para fotógrafos profesionales que buscan máxima calidad óptica, enfoque rápido y estabilización VR.",
+    "en": "The Nikon AF-S NIKKOR 24-70mm f/2.8E ED VR is Nikon’s flagship professional standard zoom lens. Its constant f/2.8 aperture delivers outstanding performance for weddings, portraits, events, landscapes, and commercial photography.\n\nThis lens has been professionally inspected and tested by our technicians to ensure proper operation. Includes the original Nikon lens hood and Nikon CL-M3 carrying case.\n\nA perfect choice for photographers seeking exceptional image quality, fast autofocus, and Nikon’s Vibration Reduction (VR) stabilization."
+  },
+  "condition": {
+    "es": "Revisado y calibrado in-house — garantía de 6 meses",
+    "en": "Inspected & serviced in-house — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "24–70 mm Apertura f/2.8"
+    ],
+    "en": [
+      "24–70 mm  Apertura f/2.8"
+    ]
+  }
+}
