@@ -1,0 +1,30 @@
+{
+  "slug": "32gb",
+  "name": {
+    "es": "Tarjeta de memoria SanDisk Extreme PRO CompactFlash de 32 GB",
+    "en": "SanDisk Extreme PRO 32GB CompactFlash Memory Card"
+  },
+  "price": 37.45,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/IMG_9543.webp",
+  "desc": {
+    "es": "La SanDisk Extreme PRO está diseñada para fotografía en ráfaga y grabación de video en cámaras compatibles con CompactFlash. Su rendimiento permite trabajar con fotografías de alta resolución y agiliza la transferencia de archivos a tu computadora para almacenarlos y editarlos.",
+    "en": "The SanDisk Extreme PRO is designed for burst photography and video recording with compatible CompactFlash cameras. Its performance supports high-resolution photography and helps you transfer files quickly to your computer for storage and editing."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Capacidad de 32 GB, UDMA 7, lectura de hasta 160 MB/s y escritura de hasta 150 MB/s; clasificación VPG-65 para una escritura sostenida mínima de 65 MB/s durante la grabación de video en equipos compatibles."
+    ],
+    "en": [
+      "32GB capacity, UDMA 7, read speeds up to 160 MB/s and write speeds up to 150 MB/s; VPG-65 rated for a minimum sustained write speed of 65 MB/s when recording video on compatible devices."
+    ]
+  }
+}
