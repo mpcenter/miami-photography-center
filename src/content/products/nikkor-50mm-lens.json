@@ -1,0 +1,30 @@
+{
+  "slug": "nikkor-50mm-lens",
+  "name": {
+    "es": "Cámara de película Nikkormat con lente NIKKOR 50 mm f/1.8",
+    "en": "Nikkormat Film Camera with NIKKOR 50mm f/1.8 Lens"
+  },
+  "price": 187.25,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/93911059-C634-44DE-9105-75001AD8FF98.png",
+  "desc": {
+    "es": "Esta Nikkormat de segunda mano se encuentra en buen estado y ha sido probada en nuestro taller. Equipada con un lente NIKKOR 50 mm f/1.8, ofrece una combinación versátil para retratos y fotografía cotidiana, ideal para quienes disfrutan trabajar con película y controlar cada toma de forma manual.",
+    "en": "This pre-owned Nikkormat is in good condition and has been tested at our workshop. Paired with a NIKKOR 50mm f/1.8 lens, it’s a versatile film camera for portraits and everyday photography, offering a hands-on shooting experience with manual control over each shot."
+  },
+  "condition": {
+    "es": "Revisado y calibrado in-house — garantía de 6 meses",
+    "en": "Inspected & serviced in-house — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Cámara réflex para película de 35 mm (135), montura Nikon F y enfoque manual; lente de 50 mm con apertura máxima f/1.8."
+    ],
+    "en": [
+      "35mm (135) film SLR camera with Nikon F mount and manual focus; 50mm lens with an f/1.8 maximum aperture."
+    ]
+  }
+}
