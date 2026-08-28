@@ -1,0 +1,30 @@
+{
+  "slug": "en-el3e",
+  "name": {
+    "es": "Batería Nikon",
+    "en": "Nikon battery"
+  },
+  "price": 42.8,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/29630D62-37E5-40E8-99FB-DF992E076A6E.png",
+  "desc": {
+    "es": "La Nikon EN-EL3e es una batería recargable de ion de litio para cámaras réflex Nikon compatibles. Una opción para reemplazar tu batería o llevar una de repuesto durante sesiones fotográficas y viajes, y seguir fotografiando mientras recargas la otra.",
+    "en": "The Nikon EN-EL3e is a rechargeable lithium-ion battery for compatible Nikon DSLR cameras. Use it as a replacement or carry it as a spare for photo sessions and travel, so you can keep shooting while your other battery recharges."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New— 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Voltaje de 7.4 V; compatible con Nikon D50, D70, D70s, D80, D90, D100, D200, D300, D300S y D700, y con cargadores MH-18, MH-18a y MH-19."
+    ],
+    "en": [
+      "7.4 V; compatible with Nikon D50, D70, D70s, D80, D90, D100, D200, D300, D300S, and D700 cameras, and MH-18, MH-18a, and MH-19 chargers."
+    ]
+  }
+}
