@@ -1,0 +1,30 @@
+{
+  "slug": "bg-e20",
+  "name": {
+    "es": "Empuñadura de batería Canon BG-E2",
+    "en": "Canon BG-E2 Battery Grip"
+  },
+  "price": 64.2,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/D9FD3F9F-9BEB-4C56-AD87-377DED23CBFE.png",
+  "desc": {
+    "es": "La empuñadura Canon BG-E2 ofrece un agarre más cómodo al fotografiar en vertical. Su botón de disparo y dial de control integrados permiten manejar la cámara con mayor comodidad, convirtiéndola en un accesorio práctico para retratos, eventos y sesiones prolongadas.",
+    "en": "The Canon BG-E2 battery grip provides a more comfortable hold when shooting vertically. Its built-in shutter button and control dial keep essential controls within reach, making it a practical accessory for portraits, events, and longer photo sessions."
+  },
+  "condition": {
+    "es": "Nuevo— garantía de 6 meses",
+    "en": "New— 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Compatible con Canon EOS 20D, 20Da, 30D, 40D y 50D; capacidad para hasta dos baterías BP-511A."
+    ],
+    "en": [
+      "Compatible with Canon EOS 20D, 20Da, 30D, 40D, and 50D cameras; holds up to two BP-511A batteries."
+    ]
+  }
+}
