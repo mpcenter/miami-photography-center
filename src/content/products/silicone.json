@@ -1,0 +1,30 @@
+{
+  "slug": "silicone",
+  "name": {
+    "es": "Soplador de aire",
+    "en": "Air Blower"
+  },
+  "price": 5.35,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/7DB35ED9-1584-4682-8244-F0168A47B9FA.png",
+  "desc": {
+    "es": "Soplador de aire manual de silicona para retirar polvo y partículas sueltas de cámaras, lentes y accesorios fotográficos. Su cuerpo suave y flexible se comprime fácilmente, mientras que la boquilla estrecha ayuda a dirigir el aire hacia la zona que deseas limpiar sin tocar la superficie.",
+    "en": "This silicone air blower helps remove loose dust and particles from cameras, lenses, and photography accessories. Its soft, flexible body is easy to squeeze, while the narrow nozzle directs airflow where you need it for cleaning without touching the surface."
+  },
+  "condition": {
+    "es": "Nuevo— garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Silicona flexible y boquilla estrecha"
+    ],
+    "en": [
+      "Flexible silicone body and narrow nozzle"
+    ]
+  }
+}
