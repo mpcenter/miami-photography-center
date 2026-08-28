@@ -1,0 +1,30 @@
+{
+  "slug": "en-el14a",
+  "name": {
+    "es": "Batería recargable Nikon EN-EL14a",
+    "en": "Nikon EN-EL14a Rechargeable Battery"
+  },
+  "price": 42.8,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/AEFADBE8-17ED-4D94-A775-EC21353EB4B3.png",
+  "desc": {
+    "es": "La Nikon EN-EL14a es una batería recargable de ion de litio para cámaras Nikon compatibles. Una opción práctica para reemplazar tu batería o llevar una de repuesto durante sesiones fotográficas y viajes, para que puedas seguir capturando imágenes cuando la otra necesite recargarse.",
+    "en": "The Nikon EN-EL14a is a rechargeable lithium-ion battery for compatible Nikon cameras. Use it as a replacement or keep one in your camera bag as a spare for photo sessions and travel, so you can keep shooting when your other battery needs a recharge."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "7.2 V y 1230 mAh; compatible con el cargador Nikon MH-24 y cámaras como las Nikon D3300, D3400, D3500, D5300, D5500, D5600 y Df."
+    ],
+    "en": [
+      "7.2 V, 1230 mAh; compatible with the Nikon MH-24 charger and cameras including the Nikon D3300, D3400, D3500, D5300, D5500, D5600, and Df."
+    ]
+  }
+}
