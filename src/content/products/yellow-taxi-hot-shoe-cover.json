@@ -1,0 +1,30 @@
+{
+  "slug": "yellow-taxi-hot-shoe-cover",
+  "name": {
+    "es": "Cubierta para Hot Shoe Diseño Taxi Amarillo",
+    "en": "Yellow Taxi Hot Shoe Cover"
+  },
+  "price": 16.05,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/C10183D7-99BB-4A06-BF4B-157BFCFE63FA.png",
+  "desc": {
+    "es": "Accesorio decorativo para la zapata hot shoe de cámaras compatibles. Su diseño amarillo con la palabra “TAXI” le da un toque original y llamativo a la cámara mientras cubre la zapata cuando no se está utilizando.",
+    "en": "Decorative accessory designed for compatible camera hot shoes. Its yellow “TAXI” design adds a distinctive look to the camera while covering the hot shoe when it is not in use."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Cubierta decorativa para hot shoe, color amarillo y negro, diseño con letrero “TAXI”, compatible con cámaras con zapata hot shoe y pensada para protección básica de la zapata cuando no está en uso."
+    ],
+    "en": [
+      "Decorative hot shoe cover, yellow and black color, “TAXI” sign design, compatible with cameras featuring a hot shoe mount and intended to provide basic protection when the shoe is not in use."
+    ]
+  }
+}
