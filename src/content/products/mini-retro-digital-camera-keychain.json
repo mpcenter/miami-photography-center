@@ -1,0 +1,30 @@
+{
+  "slug": "mini-retro-digital-camera-keychain",
+  "name": {
+    "es": "Mini Cámara Digital Retro",
+    "en": "Mini Retro Digital Camera"
+  },
+  "price": 16.5,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/B9E1C5D8-92B6-4BC2-9617-DC054B890CB4.png",
+  "desc": {
+    "es": "Lleva tus recuerdos contigo con esta mini cámara digital de estilo retro. Su diseño compacto incorpora una pantalla trasera y un práctico llavero con mosquetón para colocarla en mochilas, bolsos o llaves. Disponible en blanco, negro y verde.",
+    "en": "Capture memories anywhere with this retro-style mini digital camera. Its compact design features a rear screen and a convenient keychain clasp for attaching it to backpacks, bags, or keys. Available in white, black, and green."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Mini cámara digital portátil con diseño retro, pantalla trasera, lente frontal y llavero con cadena y mosquetón metálico. La referencia indica una resolución de video de hasta 1920 × 1080p. Colores disponibles: blanco, negro y verde. Las dimensiones físicas no fueron proporcionadas."
+    ],
+    "en": [
+      "Portable mini digital camera with a retro design, rear screen, front lens, and keychain featuring a metal chain and clasp. The reference indicates video resolution up to 1920 × 1080p. Available colors: white, black, and green. Physical dimensions were not provided."
+    ]
+  }
+}
