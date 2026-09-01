@@ -1,0 +1,30 @@
+{
+  "slug": "kastar-en-el12-charger-for-nikon",
+  "name": {
+    "es": "Cargador Kastar EN-EL12 para Nikon",
+    "en": "Kastar EN-EL12 Charger for Nikon"
+  },
+  "price": 26.75,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/8E76F42B-7799-4D15-B5A4-44916D60236A.png",
+  "desc": {
+    "es": "El Kastar EN-EL12 es un cargador de pared diseñado para baterías Nikon EN-EL12. Es una solución compacta para mantener cargadas baterías utilizadas en distintas cámaras Nikon Coolpix y puede utilizarse como cargador adicional o de reemplazo.",
+    "en": "The Kastar EN-EL12 is a wall charger designed for Nikon EN-EL12 batteries. It provides a compact charging solution for batteries used in various Nikon Coolpix cameras and works well as an additional or replacement charger."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Cargador Kastar compatible con baterías Nikon EN-EL12 / ENEL12 y como reemplazo para cargadores Nikon MH-65 / MH-65P. Entrada AC 100–240 V, 50–60 Hz, salida DC 4.2 V, 600 mA, enchufe plegable e indicador LED rojo durante la carga y verde al completar la carga o permanecer en espera."
+    ],
+    "en": [
+      "Kastar charger compatible with Nikon EN-EL12 / ENEL12 batteries and designed as a replacement for Nikon MH-65 / MH-65P chargers. Features AC 100–240V, 50–60Hz input, DC 4.2V, 600mA output, a foldable plug and an LED indicator showing red while charging and green when fully charged or on standby."
+    ]
+  }
+}
