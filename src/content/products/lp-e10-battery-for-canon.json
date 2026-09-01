@@ -1,0 +1,30 @@
+{
+  "slug": "lp-e10-battery-for-canon",
+  "name": {
+    "es": "Batería LP-E10 para Canon",
+    "en": "LP-E10 Battery for Canon"
+  },
+  "price": 21.4,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/FE809422-AD04-4365-AEC4-EF95564F7D89.png",
+  "desc": {
+    "es": "Batería de ion de litio LP-E10 diseñada como reemplazo para cámaras Canon compatibles con este formato. Es una opción práctica para sustituir una batería existente o disponer de una batería adicional para sesiones de fotografía más prolongadas.",
+    "en": "LP-E10 lithium-ion replacement battery designed for Canon cameras that use this battery format. It is a practical option for replacing an existing battery or keeping an additional battery available for longer shooting sessions."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Batería recargable de ion de litio compatible con el formato Canon LP-E10. Canon confirma el uso de la LP-E10 en cámaras como EOS Rebel T5, Rebel T6, Rebel T7 y Rebel T100, y la batería LP-E10 es compatible con el cargador Canon LC-E10. No voy a indicar capacidad o voltaje porque esos datos no aparecen confirmados en el empaque de este producto."
+    ],
+    "en": [
+      "Rechargeable lithium-ion battery compatible with the Canon LP-E10 battery format. Canon confirms LP-E10 use with cameras including the EOS Rebel T5, Rebel T6, Rebel T7 and Rebel T100, and the LP-E10 is compatible with the Canon LC-E10 charger. Capacity and voltage are not listed because those specifications are not confirmed on this product’s packaging."
+    ]
+  }
+}
