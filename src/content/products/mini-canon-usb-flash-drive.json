@@ -1,0 +1,30 @@
+{
+  "slug": "mini-canon-usb-flash-drive",
+  "name": {
+    "es": "Memoria USB Flash Mini Canon",
+    "en": "Mini Canon USB Flash Drive"
+  },
+  "price": 21.4,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/82C4336F-5A08-471F-8234-8C6C79DB1779.png",
+  "desc": {
+    "es": "Memoria USB con un original diseño inspirado en una cámara fotográfica y su lente. La unidad USB está integrada en la pieza con forma de lente y puede guardarse dentro del cuerpo de cámara cuando no está en uso, creando un accesorio compacto y decorativo. Una opción práctica para almacenar tus archivos con un diseño especialmente atractivo para fotógrafos y amantes de la fotografía.",
+    "en": "USB flash drive featuring a distinctive camera and lens-inspired design. The USB drive is built into the lens-shaped piece and can be stored inside the camera body when not in use, creating a compact and decorative accessory. A practical way to carry your files with a design made especially for photographers and photography enthusiasts."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Memoria flash USB con conector USB-A, diseño negro inspirado en una cámara con lente desmontable y cuerpo protector para guardar la unidad cuando no está en uso. Incluye la pieza con forma de cámara y la unidad USB con forma de lente."
+    ],
+    "en": [
+      "USB flash drive with a USB-A connector, black camera-inspired design with a removable lens-shaped drive and protective camera body for storage when not in use. Includes the camera-shaped body and lens-shaped USB drive."
+    ]
+  }
+}
