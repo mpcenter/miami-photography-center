@@ -1,0 +1,30 @@
+{
+  "slug": "kastar-np-fw50-battery-for-sony",
+  "name": {
+    "es": "Batería Kastar NP-FW50 para Sony",
+    "en": "Kastar NP-FW50 Battery for Sony"
+  },
+  "price": 26.75,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/FF096073-E87B-44D9-9B97-9B25B3F4B56C.png",
+  "desc": {
+    "es": "La Kastar NP-FW50 es una batería recargable de ion de litio diseñada como reemplazo para equipos Sony compatibles con el formato NP-FW50. Es una opción práctica para contar con una batería adicional durante sesiones de fotografía o video y mantener el equipo listo para seguir trabajando.",
+    "en": "The Kastar NP-FW50 is a rechargeable lithium-ion replacement battery designed for Sony equipment compatible with the NP-FW50 battery format. It is a practical option for keeping an additional battery available during longer photo or video sessions."
+  },
+  "condition": {
+    "es": "Nuevo— garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Batería Kastar de ion de litio modelo NP-FW50, con 7.2 V, 1650 mAh y 11.8 Wh, según la etiqueta del producto físico. Está diseñada como reemplazo para Sony NP-FW50. Sony confirma que la NP-FW50 pertenece a la serie W y utiliza una salida nominal de 7.2 V."
+    ],
+    "en": [
+      "Kastar NP-FW50 lithium-ion replacement battery rated at 7.2V, 1650mAh and 11.8Wh, as shown on the physical product label. Designed as a replacement for the Sony NP-FW50. Sony confirms that the NP-FW50 is a W-series rechargeable battery pack with a nominal 7.2V output."
+    ]
+  }
+}
