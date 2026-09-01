@@ -1,0 +1,30 @@
+{
+  "slug": "kastar-s005-s007-s008-bcg10-fnp70-battery-charger",
+  "name": {
+    "es": "Cargador Kastar S005/S007/S008/BCG10/FNP70",
+    "en": "Kastar S005/S007/S008/BCG10/FNP70 Battery Charger"
+  },
+  "price": 21.4,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/98968CDC-3723-43AA-893B-12CAFD9F3068.png",
+  "desc": {
+    "es": "El Kastar S005/S007/S008/BCG10/FNP70 es un cargador compacto de pared diseñado para diferentes baterías utilizadas en cámaras digitales Panasonic y Fujifilm. Su formato con enchufe plegable lo convierte en una opción práctica como cargador principal, adicional o de reemplazo para baterías compatibles.",
+    "en": "The Kastar S005/S007/S008/BCG10/FNP70 is a compact wall charger designed for several battery formats used in Panasonic and Fujifilm digital cameras. Its foldable plug design makes it a practical primary, spare or replacement charger for compatible batteries."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New— 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Cargador Kastar compatible con baterías Panasonic CGA-S005, CGA-S007, CGA-S008, DMW-BCG10 y Fujifilm NP-70, según la configuración indicada en el empaque. Para la familia S005/NP-70, Kastar especifica entrada AC 100–240 V, 50–60 Hz, salida DC 4.2 V, 600 mA e indicador LED rojo durante la carga y verde cuando está en espera o completamente cargada"
+    ],
+    "en": [
+      "Kastar charger compatible with Panasonic CGA-S005, CGA-S007, CGA-S008, DMW-BCG10 and Fujifilm NP-70 battery formats, as indicated by the product configuration. For the S005/NP-70 family, Kastar specifies AC 100–240V, 50–60Hz input, DC 4.2V, 600mA output, with a red LED while charging and a green LED for standby or full charge."
+    ]
+  }
+}
