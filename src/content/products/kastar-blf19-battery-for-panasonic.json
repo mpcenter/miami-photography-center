@@ -1,0 +1,30 @@
+{
+  "slug": "kastar-blf19-battery-for-panasonic",
+  "name": {
+    "es": "Batería Kastar BLF19 para Panasonic",
+    "en": "Kastar BLF19 Battery for Panasonic"
+  },
+  "price": 21.4,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/2D2FA31A-B679-489C-BD30-DA09F27F5055.png",
+  "desc": {
+    "es": "La Kastar BLF19 es una batería de ion de litio diseñada como alternativa de reemplazo para cámaras Panasonic LUMIX compatibles con la batería DMW-BLF19. Es una opción práctica para disponer de una batería adicional y mantener la cámara lista para sesiones de fotografía o video más prolongadas.",
+    "en": "The Kastar BLF19 is a lithium-ion replacement battery designed for Panasonic LUMIX cameras compatible with the DMW-BLF19 battery. It is a practical option for keeping an additional battery available during longer photo or video sessions."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New— 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Batería Kastar modelo BLF19 compatible con el formato Panasonic DMW-BLF19. Panasonic confirma el uso de la DMW-BLF19 en las cámaras LUMIX DC-G9, DC-GH5, DC-GH5S, DMC-GH3 y DMC-GH4."
+    ],
+    "en": [
+      "Kastar BLF19 battery compatible with the Panasonic DMW-BLF19 battery format. Panasonic officially lists the DMW-BLF19 for the LUMIX DC-G9, DC-GH5, DC-GH5S, DMC-GH3 and DMC-GH4 cameras."
+    ]
+  }
+}
