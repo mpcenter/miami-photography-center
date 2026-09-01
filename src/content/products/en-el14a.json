@@ -1,19 +1,19 @@
 {
-  "slug": "nikon-en-el14a-rechargeable-li-ion-battery",
+  "slug": "kastar-en-el14-battery-for-nikon",
   "name": {
-    "es": "Batería recargable Nikon EN-EL14a",
-    "en": "Nikon EN-EL14a Rechargeable Battery"
+    "es": "Batería Kastar EN-EL14 para Nikon",
+    "en": "Kastar EN-EL14 Battery for Nikon"
   },
-  "price": 42.8,
+  "price": 26.75,
   "shipping": 15,
   "category": {
     "es": "Accesorios",
     "en": "Accessories"
   },
-  "img": "/uploads/AEFADBE8-17ED-4D94-A775-EC21353EB4B3.png",
+  "img": "/uploads/54640E79-2B26-4E24-BF11-0182E07915D9.png",
   "desc": {
-    "es": "La Nikon EN-EL14a es una batería recargable de ion de litio para cámaras Nikon compatibles. Una opción práctica para reemplazar tu batería o llevar una de repuesto durante sesiones fotográficas y viajes, para que puedas seguir capturando imágenes cuando la otra necesite recargarse.",
-    "en": "The Nikon EN-EL14a is a rechargeable lithium-ion battery for compatible Nikon cameras. Use it as a replacement or keep one in your camera bag as a spare for photo sessions and travel, so you can keep shooting when your other battery needs a recharge."
+    "es": "Batería Kastar EN-EL14 diseñada como alternativa de reemplazo para cámaras Nikon compatibles. Es una opción práctica para contar con una batería adicional o sustituir una batería existente, manteniendo compatibilidad con una amplia selección de cámaras Nikon que utilizan el formato EN-EL14",
+    "en": "Kastar EN-EL14 battery designed as a replacement option for compatible Nikon cameras. It is a practical choice for keeping an extra battery available or replacing an existing one while maintaining compatibility with a wide range of Nikon cameras that use the EN-EL14 battery format."
   },
   "condition": {
     "es": "Nuevo — garantía de 6 meses",
@@ -21,10 +21,10 @@
   },
   "specs": {
     "es": [
-      "7.2 V y 1230 mAh; compatible con el cargador Nikon MH-24 y cámaras como las Nikon D3300, D3400, D3500, D5300, D5500, D5600 y Df."
+      "Batería de reemplazo Kastar EN-EL14 compatible con Nikon EN-EL14, EN-EL14a, EN-EL14b y EN-EL14c, así como con cargadores Nikon MH-24 y MH-24a. Kastar indica compatibilidad con cámaras como Nikon Df, D3100, D3200, D3300, D3400, D3500, D5100, D5200, D5300, D5500, D5600 y Coolpix P7000, P7100, P7700 y P7800."
     ],
     "en": [
-      "7.2 V, 1230 mAh; compatible with the Nikon MH-24 charger and cameras including the Nikon D3300, D3400, D3500, D5300, D5500, D5600, and Df."
+      "Kastar EN-EL14 replacement battery compatible with Nikon EN-EL14, EN-EL14a, EN-EL14b and EN-EL14c batteries, as well as Nikon MH-24 and MH-24a chargers. Kastar lists compatibility with cameras including the Nikon Df, D3100, D3200, D3300, D3400, D3500, D5100, D5200, D5300, D5500, D5600 and Coolpix P7000, P7100, P7700 and P7800."
     ]
   }
 }
