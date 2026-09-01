@@ -1,0 +1,30 @@
+{
+  "slug": "kastar-np-fw50-charger-for-sony",
+  "name": {
+    "es": "Cargador Kastar NP-FW50 para Sony",
+    "en": "Kastar NP-FW50 Charger for Sony"
+  },
+  "price": 26.5,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/11BC4E3B-FA34-4D76-A462-68EFD71EF51D.png",
+  "desc": {
+    "es": "El Kastar NP-FW50 es un cargador de pared diseñado para baterías Sony NP-FW50. Su formato compacto permite utilizarlo como cargador principal, adicional o de reemplazo para diferentes cámaras Sony compatibles con esta batería.",
+    "en": "The Kastar NP-FW50 is a wall charger designed for Sony NP-FW50 batteries. Its compact design makes it suitable as a primary, spare or replacement charger for a variety of Sony cameras that use this battery format."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Cargador AC Kastar compatible con baterías Sony NP-FW50. Cuenta con enchufe plegable, entrada AC 100–240 V, 50–60 Hz, salida DC 8.4 V, 600 mA e indicador LED rojo durante la carga y verde cuando está en espera o completamente cargada. Kastar lista compatibilidad con cámaras Sony Alpha, NEX y Cyber-shot que utilizan NP-FW50."
+    ],
+    "en": [
+      "Kastar AC wall charger compatible with Sony NP-FW50 batteries. Features a foldable wall plug, AC 100–240V, 50–60Hz input, DC 8.4V, 600mA output, and an LED indicator that shows red while charging and green when on standby or fully charged. Kastar lists compatibility with Sony Alpha, NEX and Cyber-shot cameras using NP-FW50 batteries."
+    ]
+  }
+}
