@@ -1,0 +1,30 @@
+{
+  "slug": "kastar-el-3-charger-for-nikon-en-el3",
+  "name": {
+    "es": "Cargador Kastar EL-3 para Nikon EN-EL3",
+    "en": "Kastar EL-3 Charger for Nikon EN-EL3"
+  },
+  "price": 26.75,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/2A6ADE12-5EFC-459C-B4C9-182C9C02CD65.png",
+  "desc": {
+    "es": "El Kastar EL-3 es un cargador de pared diseñado para baterías Nikon de la familia EN-EL3. Su formato compacto con enchufe plegable permite utilizarlo como cargador adicional o de reemplazo para mantener las baterías compatibles listas para cámaras Nikon DSLR.",
+    "en": "The Kastar EL-3 is a wall battery charger designed for Nikon EN-EL3 series batteries. Its compact design with a foldable plug makes it a practical additional or replacement charger for keeping compatible Nikon DSLR batteries ready to use."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New— 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Cargador Kastar compatible con baterías Nikon EN-EL3, EN-EL3a y EN-EL3e y con los sistemas de carga Nikon MH-18, MH-18a y MH-19. Entrada AC 100–240 V, 50–60 Hz y salida DC 8.4 V, 600 mA. Cuenta con enchufe plegable e indicador LED: rojo durante la carga y verde en espera o al completar la carga."
+    ],
+    "en": [
+      "Kastar charger compatible with Nikon EN-EL3, EN-EL3a and EN-EL3e batteries and Nikon MH-18, MH-18a and MH-19 charging systems. AC 100–240V, 50–60Hz input with DC 8.4V, 600mA output. Features a foldable wall plug and an LED indicator showing red while charging and green when on standby or fully charged."
+    ]
+  }
+}
