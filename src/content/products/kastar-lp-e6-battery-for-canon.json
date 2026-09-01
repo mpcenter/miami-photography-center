@@ -1,0 +1,30 @@
+{
+  "slug": "kastar-lp-e6-battery-for-canon",
+  "name": {
+    "es": "Batería Kastar LP-E6 para Canon",
+    "en": "Kastar LP-E6 Battery for Canon"
+  },
+  "price": 32.1,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/E9C26ADA-DFAC-4543-AB84-CA9504A2C1E3.png",
+  "desc": {
+    "es": "La Kastar LP-E6 es una batería recargable de ion de litio diseñada como reemplazo para cámaras Canon compatibles con la familia LP-E6. Es una opción práctica para disponer de una batería adicional o sustituir una batería existente durante sesiones prolongadas de fotografía o video.",
+    "en": "The Kastar LP-E6 is a rechargeable lithium-ion replacement battery designed for Canon cameras compatible with the LP-E6 battery family. It is a practical option for keeping an additional battery available or replacing an existing battery during longer photo or video sessions."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Batería Kastar de ion de litio modelo LP-E6, con 7.2 V y 2950 mAh. Compatible con baterías Canon LP-E6, LP-E6N y LP-E6NH, y con cargadores Canon LC-E6 y LC-E6E. Kastar también indica compatibilidad con cámaras como EOS R, R5, R6, 5D Mark II/III/IV, 6D/6D Mark II, 7D/7D Mark II, 60D, 70D, 80D y 90D."
+    ],
+    "en": [
+      "Kastar LP-E6 lithium-ion battery rated at 7.2V and 2950mAh. Compatible with Canon LP-E6, LP-E6N and LP-E6NH batteries and Canon LC-E6 and LC-E6E chargers. Kastar also lists compatibility with cameras including the EOS R, R5, R6, 5D Mark II/III/IV, 6D/6D Mark II, 7D/7D Mark II, 60D, 70D, 80D and 90D."
+    ]
+  }
+}
