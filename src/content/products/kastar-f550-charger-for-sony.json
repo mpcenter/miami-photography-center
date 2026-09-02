@@ -1,0 +1,30 @@
+{
+  "slug": "kastar-f550-charger-for-sony",
+  "name": {
+    "es": "Cargador Kastar F550 para Sony",
+    "en": "Kastar F550 Battery Charger for Sony"
+  },
+  "price": 21.4,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/9ED38373-5996-4F43-8B7A-BBA7256C303E.png",
+  "desc": {
+    "es": "El Kastar F550 es un cargador de pared diseñado para baterías Sony NP-F550 y NP-F570. Su formato compacto permite utilizarlo como cargador principal, adicional o de reemplazo para equipos compatibles que utilizan baterías de esta familia.",
+    "en": "The Kastar F550 is a wall battery charger designed for Sony NP-F550 and NP-F570 batteries. Its compact design makes it a practical primary, spare or replacement charger for compatible equipment using this battery family."
+  },
+  "condition": {
+    "es": "Nuevo— garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Cargador Kastar tipo Travel Charger para baterías Sony NP-F550/NP-F570. Entrada AC 100–240 V, 50/60 Hz, máximo 150 mA y salida DC 4.2/8.4 V, 600 mA, según la información impresa en el cargador físico. Kastar confirma para su cargador AC NP-F550/NP-F570 entrada universal de 100–240 V, salida de 8.4 V/600 mA e indicador LED rojo durante la carga y verde en espera o al completar la carga."
+    ],
+    "en": [
+      "Kastar Travel Charger for Sony NP-F550/NP-F570 batteries. Rated for AC 100–240V, 50/60Hz, 150mA max input and DC 4.2/8.4V, 600mA output, according to the physical charger label. Kastar confirms 100–240V universal input, 8.4V/600mA output, and a red/green charging status LED for its NP-F550/NP-F570 AC wall charger."
+    ]
+  }
+}
