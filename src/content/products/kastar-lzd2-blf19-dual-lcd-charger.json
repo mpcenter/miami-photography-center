@@ -1,0 +1,30 @@
+{
+  "slug": "kastar-lzd2-blf19-dual-lcd-charger",
+  "name": {
+    "es": "Cargador LCD Dual Kastar LZD2-BLF19",
+    "en": "Kastar LZD2-BLF19 Dual LCD Charger"
+  },
+  "price": 21.4,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/6118D697-F66E-41C8-9C02-97FB9AC20564.png",
+  "desc": {
+    "es": "El Kastar LZD2-BLF19 es un cargador USB dual con pantalla LCD diseñado para cargar dos baterías compatibles al mismo tiempo. Sus dos bahías independientes permiten controlar cada batería por separado, mientras la pantalla facilita la visualización del estado de carga. Kastar ofrece esta configuración para baterías Panasonic DMW-BLF19/DMW-BLF19E.",
+    "en": "The Kastar LZD2-BLF19 is a dual USB battery charger with an LCD display designed to charge two compatible batteries at the same time. Its two independent charging bays allow each battery to be handled separately while the display provides charging-status information. Kastar offers this configuration for Panasonic DMW-BLF19/DMW-BLF19E batteries."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Cargador Kastar modelo LZD2-BLF19 con dos canales de carga. La unidad física indica entrada 5 V, 2 A, 10 W y salida de 8.4 V, 600 mA, 5 W por canal (CH1 y CH2). Las dos bahías están marcadas para baterías DMW-BLF19 / D-LI90. Kastar confirma oficialmente compatibilidad de su cargador dual BLF19 con Panasonic DMW-BLF19 y DMW-BLF19E."
+    ],
+    "en": [
+      "Kastar LZD2-BLF19 dual-channel charger. The physical unit is rated for 5V, 2A, 10W input and 8.4V, 600mA, 5W output per channel (CH1 and CH2). Both charging bays are marked for DMW-BLF19 / D-LI90 batteries. Kastar officially confirms BLF19 dual-charger compatibility with Panasonic DMW-BLF19 and DMW-BLF19E batteries."
+    ]
+  }
+}
