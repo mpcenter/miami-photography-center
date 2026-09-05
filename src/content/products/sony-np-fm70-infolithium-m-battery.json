@@ -1,0 +1,30 @@
+{
+  "slug": "sony-np-fm70-infolithium-m-battery",
+  "name": {
+    "es": "Batería Sony NP-FM70 InfoLITHIUM M",
+    "en": "Sony NP-FM70 InfoLITHIUM M Battery"
+  },
+  "price": 21.4,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/E26DD2F4-BB25-4874-B778-37DCE7377988.png",
+  "desc": {
+    "es": "La Sony NP-FM70 InfoLITHIUM M es una batería recargable de ion de litio diseñada para videocámaras y otros equipos Sony compatibles con la serie M. Su formato de mayor capacidad ofrece una opción práctica como batería principal o adicional para equipos que utilizan este sistema de alimentación. Sony documentó oficialmente la NP-FM70 como parte de su línea InfoLITHIUM M.",
+    "en": "The Sony NP-FM70 InfoLITHIUM M is a rechargeable lithium-ion battery designed for Sony camcorders and other equipment compatible with the M-series battery system. Its higher-capacity format makes it a practical primary or spare battery for compatible gear. Sony officially documented the NP-FM70 as part of its InfoLITHIUM M battery line."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Batería recargable Sony NP-FM70, serie InfoLITHIUM M, de ion de litio. Voltaje nominal 7.2 V y capacidad energética 17.0 Wh, según la etiqueta física y la documentación oficial de Sony. Fabricada en Japón."
+    ],
+    "en": [
+      "Sony NP-FM70 rechargeable lithium-ion battery from the InfoLITHIUM M series. Rated at 7.2V with 17.0Wh energy capacity, according to the physical label and Sony’s official documentation. Made in Japan."
+    ]
+  }
+}
