@@ -1,0 +1,30 @@
+{
+  "slug": "casio-exilim-np-20-rechargeable-lithium-ion-battery",
+  "name": {
+    "es": "Batería recargable de ion de litio Casio Exilim NP-20",
+    "en": "Casio Exilim NP-20 Rechargeable Lithium-Ion Battery"
+  },
+  "price": 16.05,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/6C64B76D-7253-4269-B8A8-2EED80BC7C93.png",
+  "desc": {
+    "es": "Batería recargable original Casio Exilim NP-20, ideal como reemplazo o batería adicional para cámaras compatibles. Su diseño compacto y liviano la hace práctica para llevar como respaldo, mientras que su formato original permite un ajuste adecuado en el equipo.",
+    "en": "Original Casio Exilim NP-20 rechargeable battery, ideal as a replacement or spare battery for compatible cameras. Its compact, lightweight design makes it easy to carry as a backup, while the original form factor allows a proper fit in the camera."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Batería recargable de ion de litio modelo NP-20 de la marca Casio, serie Exilim. Tiene una capacidad de 680 mAh y un voltaje de 3.7 V. En la etiqueta frontal se indica “Rechargeable” y en la parte posterior aparecen advertencias de uso y fabricación en Japón."
+    ],
+    "en": [
+      "Casio Exilim rechargeable lithium-ion battery, model NP-20. It features a 680 mAh capacity and 3.7 V output. The front label indicates “Rechargeable,” and the rear side includes handling warnings and shows it is made in Japan."
+    ]
+  }
+}
