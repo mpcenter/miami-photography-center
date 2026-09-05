@@ -1,0 +1,30 @@
+{
+  "slug": "usb-3-0-multi-memory-card-reader",
+  "name": {
+    "es": "Lector de Tarjetas de Memoria USB 3.0 Multi-Card",
+    "en": "USB 3.0 Multi Memory Card Reader"
+  },
+  "price": 2675,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/54C78617-BFD0-4D45-9335-D24E6A0A1BB5.png",
+  "desc": {
+    "es": "Lector de tarjetas de memoria USB 3.0 compacto y práctico, diseñado para transferir fotografías, videos y otros archivos desde distintos formatos de tarjetas a una computadora mediante conexión USB. Su diseño integra varias ranuras en una sola unidad, ideal para fotógrafos y usuarios que trabajan con diferentes tipos de memoria.",
+    "en": "Compact USB 3.0 multi-card reader designed to transfer photos, videos and other files from different memory card formats to a computer through a USB connection. Its multi-slot design provides a convenient solution for photographers and users working with multiple card types."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Lector de tarjetas con conexión USB 3.0 y cable USB integrado. La unidad muestra ranuras identificadas para CF, SD, TF/M2, MS y xD. Diseño compacto en color gris oscuro. No se observa una marca o fabricante identificable en el producto, por lo que las especificaciones se limitan a la información visible en la unidad."
+    ],
+    "en": [
+      "Memory card reader with USB 3.0 connectivity and integrated USB cable. The unit features visibly labeled slots for CF, SD, TF/M2, MS and xD cards. Compact dark-gray design. No identifiable brand or manufacturer is visible on the product, so specifications are limited to the information shown on the physical unit."
+    ]
+  }
+}
