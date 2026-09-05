@@ -1,0 +1,30 @@
+{
+  "slug": "canon-bp-2l14-rechargeable-li-ion-battery",
+  "name": {
+    "es": "Batería Recargable Canon BP-2L14 Li-ion",
+    "en": "Canon BP-2L14 Rechargeable Li-ion Battery"
+  },
+  "price": 16.5,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/33446880-A125-4289-8154-F25A23E3581D.png",
+  "desc": {
+    "es": "La Canon BP-2L14 es una batería recargable de ion de litio diseñada para videocámaras Canon compatibles. Su formato compacto permite utilizarla como batería principal o de respaldo para equipos que emplean el sistema BP-2L14. Canon documenta oficialmente este modelo dentro de sus accesorios para videocámaras.",
+    "en": "The Canon BP-2L14 is a rechargeable lithium-ion battery designed for compatible Canon camcorders. Its compact form makes it suitable as a primary or spare battery for equipment using the BP-2L14 battery system. Canon officially documents this model as a compatible camcorder accessory."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New— 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Batería recargable Canon BP-2L14 de ion de litio, con 7.4 V y 1450 mAh. Canon especifica dimensiones aproximadas de 33.3 × 31 × 45.2 mm y un peso de 82 g. La unidad física indica fabricación en Japón."
+    ],
+    "en": [
+      "Canon BP-2L14 rechargeable lithium-ion battery rated at 7.4V and 1450mAh. Canon specifies approximate dimensions of 33.3 × 31 × 45.2 mm and a weight of 82 g. The physical battery is marked Made in Japan."
+    ]
+  }
+}
