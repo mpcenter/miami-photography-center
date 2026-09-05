@@ -1,0 +1,30 @@
+{
+  "slug": "sanyo-2cr5-6v-lithium-photographic-battery",
+  "name": {
+    "es": "Batería Fotográfica de Litio Sanyo 2CR5 6V",
+    "en": "Sanyo 2CR5 6V Lithium Photographic Battery"
+  },
+  "price": 21.4,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/F3B1B41D-DC32-4C93-BE50-F844FAAF3E0C.png",
+  "desc": {
+    "es": "La Sanyo 2CR5 es una batería de litio de 6V diseñada para cámaras fotográficas y otros equipos compatibles con el formato 2CR5. Su diseño compacto proporciona una fuente de alimentación específica para equipos fotográficos que utilizan este tipo de batería. No es recargable. El formato 2CR5 continúa documentado para aplicaciones fotográficas y equipos de alto consumo.",
+    "en": "The Sanyo 2CR5 is a 6V lithium battery designed for photographic cameras and other equipment compatible with the 2CR5 format. Its compact design provides a dedicated power source for photo equipment using this battery type. It is non-rechargeable. The 2CR5 format continues to be documented for photographic and high-drain applications."
+  },
+  "condition": {
+    "es": "Nuevo— garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Batería fotográfica de litio Sanyo 2CR5, voltaje nominal 6V y fabricación indicada en Japón en la unidad física. El formato estándar 2CR5 mide aproximadamente 34 × 17 × 45 mm y está diseñado para aplicaciones que requieren una descarga de corriente elevada, incluyendo cámaras."
+    ],
+    "en": [
+      "Sanyo 2CR5 lithium photographic battery with a nominal voltage of 6V and Made in Japan marking on the physical battery. The standard 2CR5 format measures approximately 34 × 17 × 45 mm and is designed for high-drain applications, including cameras."
+    ]
+  }
+}
