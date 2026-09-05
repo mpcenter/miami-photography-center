@@ -1,0 +1,30 @@
+{
+  "slug": "nikon-en-el1-rechargeable-li-ion-battery",
+  "name": {
+    "es": "Batería Recargable Nikon EN-EL1 Li-ion",
+    "en": "Nikon EN-EL1 Rechargeable Li-ion Battery"
+  },
+  "price": 16.05,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/467973F4-7C54-48D4-B996-0D464EC109FD.png",
+  "desc": {
+    "es": "La Nikon EN-EL1 es una batería recargable de ion de litio diseñada para cámaras digitales Nikon compatibles. Nikon utilizó oficialmente esta batería en distintos modelos COOLPIX, incluyendo las COOLPIX 775, 4500, 5400 y 8700.",
+    "en": "The Nikon EN-EL1 is a rechargeable lithium-ion battery designed for compatible Nikon digital cameras. Nikon officially used the EN-EL1 across several COOLPIX models, including the COOLPIX 775, 4500, 5400 and 8700."
+  },
+  "condition": {
+    "es": "Nuevo— garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Batería Nikon EN-EL1 recargable de ion de litio, con 7.4 V y 680 mAh, según la etiqueta del producto físico. Compatible con cámaras Nikon diseñadas para utilizar la batería EN-EL1. Nikon confirma oficialmente el uso de este modelo de batería en diferentes cámaras COOLPIX."
+    ],
+    "en": [
+      "Nikon EN-EL1 rechargeable lithium-ion battery rated at 7.4V and 680mAh, according to the physical battery label. Compatible with Nikon cameras designed for the EN-EL1 battery system. Nikon officially confirms the use of this battery model across multiple COOLPIX cameras."
+    ]
+  }
+}
