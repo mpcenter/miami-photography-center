@@ -1,0 +1,30 @@
+{
+  "slug": "canon-red-camera-strap",
+  "name": {
+    "es": "Correa de Cámara Canon Roja",
+    "en": "Red Canon Camera Strap"
+  },
+  "price": 21.4,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/6C5C491D-38B9-4383-B088-073F4D25919B.png",
+  "desc": {
+    "es": "Correa de cámara en color rojo con logotipos Canon y EOS DIGITAL. Su diseño ancho ayuda a llevar la cámara con mayor comodidad en el cuello o al hombro, siendo una opción práctica como reemplazo o accesorio adicional para tu equipo.",
+    "en": "Red camera strap with Canon and EOS DIGITAL logos. Its wide design helps provide a more comfortable carry around the neck or shoulder, making it a practical replacement or extra accessory for your camera gear."
+  },
+  "condition": {
+    "es": "Nuevo— garantía de 6 meses",
+    "en": "New— 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Correa para cámara en color rojo, con impresión Canon y EOS DIGITAL, extremos reforzados en color negro y tiras de sujeción ajustables. Diseñada para uso cómodo y compatible con cámaras que utilizan correa estándar."
+    ],
+    "en": [
+      "Red camera strap with Canon and EOS DIGITAL print, reinforced black ends, and adjustable attachment straps. Designed for comfortable use and compatible with cameras that use a standard strap."
+    ]
+  }
+}
