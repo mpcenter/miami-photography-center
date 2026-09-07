@@ -1,0 +1,30 @@
+{
+  "slug": "beige-herringbone-camera-strap",
+  "name": {
+    "es": "Correa de Cámara Tejida Beige",
+    "en": "Beige Woven Camera Strap"
+  },
+  "price": 21.4,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/2EE4E366-E577-45EA-9A73-741EC3D9DAD0.png",
+  "desc": {
+    "es": "Correa de cámara de estilo clásico con tejido en patrón espiga en tono beige. Su diseño sobrio y elegante combina muy bien con cámaras digitales o analógicas y ofrece una forma cómoda de transportar la cámara.",
+    "en": "Classic-style camera strap with a beige herringbone woven pattern. Its simple and elegant design pairs well with both digital and film cameras while offering a comfortable way to carry your camera."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Correa textil tejida con patrón espiga, extremos tipo cuero en tono marrón y tiras de sujeción ajustables. Diseño ancho para uso al cuello o al hombro."
+    ],
+    "en": [
+      "Woven textile camera strap with a herringbone pattern, brown leather-style ends, and adjustable attachment straps. Wide design for neck or shoulder use."
+    ]
+  }
+}
