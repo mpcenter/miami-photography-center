@@ -1,0 +1,30 @@
+{
+  "slug": "black-slim-camera-strap",
+  "name": {
+    "es": "Correa Negra Delgada para Cámara",
+    "en": "Black Slim Camera Strap"
+  },
+  "price": 10.7,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/DB360F24-41C2-452D-80D7-98A0AE5DFBC4.png",
+  "desc": {
+    "es": "Correa para cámara de segunda mano, en buen estado general y con desgaste normal por uso. Su diseño negro, delgado y discreto ofrece una opción ligera para transportar la cámara sin el volumen de una correa tradicional ancha.",
+    "en": "Pre-owned camera strap in good overall condition with normal wear from use. Its slim, understated black design provides a lightweight way to carry a camera without the bulk of a traditional wide strap."
+  },
+  "condition": {
+    "es": "Revisado y calibrado in-house — garantía de 6 meses",
+    "en": "Inspected & serviced in-house — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Correa negra de perfil delgado con sección central texturizada, ajuste de longitud y herrajes metálicos tipo clip en los extremos."
+    ],
+    "en": [
+      "Slim-profile black strap with a textured center section, adjustable length, and metal clip-style attachments at both ends."
+    ]
+  }
+}
