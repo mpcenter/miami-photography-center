@@ -1,0 +1,30 @@
+{
+  "slug": "tiffen-67mm-uv-protector-filter",
+  "name": {
+    "es": "Filtro Tiffen UV Protector 67mm",
+    "en": "Tiffen 67mm UV Protector Filter"
+  },
+  "price": 58.85,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/F67E038B-C4B3-42EA-A2ED-CFFA471302C3.png",
+  "desc": {
+    "es": "Filtro Tiffen UV Protector de 67mm diseñado para proteger el elemento frontal del lente contra polvo, humedad, huellas, rayones y contacto accidental durante el uso diario. También ayuda a reducir la luz ultravioleta y puede permanecer instalado en el lente como protección continua.",
+    "en": "Tiffen 67mm UV Protector Filter designed to protect the front element of your lens from dust, moisture, fingerprints, scratches, and accidental contact during everyday use. It also helps reduce UV light and can remain mounted for continuous lens protection."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New— 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Filtro protector UV Tiffen con rosca de 67mm, aro negro y cristal transparente. Compatible con lentes que acepten filtros frontales de 67mm."
+    ],
+    "en": [
+      "Tiffen UV protector filter with a 67mm thread, black filter ring, and clear optical glass. Compatible with lenses that accept 67mm front filters."
+    ]
+  }
+}
