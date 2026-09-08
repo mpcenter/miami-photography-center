@@ -1,0 +1,30 @@
+{
+  "slug": "tiffen-62mm-uv-protector-filter",
+  "name": {
+    "es": "Filtro Tiffen UV Protector 62mm",
+    "en": "Tiffen 62mm UV Protector Filter"
+  },
+  "price": 58.85,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/F1457764-64C0-40CF-B74A-FF7267210CBD.png",
+  "desc": {
+    "es": "Filtro Tiffen UV Protector de 62mm que proporciona protección adicional al elemento frontal del lente frente a polvo, huellas, rayones y pequeños impactos. Su cristal transparente permite mantenerlo instalado durante el uso habitual mientras ayuda a reducir la luz UV.",
+    "en": "Tiffen 62mm UV Protector Filter provides added protection for the front element of your lens against dust, fingerprints, scratches, and minor everyday contact. Its clear glass allows it to remain mounted during regular use while helping reduce UV light."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Filtro UV Tiffen con diámetro de rosca de 62mm, aro negro y cristal transparente. Diseñado para lentes con rosca frontal de filtro de 62mm."
+    ],
+    "en": [
+      "Tiffen UV filter with a 62mm thread diameter, black ring, and clear optical glass. Designed for lenses with a 62mm front filter thread."
+    ]
+  }
+}
