@@ -1,0 +1,30 @@
+{
+  "slug": "tiffen-52mm-uv-protector-filter",
+  "name": {
+    "es": "Filtro Tiffen UV Protector 52mm",
+    "en": "Tiffen 52mm UV Protector Filter"
+  },
+  "price": 47.08,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/F1457764-64C0-40CF-B74A-FF7267210CBD.png",
+  "desc": {
+    "es": "Filtro Tiffen UV Protector de 52mm diseñado para ayudar a mantener protegido el elemento frontal del lente contra polvo, huellas, rayones y daños accidentales. Puede utilizarse de forma permanente en el lente como una capa adicional de protección.",
+    "en": "Tiffen 52mm UV Protector Filter designed to help protect the front element of your lens from dust, fingerprints, scratches, and accidental damage. It can remain attached to the lens as an additional layer of everyday protection."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Filtro protector UV Tiffen de 52mm con aro negro y cristal transparente. Compatible con lentes que utilicen una rosca frontal para filtros de 52mm."
+    ],
+    "en": [
+      "Tiffen 52mm UV protector filter with a black ring and clear optical glass. Compatible with lenses featuring a 52mm front filter thread."
+    ]
+  }
+}
