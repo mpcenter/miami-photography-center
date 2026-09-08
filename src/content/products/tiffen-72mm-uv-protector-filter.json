@@ -1,0 +1,30 @@
+{
+  "slug": "tiffen-72mm-uv-protector-filter",
+  "name": {
+    "es": "Filtro Tiffen UV Protector 72mm",
+    "en": "Tiffen 72mm UV Protector Filter"
+  },
+  "price": 58.85,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/D9DB8535-C487-43C3-B481-40A2BCB11403.png",
+  "desc": {
+    "es": "Filtro Tiffen UV Protector de 72mm diseñado para proteger la parte frontal del lente contra polvo, huellas, rayones y otros daños durante el uso diario. También ayuda a reducir la luz ultravioleta y puede mantenerse instalado en el lente como protección permanente.",
+    "en": "Tiffen 72mm UV Protector Filter designed to protect the front element of your lens from dust, fingerprints, scratches, and everyday damage. It also helps reduce UV light and can remain mounted on the lens for continuous protection."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Filtro protector UV Tiffen con rosca de 72mm, aro negro y cristal transparente. Se instala directamente en lentes compatibles con rosca frontal de 72mm."
+    ],
+    "en": [
+      "Tiffen UV protector filter with a 72mm thread, black filter ring, and clear optical glass. Designed for lenses with a 72mm front filter thread."
+    ]
+  }
+}
