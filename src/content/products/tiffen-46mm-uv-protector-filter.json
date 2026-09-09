@@ -1,0 +1,30 @@
+{
+  "slug": "tiffen-46mm-uv-protector-filter",
+  "name": {
+    "es": "Filtro Tiffen UV Protector 46mm",
+    "en": "Tiffen 46mm UV Protector Filter"
+  },
+  "price": 37.45,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/86BF7BC1-BE53-4AFF-B581-C807686A25F3.png",
+  "desc": {
+    "es": "Filtro Tiffen UV Protector de 46mm que ofrece una capa adicional de protección para el lente frente a polvo, huellas, rayones y pequeños impactos. Su diseño transparente permite utilizarlo de manera continua mientras ayuda a reducir la luz UV.",
+    "en": "Tiffen 46mm UV Protector Filter provides an additional layer of protection against dust, fingerprints, scratches, and minor everyday contact. Its clear design allows it to remain mounted while helping reduce UV light."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Filtro UV Tiffen de 46mm con aro negro y cristal transparente. Diseñado para lentes con rosca frontal de filtro de 46mm."
+    ],
+    "en": [
+      "Tiffen 46mm UV filter with a black ring and clear optical glass. Designed for lenses with a 46mm front filter thread."
+    ]
+  }
+}
