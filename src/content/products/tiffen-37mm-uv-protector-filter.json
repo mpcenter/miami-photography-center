@@ -1,0 +1,30 @@
+{
+  "slug": "tiffen-37mm-uv-protector-filter",
+  "name": {
+    "es": "Filtro Tiffen UV Protector 37mm",
+    "en": "Tiffen 37mm UV Protector Filter"
+  },
+  "price": 37.45,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/6ABA64EC-1D84-4890-BD16-A121540C62F1.png",
+  "desc": {
+    "es": "Filtro Tiffen UV Protector de 37mm diseñado para proteger el elemento frontal del lente contra polvo, humedad, huellas, rayones y contacto accidental. También ayuda a reducir la luz ultravioleta y puede mantenerse instalado para protección diaria.",
+    "en": "Tiffen 37mm UV Protector Filter designed to protect the front element of your lens from dust, moisture, fingerprints, scratches, and accidental contact. It also helps reduce ultraviolet light and can stay mounted for everyday lens protection."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Filtro protector UV Tiffen de 37mm con aro negro y cristal transparente. Compatible con lentes que acepten filtros frontales de 37mm."
+    ],
+    "en": [
+      "Tiffen UV protector filter with a 37mm thread, black filter ring, and clear optical glass. Compatible with lenses that accept 37mm front filters."
+    ]
+  }
+}
