@@ -1,0 +1,30 @@
+{
+  "slug": "tiffen-27mm-uv-protector-filter",
+  "name": {
+    "es": "Filtro Tiffen UV Protector 27mm",
+    "en": "Tiffen 27mm UV Protector Filter"
+  },
+  "price": 37.45,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/E49E9DBE-1A70-49E4-A75B-BC6D23C2046F.png",
+  "desc": {
+    "es": "Filtro Tiffen UV Protector de 27mm pensado para proteger el cristal frontal del lente de polvo, humedad, huellas y rayones durante el uso o transporte. Puede permanecer instalado como protección adicional del lente.",
+    "en": "Tiffen 27mm UV Protector Filter made to help protect the front lens element from dust, moisture, fingerprints, and scratches during use or transport. It can remain attached as added lens protection."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Filtro protector UV Tiffen de 27mm con aro negro y cristal transparente. Compatible con lentes que utilicen filtros de 27mm."
+    ],
+    "en": [
+      "Tiffen 27mm UV protector filter with a black ring and clear optical glass. Compatible with lenses that use 27mm filters."
+    ]
+  }
+}
