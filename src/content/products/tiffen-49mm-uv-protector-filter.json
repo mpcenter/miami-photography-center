@@ -1,0 +1,30 @@
+{
+  "slug": "tiffen-49mm-uv-protector-filter",
+  "name": {
+    "es": "Filtro Tiffen UV Protector 49mm",
+    "en": "Tiffen 49mm UV Protector Filter"
+  },
+  "price": 42.8,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/E516766E-348E-4AAB-896A-A84E358318A3.png",
+  "desc": {
+    "es": "Filtro Tiffen UV Protector de 49mm diseñado para proteger el elemento frontal del lente contra polvo, humedad, huellas, rayones y contacto accidental. También ayuda a reducir la luz ultravioleta y puede mantenerse instalado durante el uso diario como protección adicional.",
+    "en": "Tiffen 49mm UV Protector Filter designed to protect the front element of your lens from dust, moisture, fingerprints, scratches, and accidental contact. It also helps reduce UV light and can remain mounted for everyday lens protection."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Filtro protector UV Tiffen con rosca de 49mm, aro negro y cristal transparente. Compatible con lentes que acepten filtros frontales de 49mm."
+    ],
+    "en": [
+      "Tiffen UV protector filter with a 49mm thread, black filter ring, and clear optical glass. Compatible with lenses that accept 49mm front filters."
+    ]
+  }
+}
