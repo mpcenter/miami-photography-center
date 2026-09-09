@@ -1,0 +1,30 @@
+{
+  "slug": "tiffen-86mm-uv-protector-filter",
+  "name": {
+    "es": "Filtro Tiffen UV Protector 86mm",
+    "en": "Tiffen 86mm UV Protector Filter"
+  },
+  "price": 96.3,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/80CD97E2-BC2D-41CC-A23F-3B8FC1A5BE32.png",
+  "desc": {
+    "es": "Filtro Tiffen UV Protector de 86mm diseñado para proteger el lente contra polvo, humedad, huellas, rayones y contacto accidental, mientras ayuda a reducir la luz ultravioleta. Es una opción práctica para mantener el lente protegido en uso diario.",
+    "en": "Tiffen 86mm UV Protector Filter designed to protect your lens from dust, moisture, fingerprints, scratches, and accidental contact while helping reduce ultraviolet light. It is a practical option for keeping your lens protected during everyday use."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Filtro UV Tiffen con diámetro de 86mm, aro negro y cristal transparente. Compatible con lentes que acepten filtros frontales de 86mm."
+    ],
+    "en": [
+      "Tiffen UV filter with an 86mm diameter, black filter ring, and clear optical glass. Compatible with lenses that accept 86mm front filters."
+    ]
+  }
+}
