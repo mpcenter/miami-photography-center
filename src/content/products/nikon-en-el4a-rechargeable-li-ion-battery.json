@@ -1,0 +1,30 @@
+{
+  "slug": "nikon-en-el4a-rechargeable-li-ion-battery",
+  "name": {
+    "es": "Batería Recargable Nikon EN-EL4a Li-ion",
+    "en": "Nikon EN-EL4a Rechargeable Li-ion Battery"
+  },
+  "price": 48.15,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/2DEA2035-39A8-4075-AFCC-00C6576E9C74.png",
+  "desc": {
+    "es": "Batería recargable original Nikon EN-EL4a de ion de litio, diseñada para proporcionar alimentación confiable a equipos Nikon compatibles. Incluye la batería con su cubierta protectora y caja Nikon original.",
+    "en": "Original Nikon EN-EL4a rechargeable lithium-ion battery designed to provide reliable power for compatible Nikon equipment. Includes the battery with its protective terminal cover and original Nikon box."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New— 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Modelo EN-EL4a. Batería recargable Li-ion. Voltaje: 11.1 V. Capacidad: 2450 mAh. Energía: 28 Wh. Fabricada en Japón. Incluye cubierta protectora de terminales y caja original Nikon."
+    ],
+    "en": [
+      "Model EN-EL4a. Rechargeable Li-ion battery. Voltage: 11.1 V. Capacity: 2450 mAh. Energy: 28 Wh. Made in Japan. Includes protective terminal cover and original Nikon box."
+    ]
+  }
+}
