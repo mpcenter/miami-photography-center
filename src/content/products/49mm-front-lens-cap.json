@@ -1,0 +1,30 @@
+{
+  "slug": "49mm-front-lens-cap",
+  "name": {
+    "es": "Tapa Frontal para Lente 49mm",
+    "en": "49mm Front Lens Cap"
+  },
+  "price": 10.7,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/CD2CA7D6-C4BF-44ED-AC15-8BB0BCC6A0CB.png",
+  "desc": {
+    "es": "Tapa frontal de 49mm para proteger el lente cuando no está en uso, ayudando a mantener el cristal protegido del polvo, marcas y contacto accidental.",
+    "en": "49mm front lens cap designed to protect your lens when not in use, helping keep the glass protected from dust, fingerprints, and accidental contact."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Tapa frontal para lente. Medida: 49mm. Color negro. Sistema de ajuste a presión. Incluye 1 tapa."
+    ],
+    "en": [
+      "Front lens cap. Size: 49mm. Black finish. Snap-on attachment design. Includes 1 lens cap."
+    ]
+  }
+}
