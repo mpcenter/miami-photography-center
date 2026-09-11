@@ -1,0 +1,30 @@
+{
+  "slug": "52mm-front-lens-cap",
+  "name": {
+    "es": "Tapa Frontal para Lente 52mm",
+    "en": "52mm Front Lens Cap"
+  },
+  "price": 10.7,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/625BBE3D-A05F-40C0-AF3D-6E4BC9610220.png",
+  "desc": {
+    "es": "Tapa frontal de 52mm para proteger el lente cuando no está en uso, ayudando a mantener el cristal protegido del polvo, marcas y contacto accidental.",
+    "en": "52mm front lens cap designed to protect your lens when not in use, helping keep the glass protected from dust, fingerprints, and accidental contact."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Tapa frontal para lente. Medida: 52mm. Color negro. Sistema de ajuste a presión. Incluye 1 tapa."
+    ],
+    "en": [
+      "Front lens cap. Size: 52mm. Black finish. Snap-on attachment design. Includes 1 lens cap."
+    ]
+  }
+}
