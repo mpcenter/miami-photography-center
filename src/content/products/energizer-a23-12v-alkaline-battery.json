@@ -1,0 +1,30 @@
+{
+  "slug": "energizer-a23-12v-alkaline-battery",
+  "name": {
+    "es": "Batería Alcalina Energizer A23 12V",
+    "en": "Energizer A23 12V Alkaline Battery"
+  },
+  "price": 5.35,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/7DF1FE1F-D7E9-4AD4-AB2E-CEC155467DFF.png",
+  "desc": {
+    "es": "Batería alcalina Energizer A23 de 12V para dispositivos compatibles que requieren este formato compacto de batería. Una opción práctica para reemplazar baterías agotadas en accesorios y equipos electrónicos compatibles.",
+    "en": "Energizer A23 12V alkaline battery for compatible devices that use this compact battery format. A practical replacement option for compatible electronic equipment and accessories."
+  },
+  "condition": {
+    "es": "Nuevo— garantía de 6 meses",
+    "en": "New— 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Energizer A23 12V alkaline battery for compatible devices that use this compact battery format. A practical replacement option for compatible electronic equipment and accessories."
+    ],
+    "en": [
+      "Energizer A23 alkaline battery with a nominal voltage of 12V. Compact cylindrical format with positive and negative terminals. Includes 1 battery."
+    ]
+  }
+}
