@@ -1,0 +1,30 @@
+{
+  "slug": "nikon-dk-18-eye-cup",
+  "name": {
+    "es": "Eye Cup Nikon DK-18",
+    "en": "Nikon DK-18 Eye Cup"
+  },
+  "price": 26.75,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/B831249E-5EB4-4E60-8D0D-B3738B113EC0.png",
+  "desc": {
+    "es": "Eye cup Nikon DK-18, diseñado para proporcionar un apoyo más cómodo alrededor del visor y ayudar a reducir la entrada de luz lateral durante la toma.",
+    "en": "Nikon DK-18 eye cup designed to provide a more comfortable fit around the viewfinder and help reduce stray light while shooting."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New - 6 month of warranties"
+  },
+  "specs": {
+    "es": [
+      "Eye cup negro Nikon DK-18 para montaje en el visor. Compatible con los modelos Nikon D810, D5, D4S, D4, D3X, D3S, D3, D700, D800, D800E, D2XS, D2X y D2-HF6. Incluye 1 eye cup."
+    ],
+    "en": [
+      "Black Nikon DK-18 eye cup for viewfinder mounting. Compatible with Nikon D810, D5, D4S, D4, D3X, D3S, D3, D700, D800, D800E, D2XS, D2X and D2-HF6 models. Includes 1 eye cup."
+    ]
+  }
+}
