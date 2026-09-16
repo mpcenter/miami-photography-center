@@ -1,8 +1,8 @@
 {
-  "slug": "canon-eye-cup-1d-5d-7d-series",
+  "slug": "canon-eye-cup-1dsii-1d",
   "name": {
-    "es": "Eye cup para Cámaras Canon 1D, 5D y 7D",
-    "en": "Canon Eye Cup for 1D, 5D & 7D Series"
+    "es": "Eye Cup Canon para 1DSII y 1D",
+    "en": "Canon Eye Cup for 1DSII and 1D"
   },
   "price": 26.75,
   "shipping": 15,
@@ -10,10 +10,10 @@
     "es": "Accesorios",
     "en": "Accessories"
   },
-  "img": "/uploads/4B634A5B-AD9C-48B4-A2B6-276EC8A4DB3C.png",
+  "img": "/uploads/EBA51DFB-7F88-4BE2-8A89-1DE21CEC152A.png",
   "desc": {
-    "es": "Eye Cup para cámaras Canon compatibles, con un diseño amplio que proporciona mayor comodidad alrededor del ojo y ayuda a bloquear la luz lateral durante el uso del visor.",
-    "en": "Eye cup for compatible Canon cameras, featuring a wide design that provides added comfort around the eye and helps block side light while using the viewfinder."
+    "es": "Eye cup Canon diseñado para cámaras compatibles Canon 1DSII y 1D. Se instala alrededor del visor para proporcionar un apoyo más cómodo al acercar el ojo a la cámara y ayudar a reducir la entrada de luz lateral durante el encuadre.",
+    "en": "Canon eye cup designed for compatible Canon 1DSII and 1D cameras. It fits around the viewfinder to provide a more comfortable contact point when bringing your eye to the camera and helps reduce stray side light while framing."
   },
   "condition": {
     "es": "Nuevo— garantía de 6 meses",
@@ -21,10 +21,10 @@
   },
   "specs": {
     "es": [
-      "Compatible con Canon 1Ds Mark III, 1D, 1D Mark IV, 1D X Mark II, 1D Mark III, 7D, 7D Mark II, 5D Mark III, 5D Mark IV, 5D5 y 5DS R. Color negro."
+      "Eye cup para visor de cámara Canon. Compatible con Canon 1DSII y 1D. Diseño negro con marco acolchado alrededor del visor y abertura central rectangular. Se instala directamente en el área del visor de la cámara. Incluye 1 eye cup."
     ],
     "en": [
-      "Compatible with Canon 1Ds Mark III, 1D, 1D Mark IV, 1D X Mark II, 1D Mark III, 7D, 7D Mark II, 5D Mark III, 5D Mark IV, 5D5, and 5DS R. Black color."
+      "Eye cup for Canon camera viewfinders. Compatible with Canon 1DSII and 1D. Black design with a cushioned frame around the viewfinder and a rectangular center opening. Installs directly into the camera’s viewfinder area. Includes 1 eye cup."
     ]
   }
 }
