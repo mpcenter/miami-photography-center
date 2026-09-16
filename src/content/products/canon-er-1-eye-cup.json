@@ -1,0 +1,30 @@
+{
+  "slug": "canon-er-1-eye-cup",
+  "name": {
+    "es": "Eye Cup Canon ER-1",
+    "en": "Canon ER-1 Eye Cup"
+  },
+  "price": 48.15,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/73FC1046-81A8-4323-A18F-D5208F08F42D.png",
+  "desc": {
+    "es": "Eye cup Canon ER-1 diseñado para proporcionar una superficie amplia y cómoda alrededor del visor. Su forma ofrece un apoyo cómodo para el área alrededor del ojo y ayuda a reducir la entrada de luz lateral al utilizar el visor de la cámara.",
+    "en": "Canon ER-1 eye cup designed to provide a wide, comfortable surface around the viewfinder. Its shape provides comfortable support around the eye and helps reduce side light while using the camera’s viewfinder."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Eye cup para visor Canon, modelo ER-1, de color negro. Diseño de perfil amplio con abertura central para el visor. Incluye 1 eye cup."
+    ],
+    "en": [
+      "Canon viewfinder eye cup, model ER-1, in black. Wide-profile design with a central viewfinder opening. Includes 1 eye cup."
+    ]
+  }
+}
