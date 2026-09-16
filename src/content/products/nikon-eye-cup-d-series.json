@@ -1,0 +1,30 @@
+{
+  "slug": "nikon-eye-cup-d-series",
+  "name": {
+    "es": "Eye cup para Cámaras Nikon Serie D",
+    "en": "Nikon Eye Cup for D-Series Cameras"
+  },
+  "price": 26.75,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/5B6123F2-BCC2-440B-998C-DF013D11F0EA.png",
+  "desc": {
+    "es": "Eye cup de reemplazo para el visor de cámaras Nikon DSLR compatibles. Su diseño acolchado proporciona un apoyo cómodo alrededor del ojo y ayuda a reducir la luz lateral al utilizar el visor.",
+    "en": "Replacement viewfinder eye cup for compatible Nikon DSLR cameras. Its cushioned design provides comfortable support around the eye and helps reduce stray light when using the viewfinder."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Compatible con Nikon D200, D600, D7000, D7100, D7200, D90, D80, D300 y D300S. Color negro."
+    ],
+    "en": [
+      "Compatible with Nikon D200, D600, D7000, D7100, D7200, D90, D80, D300, and D300S. Black color."
+    ]
+  }
+}
