@@ -1,0 +1,30 @@
+{
+  "slug": "sony-eye-cup-alpha-cameras",
+  "name": {
+    "es": "Eye Cup Sony para cámaras Alpha",
+    "en": "Sony Eye Cup for Alpha Cameras"
+  },
+  "price": 32.1,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/97A78A85-843C-4186-A52E-3DC630095A50.png",
+  "desc": {
+    "es": "Eye cup Sony diseñado para cámaras Sony Alpha compatibles, con un contorno amplio que proporciona un apoyo cómodo alrededor del visor durante el uso. Su diseño ayuda a reducir la entrada de luz lateral y permite mantener una visión más clara y cómoda al encuadrar y trabajar con el visor.",
+    "en": "Sony eye cup designed for compatible Sony Alpha cameras, featuring a wide contoured shape that provides comfortable support around the viewfinder. Its design helps reduce stray side light and provides a clearer, more comfortable view while framing and shooting."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Eye cup para visor de cámaras Sony Alpha. Compatible con Sony A1, A1II, A9III, A7RV, A7IV, A7RIV y A7SII. Diseño negro con marco acolchado amplio, abertura rectangular central y sistema de montaje para el visor. Incluye 1 eye cup."
+    ],
+    "en": [
+      "Eye cup for Sony Alpha camera viewfinders. Compatible with Sony A1, A1II, A9III, A7RV, A7IV, A7RIV and A7SII. Black design with a wide cushioned frame, rectangular center opening, and viewfinder mounting system. Includes 1 eye cup."
+    ]
+  }
+}
