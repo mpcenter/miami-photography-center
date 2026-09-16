@@ -1,0 +1,30 @@
+{
+  "slug": "nikon-ecp-ndk33-eye-cup",
+  "name": {
+    "es": "Eye cup Nikon ECP-NDK33",
+    "en": "Nikon ECP-NDK33 Eye Cup"
+  },
+  "price": 48.15,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/F15735AC-E38F-41D9-84E4-EAB7CC5BFA44.png",
+  "desc": {
+    "es": "Eye cup circular de reemplazo para cámaras Nikon compatibles. Proporciona un apoyo cómodo alrededor del visor y ayuda a reducir la entrada de luz externa durante la composición.",
+    "en": "Circular replacement eye cup for compatible Nikon cameras. Provides comfortable support around the viewfinder and helps reduce external light while composing."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Modelo ECP-NDK33. Compatible con Nikon Z8, Z9 y Zf. Diseño circular. Color negro."
+    ],
+    "en": [
+      "ECP-NDK33 model. Compatible with Nikon Z8, Z9, and Zf. Circular design. Black color."
+    ]
+  }
+}
