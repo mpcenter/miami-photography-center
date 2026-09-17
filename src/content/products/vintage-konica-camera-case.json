@@ -1,0 +1,30 @@
+{
+  "slug": "vintage-konica-camera-case",
+  "name": {
+    "es": "Estuche Vintage Konica para Cámara",
+    "en": "Vintage Konica Camera Case"
+  },
+  "price": 26.75,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/0653B291-599C-449C-8E25-70B6AC33574B.png",
+  "desc": {
+    "es": "El estuche Konica de segunda mano es un accesorio vintage diseñado para guardar y proteger una cámara. Cuenta con el diseño clásico de Konica en color negro y conserva su apariencia original, incluyendo el desgaste y las marcas visibles que se muestran en las fotografías.",
+    "en": "This pre-owned Konica camera case is a vintage accessory designed to store and protect a camera. It features a classic black Konica design and retains its original appearance, including the wear and visible marks shown in the photos."
+  },
+  "condition": {
+    "es": "Revisado y calibrado in-house — garantía de 6 meses",
+    "en": "Inspected & serviced in-house — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Marca: Konica. Tipo: estuche para cámara. Color: negro. Diseño vintage. Logo Konica en la parte frontal. Herrajes laterales para correa. Cierre posterior. Artículo de segunda mano. Incluye 1 estuche."
+    ],
+    "en": [
+      "Brand: Konica. Type: camera case. Color: black. Vintage design. Konica logo on front. Side strap hardware. Rear closure. Pre-owned item. Includes 1 camera case."
+    ]
+  }
+}
