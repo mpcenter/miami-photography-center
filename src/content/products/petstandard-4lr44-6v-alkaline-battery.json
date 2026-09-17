@@ -1,0 +1,30 @@
+{
+  "slug": "petstandard-4lr44-6v-alkaline-battery",
+  "name": {
+    "es": "Batería Alcalina PetStandard 4LR44 6V",
+    "en": "PetStandard 4LR44 6V Alkaline Battery"
+  },
+  "price": 10.7,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/81E6578D-4C17-4379-A08F-A22889337A28.png",
+  "desc": {
+    "es": "La PetStandard 4LR44 es una batería alcalina compacta de 6V diseñada para dispositivos compatibles con este formato de batería. Su tamaño cilíndrico permite utilizarla en distintos equipos electrónicos que requieren una batería 4LR44.",
+    "en": "The PetStandard 4LR44 is a compact 6V alkaline battery designed for devices compatible with this battery format. Its cylindrical design makes it suitable for electronic equipment requiring a 4LR44 battery."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Marca: PetStandard. Modelo: 4LR44. Tipo: batería alcalina. Voltaje: 6V. Formato: cilíndrico. Cantidad incluida: 1 batería."
+    ],
+    "en": [
+      "Brand: PetStandard. Model: 4LR44. Type: alkaline battery. Voltage: 6V. Format: cylindrical. Quantity included: 1 battery."
+    ]
+  }
+}
