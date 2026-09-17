@@ -1,0 +1,30 @@
+{
+  "slug": "vintage-yashica-camera-case",
+  "name": {
+    "es": "Estuche Vintage Yashica para Cámara",
+    "en": "Vintage Yashica Camera Case"
+  },
+  "price": 26.75,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/661E01A9-2FAA-424C-B9A0-775BF0BE30F5.png",
+  "desc": {
+    "es": "El estuche Yashica de segunda mano es un accesorio vintage diseñado para guardar y proteger una cámara. Presenta el clásico acabado negro texturizado con el emblema Yashica en el frente y conserva su condición original tal como se muestra en las fotografías.",
+    "en": "This pre-owned Yashica camera case is a vintage accessory designed to store and protect a camera. It features a classic textured black finish with the Yashica emblem on the front and retains its original condition as shown in the photos."
+  },
+  "condition": {
+    "es": "Revisado y calibrado in-house — garantía de 6 meses",
+    "en": "Inspected & serviced in-house — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Marca: Yashica. Tipo: estuche para cámara. Color: negro. Diseño vintage. Acabado texturizado. Emblema Yashica frontal. Cierres a presión. Punto de montaje en la base. Incluye 1 estuche."
+    ],
+    "en": [
+      "Brand: Yashica. Type: camera case. Color: black. Vintage design. Textured finish. Front Yashica emblem. Snap closures. Bottom mounting point. Includes 1 camera case."
+    ]
+  }
+}
