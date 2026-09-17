@@ -1,0 +1,30 @@
+{
+  "slug": "nikon-mh-21-quick-charger",
+  "name": {
+    "es": "Cargador Rápido Nikon MH-21",
+    "en": "Nikon MH-21 Quick Charger"
+  },
+  "price": 32.1,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/B8972EB5-0CAE-4391-BF8C-1A869187E463.png",
+  "desc": {
+    "es": "El Nikon MH-21 es un cargador rápido original Nikon diseñado para cargar baterías recargables compatibles. Cuenta con indicadores para monitorear el nivel de carga y función de calibración. Incluye su caja original y cable de alimentación.",
+    "en": "The Nikon MH-21 is an original Nikon quick charger designed for compatible rechargeable batteries. It features charge-level indicators and a calibration function for convenient battery charging management. Includes the original box and AC power cable."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Marca: Nikon. Modelo: MH-21. Tipo: cargador rápido de batería. Indicadores de carga: 50%, 80% y 100%. Indicadores de calibración: 2 h, 4 h y 6 h. Botón de calibración. Entrada AC. Incluye cargador, cable de alimentación y caja original."
+    ],
+    "en": [
+      "Brand: Nikon. Model: MH-21. Type: quick battery charger. Charge indicators: 50%, 80%, and 100%. Calibration indicators: 2 h, 4 h, and 6 h. Calibration button. AC input. Includes charger, AC power cable, and original box."
+    ]
+  }
+}
