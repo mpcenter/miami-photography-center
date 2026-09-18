@@ -1,0 +1,30 @@
+{
+  "slug": "rectangular-speedlight-flash-softbox",
+  "name": {
+    "es": "Softbox Rectangular Plegable para Flash Speedlight",
+    "en": "Foldable Rectangular Speedlight Flash Softbox"
+  },
+  "price": 21.4,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/AAC714AC-5FB4-4F67-B64C-5F743722E8FA.png",
+  "desc": {
+    "es": "Softbox rectangular plegable diseñado para colocarse directamente sobre un flash Speedlight y suavizar la luz, ayudando a conseguir una iluminación más uniforme en fotografía de retrato, producto y eventos. Su diseño compacto permite guardarlo fácilmente cuando no está en uso.",
+    "en": "Foldable rectangular softbox designed to mount directly onto a Speedlight flash and soften its output for more even lighting in portrait, product, and event photography. Its compact design makes it easy to store when not in use."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Tipo: softbox plegable para flash Speedlight. Forma rectangular. Superficie difusora frontal blanca con borde negro. Diseño compacto y portátil. Incluye softbox y estuche negro con cierre de cremallera."
+    ],
+    "en": [
+      "Type: foldable Speedlight flash softbox. Rectangular shape. White front diffusion surface with black border. Compact and portable design. Includes softbox and black zippered storage case."
+    ]
+  }
+}
