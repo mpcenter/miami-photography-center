@@ -1,0 +1,30 @@
+{
+  "slug": "octagonal-speedlight-flash-softbox",
+  "name": {
+    "es": "Softbox Octagonal Plegable para Flash Speedlight",
+    "en": "Foldable Octagonal Speedlight Flash Softbox"
+  },
+  "price": 21.4,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/E99E8C30-436A-4485-8070-0E35B65F3E9A.png",
+  "desc": {
+    "es": "Softbox octagonal plegable diseñado para suavizar y distribuir la luz del flash, ayudando a conseguir una iluminación más uniforme para fotografía de retrato, producto y eventos. Su formato compacto facilita el transporte y almacenamiento.",
+    "en": "Foldable octagonal softbox designed to soften and distribute flash light for more even illumination in portrait, product, and event photography. Its compact design makes it easy to carry and store."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Tipo: softbox plegable para flash Speedlight. Forma octagonal. Superficie difusora frontal blanca con borde negro. Diseño compacto y portátil. Incluye softbox y estuche negro con cierre de cremallera."
+    ],
+    "en": [
+      "Type: foldable Speedlight flash softbox. Octagonal shape. White front diffusion surface with black border. Compact and portable design. Includes softbox and black zippered storage case."
+    ]
+  }
+}
