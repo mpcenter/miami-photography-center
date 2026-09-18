@@ -1,0 +1,30 @@
+{
+  "slug": "foldable-photography-light-box",
+  "name": {
+    "es": "Caja de Luz Plegable para Fotografía de Producto",
+    "en": "Foldable Photography Light Box"
+  },
+  "price": 117.7,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/1423E8C1-146B-4A45-847E-F3A3E7F43BFA.png",
+  "desc": {
+    "es": "Caja de luz plegable diseñada para crear un entorno limpio y uniforme al fotografiar productos y objetos pequeños. Su interior completamente blanco ayuda a distribuir la iluminación alrededor del objeto y a reducir sombras no deseadas. Se pliega para facilitar su almacenamiento y transporte.",
+    "en": "Foldable photography light box designed to create a clean, even environment for photographing products and small objects. Its all-white interior helps distribute light around the subject and reduce unwanted shadows. It folds down for easy storage and transportation."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Tipo: caja de luz plegable para fotografía. Interior blanco. Diseño portátil y plegable. Apertura frontal para fotografía de producto. Color: blanco. Incluye estuche circular negro para almacenamiento y transporte."
+    ],
+    "en": [
+      "Type: foldable photography light box. White interior. Portable and collapsible design. Front opening for product photography. Color: white. Includes black round carrying case for storage and transportation."
+    ]
+  }
+}
