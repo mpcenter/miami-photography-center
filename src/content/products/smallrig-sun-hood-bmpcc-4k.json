@@ -1,0 +1,30 @@
+{
+  "slug": "smallrig-sun-hood-bmpcc-4k",
+  "name": {
+    "es": "Parasol SmallRig para Monitor de Blackmagic Pocket Cinema Camera 4K",
+    "en": "SmallRig Sun Hood for Blackmagic Pocket Cinema Camera 4K"
+  },
+  "price": 32.1,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/02B565C8-28A4-4B23-8062-FDAA1B740108.png",
+  "desc": {
+    "es": "El SmallRig Sun Hood para BMPCC 4K está diseñado para proteger la pantalla de la cámara de la luz directa y los reflejos, facilitando la visualización durante grabaciones en exteriores o ambientes con mucha iluminación. Incluye el parasol, marco de montaje y los accesorios necesarios para su instalación.",
+    "en": "The SmallRig Sun Hood for BMPCC 4K is designed to shield the camera screen from direct light and glare, improving screen visibility when shooting outdoors or in bright environments. It includes the sun hood, mounting frame, and installation accessories."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Marca: SmallRig. Tipo: parasol para pantalla. Compatibilidad: Blackmagic Pocket Cinema Camera 4K (BMPCC 4K). Incluye parasol, marco, dos soportes de montaje de diferentes tamaños, tornillos, llaves Allen y accesorio circular."
+    ],
+    "en": [
+      "Brand: SmallRig. Type: camera screen sun hood. Compatibility: Blackmagic Pocket Cinema Camera 4K (BMPCC 4K). Includes sun hood, frame, two different-size mounting brackets, screws, Allen keys, and circular accessory."
+    ]
+  }
+}
