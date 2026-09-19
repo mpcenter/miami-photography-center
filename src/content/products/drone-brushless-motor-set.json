@@ -1,0 +1,30 @@
+{
+  "slug": "drone-brushless-motor-set",
+  "name": {
+    "es": "Conjunto de Motores Brushless para Drone",
+    "en": "Drone Brushless Motor Set"
+  },
+  "price": 26.75,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/IMG_0327.webp",
+  "desc": {
+    "es": "Conjunto de motores brushless para drone, diseñado como repuesto para sistemas de propulsión. Incluye los motores con el cableado y conexiones visibles en las imágenes.",
+    "en": "Brushless motor set for drones, designed as a replacement for propulsion systems. Includes the motors with the wiring and connections shown in the images."
+  },
+  "condition": {
+    "es": "Nuevo— garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Tipo: conjunto de motores brushless (sin escobillas). Aplicación: drones. Color: plateado. Incluye motores, cableado y conexiones mostradas en la imagen."
+    ],
+    "en": [
+      "Type: brushless motor set. Application: drones. Color: silver. Includes motors, wiring, and connections shown in the image."
+    ]
+  }
+}
