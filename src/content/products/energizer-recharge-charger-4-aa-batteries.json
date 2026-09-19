@@ -1,0 +1,30 @@
+{
+  "slug": "energizer-recharge-charger-4-aa-batteries",
+  "name": {
+    "es": "Cargador Energizer Recharge con 4 Baterías AA",
+    "en": "Energizer Recharge Charger with 4 AA Batteries"
+  },
+  "price": 26.75,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/2C465544-A689-4260-BBE0-7BAEB857644D.png",
+  "desc": {
+    "es": "Cargador Energizer Recharge diseñado para cargar baterías recargables AA y AAA NiMH. Incluye cuatro baterías AA recargables de 1300 mAh y cuenta con indicadores de estado de carga para facilitar su uso.",
+    "en": "Energizer Recharge battery charger designed for rechargeable AA and AAA NiMH batteries. Includes four 1300mAh rechargeable AA batteries and features charge status indicators for convenient operation."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Marca: Energizer. Tipo: cargador de baterías recargables. Compatible con baterías NiMH AA y AAA. Carga 2 o 4 baterías. Incluye 4 baterías AA NiMH de 1.2 V y 1300 mAh. Indicador de estado de carga. Protección contra sobrecarga y apagado de seguridad."
+    ],
+    "en": [
+      "Brand: Energizer. Type: rechargeable battery charger. Compatible with AA and AAA NiMH batteries. Charges 2 or 4 batteries. Includes 4 AA 1.2V 1300mAh NiMH rechargeable batteries. Charge status indicator. Overcharge protection and safety shut-off."
+    ]
+  }
+}
