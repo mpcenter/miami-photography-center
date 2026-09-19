@@ -1,0 +1,30 @@
+{
+  "slug": "gold-reflective-photography-umbrella",
+  "name": {
+    "es": "Sombrilla Reflectora Dorada para Fotografía",
+    "en": "Gold Reflective Photography Umbrella"
+  },
+  "price": 10.7,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/02B9A952-88AE-4C1C-AC26-7CC048E3551F.png",
+  "desc": {
+    "es": "Sombrilla reflectora diseñada para dirigir y rebotar la luz durante sesiones de fotografía. Su interior dorado produce una reflexión de luz con un tono más cálido, ideal para retratos y fotografía de estudio.",
+    "en": "Reflective photography umbrella designed to bounce and direct light during photo sessions. Its gold interior produces a warmer reflected light, making it suitable for portraits and studio photography."
+  },
+  "condition": {
+    "es": "Nuevo— garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "sombrilla reflectora para fotografía. Interior dorado reflectante. Exterior negro. Estructura plegable con varillas metálicas. Cantidad disponible: 3 unidades."
+    ],
+    "en": [
+      "reflective photography umbrella. Gold reflective interior. Black exterior. Foldable design with metal ribs. Quantity available: 3 units."
+    ]
+  }
+}
