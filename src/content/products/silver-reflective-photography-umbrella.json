@@ -1,0 +1,30 @@
+{
+  "slug": "silver-reflective-photography-umbrella",
+  "name": {
+    "es": "Sombrilla Reflectora Plateada para Fotografía",
+    "en": "Silver Reflective Photography Umbrella"
+  },
+  "price": 10.7,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/3CF73002-A061-4F68-A7DC-93C8979EABF1.png",
+  "desc": {
+    "es": "Sombrilla reflectora diseñada para rebotar y dirigir la iluminación durante sesiones fotográficas. Su superficie interior plateada proporciona una reflexión eficiente de la luz para fotografía de retrato, producto y estudio.",
+    "en": "Reflective photography umbrella designed to bounce and direct light during photo sessions. Its silver interior provides efficient light reflection for portrait, product, and studio photography."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "sombrilla reflectora para fotografía. Interior plateado reflectante. Exterior negro. Estructura plegable con varillas metálicas. Cantidad disponible: 3 unidades."
+    ],
+    "en": [
+      "reflective photography umbrella. Silver reflective interior. Black exterior. Foldable design with metal ribs. Quantity available: 3 units."
+    ]
+  }
+}
