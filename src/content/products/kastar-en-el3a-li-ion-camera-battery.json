@@ -1,0 +1,30 @@
+{
+  "slug": "kastar-en-el3a-li-ion-camera-battery",
+  "name": {
+    "es": "Batería Kastar EN-EL3A para Cámara",
+    "en": "Kastar EN-EL3A Camera Batter"
+  },
+  "price": 32.1,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/815C8CBE-BABA-4BEF-A10A-822A09502ED4.png",
+  "desc": {
+    "es": "La Kastar EN-EL3A es una batería recargable de ion de litio diseñada como batería de reemplazo para cámaras compatibles con el formato EN-EL3A. Ofrece una capacidad de 2650 mAh y es una opción práctica para tener como batería principal o de respaldo.",
+    "en": "The Kastar EN-EL3A is a rechargeable lithium-ion battery designed as a replacement battery for cameras compatible with the EN-EL3A battery format. With a 2650mAh capacity, it is a practical option as a primary or backup camera battery."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Marca: Kastar. Modelo: EN-EL3A. Tipo: batería recargable de ion de litio (Li-ion). Voltaje: 7.4V. Capacidad: 2650mAh. Energía: 19.6Wh. Cantidad: 1 batería."
+    ],
+    "en": [
+      "Brand: Kastar. Model: EN-EL3A. Type: rechargeable lithium-ion (Li-ion) battery. Voltage: 7.4V. Capacity: 2650mAh. Energy: 19.6Wh. Quantity: 1 battery."
+    ]
+  }
+}
