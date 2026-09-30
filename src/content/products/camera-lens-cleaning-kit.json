@@ -1,0 +1,30 @@
+{
+  "slug": "camera-lens-cleaning-kit",
+  "name": {
+    "es": "Kit de Limpieza para Cámara y Lentes",
+    "en": "Camera & Lens Cleaning Kit"
+  },
+  "price": 21.4,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/077FDD49-72F0-435A-BB0F-FEAE3A3BE84E.png",
+  "desc": {
+    "es": "Kit de limpieza para cámaras y lentes con diferentes herramientas para ayudar a remover polvo, huellas y pequeñas partículas de las superficies del equipo fotográfico. Incluye varios accesorios para realizar una limpieza práctica y cuidadosa.",
+    "en": "Camera and lens cleaning kit with different tools designed to help remove dust, fingerprints, and small particles from photography equipment surfaces. Includes multiple accessories for convenient and careful cleaning."
+  },
+  "condition": {
+    "es": "Nuevo — garantía de 6 meses",
+    "en": "New — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Kit de 5 piezas. Incluye: soplador de aire, papel para limpieza de lentes, paño de microfibra, lápiz de limpieza para lentes con punta de esponja y cepillo, y cepillo de limpieza adicional."
+    ],
+    "en": [
+      "5-piece cleaning kit. Includes: air blower, lens cleaning paper, microfiber cloth, lens cleaning pen with sponge tip and brush, and additional cleaning brush."
+    ]
+  }
+}
