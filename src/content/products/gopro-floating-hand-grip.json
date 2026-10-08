@@ -1,0 +1,30 @@
+{
+  "slug": "gopro-floating-hand-grip",
+  "name": {
+    "es": "GoPro Floating Hand Grip",
+    "en": "GoPro Floating Hand Grip"
+  },
+  "price": 16,
+  "shipping": 15,
+  "category": {
+    "es": "Accesorios",
+    "en": "Accessories"
+  },
+  "img": "/uploads/76A8EE77-A706-4699-BA93-45D43717B76B.png",
+  "desc": {
+    "es": "El GoPro Floating Hand Grip de segunda mano, en buen estado, es un mango flotante diseñado para sujetar cámaras GoPro durante actividades acuáticas. Su diseño ligero y cómodo permite un agarre seguro, mientras que su correa ajustable para la muñeca brinda mayor seguridad durante el uso.",
+    "en": "The GoPro Floating Hand Grip is a pre-owned accessory in good condition, designed to hold GoPro cameras during water activities. Its lightweight, comfortable design provides a secure grip, while the adjustable wrist strap adds extra security during use."
+  },
+  "condition": {
+    "es": "Revisado y calibrado in-house — garantía de 6 meses",
+    "en": "Inspected & serviced in-house — 6-month warranty"
+  },
+  "specs": {
+    "es": [
+      "Mango flotante GoPro con empuñadura negra de espuma, base naranja de alta visibilidad, soporte de montaje para cámara y correa ajustable para la muñeca. Diseñado para cámaras GoPro con sistema de montaje compatible."
+    ],
+    "en": [
+      "GoPro floating hand grip featuring a black foam handle, high-visibility orange base, camera mounting attachment, and adjustable wrist strap. Designed for GoPro cameras with a compatible mounting system."
+    ]
+  }
+}
